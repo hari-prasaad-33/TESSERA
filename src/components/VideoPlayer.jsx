@@ -1,13 +1,32 @@
 import React, { useState, useRef } from 'react';
 
+/** Extract YouTube video ID from watch, embed, Shorts, or youtu.be URL. */
+function getYouTubeVideoId(src) {
+  if (!src || typeof src !== 'string') return null;
+  const trimmed = src.trim();
+  const embedMatch = trimmed.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/);
+  if (embedMatch) return embedMatch[1];
+  const watchMatch = trimmed.match(/youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/);
+  if (watchMatch) return watchMatch[1];
+  const shortsMatch = trimmed.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/);
+  if (shortsMatch) return shortsMatch[1];
+  const shortMatch = trimmed.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
+  if (shortMatch) return shortMatch[1];
+  return null;
+}
+
 /**
- * Reusable video player with play/pause overlay.
- * Place video files in public/videos/ and reference as: src="/videos/your-file.mp4"
+ * Reusable video player: local MP4 or YouTube (unlisted) embed.
+ * - Local: src="/videos/your-file.mp4" (file in public/videos/)
+ * - YouTube: src="https://www.youtube.com/watch?v=VIDEO_ID" or embed URL
  */
 const VideoPlayer = ({ src, poster, title, titleClassName = 'text-tessera-teal', className = '' }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
   const videoRef = useRef(null);
+
+  const youtubeId = getYouTubeVideoId(src);
+  const embedUrl = youtubeId ? `https://www.youtube.com/embed/${youtubeId}?rel=0` : null;
 
   const togglePlay = () => {
     if (!videoRef.current) return;
@@ -22,10 +41,32 @@ const VideoPlayer = ({ src, poster, title, titleClassName = 'text-tessera-teal',
   const handleEnded = () => setIsPlaying(false);
   const handleError = () => setHasError(true);
 
-  if (hasError) {
+  if (hasError && !youtubeId) {
     return (
       <div className={`w-full aspect-video bg-black/50 rounded-xl border border-white/10 flex items-center justify-center ${className}`}>
-        <p className="text-tessera-dim text-sm font-mono">Video not found. Add your video to <code className="text-tessera-teal">public/videos/</code></p>
+        <p className="text-tessera-dim text-sm font-mono">Video not found. Add your video to <code className="text-tessera-teal">public/videos/</code> or use a YouTube URL.</p>
+      </div>
+    );
+  }
+
+  if (embedUrl) {
+    return (
+      <div
+        className={`relative w-full aspect-video bg-black/50 rounded-xl border border-white/10 overflow-hidden ${className}`}
+        style={{ boxShadow: '0 0 50px rgba(0,0,0,0.5)' }}
+      >
+        <iframe
+          src={embedUrl}
+          title={title || 'YouTube video'}
+          className="absolute inset-0 w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+        {title && (
+          <p className={`absolute bottom-6 left-0 w-full text-center text-xs tracking-[0.2em] font-mono z-10 pointer-events-none ${titleClassName}`}>
+            {title}
+          </p>
+        )}
       </div>
     );
   }
@@ -45,7 +86,6 @@ const VideoPlayer = ({ src, poster, title, titleClassName = 'text-tessera-teal',
         onEnded={handleEnded}
         onError={handleError}
       />
-      {/* Play/pause overlay - shown when paused */}
       {!isPlaying && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-20 h-20 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-500 z-10">

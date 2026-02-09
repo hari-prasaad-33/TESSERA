@@ -3,8 +3,7 @@ import { marked } from 'marked';
 import { fetchMarkdownContent, parseMarkdownSection } from '../utils/markdown';
 import VideoPlayer from './VideoPlayer';
 
-// Path to demo video - place file at: public/videos/tessera-one-demo.mp4
-const DEMO_VIDEO_SRC = '/videos/tessera-one-demo.mp4';
+const DEMO_VIDEO_SRC = 'https://youtu.be/vOwL8_Vn08M';
 
 const DiscoverPage = ({ onBack }) => {
   const [contentParts, setContentParts] = useState({ before: '', after: '' });

@@ -3,12 +3,10 @@ import VideoPlayer from './VideoPlayer';
 
 /**
  * Founder's video section for the home page.
- * Place your founder video at: public/videos/founders-video.mp4
- * Supported formats: mp4, webm (mp4 recommended for best compatibility)
+ * Use a local file (public/videos/founders-video.mp4) or a YouTube unlisted URL.
  */
 const FounderVideoSection = () => {
-  // Path to founder's video - place file in public/videos/
-  const FOUNDER_VIDEO_SRC = '/videos/founders-video.mp4';
+  const FOUNDER_VIDEO_SRC = 'https://youtube.com/shorts/s_2-AlZaKvU';
 
   return (
     <section className="relative z-10 max-w-5xl mx-auto px-6">
