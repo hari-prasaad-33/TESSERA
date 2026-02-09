@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-tessera-ink: #050505;
+  --color-tessera-void: #0a0a0f;
+  --color-tessera-mist: #12121a;
+  --color-tessera-teal: #4d7c8a;
+  --color-tessera-orange: #FF5F1F;
+  --color-tessera-text: #e0e0e0;
+  --color-tessera-dim: #6b7280;
+  
+  --font-display: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --background-image-mist-gradient: radial-gradient(circle at 50% 50%, rgba(20, 20, 30, 0.4) 0%, rgba(5, 5, 5, 0) 70%);
+}
+
+@layer utilities {
+  .mist-overlay {
+    background: radial-gradient(circle at 50% 50%, rgba(20, 30, 40, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
+    pointer-events: none;
+  }
+  
+  .glass-card {
+    background: rgba(15, 15, 20, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 95, 31, 0.3);
+  }
+
+  /* Custom scrollbar hide utility */
+  .scrollbar-hide {
+    /* For Webkit-based browsers (Chrome, Safari, Opera) */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* For IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+body {
+  background-color: var(--color-tessera-ink);
+  color: var(--color-tessera-text);
+  font-family: var(--font-display);
+  overflow-x: hidden;
+}
