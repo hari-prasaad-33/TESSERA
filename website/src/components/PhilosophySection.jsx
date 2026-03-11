@@ -1,4 +1,5 @@
 import React from 'react';
+import FounderVideoSection from './FounderVideoSection';
 
 const PhilosophySection = () => {
   const reasons = [
@@ -78,6 +79,9 @@ const PhilosophySection = () => {
 
         </div>
       </div>
+
+      {/* Founder's Video - right after The Human Element */}
+      <FounderVideoSection />
 
       {/* The Synthesis (Purist Trap) - Kept as requested */}
       <div className="glass-card p-10 md:p-16 rounded-3xl border border-tessera-teal/10 bg-gradient-to-br from-tessera-void to-tessera-ink relative">

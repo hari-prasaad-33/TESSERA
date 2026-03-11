@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/typography": "^0.5.19",
+    "marked": "^17.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

@@ -1,12 +1,11 @@
 import React from 'react';
 import Logogram from './Logogram';
 
-const ProductSection = () => {
+const ProductSection = ({ onNavigate }) => {
   return (
     <section className="relative z-10 py-32 px-6 max-w-7xl mx-auto">
-      <div className="grid md:grid-cols-2 gap-16 items-center">
+      <div className="grid md:grid-cols-2 gap-16 items-center mb-16">
         <div className="order-2 md:order-1">
-          {/* Changed headline from "The Artifact" to "TESSERA ONE" */}
           <h2 className="text-5xl font-display text-white mb-8 tracking-tight uppercase text-glow drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">TESSERA <span className="text-tessera-orange">ONE</span></h2>
           <h3 className="text-5xl font-display mb-8">Not a replacement.<br/>A <span className="text-tessera-teal">Catalyst.</span></h3>
           <p className="text-lg text-gray-400 mb-6 leading-relaxed">
@@ -14,10 +13,16 @@ const ProductSection = () => {
             It handles the mundane science of mixing so you can stay in the flow of creation.
           </p>
           <div className="flex gap-4 mt-8">
-             <button className="group relative px-10 py-5 bg-gray-700 text-white font-mono font-bold tracking-wider rounded-full overflow-hidden transition-all hover:scale-105 hover:bg-gray-600 hover:shadow-lg">
-               <span className="relative">DISCOVER PLUGIN</span>
-             </button>
-            <button className="px-8 py-4 rounded-full font-mono border border-white/10 hover:border-tessera-teal hover:text-tessera-teal transition duration-300">
+            <button 
+              className="group relative px-10 py-5 bg-gray-700 text-white font-mono font-bold tracking-wider rounded-full overflow-hidden transition-all hover:scale-105 hover:bg-gray-600 hover:shadow-lg"
+              onClick={() => onNavigate('discover')}
+            >
+              <span className="relative">DISCOVER PLUGIN</span>
+            </button>
+            <button 
+              className="px-8 py-4 rounded-full font-mono border border-white/10 hover:border-tessera-teal hover:text-tessera-teal transition duration-300"
+              onClick={() => onNavigate('specs')}
+            >
               Read Specs
             </button>
           </div>
