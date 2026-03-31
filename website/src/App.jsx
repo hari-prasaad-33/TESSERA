@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react'
 import PhilosophySection from './components/PhilosophySection'
 import ProductShowcase from './components/ProductShowcase'
 import { EQInterfaceMockup } from './components/ProductShowcase'
-import Logogram from './components/Logogram'
 import EternalRing from './components/EternalRing'
 import DiscoverPage from './components/DiscoverPage'
 import EQFeaturesPage from './components/EQFeaturesPage'
 import HeroSection from './components/HeroSection'
 import HowWeBuildSection from './components/HowWeBuildSection'
 import VisionSection from './components/VisionSection'
+import SiteNav from './components/SiteNav'
 
 const MistBackground = () => (
   <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -21,20 +21,11 @@ const MistBackground = () => (
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
-  const [showProductsDropdown, setShowProductsDropdown] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   // Scroll to top when page changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
-
-  // Scroll-aware nav background
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navigateTo = (page) => {
     setCurrentPage(page);
@@ -58,6 +49,7 @@ function App() {
     return (
       <>
         <MistBackground />
+        <SiteNav currentPage="discover" onNavigate={navigateTo} />
         <DiscoverPage onBack={() => navigateTo('home')} />
       </>
     );
@@ -67,6 +59,7 @@ function App() {
     return (
       <>
         <MistBackground />
+        <SiteNav currentPage="eq-features" onNavigate={navigateTo} />
         <EQFeaturesPage onBack={() => navigateTo('home')} />
       </>
     );
@@ -78,76 +71,7 @@ function App() {
       <MistBackground />
 
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300 ${
-        scrolled ? 'backdrop-blur-xl bg-tessera-ink/80 border-b border-white/5' : ''
-      }`}>
-        {/* Logo */}
-        <div
-          className="flex items-center gap-2 cursor-pointer"
-          onClick={() => handleProductSectionNav('home')}
-        >
-          <Logogram size={32} progress={70} color="text-tessera-orange" />
-          <div className="font-display font-bold tracking-tighter text-xl">TESSERA</div>
-        </div>
-
-        {/* Nav links */}
-        <div className="hidden md:flex gap-12 font-mono text-sm tracking-[0.2em] font-medium text-tessera-dim relative">
-          <button
-            onClick={() => handleProductSectionNav('home')}
-            className="hover:text-white transition-all duration-300"
-          >
-            HOME
-          </button>
-
-          <div
-            className="relative"
-            onMouseEnter={() => setShowProductsDropdown(true)}
-            onMouseLeave={() => setShowProductsDropdown(false)}
-          >
-            <span className="cursor-pointer hover:text-white transition-all duration-300 py-4 block">
-              PRODUCTS ▾
-            </span>
-            {showProductsDropdown && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-60 glass-card p-2 rounded-xl shadow-xl z-50 border border-white/10">
-                {/* EQ first — the current product */}
-                <button
-                  onClick={() => handleProductSectionNav('products')}
-                  className="flex items-center gap-3 w-full text-left px-4 py-3 hover:bg-white/5 rounded-lg transition-colors"
-                >
-                  <span className="w-2 h-2 rounded-full bg-tessera-teal flex-shrink-0"></span>
-                  <div>
-                    <div className="font-bold text-sm tracking-widest text-tessera-teal">TESSERA EQ</div>
-                    <div className="font-mono text-[9px] text-tessera-dim tracking-wider mt-0.5">AI PARAMETRIC EQ — AVAILABLE</div>
-                  </div>
-                </button>
-                {/* ONE — coming soon */}
-                <button
-                  onClick={() => { setShowProductsDropdown(false); document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' }); }}
-                  className="flex items-center gap-3 w-full text-left px-4 py-3 hover:bg-white/5 rounded-lg transition-colors"
-                >
-                  <span className="w-2 h-2 rounded-full bg-tessera-orange flex-shrink-0"></span>
-                  <div>
-                    <div className="font-bold text-sm tracking-widest text-tessera-orange">TESSERA ONE</div>
-                    <div className="font-mono text-[9px] text-tessera-dim tracking-wider mt-0.5">MIXING SUITE — COMING 2026</div>
-                  </div>
-                </button>
-              </div>
-            )}
-          </div>
-
-          <button
-            onClick={() => navigateTo('eq-features')}
-            className="hover:text-white transition-all duration-300"
-          >
-            EXPLORE EQ
-          </button>
-        </div>
-
-        {/* Indicator dot */}
-        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center">
-          <div className="w-1 h-1 bg-tessera-teal rounded-full"></div>
-        </div>
-      </nav>
+      <SiteNav currentPage="home" onNavigate={navigateTo} />
 
       {/* ── 01 / THE MISSION ──────────────────────────── */}
       <HeroSection

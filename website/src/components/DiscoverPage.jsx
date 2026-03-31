@@ -31,15 +31,6 @@ const DiscoverPage = ({ onBack }) => {
           <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-tessera-orange/5 rounded-full blur-[150px]"></div>
       </div>
 
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center mix-blend-difference pointer-events-none">
-        <div className="pointer-events-auto">
-          <button onClick={onBack} className="flex items-center gap-2 text-tessera-dim hover:text-white transition-colors group">
-            <span className="text-xl group-hover:-translate-x-1 transition-transform">←</span>
-            <span className="font-mono text-xs tracking-widest">BACK</span>
-          </button>
-        </div>
-      </nav>
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Page Header */}

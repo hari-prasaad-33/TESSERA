@@ -347,15 +347,6 @@ const EQFeaturesPage = ({ onBack }) => {
         <div className="absolute top-[40%] left-[30%] w-[30%] h-[30%] bg-tessera-teal/3 rounded-full blur-[120px]"></div>
       </div>
 
-      {/* Back Nav */}
-      <nav className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center mix-blend-difference pointer-events-none">
-        <div className="pointer-events-auto">
-          <button onClick={onBack} className="flex items-center gap-2 text-tessera-dim hover:text-white transition-colors group">
-            <span className="text-xl group-hover:-translate-x-1 transition-transform">←</span>
-            <span className="font-mono text-xs tracking-widest">BACK</span>
-          </button>
-        </div>
-      </nav>
 
       <div className="max-w-5xl mx-auto relative z-10">
 
