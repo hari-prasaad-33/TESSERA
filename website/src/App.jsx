@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react'
 import PhilosophySection from './components/PhilosophySection'
-import ProductSection from './components/ProductSection'
+import ProductShowcase from './components/ProductShowcase'
+import { EQInterfaceMockup } from './components/ProductShowcase'
 import Logogram from './components/Logogram'
 import EternalRing from './components/EternalRing'
 import DiscoverPage from './components/DiscoverPage'
-import SpecsPage from './components/SpecsPage'
+import EQFeaturesPage from './components/EQFeaturesPage'
+import HeroSection from './components/HeroSection'
+import HowWeBuildSection from './components/HowWeBuildSection'
+import VisionSection from './components/VisionSection'
 
 const MistBackground = () => (
   <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -16,120 +20,162 @@ const MistBackground = () => (
 );
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'discover', 'specs'
+  const [currentPage, setCurrentPage] = useState('home');
   const [showProductsDropdown, setShowProductsDropdown] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   // Scroll to top when page changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
+  // Scroll-aware nav background
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navigateTo = (page) => {
     setCurrentPage(page);
   };
 
   const handleProductSectionNav = (target) => {
-      // If we are on a sub-page, go home first, then scroll
-      if (currentPage !== 'home') {
-          setCurrentPage('home');
-          // Use timeout to allow render
-          setTimeout(() => {
-              const el = document.getElementById(target);
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-      } else {
-          // Already on home, just scroll
-          const el = document.getElementById(target);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }
+    if (currentPage !== 'home') {
+      setCurrentPage('home');
+      setTimeout(() => {
+        const el = document.getElementById(target);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const el = document.getElementById(target);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
-  // Render Sub-Pages
+  // Sub-pages
   if (currentPage === 'discover') {
-      return (
-        <>
-            <MistBackground />
-            <DiscoverPage onBack={() => navigateTo('home')} />
-        </>
-      );
+    return (
+      <>
+        <MistBackground />
+        <DiscoverPage onBack={() => navigateTo('home')} />
+      </>
+    );
   }
 
-  if (currentPage === 'specs') {
-      return (
-        <>
-            <MistBackground />
-            <SpecsPage onBack={() => navigateTo('home')} />
-        </>
-      );
+  if (currentPage === 'eq-features') {
+    return (
+      <>
+        <MistBackground />
+        <EQFeaturesPage onBack={() => navigateTo('home')} />
+      </>
+    );
   }
 
-  // Render Home Page
+  // Home page
   return (
     <div className="min-h-screen bg-tessera-ink text-tessera-text selection:bg-tessera-orange selection:text-black font-sans">
       <MistBackground />
-      
-      {/* Navigation / Header */}
-      <nav className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center mix-blend-difference">
-        <div className="flex items-center gap-3 relative cursor-pointer" onClick={() => handleProductSectionNav('home')}>
-          <Logogram size={50} progress={70} color="text-tessera-orange" className="absolute -left-6 opacity-60 blur-sm" />
-          <div className="font-display font-bold tracking-tighter text-xl relative z-10">TESSERA</div>
+
+      {/* Navigation */}
+      <nav className={`fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300 ${
+        scrolled ? 'backdrop-blur-xl bg-tessera-ink/80 border-b border-white/5' : ''
+      }`}>
+        {/* Logo */}
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={() => handleProductSectionNav('home')}
+        >
+          <Logogram size={32} progress={70} color="text-tessera-orange" />
+          <div className="font-display font-bold tracking-tighter text-xl">TESSERA</div>
         </div>
+
+        {/* Nav links */}
         <div className="hidden md:flex gap-12 font-mono text-sm tracking-[0.2em] font-medium text-tessera-dim relative">
-          <button onClick={() => handleProductSectionNav('home')} className="hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] transition-all duration-300">HOME</button>
-          
-          <div 
+          <button
+            onClick={() => handleProductSectionNav('home')}
+            className="hover:text-white transition-all duration-300"
+          >
+            HOME
+          </button>
+
+          <div
             className="relative"
             onMouseEnter={() => setShowProductsDropdown(true)}
             onMouseLeave={() => setShowProductsDropdown(false)}
           >
-            <span className="cursor-pointer hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] transition-all duration-300 py-4 block">PRODUCTS ▼</span>
+            <span className="cursor-pointer hover:text-white transition-all duration-300 py-4 block">
+              PRODUCTS ▾
+            </span>
             {showProductsDropdown && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 glass-card p-2 rounded-lg shadow-xl z-50 animate-fade-in border border-white/10">
-                <button onClick={() => handleProductSectionNav('tessera-one')} className="block w-full text-left px-4 py-3 text-sm font-bold tracking-widest hover:bg-white/10 rounded-md text-tessera-orange transition-colors">TESSERA ONE</button>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-60 glass-card p-2 rounded-xl shadow-xl z-50 border border-white/10">
+                {/* EQ first — the current product */}
+                <button
+                  onClick={() => handleProductSectionNav('products')}
+                  className="flex items-center gap-3 w-full text-left px-4 py-3 hover:bg-white/5 rounded-lg transition-colors"
+                >
+                  <span className="w-2 h-2 rounded-full bg-tessera-teal flex-shrink-0"></span>
+                  <div>
+                    <div className="font-bold text-sm tracking-widest text-tessera-teal">TESSERA EQ</div>
+                    <div className="font-mono text-[9px] text-tessera-dim tracking-wider mt-0.5">AI PARAMETRIC EQ — AVAILABLE</div>
+                  </div>
+                </button>
+                {/* ONE — coming soon */}
+                <button
+                  onClick={() => { setShowProductsDropdown(false); document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' }); }}
+                  className="flex items-center gap-3 w-full text-left px-4 py-3 hover:bg-white/5 rounded-lg transition-colors"
+                >
+                  <span className="w-2 h-2 rounded-full bg-tessera-orange flex-shrink-0"></span>
+                  <div>
+                    <div className="font-bold text-sm tracking-widest text-tessera-orange">TESSERA ONE</div>
+                    <div className="font-mono text-[9px] text-tessera-dim tracking-wider mt-0.5">MIXING SUITE — COMING 2026</div>
+                  </div>
+                </button>
               </div>
             )}
           </div>
 
-          <button onClick={() => navigateTo('discover')} className="hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] transition-all duration-300">DISCOVER PLUGIN</button>
-          <button onClick={() => navigateTo('specs')} className="hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] transition-all duration-300">READ SPECS</button>
+          <button
+            onClick={() => navigateTo('eq-features')}
+            className="hover:text-white transition-all duration-300"
+          >
+            EXPLORE EQ
+          </button>
         </div>
-        <div className="w-8 h-8 rounded-full border border-current opacity-50 flex items-center justify-center">
-          <div className="w-1 h-1 bg-current rounded-full"></div>
+
+        {/* Indicator dot */}
+        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center">
+          <div className="w-1 h-1 bg-tessera-teal rounded-full"></div>
         </div>
       </nav>
 
-      {/* 1. Company Hero (TESSERA) */}
-      <header id="home" className="relative z-10 h-screen flex flex-col justify-center items-center text-center px-4">
-        <div className="mb-12 animate-fade-in relative">
-          <Logogram size={180} progress={85} color="text-tessera-orange" />
-          <div className="absolute inset-0 flex items-center justify-center">
-             <span className="font-mono text-xs text-tessera-teal tracking-widest">EST. 2026</span>
-          </div>
-        </div>
-        
-        <h1 className="text-7xl md:text-9xl font-display font-light tracking-tight mb-6 leading-none">
-          TESSERA 
-        </h1>
-        
-        <p className="text-xl md:text-2xl text-gray-400 font-light max-w-xl leading-relaxed mt-4">
-          Empowering the <span className="text-tessera-orange font-normal">soul of creation</span> in the age of AI.
-        </p>
-      </header>
+      {/* ── 01 / THE MISSION ──────────────────────────── */}
+      <HeroSection
+        onExplore={() => {
+          document.getElementById('philosophy')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+      />
 
-      {/* 2. Philosophy Section (The Why) + Founder's Video */}
+      {/* ── 02 + 03 / THE PROBLEM + OUR ANSWER (includes Founder Video) ── */}
       <PhilosophySection />
 
-      {/* 3. Product Landing Page (TESSERA ONE) */}
-      <div id="tessera-one">
-        <ProductSection onNavigate={navigateTo} />
+      {/* ── 04 / HOW WE BUILD ─────────────────────────── */}
+      <HowWeBuildSection eqMockup={<EQInterfaceMockup />} />
+
+      {/* ── 05 / THE PROOF — TESSERA EQ ───────────────── */}
+      <ProductShowcase onNavigate={navigateTo} />
+
+      {/* ── 06 / THE VISION ───────────────────────────── */}
+      <div id="vision">
+        <VisionSection />
       </div>
 
       {/* Footer */}
       <footer className="py-24 text-center text-tessera-dim text-xs font-mono border-t border-white/5 mt-20 relative overflow-hidden">
         <div className="absolute top-10 left-1/2 transform -translate-x-1/2">
-           <div className="mb-4 flex justify-center opacity-50 hover:opacity-100 transition-opacity">
-             <EternalRing /> 
-           </div>
+          <div className="mb-4 flex justify-center opacity-50 hover:opacity-100 transition-opacity">
+            <EternalRing />
+          </div>
         </div>
         <div className="mt-40">
           <p>© 2026 TESSERA AUDIO.</p>
@@ -141,7 +187,7 @@ function App() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
