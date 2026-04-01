@@ -1,10 +1,19 @@
-import React, { useState, useRef } from 'react';
+﻿import React, { useState, useRef } from 'react';
 
 /**
  * Reusable video player with play/pause overlay.
  * Place video files in public/videos/ and reference as: src="/videos/your-file.mp4"
  */
-const VideoPlayer = ({ src, poster, title, titleClassName = 'text-tessera-teal', className = '' }) => {
+const VideoPlayer = ({
+  src,
+  poster,
+  title,
+  titleClassName = 'text-tessera-teal',
+  className = '',
+  aspectClassName = 'aspect-video',
+  videoClassName = 'object-contain',
+  playButtonClassName = '',
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
   const videoRef = useRef(null);
@@ -24,7 +33,7 @@ const VideoPlayer = ({ src, poster, title, titleClassName = 'text-tessera-teal',
 
   if (hasError) {
     return (
-      <div className={`w-full aspect-video bg-black/50 rounded-xl border border-white/10 flex items-center justify-center ${className}`}>
+      <div className={`w-full ${aspectClassName} bg-black/50 rounded-xl border border-white/10 flex items-center justify-center ${className}`}>
         <p className="text-tessera-dim text-sm font-mono">Video not found. Add your video to <code className="text-tessera-teal">public/videos/</code></p>
       </div>
     );
@@ -32,7 +41,7 @@ const VideoPlayer = ({ src, poster, title, titleClassName = 'text-tessera-teal',
 
   return (
     <div
-      className={`relative w-full aspect-video bg-black/50 rounded-xl border border-white/10 overflow-hidden group cursor-pointer ${className}`}
+      className={`relative w-full ${aspectClassName} bg-black/50 rounded-xl border border-white/10 overflow-hidden group cursor-pointer ${className}`}
       onClick={togglePlay}
       style={{ boxShadow: '0 0 50px rgba(0,0,0,0.5)' }}
     >
@@ -40,15 +49,14 @@ const VideoPlayer = ({ src, poster, title, titleClassName = 'text-tessera-teal',
         ref={videoRef}
         src={src}
         poster={poster}
-        className="w-full h-full object-contain"
+        className={`w-full h-full ${videoClassName}`}
         playsInline
         onEnded={handleEnded}
         onError={handleError}
       />
-      {/* Play/pause overlay - shown when paused */}
       {!isPlaying && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-20 h-20 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-500 z-10">
+          <div className={`w-20 h-20 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-500 z-10 ${playButtonClassName}`}>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" className="text-white ml-1">
               <path d="M8 5v14l11-7z" />
             </svg>
