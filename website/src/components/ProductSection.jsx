@@ -13,17 +13,11 @@ const ProductSection = ({ onNavigate }) => {
             It handles the mundane science of mixing so you can stay in the flow of creation.
           </p>
           <div className="flex gap-4 mt-8">
-            <button 
+            <button
               className="group relative px-10 py-5 bg-gray-700 text-white font-mono font-bold tracking-wider rounded-full overflow-hidden transition-all hover:scale-105 hover:bg-gray-600 hover:shadow-lg"
               onClick={() => onNavigate('discover')}
             >
               <span className="relative">DISCOVER PLUGIN</span>
-            </button>
-            <button 
-              className="px-8 py-4 rounded-full font-mono border border-white/10 hover:border-tessera-teal hover:text-tessera-teal transition duration-300"
-              onClick={() => onNavigate('specs')}
-            >
-              Read Specs
             </button>
           </div>
         </div>

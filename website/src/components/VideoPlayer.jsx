@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
  * Reusable video player with play/pause overlay.
@@ -13,23 +13,107 @@ const VideoPlayer = ({
   aspectClassName = 'aspect-video',
   videoClassName = 'object-contain',
   playButtonClassName = '',
+  resetOnLeave = false,
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
   const videoRef = useRef(null);
+  const containerRef = useRef(null);
 
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-    } else {
-      videoRef.current.play();
+  const resetVideo = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.pause();
+    setIsPlaying(false);
+
+    if (!resetOnLeave) {
+      return;
     }
-    setIsPlaying(!isPlaying);
+
+    try {
+      video.currentTime = 0;
+    } catch {
+      // Ignore browsers that block seeking before metadata is ready.
+    }
+
+    video.load();
+  }, [resetOnLeave]);
+
+  const togglePlay = async () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isPlaying) {
+      video.pause();
+      setIsPlaying(false);
+      return;
+    }
+
+    try {
+      await video.play();
+      setIsPlaying(true);
+    } catch {
+      setIsPlaying(false);
+    }
   };
 
-  const handleEnded = () => setIsPlaying(false);
+  const handleEnded = () => {
+    setIsPlaying(false);
+
+    if (resetOnLeave) {
+      const video = videoRef.current;
+      if (video) {
+        video.load();
+      }
+    }
+  };
+
   const handleError = () => setHasError(true);
+
+  useEffect(() => {
+    if (!resetOnLeave) {
+      return undefined;
+    }
+
+    const container = containerRef.current;
+    if (!container || typeof IntersectionObserver === 'undefined') {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          resetVideo();
+        }
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [resetOnLeave, resetVideo]);
+
+  useEffect(() => {
+    if (!resetOnLeave) {
+      return undefined;
+    }
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        resetVideo();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [resetOnLeave, resetVideo]);
 
   if (hasError) {
     return (
@@ -41,6 +125,7 @@ const VideoPlayer = ({
 
   return (
     <div
+      ref={containerRef}
       className={`relative w-full ${aspectClassName} bg-black/50 rounded-xl border border-white/10 overflow-hidden group cursor-pointer ${className}`}
       onClick={togglePlay}
       style={{ boxShadow: '0 0 50px rgba(0,0,0,0.5)' }}
@@ -51,6 +136,7 @@ const VideoPlayer = ({
         poster={poster}
         className={`w-full h-full ${videoClassName}`}
         playsInline
+        preload="metadata"
         onEnded={handleEnded}
         onError={handleError}
       />

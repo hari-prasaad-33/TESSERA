@@ -123,18 +123,18 @@ export default function HowWeBuildSection({ eqMockup }) {
   return (
     <section className="relative z-10 px-6 pb-28 pt-24 md:px-10 lg:px-14 lg:pb-32">
       <div className="panel-shell">
-        <SectionMarker number="04" title="HOW WE BUILD" className="mb-10" />
+        <SectionMarker number="04" title="HOW TESSERA EQ WORKS" className="mb-10" />
 
         <div className="mb-10 max-w-4xl">
           <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">
-            The architecture behind the promise
+            The first product, in the open
           </p>
           <h2 className="display-tight mt-4 text-[#f0ebe0]">
-            WE BUILD IN
-            <span className="mt-2 block text-[#5dd4f0]">THE OPEN.</span>
+            THIS IS HOW
+            <span className="mt-2 block text-[#5dd4f0]">TESSERA EQ THINKS.</span>
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#c6cfdd]">
-            No black-box gestures. No mystery presets. Every part of the system is designed so the musician can see the move, understand it, and take over instantly.
+            The first surface is Tessera EQ. Language goes in. A visible, editable EQ state comes out. Nothing here is meant to feel magical for its own sake.
           </p>
         </div>
 
@@ -142,7 +142,7 @@ export default function HowWeBuildSection({ eqMockup }) {
           <BuildSlab
             id="04.1"
             title="Glass Box in Action"
-            subtitle="Every AI decision maps to a knob you can turn."
+            subtitle="A prompt becomes a curve you can inspect immediately."
             description="Type a phrase like 'add warmth and air' and the system suggests a full EQ state. Nothing is hidden behind a magic button. Every band is draggable, editable, and reversible."
             visual={
               <div className="relative h-full overflow-hidden bg-[#081018]">
@@ -155,8 +155,8 @@ export default function HowWeBuildSection({ eqMockup }) {
 
           <BuildSlab
             id="04.2"
-            title="The Semantic Engine"
-            subtitle="From human language to mathematical curves - on your machine."
+            title="From Phrase to Curve"
+            subtitle="Human language gets grounded before it touches the audio."
             description="A local pipeline tokenizes the prompt, embeds it into vector space, and retrieves the nearest tonal descriptors before shaping the EQ. It is fast, grounded, and private by default."
             visual={<SemanticEngineVisual />}
             reverse
@@ -164,17 +164,17 @@ export default function HowWeBuildSection({ eqMockup }) {
 
           <BuildSlab
             id="04.3"
-            title="Three-Tier Intelligence"
-            subtitle="Local-first when it is obvious. AI-assisted when it helps."
+            title="Confidence Routing"
+            subtitle="Local-first when the answer is obvious. AI-assisted when the intent is ambiguous."
             description="High-confidence matches return instantly from the local dataset. Mid-confidence prompts get grounded AI refinement. Truly novel intent can escalate to the broader creative model. Every path degrades gracefully."
             visual={<TierVisual />}
           />
 
           <BuildSlab
             id="04.4"
-            title="The DSP Foundation"
+            title="Musical DSP Underneath"
             subtitle="Stable filters. Smooth ramps. No audible compromise."
-            description="Cytomic state-variable filters and safe parameter interpolation let us move continuously, whether the driver is a human hand or an AI suggestion. The math exists to serve the sound, not show off."
+            description="Cytomic state-variable filters and safe parameter interpolation let the interface move continuously, whether the driver is a human hand or an AI suggestion. The math exists to serve the sound, not show off."
             visual={<DSPVisual />}
             reverse
           />

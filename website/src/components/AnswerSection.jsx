@@ -3,26 +3,18 @@ import SectionMarker from './SectionMarker';
 import ShaderBackground from './ShaderBackground';
 import { shaderPresets } from '../shaders/presets';
 
-const pillars = [
+const principles = [
   {
-    title: 'Glass Box',
-    description: 'AI is a semantic assistant, not a ghost producer. Every decision is mapped to tactile controls you can inspect and change.',
+    title: 'See the move',
+    description: 'A suggestion should arrive as a visible chain of parameters, not as a mysterious result.',
   },
   {
-    title: 'Semantic Intelligence',
-    description: 'Describe the sound in human language and Tessera translates it into visible, editable DSP moves.',
+    title: 'Change the move',
+    description: 'Every recommendation stays draggable, reversible, and interruptible the moment taste disagrees.',
   },
   {
-    title: 'Deep Personalization',
-    description: 'The system learns from your corrections so the next suggestion moves closer to your actual taste.',
-  },
-  {
-    title: 'Uncompromising DSP',
-    description: 'Stable filters, smooth ramps, and artifact-free modulation keep the math transparent and musical.',
-  },
-  {
-    title: 'Atmospheric Design',
-    description: 'We reject sterile utility software. The interface should feel focused, premium, and creatively alive.',
+    title: 'Own the result',
+    description: 'The machine may help you get there faster. It should never be confused for the author.',
   },
 ];
 
@@ -52,28 +44,28 @@ export default function AnswerSection() {
                 <span className="mt-2 block text-[#ffb84d]">UNLOCKED.</span>
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#d5dbe7] sm:text-lg">
-                We are not trying to automate away taste. We are trying to remove the friction between intent and sound,
-                so the creator spends more time deciding and less time wrestling the tool.
+                Our answer is not to keep intelligence out of the room. It is to make intelligence stay visible.
+                Suggestion is welcome. Hidden authorship is not.
               </p>
               <p className="mt-4 border-l border-[#5dd4f0]/35 pl-4 text-sm leading-relaxed text-[#d7edf3]">
-                Art should not just serve the audience. It should serve the creator first.
+                The glass box means the artist can inspect every step, interrupt every step, and still own the final one.
               </p>
             </div>
           </div>
 
           <div className="rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] p-8 sm:p-10 lg:p-12">
             <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">
-              Five pillars
+              One principle
             </p>
             <h3 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-4xl">
-              Build the intelligence. Keep the human in charge.
+              Glass box, not black box.
             </h3>
             <div className="mt-8 grid gap-4">
-              {pillars.map((pillar, index) => (
-                <div key={pillar.title} className="rounded-[1.4rem] border border-white/8 bg-black/18 p-5">
+              {principles.map((principle, index) => (
+                <div key={principle.title} className="rounded-[1.4rem] border border-white/8 bg-black/18 p-5">
                   <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">0{index + 1}</div>
-                  <div className="mt-2 text-xl font-semibold tracking-[-0.03em] text-white">{pillar.title}</div>
-                  <p className="mt-2 text-sm leading-relaxed text-[#c5cddd]">{pillar.description}</p>
+                  <div className="mt-2 text-xl font-semibold tracking-[-0.03em] text-white">{principle.title}</div>
+                  <p className="mt-2 text-sm leading-relaxed text-[#c5cddd]">{principle.description}</p>
                 </div>
               ))}
             </div>
@@ -83,10 +75,11 @@ export default function AnswerSection() {
         <div className="relative z-20 -mb-20 mt-10 max-w-3xl rounded-[1.8rem] border border-white/10 bg-[linear-gradient(135deg,rgba(8,10,16,0.92),rgba(18,10,8,0.82))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8">
           <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">Bridge into the build</div>
           <p className="mt-4 text-2xl leading-tight text-[#f0ebe0] sm:text-3xl">
-            The philosophy only matters if the product makes it visible.
+            The idea only matters if the software makes it real.
           </p>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#c6cfdd] sm:text-base">
-            So the next section is not marketing language. It is the architecture, the interaction model, and the proof that the idea survives contact with software.
+            So from here on, we stop talking in abstractions and show the first product directly: how Tessera EQ listens,
+            translates, and stays under the artist's hand.
           </p>
         </div>
 

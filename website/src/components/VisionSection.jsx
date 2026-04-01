@@ -1,21 +1,19 @@
-﻿import { ChannelStripMockup } from './ProductShowcase';
-import SectionMarker from './SectionMarker';
-import ShaderBackground from './ShaderBackground';
-import { shaderPresets } from '../shaders/presets';
+﻿import SectionMarker from './SectionMarker';
+import { EmberNebulaIllustration, TesseractIllustration } from './ConceptIllustrations';
 
 function RoadmapVisual() {
   const stops = [
     { title: 'EQ', note: 'Available now', accent: 'teal' },
     { title: 'Dynamics', note: 'In build', accent: 'amber' },
     { title: 'Space', note: 'Next layer', accent: 'orange' },
-    { title: 'ONE', note: 'Integrated suite', accent: 'amber' },
-    { title: 'DAW', note: 'The moonshot', accent: 'teal' },
+    { title: 'ONE', note: 'Parent shell', accent: 'amber' },
+    { title: 'Environment', note: 'Long arc', accent: 'teal' },
   ];
 
   return (
     <div className="relative flex h-full min-h-[26rem] items-center overflow-hidden bg-[#090714] p-8 sm:p-10 lg:p-12">
-      <ShaderBackground fragmentShader={shaderPresets.cosmos} opacity={0.86} mixBlendMode="screen" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,6,14,0.10),rgba(5,6,14,0.78)_84%)]" />
+      <EmberNebulaIllustration className="absolute inset-0" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,6,14,0.16),rgba(5,6,14,0.78)_84%)]" />
       <div className="relative z-10 w-full">
         <div className="flex flex-wrap items-center gap-3 sm:gap-5">
           {stops.map((stop, index) => {
@@ -45,47 +43,45 @@ export default function VisionSection() {
   return (
     <section id="vision" className="relative z-10 px-6 pb-28 pt-24 md:px-10 lg:px-14 lg:pb-32">
       <div className="panel-shell">
-        <SectionMarker number="06" title="THE VISION" className="mb-10" />
+        <SectionMarker number="06" title="THE HORIZON" className="mb-10" />
 
         <div className="mb-10 max-w-4xl">
           <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">
-            This is only the first product
+            Why the name matters
           </p>
           <h2 className="display-tight mt-4 text-[#f0ebe0]">
-            THIS IS JUST
-            <span className="mt-2 block text-[#ffb84d]">THE BEGINNING.</span>
+            FROM TESSERACT,
+            <span className="mt-2 block text-[#ffb84d]">TESSERA.</span>
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#c6cfdd]">
-            Tessera EQ is the entry point. The real ambition is a full environment where every intelligent tool stays transparent, tactile, and in service of the musician.
+            In Interstellar, the tesseract is a space where distant points can still be touched together. That image stuck with us.
+            The ambition here is similar: sound, interface, engineering, and authorship should stay connected instead of being pulled apart.
           </p>
         </div>
 
         <div className="space-y-8">
           <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] lg:border">
-            <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.9fr)]">
-              <div className="min-h-[24rem] lg:min-h-[30rem]">
-                <ChannelStripMockup className="h-full" />
-              </div>
+            <div className="grid gap-0 lg:grid-cols-[minmax(0,0.96fr)_minmax(20rem,1.04fr)]">
               <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
-                <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">Coming 2026</div>
-                <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">TESSERA ONE</h3>
-                <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.26em] text-[#ffb84d]">The complete AI mixing suite</p>
+                <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">The metaphor</div>
+                <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">A tool that keeps far-apart things connected.</h3>
                 <p className="mt-6 max-w-xl text-base leading-relaxed text-[#c6cfdd]">
-                  EQ, dynamics, saturation, space, utility, and learning all connected by one intent layer. A system that understands the mix as a whole, but still exposes every decision as something you can tweak and own.
+                  Prompt and parameter. Emotion and engineering. Speed and authorship. The point is not to collapse everything into one magic outcome.
+                  It is to make the distances shorter without losing the structure that lets the artist stay present.
                 </p>
-                <button className="mt-8 w-fit rounded-full border border-[#ffb84d]/35 bg-[#ffb84d]/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#ffe1af] transition-all duration-300 hover:border-[#ffb84d]/60 hover:bg-[#ffb84d]/14">
-                  Join the waitlist
-                </button>
+              </div>
+              <div className="min-h-[24rem] lg:min-h-[30rem]">
+                <TesseractIllustration className="h-full" />
               </div>
             </div>
           </div>
 
           <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] lg:border">
             <div className="max-w-3xl px-8 pt-8 sm:px-10 sm:pt-10 lg:px-12 lg:pt-12 xl:px-14 xl:pt-14">
-              <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">The moonshot</div>
-              <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">TESSERA DAW</h3>
+              <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">The arc ahead</div>
+              <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">A family of tools, not a single trick.</h3>
               <p className="mt-6 text-base leading-relaxed text-[#c6cfdd]">
-                A digital audio workspace where plugins, timeline, and artist all communicate through semantic intent without hiding the engineering underneath. New interaction model. Same values.
+                Tessera EQ is the first proof. Tessera One is the parent shell taking shape behind it. After that, the aim is a full environment where each tool remains legible, tactile, and artist-first.
               </p>
             </div>
             <div className="mt-8">

@@ -293,92 +293,204 @@ export function EQInterfaceMockup({ className = '' }) {
   );
 }
 
-function LevelTrack({ accent = 'teal' }) {
-  const bars = useMemo(
-    () => Array.from({ length: 26 }, (_, index) => 0.25 + ((Math.sin(index * 0.5) + 1) * 0.5) * 0.7),
-    [],
-  );
-
-  const active = accent === 'teal' ? 'from-[#5dd4f0] to-[#247c90]' : 'from-[#ffb84d] to-[#ff6a33]';
+function ArcKnob({ label, value, accent = 'orange', large = false }) {
+  const color = accent === 'teal' ? '#1189ab' : '#ff6a33';
+  const soft = accent === 'teal' ? 'rgba(17, 137, 171, 0.18)' : 'rgba(255, 106, 51, 0.18)';
+  const size = large ? 'h-32 w-32' : 'h-22 w-22';
+  const arc = large ? 122 : 102;
 
   return (
-    <div className="flex h-28 items-end gap-[3px]">
-      {bars.map((value, index) => (
-        <span
-          key={index}
-          className={`w-[5px] rounded-full bg-gradient-to-t ${active}`}
-          style={{ height: `${18 + value * 72}%`, opacity: 0.18 + value * 0.75 }}
+    <div className="flex flex-col items-center gap-2 text-center">
+      <div className={`relative ${size} rounded-full`}>
+        <div className="absolute inset-0 rounded-full border border-white/5 bg-black/20" />
+        <div
+          className="absolute inset-[14%] rounded-full"
+          style={{
+            background: `conic-gradient(from 210deg, ${color} 0deg ${arc}deg, rgba(255,255,255,0.04) ${arc}deg 320deg, transparent 320deg 360deg)`,
+            boxShadow: `0 0 28px ${soft}`,
+            WebkitMask: 'radial-gradient(circle, transparent 60%, black 61%)',
+            mask: 'radial-gradient(circle, transparent 60%, black 61%)',
+          }}
         />
-      ))}
+        <div className="absolute inset-[22%] rounded-full border border-white/8 bg-[#090d14]" />
+      </div>
+      <div className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">{label}</div>
+      <div className="font-mono text-[9px] text-[#d4d8e5]">{value}</div>
+    </div>
+  );
+}
+
+function MiniToggle({ children, active = false }) {
+  return (
+    <span className={`rounded-md border px-3 py-1.5 font-mono text-[8px] uppercase tracking-[0.22em] ${active ? 'border-[#ff8b5f]/45 bg-[#ff6a33]/14 text-[#ffd6c4]' : 'border-white/8 bg-white/[0.02] text-[#a0a8ba]'}`}>
+      {children}
+    </span>
+  );
+}
+
+function ParameterModule({ title, accent = 'orange', knobs = [] }) {
+  return (
+    <div className="border border-white/8 bg-black/18 p-4">
+      <div className={`font-mono text-[9px] uppercase tracking-[0.24em] ${accent === 'teal' ? 'text-[#5dd4f0]' : 'text-[#ff8b5f]'}`}>
+        {title}
+      </div>
+      <div className="mt-4 grid grid-cols-2 gap-4">
+        {knobs.map((knob) => (
+          <ArcKnob key={knob.label} label={knob.label} value={knob.value} accent={knob.accent ?? accent} />
+        ))}
+      </div>
     </div>
   );
 }
 
 export function ChannelStripMockup({ className = '' }) {
-  const modules = [
-    { name: 'Gate', accent: 'teal' },
-    { name: 'EQ', accent: 'orange' },
-    { name: 'Comp', accent: 'teal' },
-    { name: 'Sat', accent: 'orange' },
-    { name: 'Verb', accent: 'teal' },
-    { name: 'Limit', accent: 'orange' },
-  ];
-
   return (
-    <div className={`relative flex h-full min-h-[24rem] flex-col overflow-hidden border-0 bg-[#0a0d15] ${className}`.trim()}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,184,77,0.16),transparent_30%),radial-gradient(circle_at_76%_30%,rgba(93,212,240,0.15),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_18%,transparent_84%,rgba(255,255,255,0.02))]" />
+    <div className={`relative overflow-hidden bg-[#050607] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}>
+      <div className="absolute inset-y-0 right-0 w-[5px] bg-[#ff6a33] shadow-[0_0_32px_rgba(255,106,51,0.55)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,106,51,0.08),transparent_20%),radial-gradient(circle_at_78%_12%,rgba(93,212,240,0.08),transparent_18%)]" />
 
-      <div className="relative z-10 flex items-center justify-between border-b border-white/8 px-5 py-4">
-        <div>
-          <div className="font-mono text-[8px] uppercase tracking-[0.32em] text-[#8d94ab]">TESSERA ONE</div>
-          <div className="mt-1 text-3xl font-semibold tracking-[0.08em] text-white">Channel Strip</div>
+      <div className="relative z-10 border-b border-white/8 px-4 py-3 sm:px-6">
+        <div className="flex items-center justify-between gap-4 text-[10px] uppercase tracking-[0.24em] text-[#a6adbc]">
+          <div className="font-mono text-[#ff8b5f]">Est. 2026</div>
+          <div className="font-mono text-[#f0ebe0]">TESSERA ONE</div>
+          <div className="hidden items-center gap-5 font-mono sm:flex">
+            <span>In: -Inf dB</span>
+            <span>Out: -Inf dB</span>
+            <MiniToggle>Options</MiniToggle>
+            <MiniToggle>API config</MiniToggle>
+          </div>
         </div>
-        <div className="rounded-full border border-[#ffb84d]/30 bg-[#ffb84d]/10 px-4 py-2 font-mono text-[8px] uppercase tracking-[0.24em] text-[#ffe1af]">Coming 2026</div>
       </div>
 
-      <div className="relative z-10 grid flex-1 grid-cols-[140px_minmax(0,1fr)_140px] gap-4 p-5">
-        <div className="border border-white/8 bg-white/[0.03] p-4">
-          <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Input</div>
-          <LevelTrack accent="teal" />
-          <div className="mt-4 border border-white/8 bg-black/25 p-3 font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Semantic prompt ready</div>
+      <div className="relative z-10 border-b border-white/8 px-4 py-3 sm:px-6">
+        <div className="relative h-5 overflow-hidden rounded-full border border-white/8 bg-[#111315]">
+          <div className="absolute left-0 top-0 h-full w-[34%] bg-[linear-gradient(90deg,rgba(255,106,51,0.55),rgba(255,106,51,0.16))]" />
+          <div className="absolute left-[34%] top-0 h-full w-[48%] border-l border-[#5dd4f0]/70 bg-[linear-gradient(90deg,rgba(93,212,240,0.24),rgba(93,212,240,0.06))]" />
+          <div className="absolute inset-0 flex items-center gap-3 px-4">
+            {Array.from({ length: 16 }, (_, index) => (
+              <span
+                key={index}
+                className={`h-[2px] rounded-full ${index % 5 === 0 ? 'w-10 bg-[#5dd4f0]/55' : 'w-6 bg-[#ff8b5f]/22'}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="relative z-10 border-b border-white/8 px-4 py-3 sm:px-6">
+        <div className="flex flex-wrap items-center gap-2">
+          {['Open', 'Play', 'Pause', 'Stop'].map((item, index) => (
+            <MiniToggle key={item} active={index === 1}>{item}</MiniToggle>
+          ))}
+          <div className="ml-2 flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.22em] text-[#a0a8ba]">
+            <span className="h-3 w-3 rounded border border-white/18" />
+            <span>Loop</span>
+          </div>
+          <div className="ml-3 flex-1 font-mono text-[9px] text-[#c9cfdb]">lancey-foux-style-synth-dreamy-lead-guitar_136bpm_B.wav</div>
+          <div className="font-mono text-[9px] text-[#a0a8ba]">0:10 / 0:42</div>
+        </div>
+      </div>
+
+      <div className="relative z-10 border-b border-white/8 px-4 py-3 sm:px-6">
+        <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_92px_154px_92px]">
+          <div className="rounded-md border border-white/8 bg-black/22 px-4 py-3 text-sm text-[#e4e8ef]">
+            A distorted guitar backing for a rock song.
+          </div>
+          <MiniToggle>Analyze</MiniToggle>
+          <div className="rounded-md border border-white/8 bg-black/22 px-3 py-3 font-mono text-[9px] text-[#d0d6e4]">
+            1: A distorted guitar backing f...
+          </div>
+          <MiniToggle>Restore</MiniToggle>
+        </div>
+      </div>
+
+      <div className="relative z-10 grid gap-4 px-4 py-4 sm:px-6 lg:grid-cols-[1fr_1.1fr_1fr]">
+        <ParameterModule
+          title="Compressor"
+          knobs={[
+            { label: 'Threshold', value: '-40.0 dB', accent: 'orange' },
+            { label: 'Ratio', value: '10.0:1', accent: 'teal' },
+            { label: 'Attack', value: '1.3 ms', accent: 'teal' },
+            { label: 'Release', value: '100 ms', accent: 'orange' },
+          ]}
+        />
+
+        <div className="border border-white/8 bg-black/18 p-4">
+          <div className="mb-4 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.22em] text-[#a0a8ba]">
+            <span>EQ</span>
+            <div className="flex items-center gap-2">
+              <span className="h-3 w-3 rounded border border-white/18" />
+              <span>Bypass</span>
+            </div>
+          </div>
+          <div className="border border-white/8 bg-[#090b0d] p-3">
+            <svg viewBox="0 0 420 170" className="h-40 w-full" preserveAspectRatio="none">
+              {Array.from({ length: 7 }, (_, index) => (
+                <line key={`v-${index}`} x1={36 + index * 54} x2={36 + index * 54} y1="18" y2="142" stroke="rgba(255,255,255,0.08)" />
+              ))}
+              {Array.from({ length: 5 }, (_, index) => (
+                <line key={`h-${index}`} x1="36" x2="392" y1={28 + index * 28} y2={28 + index * 28} stroke="rgba(255,255,255,0.06)" />
+              ))}
+              <path d="M 36 82 L 392 82" fill="none" stroke="rgba(255,106,51,0.65)" strokeWidth="2" />
+              {[56, 110, 166, 226, 286, 342, 378].map((x, index) => (
+                <g key={x} transform={`translate(${x} 82)`}>
+                  <circle r="8" fill={index === 0 ? '#ff6a33' : '#93a2ae'} />
+                  <circle r="16" fill="none" stroke="rgba(255,255,255,0.08)" />
+                </g>
+              ))}
+            </svg>
+          </div>
+          <div className="mt-4 grid grid-cols-3 gap-4">
+            <ArcKnob label="Band 1" value="30 Hz" accent="teal" />
+            <ArcKnob label="Gain" value="0.0 dB" accent="orange" />
+            <ArcKnob label="Q" value="1.00" accent="teal" />
+          </div>
         </div>
 
-        <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,11,16,0.94))] p-5">
-          <div className="mb-6 flex items-center justify-between">
-            <div className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Transparent AI routing</div>
-            <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#d0d6e4]">Every move is editable</div>
+        <ParameterModule
+          title="Limiter"
+          knobs={[
+            { label: 'Thresh', value: '-18.0 dB', accent: 'orange' },
+            { label: 'Ratio', value: '4.0:1', accent: 'teal' },
+            { label: 'Attack', value: '10.0 ms', accent: 'teal' },
+            { label: 'Release', value: '100 ms', accent: 'orange' },
+            { label: 'Makeup', value: '0.0 dB', accent: 'orange' },
+            { label: 'Knee', value: '6.0 dB', accent: 'teal' },
+          ]}
+        />
+      </div>
+
+      <div className="relative z-10 grid gap-4 border-t border-white/8 px-4 py-4 sm:px-6 lg:grid-cols-[0.9fr_1.2fr_0.9fr]">
+        <div className="border border-white/8 bg-black/18 p-4">
+          <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#ff8b5f]">Saturator</div>
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            <ArcKnob label="Drive" value="6.4" accent="orange" large />
+            <ArcKnob label="Mix" value="42%" accent="orange" large />
           </div>
-          <div className="grid grid-cols-3 gap-3">
-            {modules.map((module) => {
-              const teal = module.accent === 'teal';
-              return (
-                <div key={module.name} className="border border-white/8 bg-[#0a0e15] p-4 text-center">
-                  <div
-                    className={`mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full border ${
-                      teal ? 'border-[#5dd4f0]/35 text-[#5dd4f0]' : 'border-[#ffb84d]/35 text-[#ffb84d]'
-                    } bg-white/[0.02] text-xs uppercase tracking-[0.3em]`}
-                  >
-                    {module.name.slice(0, 2)}
-                  </div>
-                  <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#d0d6e4]">{module.name}</div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="mt-5 border border-white/8 bg-black/25 p-4">
-            <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Intent chain</div>
-            <div className="mt-3 flex items-center gap-3 text-[10px] text-[#d0d6e4]">
-              <span className="rounded-full border border-[#5dd4f0]/25 px-3 py-1 font-mono uppercase tracking-[0.22em] text-[#d5f8ff]">Prompt</span>
-              <span className="h-px flex-1 bg-gradient-to-r from-[#5dd4f0]/40 to-[#ffb84d]/40" />
-              <span className="rounded-full border border-[#ffb84d]/25 px-3 py-1 font-mono uppercase tracking-[0.22em] text-[#ffe1af]">Visible controls</span>
+        </div>
+
+        <div className="border border-white/8 bg-black/18 p-4">
+          <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#ff8b5f]">Reverb</div>
+          <div className="mt-4 grid gap-4 lg:grid-cols-[142px_minmax(0,1fr)]">
+            <div className="space-y-3">
+              <div className="rounded-md border border-white/8 bg-black/22 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.22em] text-[#d0d6e4]">Room</div>
+              <div className="rounded-md border border-white/8 bg-black/22 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.22em] text-[#d0d6e4]">Hard</div>
+            </div>
+            <div className="grid grid-cols-4 gap-3">
+              <ArcKnob label="Size" value="34" accent="teal" />
+              <ArcKnob label="Damp" value="28" accent="orange" />
+              <ArcKnob label="Width" value="74" accent="teal" />
+              <ArcKnob label="Wet" value="16" accent="orange" />
             </div>
           </div>
         </div>
 
-        <div className="border border-white/8 bg-white/[0.03] p-4">
-          <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Output</div>
-          <LevelTrack accent="orange" />
-          <div className="mt-4 border border-white/8 bg-black/25 p-3 font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Adaptive taste profile</div>
+        <div className="border border-white/8 bg-black/18 p-4">
+          <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#ff8b5f]">Limiter</div>
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            <ArcKnob label="Ceiling" value="-0.1 dB" accent="orange" large />
+            <ArcKnob label="Release" value="Auto" accent="teal" large />
+          </div>
         </div>
       </div>
     </div>
@@ -401,42 +513,42 @@ export default function ProductShowcase({ onNavigate }) {
   return (
     <section id="products" className="relative z-10 px-6 pb-28 pt-12 md:px-10 lg:px-14">
       <div className="panel-shell">
-        <SectionMarker number="05" title="THE PROOF" className="mb-10" />
+        <SectionMarker number="05" title="THE PLATFORM" className="mb-10" />
 
         <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,11,16,0.96))] lg:border">
-          <div className="grid gap-0 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)]">
-            <div className="min-h-[30rem] bg-[#060a11]">
-              <EQInterfaceMockup className="h-full min-h-[30rem]" />
+          <div className="grid gap-0 lg:grid-cols-[minmax(0,1.28fr)_minmax(20rem,0.72fr)]">
+            <div className="min-h-[34rem] bg-[#040608]">
+              <ChannelStripMockup className="h-full min-h-[34rem]" />
             </div>
 
             <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
               <div className="mb-5 flex flex-wrap gap-3">
-                <FeatureChip label="Available now" accent="teal" />
-                <FeatureChip label="Local-first AI" accent="orange" />
+                <FeatureChip label="In build" accent="orange" />
+                <FeatureChip label="Parent layer" accent="teal" />
               </div>
 
               <h2 className="display-tight mb-5 text-[#f0ebe0]">
-                TESSERA EQ
+                TESSERA ONE
               </h2>
 
               <p className="mb-6 max-w-xl text-lg leading-relaxed text-[#c7cfdd]">
-                An intent-driven 8-band EQ that translates plain language into editable curves.
-                It analyzes, suggests, and steps back so the artist stays in charge.
+                Tessera EQ is the first surface. Tessera One is the parent system behind it: one intent layer shared across EQ,
+                dynamics, saturation, reverb, and the rest of the chain.
               </p>
 
-              <div className="mb-8 grid gap-4 sm:grid-cols-2">
+              <div className="mb-8 grid gap-4">
                 <div className="border border-white/8 bg-black/20 p-4">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Glass-box control</div>
-                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">Every AI move maps to visible bands, gain, Q, and filter type.</div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Shared intent layer</div>
+                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">One prompt surface, one transport layer, and one evolving taste profile across the whole chain.</div>
                 </div>
                 <div className="border border-white/8 bg-black/20 p-4">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Adaptive engine</div>
-                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">Dynamic suggestions evolve across the track and learn from your corrections.</div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Modular but connected</div>
+                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">EQ is first. Compression, space, saturation, and utility modules follow without breaking the glass-box principle.</div>
                 </div>
               </div>
 
               <div className="mb-9 flex flex-wrap gap-3">
-                {['8 bands', 'Dynamic mode', 'Offline response', 'Learns your taste', 'Standalone', 'VST3 + AU'].map((item, index) => (
+                {['EQ first', 'Compressor next', 'Reverb layer', 'Shared transport', 'Prompt-driven', 'Editable chain'].map((item, index) => (
                   <FeatureChip key={item} label={item} accent={index % 2 === 0 ? 'teal' : 'orange'} />
                 ))}
               </div>
@@ -446,10 +558,10 @@ export default function ProductShowcase({ onNavigate }) {
                   onClick={() => onNavigate('eq-features')}
                   className="rounded-full border border-[#5dd4f0]/45 bg-[#5dd4f0]/14 px-7 py-3 font-mono text-xs font-semibold uppercase tracking-[0.28em] text-[#d5f8ff] transition-all duration-300 hover:border-[#5dd4f0] hover:bg-[#5dd4f0]/22"
                 >
-                  Explore Features
+                  See Tessera EQ
                 </button>
                 <button className="rounded-full border border-white/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#bfc7d8] transition-all duration-300 hover:border-white/25 hover:text-white">
-                  Download
+                  Join the waitlist
                 </button>
               </div>
             </div>
@@ -458,10 +570,10 @@ export default function ProductShowcase({ onNavigate }) {
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {[
-            { value: '8', label: 'Bands', note: 'fully editable' },
-            { value: '786', label: 'Descriptors', note: 'local semantic set' },
-            { value: '<1s', label: 'Response', note: 'for local matches' },
-            { value: '3 tiers', label: 'Inference', note: 'local to creative AI' },
+            { value: '01', label: 'First surface', note: 'Tessera EQ is already shaping the language.' },
+            { value: '02', label: 'Next modules', note: 'Dynamics and space extend the same interaction model.' },
+            { value: '03', label: 'Shared shell', note: 'Prompting, playback, presets, and taste live together.' },
+            { value: '04', label: 'End state', note: 'A transparent intelligent mixing environment, not a one-off plugin.' },
           ].map((stat) => (
             <div key={stat.label} className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.9))] p-6">
               <div className="text-5xl font-semibold tracking-[-0.05em] text-[#f0ebe0]">{stat.value}</div>

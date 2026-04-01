@@ -3,12 +3,12 @@ import SectionMarker from './SectionMarker';
 import ShaderBackground from './ShaderBackground';
 import { shaderPresets } from '../shaders/presets';
 
-const reasons = [
-  'To be recognized and appreciated for our taste.',
-  'To give listeners the strongest possible emotional experience.',
-  'To say something that only we could have made.',
-  'To chase that electric, fully present flow state.',
-  'To hold onto the feeling of: this is mine.',
+const questions = [
+  'Was it to hear your own taste taking shape in real time?',
+  'Was it to chase the moment where intuition finally becomes form?',
+  'Was it to make something no one else could have made in your place?',
+  'Was it to feel fully inside the work, not merely finished with it?',
+  'Was it to be able to say, when it lands: this is mine?',
 ];
 
 export default function ProblemSection() {
@@ -16,8 +16,8 @@ export default function ProblemSection() {
 
   useEffect(() => {
     const interval = window.setInterval(() => {
-      setActiveIndex((value) => (value + 1) % reasons.length);
-    }, 2600);
+      setActiveIndex((value) => (value + 1) % questions.length);
+    }, 3200);
 
     return () => window.clearInterval(interval);
   }, []);
@@ -45,29 +45,32 @@ export default function ProblemSection() {
               THE PROBLEM
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#c6cfdd]">
-              When AI finishes the track in seconds, the speed can flatten the emotional weight of making it.
-              It pushes us back to the first question: why did we show up in the studio at all?
-            </p>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-[#8d94ab]">
               The danger is not that tools get better. It is that the creative act gets compressed into a result,
               and the result becomes all that matters.
+            </p>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-[#8d94ab]">
+              Once the process is flattened into convenience, the artist is left with a harder question:
+              what were we really here for in the first place?
             </p>
           </div>
 
           <div className="relative flex min-h-[28rem] items-end lg:min-h-[42rem]">
             <div className="w-full rounded-[1.8rem] border border-white/10 bg-black/28 p-5 backdrop-blur-md sm:p-6 lg:ml-auto lg:max-w-[40rem]">
-              <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">What are we protecting?</div>
+              <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">What are we protecting?</div>
+              <p className="mb-5 max-w-2xl text-sm leading-relaxed text-[#b8c1d2]">
+                Not a checklist. A private reason. Maybe it sounded something like this:
+              </p>
               <div className="space-y-3">
-                {reasons.map((reason, index) => (
+                {questions.map((question, index) => (
                   <div
-                    key={reason}
+                    key={question}
                     className={`rounded-[1.1rem] border px-4 py-3 text-sm leading-relaxed transition-all duration-500 ${
                       index === activeIndex
                         ? 'border-[#ffb84d]/30 bg-[#ffb84d]/10 text-[#f6ecdb]'
                         : 'border-white/8 bg-white/[0.03] text-[#b7bfd0]'
                     }`}
                   >
-                    {reason}
+                    {question}
                   </div>
                 ))}
               </div>

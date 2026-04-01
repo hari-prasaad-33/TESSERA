@@ -27,8 +27,8 @@ export default function HeroSection({ onExplore }) {
               <span className="mt-3 block text-[#ffb84d]">IS NOT FOR SALE.</span>
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#c6cfdd] md:text-xl">
-              When AI can finish a track in seconds, the speed can erase the reason we started.
-              Tessera exists to protect the ritual, the struggle, and the human decisions that make music mean something.
+              AI can collapse distance. It should not collapse meaning. Tessera is built for the part of music creation
+              that still has to feel chosen, earned, and unmistakably human.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
@@ -36,13 +36,13 @@ export default function HeroSection({ onExplore }) {
                 onClick={onExplore}
                 className="rounded-full border border-[#5dd4f0]/45 bg-[#5dd4f0]/14 px-7 py-3 font-mono text-xs font-semibold uppercase tracking-[0.28em] text-[#d5f8ff] transition-all duration-300 hover:border-[#5dd4f0] hover:bg-[#5dd4f0]/22"
               >
-                Explore the philosophy
+                Start with the question
               </button>
               <button
                 onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
                 className="rounded-full border border-white/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#c4ccd9] transition-all duration-300 hover:border-white/25 hover:text-white"
               >
-                See Tessera EQ
+                See the first instrument
               </button>
             </div>
           </div>
@@ -58,8 +58,7 @@ export default function HeroSection({ onExplore }) {
             Process over shortcuts.
           </p>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-[#d0d7e4]">
-            We use intelligence to remove friction, not authorship.
-            The machine can suggest. The artist still decides.
+            We use intelligence to remove friction, not authorship. The machine can suggest. The artist still decides.
           </p>
         </div>
       </div>

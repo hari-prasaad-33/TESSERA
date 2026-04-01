@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import ProductShowcase, { EQInterfaceMockup } from './components/ProductShowcase';
 import EternalRing from './components/EternalRing';
 import DiscoverPage from './components/DiscoverPage';
@@ -9,7 +9,6 @@ import AnswerSection from './components/AnswerSection';
 import HowWeBuildSection from './components/HowWeBuildSection';
 import VisionSection from './components/VisionSection';
 import SiteNav from './components/SiteNav';
-import CircuitTexture from './components/CircuitTexture';
 
 function Panel({ bg, id, children, texture = null }) {
   return (
@@ -69,25 +68,22 @@ export default function App() {
         <AnswerSection />
       </Panel>
 
-      <Panel
-        bg="bg-[#02141A]"
-        texture={<CircuitTexture opacity={0.18} />}
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(93,212,240,0.10),transparent_28%),radial-gradient(circle_at_84%_72%,rgba(255,184,77,0.08),transparent_24%)]" />
+      <Panel bg="bg-[#02141A]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(93,212,240,0.10),transparent_28%),radial-gradient(circle_at_84%_72%,rgba(255,184,77,0.08),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_22%)]" />
         <HowWeBuildSection eqMockup={<EQInterfaceMockup />} />
       </Panel>
 
       <div className="section-divider" />
 
       <Panel bg="bg-[#04070D]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_34%,rgba(93,212,240,0.08),transparent_32%),radial-gradient(circle_at_78%_58%,rgba(255,184,77,0.07),transparent_22%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_22%,rgba(255,106,51,0.08),transparent_20%),radial-gradient(circle_at_80%_36%,rgba(93,212,240,0.06),transparent_24%)]" />
         <ProductShowcase onNavigate={navigateTo} />
       </Panel>
 
       <div className="section-divider" />
 
-      <Panel bg="bg-[#080518]">
-        <div className="absolute inset-0 texture-stars opacity-50" />
+      <Panel bg="bg-[#06040F]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,184,77,0.06),transparent_24%),radial-gradient(circle_at_74%_18%,rgba(93,212,240,0.05),transparent_24%)]" />
         <VisionSection />
       </Panel>
 
