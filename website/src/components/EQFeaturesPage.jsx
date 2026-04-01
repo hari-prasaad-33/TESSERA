@@ -364,6 +364,25 @@ const EQFeaturesPage = ({ onBack }) => {
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-tessera-teal/50 to-transparent mx-auto"></div>
         </div>
 
+        {/* ── EQ Screenshot ────────────────────────────────────────────
+            Save screenshot to: public/images/tessera-eq-screenshot.png
+            The overflow-hidden + object-position crops the Gemini watermark
+            which typically sits bottom-right.
+        ──────────────────────────────────────────────────────────────── */}
+        <div className="mb-20 rounded-2xl overflow-hidden border border-tessera-teal/15 shadow-[0_0_60px_rgba(77,124,138,0.12)] relative">
+          {/* Crop the bottom-right watermark: shrink visible area by ~6% bottom */}
+          <div className="relative w-full" style={{ paddingBottom: '52%' }}>
+            <img
+              src="/images/tessera-eq-screenshot.png"
+              alt="Tessera EQ interface — AI parametric equalizer"
+              className="absolute inset-0 w-full h-full object-cover object-[center_top]"
+              style={{ clipPath: 'inset(0 0 8% 0)' }}
+            />
+            {/* Gradient fade at bottom to hide any remaining edge */}
+            <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#030d10] to-transparent pointer-events-none" />
+          </div>
+        </div>
+
         {/* Feature count strip */}
         <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mb-20">
           {[

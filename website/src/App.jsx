@@ -10,6 +10,7 @@ import AnswerSection from './components/AnswerSection'
 import HowWeBuildSection from './components/HowWeBuildSection'
 import VisionSection from './components/VisionSection'
 import SiteNav from './components/SiteNav'
+import CircuitTexture from './components/CircuitTexture'
 
 // ─── Full-viewport panel banner ──────────────────────────────────────────────
 // min-h-screen ensures each section fills the viewport like Colossal's banners.
@@ -95,10 +96,11 @@ function App() {
       <div className="section-divider" />
 
       {/* ── 04 / HOW WE BUILD ────────────────────────────────────────
-          Technical teal-black. Dot grid. Teal radial glow.
+          Technical teal-black. PCB circuit texture. Teal radial glow.
       ──────────────────────────────────────────────────────────────── */}
-      <Panel bg="bg-[#030d10]" texture="texture-dots">
-        <div className="absolute top-[-10%] left-[-5%] w-[45%] h-[50%] rounded-full blur-[140px] pointer-events-none bg-tessera-teal/[0.08]" />
+      <Panel bg="bg-[#030d10]">
+        <CircuitTexture opacity={0.55} />
+        <div className="absolute top-[-10%] left-[-5%] w-[45%] h-[50%] rounded-full blur-[140px] pointer-events-none bg-tessera-teal/[0.12]" />
         <HowWeBuildSection eqMockup={<EQInterfaceMockup />} />
       </Panel>
 
