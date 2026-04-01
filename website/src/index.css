@@ -10,7 +10,9 @@
   --color-tessera-text: #e0e0e0;
   --color-tessera-dim: #6b7280;
   
-  --font-display: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-accent: 'Shippori Mincho', serif;
+  --font-body: 'DM Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   
   --background-image-mist-gradient: radial-gradient(circle at 50% 50%, rgba(20, 20, 30, 0.4) 0%, rgba(5, 5, 5, 0) 70%);
@@ -85,7 +87,7 @@
 body {
   background-color: var(--color-tessera-ink);
   color: var(--color-tessera-text);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   overflow-x: hidden;
 }
 

@@ -45,9 +45,11 @@ const HowWeBuildSection = ({ eqMockup }) => {
       <div className="section-number mb-8">04 / HOW WE BUILD</div>
 
       <h2 className="text-4xl md:text-5xl font-display font-light text-white tracking-tight mb-6 max-w-3xl leading-tight">
-        We build in the open.<br />
-        <span className="text-tessera-teal">Here's how Tessera EQ works.</span>
+        We build in the open.
       </h2>
+      <p className="text-2xl font-accent font-normal text-tessera-teal mb-6">
+        Here's how Tessera EQ works.
+      </p>
 
       <p className="text-lg text-gray-400 font-light max-w-2xl leading-relaxed mb-20">
         No black boxes. No magic buttons. Every piece of our architecture exists

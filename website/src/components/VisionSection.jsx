@@ -7,7 +7,7 @@ const VisionSection = () => (
   <section className="py-32 relative z-10 max-w-5xl mx-auto px-6">
     <div className="section-number mb-8">06 / THE VISION</div>
 
-    <h2 className="text-4xl md:text-5xl font-display font-light text-white tracking-tight mb-6 max-w-3xl leading-tight">
+    <h2 className="text-4xl md:text-5xl font-accent font-normal text-white leading-tight mb-6 max-w-3xl">
       This is just the beginning.
     </h2>
 
@@ -85,7 +85,7 @@ const VisionSection = () => (
         AI empowers the musician — never replacing them.
       </p>
 
-      <p className="font-mono text-sm text-tessera-teal border-l-2 border-tessera-teal pl-4 max-w-lg mx-auto text-left italic mb-12">
+      <p className="font-accent text-base text-tessera-teal border-l-2 border-tessera-teal pl-4 max-w-lg mx-auto text-left italic mb-12">
         "You aren't just selling a better EQ. You are selling a completely new way to interact with sound."
       </p>
 

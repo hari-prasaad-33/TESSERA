@@ -15,7 +15,7 @@ const HeroSection = ({ onExplore }) => (
 
       {/* Main mission statement */}
       <h1
-        className="text-5xl md:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white mb-8 max-w-4xl animate-fade-in-up"
+        className="text-5xl md:text-7xl lg:text-8xl font-accent font-semibold leading-[1.05] text-white mb-8 max-w-4xl animate-fade-in-up"
         style={{ animationDelay: '100ms', animationFillMode: 'both' }}
       >
         The soul of music creation<br />
@@ -24,7 +24,7 @@ const HeroSection = ({ onExplore }) => (
 
       {/* Sub-statement */}
       <p
-        className="text-xl md:text-2xl text-gray-400 font-light max-w-2xl leading-relaxed mb-12 animate-fade-in-up"
+        className="text-xl md:text-2xl text-gray-400 font-body font-light max-w-2xl leading-relaxed mb-12 animate-fade-in-up"
         style={{ animationDelay: '200ms', animationFillMode: 'both' }}
       >
         When AI can finish a track in seconds, the speed erases the meaning.

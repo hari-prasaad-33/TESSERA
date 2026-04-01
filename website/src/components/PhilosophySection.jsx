@@ -115,7 +115,7 @@ const PhilosophySection = () => {
                   <p
                     key={index}
                     style={{ scrollSnapAlign: 'center' }}
-                    className={`text-xl font-mono leading-loose py-2 transition-all duration-300 ${
+                    className={`text-xl font-accent leading-loose py-2 transition-all duration-300 ${
                       index === activeIndex
                         ? 'opacity-100 text-white'
                         : 'opacity-40 text-gray-400'
@@ -128,7 +128,7 @@ const PhilosophySection = () => {
               </div>
             </div>
 
-            <p className="text-xl font-light text-gray-400 leading-relaxed max-w-4xl opacity-90">
+            <p className="text-xl font-accent font-normal text-gray-400 leading-relaxed max-w-4xl opacity-90">
               It is usually a mix of all of these — and perhaps other reasons we haven't even found words for yet.
             </p>
           </div>
@@ -168,7 +168,7 @@ const PhilosophySection = () => {
                 Tessera bridges the gap between bedroom studios and industry standards.
                 By automating the technical mundane, we liberate your mental bandwidth for what truly matters: the music.
               </p>
-              <p className="font-mono text-sm text-tessera-teal border-l-2 border-tessera-teal pl-4">
+              <p className="font-accent text-base text-tessera-teal border-l-2 border-tessera-teal pl-4 italic">
                 "Art shouldn't just serve the audience. It must serve the creator first."
               </p>
             </div>
