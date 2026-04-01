@@ -1,4 +1,4 @@
-import { ChannelStripMockup } from './ProductShowcase';
+﻿import { ChannelStripMockup } from './ProductShowcase';
 import SectionMarker from './SectionMarker';
 import ShaderBackground from './ShaderBackground';
 import { shaderPresets } from '../shaders/presets';
@@ -13,9 +13,9 @@ function RoadmapVisual() {
   ];
 
   return (
-    <div className="relative flex h-full min-h-[24rem] items-center overflow-hidden border border-white/8 bg-[#090714] p-8 sm:p-10">
-      <ShaderBackground fragmentShader={shaderPresets.cosmos} opacity={0.74} mixBlendMode="screen" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,6,14,0.18),rgba(5,6,14,0.82)_84%)]" />
+    <div className="relative flex h-full min-h-[26rem] items-center overflow-hidden bg-[#090714] p-8 sm:p-10 lg:p-12">
+      <ShaderBackground fragmentShader={shaderPresets.cosmos} opacity={0.86} mixBlendMode="screen" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,6,14,0.10),rgba(5,6,14,0.78)_84%)]" />
       <div className="relative z-10 w-full">
         <div className="flex flex-wrap items-center gap-3 sm:gap-5">
           {stops.map((stop, index) => {
@@ -27,7 +27,7 @@ function RoadmapVisual() {
 
             return (
               <div key={stop.title} className="flex items-center gap-3 sm:gap-5">
-                <div className={`min-w-[8rem] rounded-[1.4rem] border px-5 py-4 ${theme}`}>
+                <div className={`min-w-[8rem] border px-5 py-4 ${theme}`}>
                   <div className="font-mono text-[10px] uppercase tracking-[0.28em]">{stop.note}</div>
                   <div className="mt-2 text-2xl font-semibold tracking-[-0.04em]">{stop.title}</div>
                 </div>
@@ -61,12 +61,12 @@ export default function VisionSection() {
         </div>
 
         <div className="space-y-8">
-          <div className="overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))]">
+          <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] lg:border">
             <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.9fr)]">
               <div className="min-h-[24rem] lg:min-h-[30rem]">
-                <ChannelStripMockup className="h-full border-0" />
+                <ChannelStripMockup className="h-full" />
               </div>
-              <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12">
+              <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
                 <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">Coming 2026</div>
                 <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">TESSERA ONE</h3>
                 <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.26em] text-[#ffb84d]">The complete AI mixing suite</p>
@@ -80,8 +80,8 @@ export default function VisionSection() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] p-8 sm:p-10 lg:p-12">
-            <div className="max-w-3xl">
+          <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] lg:border">
+            <div className="max-w-3xl px-8 pt-8 sm:px-10 sm:pt-10 lg:px-12 lg:pt-12 xl:px-14 xl:pt-14">
               <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">The moonshot</div>
               <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">TESSERA DAW</h3>
               <p className="mt-6 text-base leading-relaxed text-[#c6cfdd]">

@@ -1,6 +1,7 @@
-import VideoPlayer from './VideoPlayer';
+﻿import VideoPlayer from './VideoPlayer';
 
 const FOUNDER_VIDEO_SRC = '/videos/founders-video.mp4';
+const FOUNDER_VIDEO_POSTER = '/images/founder-poster.svg';
 
 export default function FounderVideoSection() {
   return (
@@ -12,10 +13,10 @@ export default function FounderVideoSection() {
             Why Tessera has to exist.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#c6cfdd]">
-            The philosophy is easier to feel when you hear it directly. This section keeps the human voice inside the redesign, not just the rhetoric.
+            The philosophy is easier to feel when you hear it directly. So the default view should invite the story in gently, not throw a close-up into the middle of the page.
           </p>
         </div>
-        <VideoPlayer src={FOUNDER_VIDEO_SRC} />
+        <VideoPlayer src={FOUNDER_VIDEO_SRC} poster={FOUNDER_VIDEO_POSTER} />
       </div>
     </section>
   );

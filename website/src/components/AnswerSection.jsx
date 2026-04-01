@@ -1,4 +1,4 @@
-import FounderVideoSection from './FounderVideoSection';
+﻿import FounderVideoSection from './FounderVideoSection';
 import SectionMarker from './SectionMarker';
 import ShaderBackground from './ShaderBackground';
 import { shaderPresets } from '../shaders/presets';
@@ -28,40 +28,36 @@ const pillars = [
 
 export default function AnswerSection() {
   return (
-    <section className="relative z-10 px-6 py-24 md:px-10 lg:px-14 lg:py-28">
-      <div className="panel-shell">
+    <section className="relative z-10 overflow-hidden px-6 py-24 md:px-10 lg:px-14 lg:py-28">
+      <div className="absolute inset-y-0 left-0 w-full lg:w-[52vw]">
+        <ShaderBackground
+          fragmentShader={shaderPresets.pulse}
+          mixBlendMode="screen"
+          opacity={0.88}
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,5,24,0.10)_0%,rgba(8,5,24,0.08)_24%,rgba(8,5,24,0.52)_58%,rgba(8,5,24,0.90)_100%),linear-gradient(180deg,rgba(6,8,17,0.10),rgba(6,8,17,0.84)_86%)]" />
+      </div>
+
+      <div className="panel-shell relative z-10">
         <SectionMarker number="03" title="OUR ANSWER" className="mb-10" />
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(22rem,1.08fr)]">
-          <div className="relative min-h-[30rem] overflow-hidden rounded-[2rem] border border-white/8 bg-[#090714] lg:min-h-[40rem]">
-            <ShaderBackground
-              fragmentShader={shaderPresets.pulse}
-              mixBlendMode="screen"
-              opacity={0.82}
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,8,17,0.14),rgba(6,8,17,0.84)_78%)]" />
-
-            <div className="absolute inset-0 z-10 flex flex-col justify-between p-8 sm:p-10">
-              <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">
-                  A different stance on AI
-                </p>
-                <h2 className="display-tight mt-4 text-[#f0ebe0]">
-                  FLOW STATE,
-                  <span className="mt-2 block text-[#ffb84d]">UNLOCKED.</span>
-                </h2>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(22rem,1.08fr)] lg:min-h-[44rem]">
+          <div className="relative flex min-h-[28rem] items-end lg:min-h-[44rem] lg:pr-6">
+            <div className="w-full rounded-[1.8rem] border border-white/10 bg-black/24 p-6 backdrop-blur-md sm:p-7 lg:max-w-[34rem]">
+              <div className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">
+                A different stance on AI
               </div>
-
-              <div className="rounded-[1.8rem] border border-white/10 bg-black/26 p-6 backdrop-blur-md sm:p-7">
-                <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">The Tessera way</div>
-                <p className="mt-4 text-base leading-relaxed text-[#d5dbe7] sm:text-lg">
-                  We are not trying to automate away taste. We are trying to remove the friction between intent and sound,
-                  so the creator spends more time deciding and less time wrestling the tool.
-                </p>
-                <p className="mt-4 border-l border-[#5dd4f0]/35 pl-4 text-sm leading-relaxed text-[#d7edf3]">
-                  Art should not just serve the audience. It should serve the creator first.
-                </p>
-              </div>
+              <h2 className="display-tight mt-4 text-[#f0ebe0]">
+                FLOW STATE,
+                <span className="mt-2 block text-[#ffb84d]">UNLOCKED.</span>
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-[#d5dbe7] sm:text-lg">
+                We are not trying to automate away taste. We are trying to remove the friction between intent and sound,
+                so the creator spends more time deciding and less time wrestling the tool.
+              </p>
+              <p className="mt-4 border-l border-[#5dd4f0]/35 pl-4 text-sm leading-relaxed text-[#d7edf3]">
+                Art should not just serve the audience. It should serve the creator first.
+              </p>
             </div>
           </div>
 

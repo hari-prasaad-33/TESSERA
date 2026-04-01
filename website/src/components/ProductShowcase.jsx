@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+﻿import { useMemo } from 'react';
 import SectionMarker from './SectionMarker';
 
 function RotaryKnob({ label, value, accent = 'orange', size = 'md' }) {
@@ -173,7 +173,7 @@ const spectrumThreads = [
 
 export function EQInterfaceMockup({ className = '' }) {
   return (
-    <div className={`relative flex h-full min-h-[30rem] flex-col overflow-hidden border border-white/8 bg-[#090d14] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}>
+    <div className={`relative flex h-full min-h-[30rem] flex-col overflow-hidden border-0 bg-[#090d14] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(93,212,240,0.08),transparent_42%),radial-gradient(circle_at_82%_18%,rgba(255,106,51,0.12),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_12%,transparent_88%,rgba(255,255,255,0.03))]" />
 
       <div className="relative z-10 flex items-center justify-between gap-4 border-b border-white/8 px-4 py-3 sm:px-6">
@@ -195,21 +195,21 @@ export function EQInterfaceMockup({ className = '' }) {
       </div>
 
       <div className="relative z-10 grid flex-1 grid-cols-[96px_minmax(0,1fr)_96px] gap-3 px-3 pb-3 pt-3 sm:px-4">
-        <div className="rounded-[1.4rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,10,16,0.92))] p-3">
+        <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,10,16,0.92))] p-3">
           <div className="mb-4 font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Input Gain</div>
           <RotaryKnob label="Gain" value="+1.5 dB" accent="orange" size="lg" />
           <div className="mt-6 border-t border-white/6 pt-4">
             <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Global Controls</div>
             <div className="space-y-2">
-              <div className="rounded-xl border border-white/8 bg-white/[0.02] px-3 py-2 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">Solo Selected Band</div>
-              <div className="rounded-xl border border-white/8 bg-white/[0.02] px-3 py-2 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">Reset All Bands</div>
+              <div className="border border-white/8 bg-white/[0.02] px-3 py-2 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">Solo Selected Band</div>
+              <div className="border border-white/8 bg-white/[0.02] px-3 py-2 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">Reset All Bands</div>
             </div>
           </div>
         </div>
 
         <div className="grid min-h-[22rem] grid-rows-[minmax(0,1fr)_128px] gap-3">
-          <div className="rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(13,20,30,0.92),rgba(6,10,14,0.96))] p-4">
-            <div className="relative h-full overflow-hidden rounded-[1.2rem] border border-white/6 bg-[#070b11]">
+          <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(13,20,30,0.92),rgba(6,10,14,0.96))] p-4">
+            <div className="relative h-full overflow-hidden border border-white/6 bg-[#070b11]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_44%,rgba(93,212,240,0.08),transparent_45%)]" />
               <EQGraph />
               <svg viewBox="0 0 780 320" className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
@@ -220,8 +220,8 @@ export function EQInterfaceMockup({ className = '' }) {
             </div>
           </div>
 
-          <div className="grid grid-cols-[1.1fr_1fr_1fr_1fr_1.4fr] gap-3 rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(10,14,21,0.98),rgba(7,9,14,0.94))] p-4">
-            <div className="flex flex-col justify-between rounded-[1.1rem] border border-white/8 bg-white/[0.02] p-3">
+          <div className="grid grid-cols-[1.1fr_1fr_1fr_1fr_1.4fr] gap-3 border border-white/8 bg-[linear-gradient(180deg,rgba(10,14,21,0.98),rgba(7,9,14,0.94))] p-4">
+            <div className="flex flex-col justify-between border border-white/8 bg-white/[0.02] p-3">
               <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Selected Band Editor</div>
               <div>
                 <div className="text-[1.05rem] font-semibold tracking-[0.08em] text-[#ff7f49]">Band 3</div>
@@ -229,28 +229,28 @@ export function EQInterfaceMockup({ className = '' }) {
               </div>
             </div>
 
-            <div className="flex flex-col items-center justify-between rounded-[1.1rem] border border-white/8 bg-white/[0.02] p-3">
+            <div className="flex flex-col items-center justify-between border border-white/8 bg-white/[0.02] p-3">
               <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Type</div>
               <div className="rounded-full border border-white/8 px-3 py-1 font-mono text-[8px] uppercase tracking-[0.24em] text-[#d0d6e4]">Peak</div>
               <div className="text-[10px] text-[#8d94ab]">Filter</div>
             </div>
 
-            <div className="rounded-[1.1rem] border border-white/8 bg-white/[0.02] p-3">
+            <div className="border border-white/8 bg-white/[0.02] p-3">
               <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Freq</div>
               <RotaryKnob label="Band 3" value="244 Hz" accent="orange" />
             </div>
 
-            <div className="rounded-[1.1rem] border border-white/8 bg-white/[0.02] p-3">
+            <div className="border border-white/8 bg-white/[0.02] p-3">
               <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Gain</div>
               <RotaryKnob label="Band 3" value="3.8 dB" accent="orange" />
             </div>
 
-            <div className="grid grid-cols-[1fr_1fr] gap-3 rounded-[1.1rem] border border-white/8 bg-white/[0.02] p-3">
+            <div className="grid grid-cols-[1fr_1fr] gap-3 border border-white/8 bg-white/[0.02] p-3">
               <div>
                 <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Q</div>
                 <RotaryKnob label="Band 3" value="1.00" accent="orange" />
               </div>
-              <div className="flex flex-col justify-between rounded-[0.9rem] border border-white/8 bg-[#0a0e15] p-3">
+              <div className="flex flex-col justify-between border border-white/8 bg-[#0a0e15] p-3">
                 <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Global Filter Type</div>
                 <div className="flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">
                   <span className="rounded-full border border-[#ff8b5f]/40 px-2 py-1 text-[#ff8b5f]">HPF</span>
@@ -261,14 +261,14 @@ export function EQInterfaceMockup({ className = '' }) {
           </div>
         </div>
 
-        <div className="rounded-[1.4rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,10,16,0.92))] p-3">
+        <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,10,16,0.92))] p-3">
           <div className="mb-4 text-right font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Output Gain</div>
           <div className="flex flex-col items-end">
             <RotaryKnob label="Gain" value="+0.0 dB" accent="orange" size="lg" />
           </div>
           <div className="mt-6 border-t border-white/6 pt-4">
             <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Analyzer</div>
-            <div className="rounded-[1rem] border border-white/8 bg-white/[0.02] p-3">
+            <div className="border border-white/8 bg-white/[0.02] p-3">
               <div className="mb-3 flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">
                 <span>Bypass</span>
                 <span className="h-3 w-3 rounded border border-white/12 bg-[#0a0e15]" />
@@ -325,7 +325,7 @@ export function ChannelStripMockup({ className = '' }) {
   ];
 
   return (
-    <div className={`relative flex h-full min-h-[24rem] flex-col overflow-hidden border border-white/8 bg-[#0a0d15] ${className}`.trim()}>
+    <div className={`relative flex h-full min-h-[24rem] flex-col overflow-hidden border-0 bg-[#0a0d15] ${className}`.trim()}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,184,77,0.16),transparent_30%),radial-gradient(circle_at_76%_30%,rgba(93,212,240,0.15),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_18%,transparent_84%,rgba(255,255,255,0.02))]" />
 
       <div className="relative z-10 flex items-center justify-between border-b border-white/8 px-5 py-4">
@@ -337,13 +337,13 @@ export function ChannelStripMockup({ className = '' }) {
       </div>
 
       <div className="relative z-10 grid flex-1 grid-cols-[140px_minmax(0,1fr)_140px] gap-4 p-5">
-        <div className="rounded-[1.4rem] border border-white/8 bg-white/[0.03] p-4">
+        <div className="border border-white/8 bg-white/[0.03] p-4">
           <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Input</div>
           <LevelTrack accent="teal" />
-          <div className="mt-4 rounded-[1rem] border border-white/8 bg-black/25 p-3 font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Semantic prompt ready</div>
+          <div className="mt-4 border border-white/8 bg-black/25 p-3 font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Semantic prompt ready</div>
         </div>
 
-        <div className="rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,11,16,0.94))] p-5">
+        <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,11,16,0.94))] p-5">
           <div className="mb-6 flex items-center justify-between">
             <div className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Transparent AI routing</div>
             <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#d0d6e4]">Every move is editable</div>
@@ -352,7 +352,7 @@ export function ChannelStripMockup({ className = '' }) {
             {modules.map((module) => {
               const teal = module.accent === 'teal';
               return (
-                <div key={module.name} className="rounded-[1.2rem] border border-white/8 bg-[#0a0e15] p-4 text-center">
+                <div key={module.name} className="border border-white/8 bg-[#0a0e15] p-4 text-center">
                   <div
                     className={`mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full border ${
                       teal ? 'border-[#5dd4f0]/35 text-[#5dd4f0]' : 'border-[#ffb84d]/35 text-[#ffb84d]'
@@ -365,7 +365,7 @@ export function ChannelStripMockup({ className = '' }) {
               );
             })}
           </div>
-          <div className="mt-5 rounded-[1.2rem] border border-white/8 bg-black/25 p-4">
+          <div className="mt-5 border border-white/8 bg-black/25 p-4">
             <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Intent chain</div>
             <div className="mt-3 flex items-center gap-3 text-[10px] text-[#d0d6e4]">
               <span className="rounded-full border border-[#5dd4f0]/25 px-3 py-1 font-mono uppercase tracking-[0.22em] text-[#d5f8ff]">Prompt</span>
@@ -375,10 +375,10 @@ export function ChannelStripMockup({ className = '' }) {
           </div>
         </div>
 
-        <div className="rounded-[1.4rem] border border-white/8 bg-white/[0.03] p-4">
+        <div className="border border-white/8 bg-white/[0.03] p-4">
           <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Output</div>
           <LevelTrack accent="orange" />
-          <div className="mt-4 rounded-[1rem] border border-white/8 bg-black/25 p-3 font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Adaptive taste profile</div>
+          <div className="mt-4 border border-white/8 bg-black/25 p-3 font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Adaptive taste profile</div>
         </div>
       </div>
     </div>
@@ -403,53 +403,55 @@ export default function ProductShowcase({ onNavigate }) {
       <div className="panel-shell">
         <SectionMarker number="05" title="THE PROOF" className="mb-10" />
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)]">
-          <div className="overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,11,16,0.96))] p-3 sm:p-4">
-            <EQInterfaceMockup />
-          </div>
-
-          <div className="flex flex-col justify-center rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] p-8 sm:p-10 lg:p-12">
-            <div className="mb-5 flex flex-wrap gap-3">
-              <FeatureChip label="Available now" accent="teal" />
-              <FeatureChip label="Local-first AI" accent="orange" />
+        <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,11,16,0.96))] lg:border">
+          <div className="grid gap-0 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)]">
+            <div className="min-h-[30rem] bg-[#060a11]">
+              <EQInterfaceMockup className="h-full min-h-[30rem]" />
             </div>
 
-            <h2 className="display-tight mb-5 text-[#f0ebe0]">
-              TESSERA EQ
-            </h2>
-
-            <p className="mb-6 max-w-xl text-lg leading-relaxed text-[#c7cfdd]">
-              An intent-driven 8-band EQ that translates plain language into editable curves.
-              It analyzes, suggests, and steps back so the artist stays in charge.
-            </p>
-
-            <div className="mb-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[1.4rem] border border-white/8 bg-black/20 p-4">
-                <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Glass-box control</div>
-                <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">Every AI move maps to visible bands, gain, Q, and filter type.</div>
+            <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
+              <div className="mb-5 flex flex-wrap gap-3">
+                <FeatureChip label="Available now" accent="teal" />
+                <FeatureChip label="Local-first AI" accent="orange" />
               </div>
-              <div className="rounded-[1.4rem] border border-white/8 bg-black/20 p-4">
-                <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Adaptive engine</div>
-                <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">Dynamic suggestions evolve across the track and learn from your corrections.</div>
+
+              <h2 className="display-tight mb-5 text-[#f0ebe0]">
+                TESSERA EQ
+              </h2>
+
+              <p className="mb-6 max-w-xl text-lg leading-relaxed text-[#c7cfdd]">
+                An intent-driven 8-band EQ that translates plain language into editable curves.
+                It analyzes, suggests, and steps back so the artist stays in charge.
+              </p>
+
+              <div className="mb-8 grid gap-4 sm:grid-cols-2">
+                <div className="border border-white/8 bg-black/20 p-4">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Glass-box control</div>
+                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">Every AI move maps to visible bands, gain, Q, and filter type.</div>
+                </div>
+                <div className="border border-white/8 bg-black/20 p-4">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Adaptive engine</div>
+                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">Dynamic suggestions evolve across the track and learn from your corrections.</div>
+                </div>
               </div>
-            </div>
 
-            <div className="mb-9 flex flex-wrap gap-3">
-              {['8 bands', 'Dynamic mode', 'Offline response', 'Learns your taste', 'Standalone', 'VST3 + AU'].map((item, index) => (
-                <FeatureChip key={item} label={item} accent={index % 2 === 0 ? 'teal' : 'orange'} />
-              ))}
-            </div>
+              <div className="mb-9 flex flex-wrap gap-3">
+                {['8 bands', 'Dynamic mode', 'Offline response', 'Learns your taste', 'Standalone', 'VST3 + AU'].map((item, index) => (
+                  <FeatureChip key={item} label={item} accent={index % 2 === 0 ? 'teal' : 'orange'} />
+                ))}
+              </div>
 
-            <div className="flex flex-wrap gap-3">
-              <button
-                onClick={() => onNavigate('eq-features')}
-                className="rounded-full border border-[#5dd4f0]/45 bg-[#5dd4f0]/14 px-7 py-3 font-mono text-xs font-semibold uppercase tracking-[0.28em] text-[#d5f8ff] transition-all duration-300 hover:border-[#5dd4f0] hover:bg-[#5dd4f0]/22"
-              >
-                Explore Features
-              </button>
-              <button className="rounded-full border border-white/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#bfc7d8] transition-all duration-300 hover:border-white/25 hover:text-white">
-                Download
-              </button>
+              <div className="flex flex-wrap gap-3">
+                <button
+                  onClick={() => onNavigate('eq-features')}
+                  className="rounded-full border border-[#5dd4f0]/45 bg-[#5dd4f0]/14 px-7 py-3 font-mono text-xs font-semibold uppercase tracking-[0.28em] text-[#d5f8ff] transition-all duration-300 hover:border-[#5dd4f0] hover:bg-[#5dd4f0]/22"
+                >
+                  Explore Features
+                </button>
+                <button className="rounded-full border border-white/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#bfc7d8] transition-all duration-300 hover:border-white/25 hover:text-white">
+                  Download
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -461,7 +463,7 @@ export default function ProductShowcase({ onNavigate }) {
             { value: '<1s', label: 'Response', note: 'for local matches' },
             { value: '3 tiers', label: 'Inference', note: 'local to creative AI' },
           ].map((stat) => (
-            <div key={stat.label} className="rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.9))] p-6">
+            <div key={stat.label} className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.9))] p-6">
               <div className="text-5xl font-semibold tracking-[-0.05em] text-[#f0ebe0]">{stat.value}</div>
               <div className="mt-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">{stat.label}</div>
               <div className="mt-2 text-sm text-[#c7cfdd]">{stat.note}</div>

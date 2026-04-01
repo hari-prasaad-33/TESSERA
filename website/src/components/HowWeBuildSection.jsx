@@ -1,4 +1,4 @@
-import { EQInterfaceMockup } from './ProductShowcase';
+﻿import { EQInterfaceMockup } from './ProductShowcase';
 import SectionMarker from './SectionMarker';
 import ShaderBackground from './ShaderBackground';
 import { shaderPresets } from '../shaders/presets';
@@ -7,28 +7,28 @@ function SemanticEngineVisual() {
   const stages = ['Prompt', 'Tokenizer', 'Embedding', 'Similarity', '8-band curve'];
 
   return (
-    <div className="relative flex h-full min-h-[24rem] flex-col justify-center overflow-hidden border border-white/8 bg-[#08111a] p-6 sm:p-8">
+    <div className="relative flex h-full min-h-[26rem] flex-col justify-center overflow-hidden bg-[#08111a] p-6 sm:p-8 lg:p-10">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(93,212,240,0.16),transparent_26%),radial-gradient(circle_at_80%_78%,rgba(255,184,77,0.14),transparent_30%)]" />
       <div className="relative z-10 grid gap-4">
         {stages.map((stage, index) => (
           <div key={stage} className="flex items-center gap-3">
-            <div className="flex h-12 min-w-0 flex-1 items-center rounded-[1rem] border border-white/8 bg-black/22 px-4 font-mono text-[10px] uppercase tracking-[0.24em] text-[#d5f8ff]">
+            <div className="flex h-12 min-w-0 flex-1 items-center border border-white/8 bg-black/22 px-4 font-mono text-[10px] uppercase tracking-[0.24em] text-[#d5f8ff]">
               {stage}
             </div>
-            {index < stages.length - 1 && <div className="w-10 h-px bg-gradient-to-r from-[#5dd4f0]/55 to-[#ffb84d]/55" />}
+            {index < stages.length - 1 && <div className="h-px w-10 bg-gradient-to-r from-[#5dd4f0]/55 to-[#ffb84d]/55" />}
           </div>
         ))}
       </div>
       <div className="relative z-10 mt-6 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-[1rem] border border-white/8 bg-black/22 p-4">
+        <div className="border border-white/8 bg-black/22 p-4">
           <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#8d94ab]">Local model</div>
           <div className="mt-2 text-sm text-[#d8deea]">384-dimensional embeddings, computed on device.</div>
         </div>
-        <div className="rounded-[1rem] border border-white/8 bg-black/22 p-4">
+        <div className="border border-white/8 bg-black/22 p-4">
           <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#8d94ab]">Reference set</div>
           <div className="mt-2 text-sm text-[#d8deea]">786 descriptors scored by cosine similarity.</div>
         </div>
-        <div className="rounded-[1rem] border border-white/8 bg-black/22 p-4">
+        <div className="border border-white/8 bg-black/22 p-4">
           <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#8d94ab]">Latency</div>
           <div className="mt-2 text-sm text-[#d8deea]">Under a second for high-confidence local matches.</div>
         </div>
@@ -45,7 +45,7 @@ function TierVisual() {
   ];
 
   return (
-    <div className="flex h-full min-h-[24rem] items-center justify-center border border-white/8 bg-[#0a1118] p-6 sm:p-8">
+    <div className="flex h-full min-h-[26rem] items-center justify-center bg-[#0a1118] p-6 sm:p-8 lg:p-10">
       <div className="w-full max-w-xl space-y-4">
         {tiers.map((tier, index) => {
           const theme = tier.accent === 'teal'
@@ -55,7 +55,7 @@ function TierVisual() {
               : 'border-[#ff6a33]/25 bg-[#ff6a33]/10 text-[#ffd6c4]';
 
           return (
-            <div key={tier.title} className={`rounded-[1.4rem] border p-5 ${theme}`}>
+            <div key={tier.title} className={`border p-5 ${theme}`}>
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-[0.26em]">{tier.title}</div>
@@ -74,7 +74,7 @@ function TierVisual() {
 
 function DSPVisual() {
   return (
-    <div className="flex h-full min-h-[24rem] items-center justify-center border border-white/8 bg-[#090f16] p-6 sm:p-8">
+    <div className="flex h-full min-h-[26rem] items-center justify-center bg-[#090f16] p-6 sm:p-8 lg:p-10">
       <svg viewBox="0 0 620 280" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="waveA" x1="0" x2="1">
@@ -87,7 +87,7 @@ function DSPVisual() {
           </linearGradient>
         </defs>
 
-        <rect x="0" y="0" width="620" height="280" rx="26" fill="rgba(7,10,16,0.6)" stroke="rgba(255,255,255,0.08)" />
+        <rect x="0" y="0" width="620" height="280" fill="rgba(7,10,16,0.6)" stroke="rgba(255,255,255,0.08)" />
         <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveA)" strokeWidth="4" />
         <path d="M 36 148 C 88 148 144 148 198 148 C 248 148 302 148 360 148 C 418 148 472 148 524 148" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeDasharray="5 7" />
         <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveB)" strokeWidth="2.2" strokeDasharray="1 10" />
@@ -103,22 +103,22 @@ function DSPVisual() {
 
 function BuildSlab({ id, title, subtitle, description, visual, reverse = false }) {
   return (
-    <div className="overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))]">
-      <div className={`grid gap-0 lg:grid-cols-2 ${reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''}`}>
-        <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12">
+    <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(7,10,16,0.92))] lg:border">
+      <div className={`grid gap-0 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] ${reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''}`}>
+        <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
           <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">{id}</div>
           <h3 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-4xl">{title}</h3>
           <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.26em] text-[#5dd4f0]">{subtitle}</p>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-[#c6cfdd]">{description}</p>
         </div>
-        <div className="min-h-[22rem] lg:min-h-[28rem]">{visual}</div>
+        <div className="min-h-[24rem] lg:min-h-[30rem]">{visual}</div>
       </div>
     </div>
   );
 }
 
 export default function HowWeBuildSection({ eqMockup }) {
-  const liveVisual = eqMockup ?? <EQInterfaceMockup className="h-full min-h-[28rem]" />;
+  const liveVisual = eqMockup ?? <EQInterfaceMockup className="h-full min-h-[30rem] border-0" />;
 
   return (
     <section className="relative z-10 px-6 pb-28 pt-24 md:px-10 lg:px-14 lg:pb-32">
@@ -146,9 +146,9 @@ export default function HowWeBuildSection({ eqMockup }) {
             description="Type a phrase like 'add warmth and air' and the system suggests a full EQ state. Nothing is hidden behind a magic button. Every band is draggable, editable, and reversible."
             visual={
               <div className="relative h-full overflow-hidden bg-[#081018]">
-                <ShaderBackground fragmentShader={shaderPresets.lanterns} opacity={0.45} mixBlendMode="screen" />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,14,0.14),rgba(5,8,14,0.72)_82%)]" />
-                <div className="relative z-10 h-full p-3 sm:p-4">{liveVisual}</div>
+                <ShaderBackground fragmentShader={shaderPresets.lanterns} opacity={0.62} mixBlendMode="screen" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,14,0.08),rgba(5,8,14,0.56)_84%)]" />
+                <div className="relative z-10 h-full">{liveVisual}</div>
               </div>
             }
           />

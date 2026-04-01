@@ -1,0 +1,66 @@
+﻿<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="152" y1="88" x2="1418" y2="812" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07101A"/>
+      <stop offset="0.52" stop-color="#0A0D18"/>
+      <stop offset="1" stop-color="#170A10"/>
+    </linearGradient>
+    <radialGradient id="cyanGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(350 250) rotate(24.3) scale(520 320)">
+      <stop stop-color="#5DD4F0" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#5DD4F0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="amberGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1120 300) rotate(144.8) scale(440 260)">
+      <stop stop-color="#FFB84D" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#FFB84D" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lineA" x1="120" y1="680" x2="790" y2="350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5DD4F0" stop-opacity="0.00"/>
+      <stop offset="0.32" stop-color="#5DD4F0" stop-opacity="0.56"/>
+      <stop offset="1" stop-color="#5DD4F0" stop-opacity="0.00"/>
+    </linearGradient>
+    <linearGradient id="lineB" x1="820" y1="740" x2="1480" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB84D" stop-opacity="0.00"/>
+      <stop offset="0.42" stop-color="#FFB84D" stop-opacity="0.44"/>
+      <stop offset="1" stop-color="#FFB84D" stop-opacity="0.00"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#cyanGlow)"/>
+  <rect width="1600" height="900" fill="url(#amberGlow)"/>
+
+  <g opacity="0.22">
+    <path d="M83 786C212 668 308 598 428 566C566 529 633 570 742 518C830 476 887 372 1036 377C1185 382 1293 514 1495 398" stroke="url(#lineA)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M154 656C291 526 381 492 501 494C621 496 730 608 851 610C996 613 1099 501 1223 468C1337 437 1430 458 1548 349" stroke="url(#lineB)" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <g opacity="0.16" fill="#F0EBE0">
+    <circle cx="134" cy="125" r="2"/>
+    <circle cx="336" cy="168" r="2"/>
+    <circle cx="582" cy="114" r="2"/>
+    <circle cx="826" cy="162" r="2"/>
+    <circle cx="1042" cy="126" r="2"/>
+    <circle cx="1266" cy="178" r="2"/>
+    <circle cx="1450" cy="132" r="2"/>
+    <circle cx="260" cy="302" r="2"/>
+    <circle cx="486" cy="266" r="2"/>
+    <circle cx="710" cy="318" r="2"/>
+    <circle cx="936" cy="278" r="2"/>
+    <circle cx="1196" cy="328" r="2"/>
+    <circle cx="1408" cy="286" r="2"/>
+  </g>
+
+  <rect x="86" y="74" width="1428" height="752" rx="36" stroke="rgba(255,255,255,0.10)"/>
+
+  <text x="140" y="188" fill="#5DD4F0" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="0.42em">FROM THE FOUNDER</text>
+  <text x="140" y="352" fill="#F0EBE0" font-family="Arial, Helvetica, sans-serif" font-size="118" font-weight="700">Why Tessera</text>
+  <text x="140" y="460" fill="#FFB84D" font-family="Arial, Helvetica, sans-serif" font-size="118" font-weight="700">has to exist.</text>
+
+  <text x="144" y="560" fill="#D8DEEA" font-family="Arial, Helvetica, sans-serif" font-size="34">A short note on protecting the human part of music creation.</text>
+  <text x="144" y="612" fill="#9BA3B9" font-family="Arial, Helvetica, sans-serif" font-size="26">Press play when you want the story, not before.</text>
+
+  <g transform="translate(1216 610)">
+    <circle cx="0" cy="0" r="92" fill="rgba(0,0,0,0.34)" stroke="rgba(255,255,255,0.16)"/>
+    <path d="M-18 -32L42 0L-18 32V-32Z" fill="#F0EBE0"/>
+  </g>
+</svg>
