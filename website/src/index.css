@@ -82,6 +82,37 @@
     color: var(--color-tessera-dim);
     text-transform: uppercase;
   }
+
+  /* Section panel textures */
+  .texture-scanlines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 48px,
+      rgba(255, 255, 255, 0.013) 48px,
+      rgba(255, 255, 255, 0.013) 49px
+    );
+  }
+
+  .texture-dots {
+    background-image: radial-gradient(circle, rgba(77, 124, 138, 0.18) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .texture-stars {
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.55) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+      radial-gradient(circle, rgba(200, 220, 255, 0.2) 1px, transparent 1px);
+    background-size: 220px 220px, 130px 130px, 90px 90px;
+    background-position: 0 0, 80px 60px, 160px 110px;
+  }
+
+  /* Section divider line */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent);
+  }
 }
 
 body {

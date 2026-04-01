@@ -10,12 +10,14 @@ import HowWeBuildSection from './components/HowWeBuildSection'
 import VisionSection from './components/VisionSection'
 import SiteNav from './components/SiteNav'
 
-const MistBackground = () => (
-  <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-tessera-teal/10 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '8s' }}></div>
-    <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-tessera-mist rounded-full blur-[100px]"></div>
-    <div className="absolute top-[40%] left-[20%] w-[40%] h-[40%] bg-tessera-orange/5 rounded-full blur-[180px] mix-blend-screen"></div>
-    <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03]"></div>
+// ─── Reusable panel wrapper ──────────────────────────────────────────────────
+const Panel = ({ bg, texture, children, className = '', id }) => (
+  <div id={id} className={`relative overflow-hidden ${bg} ${className}`}>
+    {/* Texture overlay */}
+    {texture && (
+      <div className={`absolute inset-0 pointer-events-none ${texture}`} style={{ opacity: 1 }} />
+    )}
+    {children}
   </div>
 );
 
@@ -47,55 +49,80 @@ function App() {
   // Sub-pages
   if (currentPage === 'discover') {
     return (
-      <>
-        <MistBackground />
+      <div className="bg-[#04040a] min-h-screen">
         <SiteNav currentPage="discover" onNavigate={navigateTo} />
         <DiscoverPage onBack={() => navigateTo('home')} />
-      </>
+      </div>
     );
   }
 
   if (currentPage === 'eq-features') {
     return (
-      <>
-        <MistBackground />
+      <div className="bg-[#030d10] min-h-screen">
         <SiteNav currentPage="eq-features" onNavigate={navigateTo} />
         <EQFeaturesPage onBack={() => navigateTo('home')} />
-      </>
+      </div>
     );
   }
 
   // Home page
   return (
-    <div className="min-h-screen bg-tessera-ink text-tessera-text selection:bg-tessera-orange selection:text-black font-sans">
-      <MistBackground />
-
-      {/* Navigation */}
+    <div className="text-tessera-text selection:bg-tessera-orange selection:text-black">
       <SiteNav currentPage="home" onNavigate={navigateTo} />
 
-      {/* ── 01 / THE MISSION ──────────────────────────── */}
-      <HeroSection
-        onExplore={() => {
-          document.getElementById('philosophy')?.scrollIntoView({ behavior: 'smooth' });
-        }}
-      />
+      {/* ── 01 / THE MISSION — deep space blue-black, clean ── */}
+      <Panel bg="bg-[#04040a]">
+        {/* Teal nebula top-right */}
+        <div className="absolute top-[-15%] right-[-10%] w-[55%] h-[70%] rounded-full blur-[130px] pointer-events-none bg-tessera-teal/10" />
+        {/* Faint orange horizon */}
+        <div className="absolute bottom-0 left-[20%] w-[60%] h-[30%] rounded-full blur-[100px] pointer-events-none bg-tessera-orange/4" />
+        <HeroSection
+          onExplore={() => document.getElementById('philosophy')?.scrollIntoView({ behavior: 'smooth' })}
+        />
+      </Panel>
 
-      {/* ── 02 + 03 / THE PROBLEM + OUR ANSWER (includes Founder Video) ── */}
-      <PhilosophySection />
+      <div className="section-divider" />
 
-      {/* ── 04 / HOW WE BUILD ─────────────────────────── */}
-      <HowWeBuildSection eqMockup={<EQInterfaceMockup />} />
+      {/* ── 02 + 03 / THE PROBLEM + OUR ANSWER — warm dark + scan lines ── */}
+      <Panel bg="bg-[#070509]" texture="texture-scanlines">
+        {/* Cold blue-grey left ambient */}
+        <div className="absolute top-[10%] left-[-8%] w-[40%] h-[50%] rounded-full blur-[120px] pointer-events-none bg-[#1a2030]/60" />
+        {/* Orange ember bottom-right for 03/Answer */}
+        <div className="absolute bottom-[5%] right-[-5%] w-[35%] h-[40%] rounded-full blur-[110px] pointer-events-none bg-tessera-orange/6" />
+        <PhilosophySection />
+      </Panel>
 
-      {/* ── 05 / THE PROOF — TESSERA EQ ───────────────── */}
-      <ProductShowcase onNavigate={navigateTo} />
+      <div className="section-divider" />
 
-      {/* ── 06 / THE VISION ───────────────────────────── */}
-      <div id="vision">
+      {/* ── 04 / HOW WE BUILD — technical teal-black + dot grid ── */}
+      <Panel bg="bg-[#030d10]" texture="texture-dots">
+        {/* Teal radial top-left */}
+        <div className="absolute top-[-10%] left-[-5%] w-[45%] h-[50%] rounded-full blur-[140px] pointer-events-none bg-tessera-teal/8" />
+        <HowWeBuildSection eqMockup={<EQInterfaceMockup />} />
+      </Panel>
+
+      <div className="section-divider" />
+
+      {/* ── 05 / THE PROOF — pure black, orange spotlight ── */}
+      <Panel bg="bg-[#020202]" id="products">
+        {/* Orange center spotlight */}
+        <div className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[60%] h-[60%] rounded-full blur-[160px] pointer-events-none bg-tessera-orange/7" />
+        <ProductShowcase onNavigate={navigateTo} />
+      </Panel>
+
+      <div className="section-divider" />
+
+      {/* ── 06 / THE VISION — deep indigo + star field ── */}
+      <Panel bg="bg-[#05040f]" texture="texture-stars" id="vision">
+        {/* Teal left */}
+        <div className="absolute top-[15%] left-[-5%] w-[35%] h-[45%] rounded-full blur-[120px] pointer-events-none bg-tessera-teal/8" />
+        {/* Orange right */}
+        <div className="absolute bottom-[10%] right-[-5%] w-[35%] h-[40%] rounded-full blur-[120px] pointer-events-none bg-tessera-orange/6" />
         <VisionSection />
-      </div>
+      </Panel>
 
-      {/* Footer */}
-      <footer className="py-24 text-center text-tessera-dim text-xs font-mono border-t border-white/5 mt-20 relative overflow-hidden">
+      {/* ── Footer ── */}
+      <footer className="py-24 text-center text-tessera-dim text-xs font-mono border-t border-white/5 relative overflow-hidden bg-[#020202]">
         <div className="absolute top-10 left-1/2 transform -translate-x-1/2">
           <div className="mb-4 flex justify-center opacity-50 hover:opacity-100 transition-opacity">
             <EternalRing />
