@@ -1,353 +1,474 @@
-import React, { useState, useEffect } from 'react';
-import Logogram from './Logogram';
+import { useMemo } from 'react';
+import SectionMarker from './SectionMarker';
 
-// ─── Product Image with fallback ─────────────────────────────────────────────
-
-const ProductImage = ({ src, alt, fallback }) => {
-  const [imgError, setImgError] = useState(false);
-  if (imgError || !src) return fallback;
-  return (
-    <div className="relative w-full h-full flex items-center justify-center p-4">
-      <img
-        src={src}
-        alt={alt}
-        className="w-full h-full object-contain rounded-xl drop-shadow-[0_0_40px_rgba(0,0,0,0.5)]"
-        onError={() => setImgError(true)}
-      />
-    </div>
-  );
-};
-
-// ─── Animated Level Meter ─────────────────────────────────────────────────────
-
-const LevelMeter = ({ height = 100, color = '#FF5F1F', speed = 1.5, className = '' }) => {
-  const [level, setLevel] = useState(0.4);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLevel(0.3 + Math.random() * 0.55);
-    }, 120 / speed);
-    return () => clearInterval(interval);
-  }, [speed]);
+function RotaryKnob({ label, value, accent = 'orange', size = 'md' }) {
+  const isTeal = accent === 'teal';
+  const ring = isTeal ? '#5DD4F0' : '#FF6A33';
+  const glow = isTeal ? 'rgba(93, 212, 240, 0.22)' : 'rgba(255, 106, 51, 0.24)';
+  const shell = size === 'lg' ? 'h-18 w-18' : 'h-14 w-14';
 
   return (
-    <div className={`relative ${className}`} style={{ width: 6, height }}>
-      <div className="absolute inset-0 rounded-full bg-white/5"></div>
+    <div className="flex flex-col items-center gap-2 text-center">
       <div
-        className="absolute bottom-0 left-0 right-0 rounded-full transition-all"
-        style={{
-          height: `${level * 100}%`,
-          background: `linear-gradient(to top, ${color}, ${color}88)`,
-          transitionDuration: `${100 / speed}ms`,
-          boxShadow: `0 0 8px ${color}40`,
-        }}
-      ></div>
+        className={`relative ${shell} rounded-full border border-white/10 bg-[radial-gradient(circle_at_30%_28%,rgba(255,255,255,0.12),rgba(11,14,22,0.92)_62%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]`}
+        style={{ boxShadow: `0 0 26px ${glow}` }}
+      >
+        <div className="absolute inset-[18%] rounded-full border border-white/6 bg-[radial-gradient(circle_at_40%_32%,rgba(255,255,255,0.12),rgba(8,10,16,0.98)_66%)]" />
+        <div
+          className="absolute left-1/2 top-1/2 h-[42%] w-[2px] -translate-x-1/2 -translate-y-[86%] rounded-full"
+          style={{ background: ring, boxShadow: `0 0 12px ${ring}` }}
+        />
+        <div
+          className="absolute inset-[9%] rounded-full border"
+          style={{ borderColor: `${ring}66` }}
+        />
+      </div>
+      <div className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">{label}</div>
+      <div className="font-mono text-[9px] text-[#d4d8e5]">{value}</div>
     </div>
   );
-};
+}
 
-// ─── Pulse Dot ────────────────────────────────────────────────────────────────
+function SmallButton({ children, active = false }) {
+  return (
+    <span
+      className={`rounded-full px-3 py-1 font-mono text-[8px] uppercase tracking-[0.24em] transition-colors ${
+        active
+          ? 'border border-[#ff8b5f]/70 bg-[#ff6a33]/20 text-[#ffd2bf]'
+          : 'border border-white/8 bg-white/[0.03] text-[#8d94ab]'
+      }`}
+    >
+      {children}
+    </span>
+  );
+}
 
-const PulseDot = ({ color = 'bg-tessera-orange', size = 'w-2 h-2', delay = 0 }) => (
-  <div
-    className={`${size} rounded-full ${color} animate-pulse`}
-    style={{ animationDelay: `${delay}ms`, animationDuration: '2s' }}
-  ></div>
-);
+function GraphNode({ cx, cy, index, icon = 'peak' }) {
+  const iconPath = {
+    shelf: 'M -6 5 C -1 5 -1 0 4 0 L 7 0',
+    peak: 'M -7 4 C -4 4 -3 -5 0 -5 C 3 -5 4 4 7 4',
+    cut: 'M -6 5 C -1 5 -1 -2 4 -2 L 7 -2',
+  }[icon];
 
-// ─── TESSERA ONE – Channel Strip Mockup ───────────────────────────────────────
+  return (
+    <g transform={`translate(${cx} ${cy})`}>
+      <circle r="18" fill="rgba(255,106,51,0.16)" />
+      <circle r="13" fill="rgba(255,106,51,0.1)" stroke="rgba(255,106,51,0.85)" strokeWidth="1.4" />
+      <circle r="8.8" fill="rgba(18,13,12,0.98)" stroke="rgba(255,196,170,0.28)" strokeWidth="0.8" />
+      <path d={iconPath} fill="none" stroke="#ff965f" strokeWidth="1.5" strokeLinecap="round" />
+      <text y="-20" textAnchor="middle" fill="#ff9d71" fontSize="6" fontFamily="'JetBrains Mono', monospace">{index}</text>
+    </g>
+  );
+}
 
-const ChannelStripMockup = () => {
-  const modules = [
-    { name: 'GATE',   colorClass: 'text-tessera-teal',   glowHex: '#4d7c8a', progress: 35 },
-    { name: 'EQ',     colorClass: 'text-tessera-orange', glowHex: '#FF5F1F', progress: 70 },
-    { name: 'COMP',   colorClass: 'text-tessera-teal',   glowHex: '#4d7c8a', progress: 80 },
-    { name: 'SAT',    colorClass: 'text-tessera-orange', glowHex: '#FF5F1F', progress: 50 },
-    { name: 'REVERB', colorClass: 'text-tessera-teal',   glowHex: '#4d7c8a', progress: 60 },
-    { name: 'LIMIT',  colorClass: 'text-tessera-orange', glowHex: '#FF5F1F', progress: 75 },
+function EQGraph() {
+  const strands = useMemo(
+    () => [
+      'M 70 214 C 130 170 170 148 230 160 C 310 176 360 244 438 228 C 515 214 562 132 650 154',
+      'M 70 218 C 150 188 206 146 272 170 C 345 197 392 247 474 214 C 548 184 605 124 650 146',
+      'M 70 210 C 132 194 188 158 248 166 C 322 176 380 210 446 194 C 530 173 586 142 650 156',
+      'M 70 224 C 146 236 202 202 270 188 C 344 172 392 166 472 188 C 548 208 594 196 650 166',
+    ],
+    [],
+  );
+
+  const nodes = [
+    { x: 96, y: 240, index: '2', icon: 'cut' },
+    { x: 162, y: 152, index: '1', icon: 'shelf' },
+    { x: 278, y: 150, index: '3', icon: 'peak' },
+    { x: 402, y: 110, index: '4', icon: 'peak' },
+    { x: 528, y: 164, index: '6', icon: 'peak' },
+    { x: 598, y: 168, index: '5', icon: 'peak' },
+    { x: 690, y: 136, index: '7', icon: 'shelf' },
+    { x: 730, y: 176, index: '8', icon: 'shelf' },
   ];
 
   return (
-    <div className="relative w-full h-full flex flex-col">
-      <div className="flex items-center justify-between px-5 py-3 border-b border-white/5">
+    <svg viewBox="0 0 780 320" className="h-full w-full" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="eqFill" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="rgba(125, 240, 255, 0.34)" />
+          <stop offset="70%" stopColor="rgba(93, 212, 240, 0.08)" />
+          <stop offset="100%" stopColor="rgba(6, 11, 18, 0.0)" />
+        </linearGradient>
+        <linearGradient id="eqLine" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#7de3ff" />
+          <stop offset="100%" stopColor="#6fd2ef" />
+        </linearGradient>
+      </defs>
+
+      <rect x="0" y="0" width="780" height="320" fill="rgba(6, 11, 16, 0.88)" />
+
+      {Array.from({ length: 17 }, (_, i) => (
+        <line
+          key={`h-${i}`}
+          x1="58"
+          x2="748"
+          y1={26 + i * 16.5}
+          y2={26 + i * 16.5}
+          stroke={i % 4 === 0 ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.025)'}
+          strokeWidth={i % 4 === 0 ? '1.1' : '0.6'}
+        />
+      ))}
+
+      {Array.from({ length: 21 }, (_, i) => (
+        <line
+          key={`v-${i}`}
+          x1={58 + i * 34.5}
+          x2={58 + i * 34.5}
+          y1="26"
+          y2="292"
+          stroke={i % 4 === 0 ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.025)'}
+          strokeWidth={i % 4 === 0 ? '1.05' : '0.6'}
+        />
+      ))}
+
+      {strands.map((d, index) => (
+        <path
+          key={index}
+          d={d}
+          fill="none"
+          stroke="rgba(93, 212, 240, 0.18)"
+          strokeWidth="1.1"
+        />
+      ))}
+
+      <path
+        d="M 58 178 C 86 178 110 178 146 178 C 182 178 198 142 252 150 C 304 157 336 128 402 120 C 468 112 510 155 560 155 C 618 155 650 124 696 132 C 734 138 748 222 748 280 L 748 292 L 58 292 Z"
+        fill="url(#eqFill)"
+      />
+      <path
+        d="M 58 178 C 86 178 110 178 146 178 C 182 178 198 142 252 150 C 304 157 336 128 402 120 C 468 112 510 155 560 155 C 618 155 650 124 696 132 C 734 138 748 222 748 280"
+        fill="none"
+        stroke="url(#eqLine)"
+        strokeWidth="3"
+      />
+
+      {nodes.map((node) => (
+        <GraphNode key={node.index} {...node} />
+      ))}
+
+      {['20Hz', '50', '100', '200', '500', '1k', '2k', '5k', '10k', '20k'].map((label, index) => (
+        <text
+          key={label}
+          x={58 + index * 76.5}
+          y="308"
+          fill="rgba(173,180,197,0.66)"
+          fontSize="8"
+          fontFamily="'JetBrains Mono', monospace"
+          textAnchor={index === 0 ? 'start' : index === 9 ? 'end' : 'middle'}
+        >
+          {label}
+        </text>
+      ))}
+    </svg>
+  );
+}
+
+const spectrumThreads = [
+  'M 124 238 C 166 188 218 144 284 154 C 336 160 378 192 434 212 C 474 228 530 226 612 212',
+  'M 136 222 C 200 164 258 140 328 148 C 382 154 440 198 512 206 C 570 212 614 196 676 164',
+  'M 124 244 C 196 224 266 176 330 174 C 404 172 460 214 544 232 C 606 246 664 226 710 190',
+];
+
+export function EQInterfaceMockup({ className = '' }) {
+  return (
+    <div className={`relative flex h-full min-h-[30rem] flex-col overflow-hidden border border-white/8 bg-[#090d14] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(93,212,240,0.08),transparent_42%),radial-gradient(circle_at_82%_18%,rgba(255,106,51,0.12),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_12%,transparent_88%,rgba(255,255,255,0.03))]" />
+
+      <div className="relative z-10 flex items-center justify-between gap-4 border-b border-white/8 px-4 py-3 sm:px-6">
         <div className="flex items-center gap-2">
-          <PulseDot color="bg-tessera-orange" delay={0} />
-          <span className="font-mono text-[10px] text-tessera-orange tracking-widest">TESSERA ONE</span>
+          <SmallButton>Load</SmallButton>
+          <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/8 bg-white/[0.03] text-[11px] text-[#b6bfd4]">play</span>
+          <span className="hidden font-mono text-[8px] uppercase tracking-[0.26em] text-[#7d859a] sm:inline">No file loaded</span>
         </div>
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-[9px] text-tessera-dim tracking-widest">CHANNEL STRIP</span>
-          <div className="w-2 h-2 rounded-sm bg-green-500/60 animate-pulse" style={{ animationDuration: '3s' }}></div>
+
+        <div className="text-center">
+          <div className="font-display text-xl font-semibold tracking-[0.14em] text-[#ff7f49] sm:text-2xl">TESSERA-EQ</div>
+          <div className="font-mono text-[8px] uppercase tracking-[0.32em] text-[#c8cedd]">Parametric EQ</div>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <SmallButton active>Static</SmallButton>
+          <SmallButton>Dynamic</SmallButton>
         </div>
       </div>
 
-      <div className="flex-1 flex items-center justify-center px-4 py-6 gap-2">
-        <div className="flex flex-col items-center gap-1 px-1">
-          <LevelMeter height={90} color="#4d7c8a" speed={1.2} />
-          <span className="font-mono text-[7px] text-tessera-dim mt-1">IN</span>
-        </div>
-        <div className="w-6 h-[1px] bg-gradient-to-r from-tessera-teal/40 to-transparent"></div>
-
-        {modules.map((mod, i) => (
-          <div key={mod.name} className="flex items-center">
-            <div className="flex flex-col items-center group/mod cursor-default">
-              <div className="relative transition-transform duration-300 group-hover/mod:scale-110">
-                <Logogram size={64} progress={mod.progress} color={mod.colorClass} />
-                <div
-                  className="absolute inset-0 rounded-full opacity-0 group-hover/mod:opacity-100 transition-opacity duration-300"
-                  style={{ boxShadow: `0 0 20px ${mod.glowHex}30` }}
-                ></div>
-              </div>
-              <span className="font-mono text-[8px] text-tessera-dim mt-2 tracking-widest group-hover/mod:text-white transition-colors duration-300">
-                {mod.name}
-              </span>
+      <div className="relative z-10 grid flex-1 grid-cols-[96px_minmax(0,1fr)_96px] gap-3 px-3 pb-3 pt-3 sm:px-4">
+        <div className="rounded-[1.4rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,10,16,0.92))] p-3">
+          <div className="mb-4 font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Input Gain</div>
+          <RotaryKnob label="Gain" value="+1.5 dB" accent="orange" size="lg" />
+          <div className="mt-6 border-t border-white/6 pt-4">
+            <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Global Controls</div>
+            <div className="space-y-2">
+              <div className="rounded-xl border border-white/8 bg-white/[0.02] px-3 py-2 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">Solo Selected Band</div>
+              <div className="rounded-xl border border-white/8 bg-white/[0.02] px-3 py-2 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">Reset All Bands</div>
             </div>
-            {i < modules.length - 1 && (
-              <div className="w-3 mx-0.5">
-                <div className="h-[1px] bg-gradient-to-r from-white/10 to-white/5"></div>
-              </div>
-            )}
           </div>
-        ))}
-
-        <div className="w-6 h-[1px] bg-gradient-to-r from-transparent to-tessera-orange/40"></div>
-        <div className="flex flex-col items-center gap-1 px-1">
-          <LevelMeter height={90} color="#FF5F1F" speed={1.4} />
-          <span className="font-mono text-[7px] text-tessera-dim mt-1">OUT</span>
-        </div>
-      </div>
-
-      <div className="mx-3 mb-3 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-black/40 border border-white/5">
-        <div className="w-1.5 h-1.5 rounded-full bg-tessera-orange animate-pulse"></div>
-        <span className="font-mono text-[10px] text-gray-500 flex-1">"make it warmer and punchier"</span>
-        <span className="font-mono text-[9px] text-tessera-teal tracking-wider px-2 py-0.5 rounded bg-tessera-teal/10 border border-tessera-teal/20">ANALYZE</span>
-      </div>
-    </div>
-  );
-};
-
-// ─── TESSERA EQ – Interface Mockup ────────────────────────────────────────────
-
-const EQInterfaceMockup = () => {
-  const [bars] = useState(() =>
-    Array.from({ length: 64 }, (_, i) =>
-      Math.max(3, Math.sin(i * 0.3) * 18 + Math.cos(i * 0.15) * 12 + 20 + Math.random() * 10)
-    )
-  );
-
-  return (
-    <div className="relative w-full h-full flex flex-col">
-      <div className="flex items-center justify-between px-5 py-3 border-b border-white/5">
-        <div className="flex items-center gap-2">
-          <PulseDot color="bg-tessera-teal" delay={200} />
-          <span className="font-mono text-[10px] text-tessera-teal tracking-widest">TESSERA EQ</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-[9px] text-tessera-dim tracking-widest">8-BAND PARAMETRIC</span>
-          <div className="w-2 h-2 rounded-sm bg-green-500/60 animate-pulse" style={{ animationDuration: '3s' }}></div>
-        </div>
-      </div>
-
-      <div className="flex-1 relative mx-3 my-2 overflow-hidden">
-        <div className="absolute left-0 top-2 bottom-2 flex flex-col items-center justify-center z-10">
-          <LevelMeter height={70} color="#4d7c8a" speed={1.0} />
         </div>
 
-        <svg viewBox="0 0 640 160" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-          {[0, 40, 80, 120, 160].map(y => (
-            <line key={y} x1="20" y1={y} x2="620" y2={y} stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
-          ))}
-          {[20, 120, 220, 320, 420, 520, 620].map(x => (
-            <line key={x} x1={x} y1="0" x2={x} y2="160" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
-          ))}
-
-          {bars.map((h, i) => {
-            const x = 24 + i * 9.2;
-            const opacity = 0.15 + (h / 60) * 0.25;
-            return (
-              <rect key={i} x={x} y={155 - h * 1.8} width="6" height={h * 1.8}
-                rx="1" fill={`rgba(77,124,138,${opacity})`} />
-            );
-          })}
-
-          <defs>
-            <linearGradient id="showcaseEqFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#FF5F1F" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="#FF5F1F" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-
-          <path d="M 24,80 C 60,80 90,72 140,65 C 180,60 210,50 270,44 C 310,40 340,52 390,58 C 420,62 450,68 500,56 C 540,46 570,40 616,38 L 616,160 L 24,160 Z"
-            fill="url(#showcaseEqFill)" />
-          <path d="M 24,80 C 60,80 90,72 140,65 C 180,60 210,50 270,44 C 310,40 340,52 390,58 C 420,62 450,68 500,56 C 540,46 570,40 616,38"
-            fill="none" stroke="#FF5F1F" strokeWidth="2" />
-
-          {[[24,80],[100,68],[190,52],[290,44],[370,56],[460,62],[540,48],[616,38]].map(([x,y],i) => (
-            <g key={i}>
-              <circle cx={x} cy={y} r="6" fill="#050505" stroke="#FF5F1F" strokeWidth="1.5" />
-              <circle cx={x} cy={y} r="2" fill="#FF5F1F" />
-            </g>
-          ))}
-        </svg>
-
-        <div className="absolute right-0 top-2 bottom-2 flex flex-col items-center justify-center z-10">
-          <LevelMeter height={70} color="#FF5F1F" speed={1.3} />
-        </div>
-      </div>
-
-      <div className="flex justify-between px-6 pb-1">
-        {['30', '100', '300', '1k', '2.5k', '5k', '10k', '16k'].map(f => (
-          <span key={f} className="font-mono text-[7px] text-tessera-dim/50">{f}</span>
-        ))}
-      </div>
-
-      <div className="mx-3 mb-3 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-black/40 border border-white/5">
-        <div className="w-1.5 h-1.5 rounded-full bg-tessera-teal animate-pulse"></div>
-        <span className="font-mono text-[10px] text-gray-500 flex-1">"cut the harshness, add warmth and air"</span>
-        <span className="font-mono text-[9px] text-tessera-orange tracking-wider px-2 py-0.5 rounded bg-tessera-orange/10 border border-tessera-orange/20">SUGGEST</span>
-      </div>
-    </div>
-  );
-};
-
-// ─── Feature Pill with tooltip ────────────────────────────────────────────────
-
-const FeatureIcon = ({ children, label, description = '', color = 'teal' }) => {
-  const isOrange = color === 'orange';
-  const pillBase = isOrange
-    ? 'border-tessera-orange/20 bg-tessera-orange/5 hover:border-tessera-orange/40 hover:bg-tessera-orange/10'
-    : 'border-tessera-teal/20 bg-tessera-teal/5 hover:border-tessera-teal/40 hover:bg-tessera-teal/10';
-  const iconColor = isOrange ? 'text-tessera-orange' : 'text-tessera-teal';
-
-  return (
-    <div className={`group/pill relative flex items-center gap-2.5 px-3 py-2 rounded-full border cursor-default transition-all duration-300 ${pillBase}`}>
-      <span className={`text-sm ${iconColor}`}>{children}</span>
-      <span className="font-mono text-[9px] text-tessera-dim tracking-wider group-hover/pill:text-gray-300 transition-colors">
-        {label}
-      </span>
-      {description && (
-        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 rounded-lg bg-tessera-void border border-white/10 font-mono text-[9px] text-tessera-text tracking-wide whitespace-nowrap opacity-0 group-hover/pill:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
-          {description}
-        </span>
-      )}
-    </div>
-  );
-};
-
-// ─── Main Showcase (EQ only) ──────────────────────────────────────────────────
-
-const ProductShowcase = ({ onNavigate }) => {
-  return (
-    <section id="products" className="relative z-10 py-20 px-6 max-w-6xl mx-auto">
-
-      {/* Section Header */}
-      <div className="text-center mb-16">
-        <span className="section-number block mb-4">05 / THE PROOF</span>
-        <h2 className="text-4xl md:text-5xl font-display font-light text-white tracking-tight mb-4">
-          Tessera <span className="text-tessera-teal">EQ</span>
-        </h2>
-        <p className="text-gray-500 max-w-lg mx-auto text-sm leading-relaxed">
-          Intelligent audio tools that automate the science of mixing — so you can stay in the art.
-        </p>
-        <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-tessera-teal/40 to-transparent mx-auto mt-6"></div>
-      </div>
-
-      {/* ─── TESSERA EQ Product Card ─── */}
-      <div className="group glass-card rounded-3xl border border-white/5 overflow-hidden transition-all duration-700 group-hover:shadow-[0_0_80px_rgba(77,124,138,0.14)] hover:border-tessera-teal/15 hover:scale-[1.005] mb-16">
-        <div className="h-[2px] bg-gradient-to-r from-transparent via-tessera-teal/50 to-transparent"></div>
-
-        <div className="grid md:grid-cols-2 gap-0">
-          {/* Mockup Side */}
-          <div className="relative bg-gradient-to-br from-[#080810] to-[#05050a] min-h-[300px] md:min-h-[380px] md:border-r border-white/5 overflow-hidden">
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-br from-tessera-teal/8 via-transparent to-tessera-teal/5"></div>
-            <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-tessera-teal/5 to-transparent pointer-events-none"></div>
-            <ProductImage
-              src="/images/tessera-eq-gui.png"
-              alt="Tessera EQ 8-Band Parametric Interface"
-              fallback={<EQInterfaceMockup />}
-            />
+        <div className="grid min-h-[22rem] grid-rows-[minmax(0,1fr)_128px] gap-3">
+          <div className="rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(13,20,30,0.92),rgba(6,10,14,0.96))] p-4">
+            <div className="relative h-full overflow-hidden rounded-[1.2rem] border border-white/6 bg-[#070b11]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_44%,rgba(93,212,240,0.08),transparent_45%)]" />
+              <EQGraph />
+              <svg viewBox="0 0 780 320" className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
+                {spectrumThreads.map((thread) => (
+                  <path key={thread} d={thread} fill="none" stroke="rgba(93,212,240,0.16)" strokeWidth="1.3" />
+                ))}
+              </svg>
+            </div>
           </div>
 
-          {/* Info Side */}
-          <div className="p-8 md:p-10 flex flex-col justify-center">
-            <div className="mb-4">
-              <span className="inline-block font-mono text-[10px] tracking-[0.3em] px-3 py-1 rounded-full border text-tessera-teal bg-tessera-teal/10 border-tessera-teal/20">
-                AVAILABLE NOW
-              </span>
+          <div className="grid grid-cols-[1.1fr_1fr_1fr_1fr_1.4fr] gap-3 rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(10,14,21,0.98),rgba(7,9,14,0.94))] p-4">
+            <div className="flex flex-col justify-between rounded-[1.1rem] border border-white/8 bg-white/[0.02] p-3">
+              <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Selected Band Editor</div>
+              <div>
+                <div className="text-[1.05rem] font-semibold tracking-[0.08em] text-[#ff7f49]">Band 3</div>
+                <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Selected</div>
+              </div>
             </div>
 
-            <h2
-              className="text-4xl md:text-5xl font-display font-light text-white mb-2 tracking-tight uppercase"
-              style={{ textShadow: '0 0 30px rgba(77,124,138,0.15)' }}
-            >
-              TESSERA <span className="text-tessera-teal">EQ</span>
+            <div className="flex flex-col items-center justify-between rounded-[1.1rem] border border-white/8 bg-white/[0.02] p-3">
+              <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Type</div>
+              <div className="rounded-full border border-white/8 px-3 py-1 font-mono text-[8px] uppercase tracking-[0.24em] text-[#d0d6e4]">Peak</div>
+              <div className="text-[10px] text-[#8d94ab]">Filter</div>
+            </div>
+
+            <div className="rounded-[1.1rem] border border-white/8 bg-white/[0.02] p-3">
+              <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Freq</div>
+              <RotaryKnob label="Band 3" value="244 Hz" accent="orange" />
+            </div>
+
+            <div className="rounded-[1.1rem] border border-white/8 bg-white/[0.02] p-3">
+              <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Gain</div>
+              <RotaryKnob label="Band 3" value="3.8 dB" accent="orange" />
+            </div>
+
+            <div className="grid grid-cols-[1fr_1fr] gap-3 rounded-[1.1rem] border border-white/8 bg-white/[0.02] p-3">
+              <div>
+                <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Q</div>
+                <RotaryKnob label="Band 3" value="1.00" accent="orange" />
+              </div>
+              <div className="flex flex-col justify-between rounded-[0.9rem] border border-white/8 bg-[#0a0e15] p-3">
+                <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Global Filter Type</div>
+                <div className="flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">
+                  <span className="rounded-full border border-[#ff8b5f]/40 px-2 py-1 text-[#ff8b5f]">HPF</span>
+                  <span className="rounded-full border border-white/8 px-2 py-1">LPF</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-[1.4rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,10,16,0.92))] p-3">
+          <div className="mb-4 text-right font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Output Gain</div>
+          <div className="flex flex-col items-end">
+            <RotaryKnob label="Gain" value="+0.0 dB" accent="orange" size="lg" />
+          </div>
+          <div className="mt-6 border-t border-white/6 pt-4">
+            <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Analyzer</div>
+            <div className="rounded-[1rem] border border-white/8 bg-white/[0.02] p-3">
+              <div className="mb-3 flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">
+                <span>Bypass</span>
+                <span className="h-3 w-3 rounded border border-white/12 bg-[#0a0e15]" />
+              </div>
+              <div className="flex items-center gap-3 rounded-full border border-[#5dd4f0]/25 bg-[#5dd4f0]/8 px-3 py-2 font-mono text-[8px] uppercase tracking-[0.24em] text-[#d5f8ff]">
+                <span className="h-3 w-3 rounded-sm border border-[#5dd4f0]/50 bg-[#5dd4f0]/20" />
+                <span>On / Off</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative z-10 border-t border-white/8 px-4 py-3 sm:px-6">
+        <div className="flex items-center gap-3 rounded-full border border-white/8 bg-black/35 px-4 py-3">
+          <div className="h-2 w-2 rounded-full bg-[#5dd4f0] shadow-[0_0_18px_rgba(93,212,240,0.8)]" />
+          <span className="flex-1 font-mono text-[9px] uppercase tracking-[0.22em] text-[#9ba3b9]">Describe the tone you want...</span>
+          <span className="rounded-full border border-[#ff8b5f]/40 bg-[#ff6a33]/14 px-4 py-2 font-mono text-[8px] uppercase tracking-[0.24em] text-[#ffd6c4]">Suggest</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LevelTrack({ accent = 'teal' }) {
+  const bars = useMemo(
+    () => Array.from({ length: 26 }, (_, index) => 0.25 + ((Math.sin(index * 0.5) + 1) * 0.5) * 0.7),
+    [],
+  );
+
+  const active = accent === 'teal' ? 'from-[#5dd4f0] to-[#247c90]' : 'from-[#ffb84d] to-[#ff6a33]';
+
+  return (
+    <div className="flex h-28 items-end gap-[3px]">
+      {bars.map((value, index) => (
+        <span
+          key={index}
+          className={`w-[5px] rounded-full bg-gradient-to-t ${active}`}
+          style={{ height: `${18 + value * 72}%`, opacity: 0.18 + value * 0.75 }}
+        />
+      ))}
+    </div>
+  );
+}
+
+export function ChannelStripMockup({ className = '' }) {
+  const modules = [
+    { name: 'Gate', accent: 'teal' },
+    { name: 'EQ', accent: 'orange' },
+    { name: 'Comp', accent: 'teal' },
+    { name: 'Sat', accent: 'orange' },
+    { name: 'Verb', accent: 'teal' },
+    { name: 'Limit', accent: 'orange' },
+  ];
+
+  return (
+    <div className={`relative flex h-full min-h-[24rem] flex-col overflow-hidden border border-white/8 bg-[#0a0d15] ${className}`.trim()}>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,184,77,0.16),transparent_30%),radial-gradient(circle_at_76%_30%,rgba(93,212,240,0.15),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_18%,transparent_84%,rgba(255,255,255,0.02))]" />
+
+      <div className="relative z-10 flex items-center justify-between border-b border-white/8 px-5 py-4">
+        <div>
+          <div className="font-mono text-[8px] uppercase tracking-[0.32em] text-[#8d94ab]">TESSERA ONE</div>
+          <div className="mt-1 text-3xl font-semibold tracking-[0.08em] text-white">Channel Strip</div>
+        </div>
+        <div className="rounded-full border border-[#ffb84d]/30 bg-[#ffb84d]/10 px-4 py-2 font-mono text-[8px] uppercase tracking-[0.24em] text-[#ffe1af]">Coming 2026</div>
+      </div>
+
+      <div className="relative z-10 grid flex-1 grid-cols-[140px_minmax(0,1fr)_140px] gap-4 p-5">
+        <div className="rounded-[1.4rem] border border-white/8 bg-white/[0.03] p-4">
+          <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Input</div>
+          <LevelTrack accent="teal" />
+          <div className="mt-4 rounded-[1rem] border border-white/8 bg-black/25 p-3 font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Semantic prompt ready</div>
+        </div>
+
+        <div className="rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,11,16,0.94))] p-5">
+          <div className="mb-6 flex items-center justify-between">
+            <div className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Transparent AI routing</div>
+            <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#d0d6e4]">Every move is editable</div>
+          </div>
+          <div className="grid grid-cols-3 gap-3">
+            {modules.map((module) => {
+              const teal = module.accent === 'teal';
+              return (
+                <div key={module.name} className="rounded-[1.2rem] border border-white/8 bg-[#0a0e15] p-4 text-center">
+                  <div
+                    className={`mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full border ${
+                      teal ? 'border-[#5dd4f0]/35 text-[#5dd4f0]' : 'border-[#ffb84d]/35 text-[#ffb84d]'
+                    } bg-white/[0.02] text-xs uppercase tracking-[0.3em]`}
+                  >
+                    {module.name.slice(0, 2)}
+                  </div>
+                  <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#d0d6e4]">{module.name}</div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-5 rounded-[1.2rem] border border-white/8 bg-black/25 p-4">
+            <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Intent chain</div>
+            <div className="mt-3 flex items-center gap-3 text-[10px] text-[#d0d6e4]">
+              <span className="rounded-full border border-[#5dd4f0]/25 px-3 py-1 font-mono uppercase tracking-[0.22em] text-[#d5f8ff]">Prompt</span>
+              <span className="h-px flex-1 bg-gradient-to-r from-[#5dd4f0]/40 to-[#ffb84d]/40" />
+              <span className="rounded-full border border-[#ffb84d]/25 px-3 py-1 font-mono uppercase tracking-[0.22em] text-[#ffe1af]">Visible controls</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-[1.4rem] border border-white/8 bg-white/[0.03] p-4">
+          <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Output</div>
+          <LevelTrack accent="orange" />
+          <div className="mt-4 rounded-[1rem] border border-white/8 bg-black/25 p-3 font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Adaptive taste profile</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FeatureChip({ label, accent = 'teal' }) {
+  const theme = accent === 'teal'
+    ? 'border-[#5dd4f0]/20 bg-[#5dd4f0]/8 text-[#d5f8ff]'
+    : 'border-[#ffb84d]/20 bg-[#ffb84d]/8 text-[#ffe1af]';
+
+  return (
+    <span className={`rounded-full border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.22em] ${theme}`}>
+      {label}
+    </span>
+  );
+}
+
+export default function ProductShowcase({ onNavigate }) {
+  return (
+    <section id="products" className="relative z-10 px-6 pb-28 pt-12 md:px-10 lg:px-14">
+      <div className="panel-shell">
+        <SectionMarker number="05" title="THE PROOF" className="mb-10" />
+
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)]">
+          <div className="overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,11,16,0.96))] p-3 sm:p-4">
+            <EQInterfaceMockup />
+          </div>
+
+          <div className="flex flex-col justify-center rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] p-8 sm:p-10 lg:p-12">
+            <div className="mb-5 flex flex-wrap gap-3">
+              <FeatureChip label="Available now" accent="teal" />
+              <FeatureChip label="Local-first AI" accent="orange" />
+            </div>
+
+            <h2 className="display-tight mb-5 text-[#f0ebe0]">
+              TESSERA EQ
             </h2>
 
-            <p className="font-mono text-xs text-tessera-dim tracking-wider mb-5">
-              AI-POWERED 8-BAND PARAMETRIC EQ
+            <p className="mb-6 max-w-xl text-lg leading-relaxed text-[#c7cfdd]">
+              An intent-driven 8-band EQ that translates plain language into editable curves.
+              It analyzes, suggests, and steps back so the artist stays in charge.
             </p>
 
-            <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-6">
-              An 8-band parametric equalizer that understands intent. Describe your sound goal — the AI shapes
-              the curve. Pre-scans your full track and generates a time-varying EQ that evolves with the music.
-              Then it learns from your every adjustment.
-            </p>
+            <div className="mb-8 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-[1.4rem] border border-white/8 bg-black/20 p-4">
+                <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Glass-box control</div>
+                <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">Every AI move maps to visible bands, gain, Q, and filter type.</div>
+              </div>
+              <div className="rounded-[1.4rem] border border-white/8 bg-black/20 p-4">
+                <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Adaptive engine</div>
+                <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">Dynamic suggestions evolve across the track and learn from your corrections.</div>
+              </div>
+            </div>
 
-            {/* Feature pills */}
-            <div className="flex flex-wrap gap-3 mb-8">
-              {[
-                { icon: '⫘', label: '8-BAND',     description: '8 parametric bands' },
-                { icon: '◇', label: 'AI',          description: 'Prompt-driven EQ' },
-                { icon: '∞', label: 'DYNAMIC',     description: 'Time-varying curves' },
-                { icon: '▥', label: 'FFT',         description: 'Full spectral view' },
-                { icon: '∂', label: 'LEARNS',      description: 'Adapts to your taste' },
-                { icon: '▶', label: 'STANDALONE',  description: 'No DAW required' },
-              ].map(f => (
-                <FeatureIcon key={f.label} label={f.label} description={f.description} color="teal">
-                  {f.icon}
-                </FeatureIcon>
+            <div className="mb-9 flex flex-wrap gap-3">
+              {['8 bands', 'Dynamic mode', 'Offline response', 'Learns your taste', 'Standalone', 'VST3 + AU'].map((item, index) => (
+                <FeatureChip key={item} label={item} accent={index % 2 === 0 ? 'teal' : 'orange'} />
               ))}
             </div>
 
-            {/* CTAs */}
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => onNavigate('eq-features')}
-                className="px-8 py-3.5 bg-tessera-teal/25 border border-tessera-teal/60 text-tessera-teal font-mono text-sm font-bold tracking-wider rounded-full transition-all duration-300 hover:bg-tessera-teal/40 hover:border-tessera-teal hover:scale-105 hover:shadow-[0_0_40px_rgba(77,124,138,0.25)]"
+                className="rounded-full border border-[#5dd4f0]/45 bg-[#5dd4f0]/14 px-7 py-3 font-mono text-xs font-semibold uppercase tracking-[0.28em] text-[#d5f8ff] transition-all duration-300 hover:border-[#5dd4f0] hover:bg-[#5dd4f0]/22"
               >
-                EXPLORE FEATURES
+                Explore Features
               </button>
-              <button className="px-8 py-3.5 border border-white/10 text-gray-400 font-mono text-sm tracking-wider rounded-full transition-all duration-300 hover:border-white/20 hover:text-white hover:scale-105">
-                DOWNLOAD
+              <button className="rounded-full border border-white/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#bfc7d8] transition-all duration-300 hover:border-white/25 hover:text-white">
+                Download
               </button>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Stats strip — EQ focused, big numbers */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {[
-          { value: '8',    label: 'Bands',       sub: 'parametric EQ' },
-          { value: '786',  label: 'Descriptors', sub: 'in the local dataset' },
-          { value: '<1s',  label: 'Response',    sub: 'fully offline' },
-          { value: '∞',    label: 'Learning',    sub: 'adapts to you' },
-        ].map(({ value, label, sub }) => (
-          <div
-            key={label}
-            className="glass-card rounded-2xl border border-white/5 p-6 text-center group hover:border-white/10 transition-all duration-300 cursor-default hover:shadow-teal-glow"
-          >
-            <div className="text-5xl md:text-6xl font-display font-black leading-none mb-3 text-white group-hover:text-tessera-teal transition-colors duration-300">
-              {value}
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {[
+            { value: '8', label: 'Bands', note: 'fully editable' },
+            { value: '786', label: 'Descriptors', note: 'local semantic set' },
+            { value: '<1s', label: 'Response', note: 'for local matches' },
+            { value: '3 tiers', label: 'Inference', note: 'local to creative AI' },
+          ].map((stat) => (
+            <div key={stat.label} className="rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.9))] p-6">
+              <div className="text-5xl font-semibold tracking-[-0.05em] text-[#f0ebe0]">{stat.value}</div>
+              <div className="mt-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">{stat.label}</div>
+              <div className="mt-2 text-sm text-[#c7cfdd]">{stat.note}</div>
             </div>
-            <div className="font-mono text-[10px] text-tessera-dim tracking-[0.3em] uppercase">{label}</div>
-            <div className="font-mono text-[9px] text-tessera-dim/50 mt-1 tracking-wider">{sub}</div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-
     </section>
   );
-};
-
-export { EQInterfaceMockup, ChannelStripMockup };
-export default ProductShowcase;
+}

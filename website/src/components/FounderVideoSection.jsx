@@ -1,30 +1,22 @@
-import React from 'react';
 import VideoPlayer from './VideoPlayer';
 
-/**
- * Founder's video section for the home page.
- * Place your founder video at: public/videos/founders-video.mp4
- * Supported formats: mp4, webm (mp4 recommended for best compatibility)
- */
-const FounderVideoSection = () => {
-  // Path to founder's video - place file in public/videos/
-  const FOUNDER_VIDEO_SRC = '/videos/founders-video.mp4';
+const FOUNDER_VIDEO_SRC = '/videos/founders-video.mp4';
 
+export default function FounderVideoSection() {
   return (
-    <section className="relative z-10 max-w-5xl mx-auto px-6">
-      <div className="glass-card p-10 md:p-16 rounded-3xl border border-white/5 bg-gradient-to-br from-tessera-void to-tessera-ink relative animate-fade-in">
-        <div className="relative z-10">
-          <h2 className="text-3xl md:text-4xl font-display font-light leading-tight mb-4 text-tessera-teal tracking-tight">
-            From the Founder
+    <section className="relative z-10">
+      <div className="rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] p-8 sm:p-10 lg:p-12">
+        <div className="mb-8 max-w-3xl">
+          <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">From the founder</div>
+          <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-[#f0ebe0] sm:text-4xl">
+            Why Tessera has to exist.
           </h2>
-          <p className="text-gray-400 mb-10 max-w-2xl font-light">
-            Hear the story behind Tessera—why we build it, and what we believe about the future of music creation.
+          <p className="mt-4 text-base leading-relaxed text-[#c6cfdd]">
+            The philosophy is easier to feel when you hear it directly. This section keeps the human voice inside the redesign, not just the rhetoric.
           </p>
-          <VideoPlayer src={FOUNDER_VIDEO_SRC} />
         </div>
+        <VideoPlayer src={FOUNDER_VIDEO_SRC} />
       </div>
     </section>
   );
-};
-
-export default FounderVideoSection;
+}

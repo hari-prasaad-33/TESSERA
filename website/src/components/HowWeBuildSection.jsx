@@ -1,107 +1,185 @@
-import React from 'react';
-import IllustrationPlaceholder from './IllustrationPlaceholder';
+import { EQInterfaceMockup } from './ProductShowcase';
+import SectionMarker from './SectionMarker';
+import ShaderBackground from './ShaderBackground';
+import { shaderPresets } from '../shaders/presets';
 
-const HowWeBuildSection = ({ eqMockup }) => {
-  const methods = [
-    {
-      id: '4.1',
-      title: 'Glass Box in Action',
-      subtitle: 'Every AI decision maps to a knob you can turn.',
-      description:
-        "When you type \"add warmth and air,\" the AI doesn't hide behind a magic button. It adjusts 8 visible EQ bands — each one draggable, each one yours to override. The AI suggests. You decide. Nothing happens that you can't see and undo.",
-      hasLiveMockup: true,
-    },
-    {
-      id: '4.2',
-      title: 'The Semantic Engine',
-      subtitle: 'From human words to mathematical curves — on your machine.',
-      description:
-        'A native C++ RAG pipeline runs entirely offline. Your words are tokenized by a BERT WordPiece tokenizer, embedded into 384-dimensional vectors via ONNX Runtime inference, and matched against 786 pre-computed EQ descriptors using cosine similarity. All in under a second. No internet required.',
-      illustrationDesc:
-        'Diagram: "warm and bright" → WordPiece tokenizer → 384-dim embedding space → cosine similarity search → 8-band EQ curve output. Flow left-to-right, minimal, teal connection lines on ink black.',
-    },
-    {
-      id: '4.3',
-      title: 'Three-Tier Intelligence',
-      subtitle: 'Local-first. AI-assisted when it adds value.',
-      description:
-        'Tier 1 (≥ 0.95 similarity): High-confidence matches return instantly from the local dataset — no API call, no latency. Tier 2 (0.82–0.95): The AI refines using the 5 nearest dataset entries as grounding context. Tier 3 (< 0.82): Novel or unusual descriptions trigger full AI creative interpretation. Every tier degrades gracefully to the dataset if the network is unavailable.',
-      illustrationDesc:
-        'Three-tier funnel diagram: Tier 1 at top (instant, local, green), Tier 2 middle (AI-grounded, teal), Tier 3 at base (AI creative, orange). Show confidence thresholds ≥0.95 / 0.82–0.95 / <0.82 as labels.',
-    },
-    {
-      id: '4.4',
-      title: 'The DSP Foundation',
-      subtitle: 'Cytomic SVF. Trapezoidal integration. Zero artifacts.',
-      description:
-        'Every filter uses Cytomic State Variable Filter topology with per-sample safe coefficient updates. Sweep any parameter at any speed — AI-driven or manual — and hear nothing but the music. No zipper noise, no blowups, no compromise. The math exists to serve the sound.',
-      illustrationDesc:
-        'Smooth EQ curve sweep animation — before/after showing artifact-free modulation. A clean waveform comparison showing transparent SVF processing. Minimal, technical, teal/orange.',
-    },
+function SemanticEngineVisual() {
+  const stages = ['Prompt', 'Tokenizer', 'Embedding', 'Similarity', '8-band curve'];
+
+  return (
+    <div className="relative flex h-full min-h-[24rem] flex-col justify-center overflow-hidden border border-white/8 bg-[#08111a] p-6 sm:p-8">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(93,212,240,0.16),transparent_26%),radial-gradient(circle_at_80%_78%,rgba(255,184,77,0.14),transparent_30%)]" />
+      <div className="relative z-10 grid gap-4">
+        {stages.map((stage, index) => (
+          <div key={stage} className="flex items-center gap-3">
+            <div className="flex h-12 min-w-0 flex-1 items-center rounded-[1rem] border border-white/8 bg-black/22 px-4 font-mono text-[10px] uppercase tracking-[0.24em] text-[#d5f8ff]">
+              {stage}
+            </div>
+            {index < stages.length - 1 && <div className="w-10 h-px bg-gradient-to-r from-[#5dd4f0]/55 to-[#ffb84d]/55" />}
+          </div>
+        ))}
+      </div>
+      <div className="relative z-10 mt-6 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-[1rem] border border-white/8 bg-black/22 p-4">
+          <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#8d94ab]">Local model</div>
+          <div className="mt-2 text-sm text-[#d8deea]">384-dimensional embeddings, computed on device.</div>
+        </div>
+        <div className="rounded-[1rem] border border-white/8 bg-black/22 p-4">
+          <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#8d94ab]">Reference set</div>
+          <div className="mt-2 text-sm text-[#d8deea]">786 descriptors scored by cosine similarity.</div>
+        </div>
+        <div className="rounded-[1rem] border border-white/8 bg-black/22 p-4">
+          <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#8d94ab]">Latency</div>
+          <div className="mt-2 text-sm text-[#d8deea]">Under a second for high-confidence local matches.</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TierVisual() {
+  const tiers = [
+    { title: 'Tier 1', subtitle: 'Local hit', threshold: '>= 0.95', accent: 'teal' },
+    { title: 'Tier 2', subtitle: 'Grounded AI', threshold: '0.82 - 0.95', accent: 'amber' },
+    { title: 'Tier 3', subtitle: 'Creative AI', threshold: '< 0.82', accent: 'orange' },
   ];
 
   return (
-    <section className="py-32 relative z-10 max-w-5xl mx-auto px-6">
-      <div className="section-number mb-8">04 / HOW WE BUILD</div>
+    <div className="flex h-full min-h-[24rem] items-center justify-center border border-white/8 bg-[#0a1118] p-6 sm:p-8">
+      <div className="w-full max-w-xl space-y-4">
+        {tiers.map((tier, index) => {
+          const theme = tier.accent === 'teal'
+            ? 'border-[#5dd4f0]/25 bg-[#5dd4f0]/10 text-[#d5f8ff]'
+            : tier.accent === 'amber'
+              ? 'border-[#ffb84d]/25 bg-[#ffb84d]/10 text-[#ffe1af]'
+              : 'border-[#ff6a33]/25 bg-[#ff6a33]/10 text-[#ffd6c4]';
 
-      <h2 className="text-4xl md:text-5xl font-display font-light text-white tracking-tight mb-6 max-w-3xl leading-tight">
-        We build in the open.
-      </h2>
-      <p className="text-2xl font-accent font-normal text-tessera-teal mb-6">
-        Here's how Tessera EQ works.
-      </p>
-
-      <p className="text-lg text-gray-400 font-light max-w-2xl leading-relaxed mb-20">
-        No black boxes. No magic buttons. Every piece of our architecture exists
-        to keep you in control while removing the friction between intent and sound.
-      </p>
-
-      <div className="space-y-24">
-        {methods.map((method, i) => {
-          const isReversed = i % 2 !== 0;
           return (
-            <div
-              key={method.id}
-              className={`grid md:grid-cols-2 gap-10 md:gap-16 items-center ${isReversed ? 'direction-reverse' : ''}`}
-            >
-              {/* Text side */}
-              <div className={isReversed ? 'md:order-2' : ''}>
-                <span className="font-mono text-xs text-tessera-orange tracking-[0.3em] mb-3 block">
-                  {method.id}
-                </span>
-                <h3 className="text-2xl md:text-3xl font-display font-light text-white mb-2 tracking-tight">
-                  {method.title}
-                </h3>
-                <p className="font-mono text-xs text-tessera-dim tracking-wider mb-5">
-                  {method.subtitle}
-                </p>
-                <p className="text-gray-400 leading-relaxed text-sm md:text-base">
-                  {method.description}
-                </p>
+            <div key={tier.title} className={`rounded-[1.4rem] border p-5 ${theme}`}>
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.26em]">{tier.title}</div>
+                  <div className="mt-2 text-2xl font-semibold tracking-[-0.04em]">{tier.subtitle}</div>
+                </div>
+                <div className="font-mono text-xs uppercase tracking-[0.24em]">{tier.threshold}</div>
               </div>
-
-              {/* Visual side */}
-              <div className={isReversed ? 'md:order-1' : ''}>
-                {method.hasLiveMockup ? (
-                  <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-tessera-void to-tessera-ink overflow-hidden shadow-teal-glow">
-                    <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-tessera-teal/5 to-transparent pointer-events-none z-10"></div>
-                    <div style={{ height: '260px' }}>
-                      {eqMockup}
-                    </div>
-                  </div>
-                ) : (
-                  <IllustrationPlaceholder
-                    description={method.illustrationDesc}
-                    aspectRatio="4/3"
-                  />
-                )}
-              </div>
+              {index < tiers.length - 1 && <div className="mt-4 h-px bg-white/10" />}
             </div>
           );
         })}
       </div>
+    </div>
+  );
+}
+
+function DSPVisual() {
+  return (
+    <div className="flex h-full min-h-[24rem] items-center justify-center border border-white/8 bg-[#090f16] p-6 sm:p-8">
+      <svg viewBox="0 0 620 280" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="waveA" x1="0" x2="1">
+            <stop offset="0%" stopColor="#5dd4f0" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#5dd4f0" stopOpacity="0.85" />
+          </linearGradient>
+          <linearGradient id="waveB" x1="0" x2="1">
+            <stop offset="0%" stopColor="#ffb84d" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="#ff6a33" stopOpacity="0.85" />
+          </linearGradient>
+        </defs>
+
+        <rect x="0" y="0" width="620" height="280" rx="26" fill="rgba(7,10,16,0.6)" stroke="rgba(255,255,255,0.08)" />
+        <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveA)" strokeWidth="4" />
+        <path d="M 36 148 C 88 148 144 148 198 148 C 248 148 302 148 360 148 C 418 148 472 148 524 148" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeDasharray="5 7" />
+        <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveB)" strokeWidth="2.2" strokeDasharray="1 10" />
+        {['Before', 'After', 'Artifact free sweep'].map((label, index) => (
+          <text key={label} x={58 + index * 180} y="242" fill="rgba(208,214,228,0.86)" fontSize="13" fontFamily="'JetBrains Mono', monospace">
+            {label}
+          </text>
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+function BuildSlab({ id, title, subtitle, description, visual, reverse = false }) {
+  return (
+    <div className="overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))]">
+      <div className={`grid gap-0 lg:grid-cols-2 ${reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''}`}>
+        <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12">
+          <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">{id}</div>
+          <h3 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-4xl">{title}</h3>
+          <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.26em] text-[#5dd4f0]">{subtitle}</p>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-[#c6cfdd]">{description}</p>
+        </div>
+        <div className="min-h-[22rem] lg:min-h-[28rem]">{visual}</div>
+      </div>
+    </div>
+  );
+}
+
+export default function HowWeBuildSection({ eqMockup }) {
+  const liveVisual = eqMockup ?? <EQInterfaceMockup className="h-full min-h-[28rem]" />;
+
+  return (
+    <section className="relative z-10 px-6 pb-28 pt-24 md:px-10 lg:px-14 lg:pb-32">
+      <div className="panel-shell">
+        <SectionMarker number="04" title="HOW WE BUILD" className="mb-10" />
+
+        <div className="mb-10 max-w-4xl">
+          <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">
+            The architecture behind the promise
+          </p>
+          <h2 className="display-tight mt-4 text-[#f0ebe0]">
+            WE BUILD IN
+            <span className="mt-2 block text-[#5dd4f0]">THE OPEN.</span>
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#c6cfdd]">
+            No black-box gestures. No mystery presets. Every part of the system is designed so the musician can see the move, understand it, and take over instantly.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <BuildSlab
+            id="04.1"
+            title="Glass Box in Action"
+            subtitle="Every AI decision maps to a knob you can turn."
+            description="Type a phrase like 'add warmth and air' and the system suggests a full EQ state. Nothing is hidden behind a magic button. Every band is draggable, editable, and reversible."
+            visual={
+              <div className="relative h-full overflow-hidden bg-[#081018]">
+                <ShaderBackground fragmentShader={shaderPresets.lanterns} opacity={0.45} mixBlendMode="screen" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,14,0.14),rgba(5,8,14,0.72)_82%)]" />
+                <div className="relative z-10 h-full p-3 sm:p-4">{liveVisual}</div>
+              </div>
+            }
+          />
+
+          <BuildSlab
+            id="04.2"
+            title="The Semantic Engine"
+            subtitle="From human language to mathematical curves - on your machine."
+            description="A local pipeline tokenizes the prompt, embeds it into vector space, and retrieves the nearest tonal descriptors before shaping the EQ. It is fast, grounded, and private by default."
+            visual={<SemanticEngineVisual />}
+            reverse
+          />
+
+          <BuildSlab
+            id="04.3"
+            title="Three-Tier Intelligence"
+            subtitle="Local-first when it is obvious. AI-assisted when it helps."
+            description="High-confidence matches return instantly from the local dataset. Mid-confidence prompts get grounded AI refinement. Truly novel intent can escalate to the broader creative model. Every path degrades gracefully."
+            visual={<TierVisual />}
+          />
+
+          <BuildSlab
+            id="04.4"
+            title="The DSP Foundation"
+            subtitle="Stable filters. Smooth ramps. No audible compromise."
+            description="Cytomic state-variable filters and safe parameter interpolation let us move continuously, whether the driver is a human hand or an AI suggestion. The math exists to serve the sound, not show off."
+            visual={<DSPVisual />}
+            reverse
+          />
+        </div>
+      </div>
     </section>
   );
-};
-
-export default HowWeBuildSection;
+}

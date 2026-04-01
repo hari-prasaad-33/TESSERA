@@ -1,71 +1,64 @@
-import React from 'react';
-import IllustrationPlaceholder from './IllustrationPlaceholder';
+import SectionMarker from './SectionMarker';
+import ShaderBackground from './ShaderBackground';
+import { shaderPresets } from '../shaders/presets';
 
-const HeroSection = ({ onExplore }) => (
-  <header id="home" className="relative z-10 min-h-screen flex items-center px-6 md:px-16">
-    <div className="w-full max-w-6xl mx-auto py-32">
+export default function HeroSection({ onExplore }) {
+  return (
+    <header id="home" className="relative z-10 flex min-h-screen items-end px-6 pb-10 pt-28 md:px-10 lg:px-14 lg:pb-14">
+      <div className="panel-shell w-full">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(22rem,0.9fr)] lg:items-end">
+          <div className="relative z-10 max-w-5xl pb-4">
+            <SectionMarker number="01" title="THE MISSION" className="mb-8" />
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">
+              Human-first audio intelligence
+            </p>
+            <h1 className="display-bleed max-w-[12ch] text-[#f0ebe0]">
+              THE SOUL OF MUSIC CREATION
+              <span className="mt-3 block text-[#ffb84d]">IS NOT FOR SALE.</span>
+            </h1>
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#c6cfdd] md:text-xl">
+              When AI can finish a track in seconds, the speed can erase the reason we started.
+              Tessera exists to protect the ritual, the struggle, and the human decisions that make music mean something.
+            </p>
 
-      {/* Section number */}
-      <div
-        className="section-number mb-8 animate-fade-in-up"
-        style={{ animationDelay: '0ms', animationFillMode: 'both' }}
-      >
-        01 / THE MISSION
+            <div className="mt-10 flex flex-wrap gap-4">
+              <button
+                onClick={onExplore}
+                className="rounded-full border border-[#5dd4f0]/45 bg-[#5dd4f0]/14 px-7 py-3 font-mono text-xs font-semibold uppercase tracking-[0.28em] text-[#d5f8ff] transition-all duration-300 hover:border-[#5dd4f0] hover:bg-[#5dd4f0]/22"
+              >
+                Explore the philosophy
+              </button>
+              <button
+                onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+                className="rounded-full border border-white/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#c4ccd9] transition-all duration-300 hover:border-white/25 hover:text-white"
+              >
+                See Tessera EQ
+              </button>
+            </div>
+          </div>
+
+          <div className="relative min-h-[24rem] overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.84))] lg:min-h-[34rem]">
+            <ShaderBackground
+              fragmentShader={shaderPresets.hero}
+              mixBlendMode="screen"
+              opacity={0.9}
+            />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_24%,rgba(255,184,77,0.18),transparent_24%),linear-gradient(180deg,rgba(4,5,18,0.18),rgba(4,5,18,0.82)_72%)]" />
+            <div className="absolute bottom-0 left-0 right-0 z-10 p-6 sm:p-8">
+              <div className="rounded-[1.6rem] border border-white/10 bg-black/28 p-6 backdrop-blur-md">
+                <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">Tessera thesis</div>
+                <p className="mt-4 text-2xl leading-tight text-[#f0ebe0] sm:text-3xl">
+                  Process over shortcuts.
+                </p>
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-[#d0d7e4]">
+                  We use intelligence to remove friction, not authorship.
+                  The machine can suggest. The artist still decides.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      {/* Main mission statement */}
-      <h1
-        className="text-5xl md:text-7xl lg:text-8xl font-accent font-semibold leading-[1.05] text-white mb-8 max-w-4xl animate-fade-in-up"
-        style={{ animationDelay: '100ms', animationFillMode: 'both' }}
-      >
-        The soul of music creation<br />
-        <span className="text-tessera-orange">is not for sale.</span>
-      </h1>
-
-      {/* Sub-statement */}
-      <p
-        className="text-xl md:text-2xl text-gray-400 font-body font-light max-w-2xl leading-relaxed mb-12 animate-fade-in-up"
-        style={{ animationDelay: '200ms', animationFillMode: 'both' }}
-      >
-        When AI can finish a track in seconds, the speed erases the meaning.
-        TESSERA exists to make sure the process of creating music —{' '}
-        <span className="text-white">the human part</span> — never dies.
-      </p>
-
-      {/* Soft CTA */}
-      <div
-        className="flex flex-wrap gap-8 mb-20 animate-fade-in-up"
-        style={{ animationDelay: '320ms', animationFillMode: 'both' }}
-      >
-        <button
-          onClick={onExplore}
-          className="group flex items-center gap-3 font-mono text-sm text-tessera-teal tracking-wider transition-all duration-300 hover:text-white"
-        >
-          EXPLORE OUR PHILOSOPHY
-          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-        </button>
-        <button
-          onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
-          className="group flex items-center gap-3 font-mono text-sm text-tessera-dim tracking-wider transition-all duration-300 hover:text-gray-300"
-        >
-          SEE TESSERA EQ
-          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-        </button>
-      </div>
-
-      {/* Hero illustration placeholder */}
-      <div
-        className="animate-fade-in-up"
-        style={{ animationDelay: '400ms', animationFillMode: 'both' }}
-      >
-        <IllustrationPlaceholder
-          description="Hero illustration — a musician at a mixing desk, cinematic dark lighting, the TESSERA aesthetic: ink black background, teal data visualizations, orange active elements. The human hand resting on the fader. Emotional, atmospheric. Generate with Stockimg.ai or Nano Banana."
-          aspectRatio="21/9"
-        />
-      </div>
-
-    </div>
-  </header>
-);
-
-export default HeroSection;
+    </header>
+  );
+}

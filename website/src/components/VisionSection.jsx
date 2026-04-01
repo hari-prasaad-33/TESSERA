@@ -1,100 +1,99 @@
-import React from 'react';
 import { ChannelStripMockup } from './ProductShowcase';
-import Logogram from './Logogram';
-import IllustrationPlaceholder from './IllustrationPlaceholder';
+import SectionMarker from './SectionMarker';
+import ShaderBackground from './ShaderBackground';
+import { shaderPresets } from '../shaders/presets';
 
-const VisionSection = () => (
-  <section className="py-32 relative z-10 max-w-5xl mx-auto px-6">
-    <div className="section-number mb-8">06 / THE VISION</div>
+function RoadmapVisual() {
+  const stops = [
+    { title: 'EQ', note: 'Available now', accent: 'teal' },
+    { title: 'Dynamics', note: 'In build', accent: 'amber' },
+    { title: 'Space', note: 'Next layer', accent: 'orange' },
+    { title: 'ONE', note: 'Integrated suite', accent: 'amber' },
+    { title: 'DAW', note: 'The moonshot', accent: 'teal' },
+  ];
 
-    <h2 className="text-4xl md:text-5xl font-accent font-normal text-white leading-tight mb-6 max-w-3xl">
-      This is just the beginning.
-    </h2>
+  return (
+    <div className="relative flex h-full min-h-[24rem] items-center overflow-hidden border border-white/8 bg-[#090714] p-8 sm:p-10">
+      <ShaderBackground fragmentShader={shaderPresets.cosmos} opacity={0.74} mixBlendMode="screen" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,6,14,0.18),rgba(5,6,14,0.82)_84%)]" />
+      <div className="relative z-10 w-full">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-5">
+          {stops.map((stop, index) => {
+            const theme = stop.accent === 'teal'
+              ? 'border-[#5dd4f0]/28 bg-[#5dd4f0]/10 text-[#d5f8ff]'
+              : stop.accent === 'amber'
+                ? 'border-[#ffb84d]/28 bg-[#ffb84d]/10 text-[#ffe1af]'
+                : 'border-[#ff6a33]/28 bg-[#ff6a33]/10 text-[#ffd6c4]';
 
-    <p className="text-lg text-gray-400 font-light max-w-2xl leading-relaxed mb-20">
-      Tessera EQ is the foundation stone. What comes next is a completely new way to interact with sound.
-    </p>
+            return (
+              <div key={stop.title} className="flex items-center gap-3 sm:gap-5">
+                <div className={`min-w-[8rem] rounded-[1.4rem] border px-5 py-4 ${theme}`}>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.28em]">{stop.note}</div>
+                  <div className="mt-2 text-2xl font-semibold tracking-[-0.04em]">{stop.title}</div>
+                </div>
+                {index < stops.length - 1 && <div className="hidden h-px w-14 bg-gradient-to-r from-white/10 via-white/30 to-white/10 sm:block" />}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
 
-    {/* ─── TESSERA ONE ──────────────────────────────────────── */}
-    <div className="group glass-card rounded-3xl border border-white/5 overflow-hidden mb-12 transition-all duration-700 hover:border-tessera-orange/15 hover:shadow-[0_0_80px_rgba(255,95,31,0.08)]">
-      <div className="h-[2px] bg-gradient-to-r from-transparent via-tessera-orange/50 to-transparent"></div>
+export default function VisionSection() {
+  return (
+    <section id="vision" className="relative z-10 px-6 pb-28 pt-24 md:px-10 lg:px-14 lg:pb-32">
+      <div className="panel-shell">
+        <SectionMarker number="06" title="THE VISION" className="mb-10" />
 
-      <div className="grid md:grid-cols-2 gap-0">
-        {/* Mockup — dimmed with Coming Soon overlay */}
-        <div className="relative bg-gradient-to-br from-[#080810] to-[#05050a] min-h-[300px] md:min-h-[340px] md:border-r border-white/5 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-tessera-orange/5 via-transparent to-tessera-orange/3"></div>
-          <div className="opacity-40 pointer-events-none">
-            <ChannelStripMockup />
+        <div className="mb-10 max-w-4xl">
+          <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">
+            This is only the first product
+          </p>
+          <h2 className="display-tight mt-4 text-[#f0ebe0]">
+            THIS IS JUST
+            <span className="mt-2 block text-[#ffb84d]">THE BEGINNING.</span>
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#c6cfdd]">
+            Tessera EQ is the entry point. The real ambition is a full environment where every intelligent tool stays transparent, tactile, and in service of the musician.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <div className="overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))]">
+            <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.9fr)]">
+              <div className="min-h-[24rem] lg:min-h-[30rem]">
+                <ChannelStripMockup className="h-full border-0" />
+              </div>
+              <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12">
+                <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">Coming 2026</div>
+                <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">TESSERA ONE</h3>
+                <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.26em] text-[#ffb84d]">The complete AI mixing suite</p>
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-[#c6cfdd]">
+                  EQ, dynamics, saturation, space, utility, and learning all connected by one intent layer. A system that understands the mix as a whole, but still exposes every decision as something you can tweak and own.
+                </p>
+                <button className="mt-8 w-fit rounded-full border border-[#ffb84d]/35 bg-[#ffb84d]/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#ffe1af] transition-all duration-300 hover:border-[#ffb84d]/60 hover:bg-[#ffb84d]/14">
+                  Join the waitlist
+                </button>
+              </div>
+            </div>
           </div>
-          {/* Coming Soon overlay */}
-          <div className="absolute inset-0 flex items-center justify-center bg-tessera-ink/50">
-            <div className="text-center">
-              <span className="font-mono text-sm text-tessera-orange tracking-[0.4em] block mb-3">COMING 2026</span>
-              <div className="w-16 h-[1px] bg-tessera-orange/40 mx-auto"></div>
+
+          <div className="overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] p-8 sm:p-10 lg:p-12">
+            <div className="max-w-3xl">
+              <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">The moonshot</div>
+              <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">TESSERA DAW</h3>
+              <p className="mt-6 text-base leading-relaxed text-[#c6cfdd]">
+                A digital audio workspace where plugins, timeline, and artist all communicate through semantic intent without hiding the engineering underneath. New interaction model. Same values.
+              </p>
+            </div>
+            <div className="mt-8">
+              <RoadmapVisual />
             </div>
           </div>
         </div>
-
-        {/* Info */}
-        <div className="p-8 md:p-10 flex flex-col justify-center">
-          <span className="inline-block font-mono text-[10px] tracking-[0.3em] px-3 py-1 rounded-full border text-tessera-orange bg-tessera-orange/10 border-tessera-orange/20 mb-4 w-fit">
-            COMING SOON
-          </span>
-
-          <h3
-            className="text-4xl md:text-5xl font-display font-light text-white mb-2 tracking-tight uppercase"
-            style={{ textShadow: '0 0 30px rgba(255,95,31,0.15)' }}
-          >
-            TESSERA <span className="text-tessera-orange">ONE</span>
-          </h3>
-
-          <p className="font-mono text-xs text-tessera-dim tracking-wider mb-5">
-            THE COMPLETE AI MIXING SUITE
-          </p>
-
-          <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-8">
-            The complete mixing ecosystem. Tessera ONE will integrate every stage of the mix chain into a
-            single AI-powered plugin: EQ, Compressor, Saturator, Reverb, Gate, and Limiter — all built on
-            the intelligence foundation of Tessera EQ.
-          </p>
-
-          <button className="px-8 py-3.5 border border-white/10 text-gray-400 font-mono text-sm tracking-wider rounded-full transition-all duration-300 hover:border-tessera-orange/40 hover:text-tessera-orange hover:scale-105 w-fit">
-            JOIN THE WAITLIST
-          </button>
-        </div>
       </div>
-    </div>
-
-    {/* ─── TESSERA DAW MOONSHOT ─────────────────────────────── */}
-    <div className="glass-card p-10 md:p-16 rounded-3xl border border-white/5 bg-gradient-to-br from-tessera-void to-tessera-ink relative text-center">
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-tessera-teal/30 to-transparent opacity-70"></div>
-
-      <div className="mb-8 flex justify-center">
-        <Logogram size={80} progress={30} color="text-tessera-teal" />
-      </div>
-
-      <span className="section-number block mb-4">THE MOONSHOT</span>
-
-      <h3 className="text-3xl md:text-5xl font-display font-light text-white tracking-tight mb-6 max-w-2xl mx-auto leading-tight">
-        TESSERA <span className="text-tessera-orange">DAW</span>
-      </h3>
-
-      <p className="text-gray-400 max-w-xl mx-auto leading-relaxed mb-8">
-        A completely new digital audio workspace where plugins, the DAW, and the artist communicate
-        seamlessly through semantic intent and uncompromised audio engineering. An ecosystem where
-        AI empowers the musician — never replacing them.
-      </p>
-
-      <p className="font-accent text-base text-tessera-teal border-l-2 border-tessera-teal pl-4 max-w-lg mx-auto text-left italic mb-12">
-        "You aren't just selling a better EQ. You are selling a completely new way to interact with sound."
-      </p>
-
-      <IllustrationPlaceholder
-        description="The TESSERA ecosystem roadmap: EQ → Compressor → Reverb → ONE → DAW. A visual timeline or constellation map showing the progression. Futuristic, minimal, ink black with teal/orange nodes."
-        aspectRatio="21/9"
-      />
-    </div>
-  </section>
-);
-
-export default VisionSection;
+    </section>
+  );
+}

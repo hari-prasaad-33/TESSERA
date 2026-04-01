@@ -2,20 +2,21 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-tessera-ink: #050505;
-  --color-tessera-void: #0a0a0f;
-  --color-tessera-mist: #12121a;
+  --color-tessera-ink: #04050a;
+  --color-tessera-void: #080b12;
+  --color-tessera-mist: #111621;
   --color-tessera-teal: #4d7c8a;
-  --color-tessera-orange: #FF5F1F;
-  --color-tessera-text: #e0e0e0;
-  --color-tessera-dim: #6b7280;
-  
+  --color-tessera-cyan: #5DD4F0;
+  --color-tessera-orange: #FF6A33;
+  --color-tessera-amber: #FFB84D;
+  --color-tessera-cream: #F0EBE0;
+  --color-tessera-text: #dce3ef;
+  --color-tessera-dim: #7b8599;
+
   --font-display: 'Space Grotesk', sans-serif;
   --font-accent: 'Shippori Mincho', serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  
-  --background-image-mist-gradient: radial-gradient(circle at 50% 50%, rgba(20, 20, 30, 0.4) 0%, rgba(5, 5, 5, 0) 70%);
 }
 
 @layer utilities {
@@ -23,30 +24,27 @@
     background: radial-gradient(circle at 50% 50%, rgba(20, 30, 40, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
     pointer-events: none;
   }
-  
+
   .glass-card {
-    background: rgba(15, 15, 20, 0.4);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(7, 10, 16, 0.55);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 18px 80px rgba(0, 0, 0, 0.28);
   }
 
   .text-glow {
-    text-shadow: 0 0 20px rgba(255, 95, 31, 0.3);
+    text-shadow: 0 0 20px rgba(255, 106, 51, 0.22);
   }
 
-  /* Custom scrollbar hide utility */
   .scrollbar-hide {
-    /* For Webkit-based browsers (Chrome, Safari, Opera) */
     &::-webkit-scrollbar {
       display: none;
     }
 
-    /* For IE, Edge and Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
-  /* Shimmer gradient animation */
   .shimmer {
     background: linear-gradient(
       110deg,
@@ -58,7 +56,10 @@
     animation: shimmer-move 4s ease-in-out infinite;
   }
 
-  /* Fade-in-up animation for scroll reveals */
+  .animate-fade-in {
+    animation: fadeIn 0.7s ease-out both;
+  }
+
   .animate-fade-in-up {
     animation: fadeInUp 0.8s ease-out both;
   }
@@ -68,11 +69,11 @@
   }
 
   .shadow-orange-glow {
-    box-shadow: 0 20px 60px rgba(255, 95, 31, 0.12);
+    box-shadow: 0 24px 72px rgba(255, 106, 51, 0.16);
   }
 
   .shadow-teal-glow {
-    box-shadow: 0 20px 60px rgba(77, 124, 138, 0.12);
+    box-shadow: 0 24px 72px rgba(93, 212, 240, 0.14);
   }
 
   .section-number {
@@ -83,14 +84,67 @@
     text-transform: uppercase;
   }
 
-  /* Section panel textures */
+  .section-marker {
+    position: relative;
+    width: 100%;
+  }
+
+  .section-marker__rail {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: rgba(216, 222, 234, 0.72);
+  }
+
+  .section-marker__index {
+    white-space: nowrap;
+    color: var(--color-tessera-dim);
+  }
+
+  .section-marker__line {
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, rgba(93, 212, 240, 0.16), rgba(255, 255, 255, 0.09), rgba(255, 184, 77, 0.18));
+  }
+
+  .section-marker__title {
+    white-space: nowrap;
+    color: rgba(240, 235, 224, 0.88);
+  }
+
+  .display-bleed {
+    font-family: var(--font-display);
+    font-size: clamp(4.4rem, 13vw, 11.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+  }
+
+  .display-tight {
+    font-family: var(--font-display);
+    font-size: clamp(3.7rem, 9vw, 7.4rem);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+  }
+
+  .panel-shell {
+    width: min(100%, 1600px);
+    margin-inline: auto;
+  }
+
   .texture-scanlines {
     background-image: repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 48px,
-      rgba(255, 255, 255, 0.013) 48px,
-      rgba(255, 255, 255, 0.013) 49px
+      transparent 44px,
+      rgba(255, 255, 255, 0.015) 44px,
+      rgba(255, 255, 255, 0.015) 45px
     );
   }
 
@@ -102,29 +156,46 @@
   .texture-stars {
     background-image:
       radial-gradient(circle, rgba(255, 255, 255, 0.55) 1px, transparent 1px),
-      radial-gradient(circle, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
-      radial-gradient(circle, rgba(200, 220, 255, 0.2) 1px, transparent 1px);
-    background-size: 220px 220px, 130px 130px, 90px 90px;
-    background-position: 0 0, 80px 60px, 160px 110px;
+      radial-gradient(circle, rgba(255, 255, 255, 0.24) 1px, transparent 1px),
+      radial-gradient(circle, rgba(93, 212, 240, 0.2) 1px, transparent 1px);
+    background-size: 240px 240px, 140px 140px, 96px 96px;
+    background-position: 0 0, 70px 60px, 140px 110px;
   }
 
-  /* Section divider line */
   .section-divider {
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent);
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(93, 212, 240, 0.1) 20%,
+      rgba(255, 255, 255, 0.06) 50%,
+      rgba(255, 184, 77, 0.1) 80%,
+      transparent
+    );
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: var(--color-tessera-ink);
+  background:
+    radial-gradient(circle at top, rgba(93, 212, 240, 0.04), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(255, 184, 77, 0.05), transparent 22%),
+    var(--color-tessera-ink);
   color: var(--color-tessera-text);
   font-family: var(--font-body);
-  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50%      { transform: translateY(-12px); }
+  50% { transform: translateY(-12px); }
 }
 
 @keyframes shimmer-move {
@@ -132,11 +203,17 @@ body {
   100% { background-position: -200% 0; }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(24px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
