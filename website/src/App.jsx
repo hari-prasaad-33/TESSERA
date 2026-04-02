@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductShowcase, { EQInterfaceMockup } from './components/ProductShowcase';
 import EternalRing from './components/EternalRing';
 import DiscoverPage from './components/DiscoverPage';
@@ -9,6 +9,7 @@ import AnswerSection from './components/AnswerSection';
 import HowWeBuildSection from './components/HowWeBuildSection';
 import VisionSection from './components/VisionSection';
 import SiteNav from './components/SiteNav';
+import { EmberNebulaIllustration, OrbFieldIllustration } from './components/ConceptIllustrations';
 
 function Panel({ bg, id, children, texture = null }) {
   return (
@@ -51,39 +52,51 @@ export default function App() {
       <SiteNav currentPage="home" onNavigate={navigateTo} />
 
       <Panel bg="bg-[#05051A]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(93,212,240,0.08),transparent_24%),radial-gradient(circle_at_84%_16%,rgba(255,184,77,0.10),transparent_20%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_28%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(93,212,240,0.08),transparent_24%),radial-gradient(circle_at_84%_16%,rgba(255,184,77,0.12),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_28%)]" />
         <HeroSection onExplore={() => document.getElementById('philosophy')?.scrollIntoView({ behavior: 'smooth' })} />
       </Panel>
 
       <div className="section-divider" />
 
-      <Panel bg="bg-[#060611]">
-        <div className="absolute inset-0 texture-scanlines opacity-60" />
+      <Panel
+        bg="bg-[#060611]"
+        texture={<div className="absolute inset-0 opacity-[0.14]"><OrbFieldIllustration className="h-full" /></div>}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_84%_20%,rgba(255,184,77,0.1),transparent_20%),linear-gradient(180deg,rgba(255,255,255,0.01),transparent_26%)]" />
         <ProblemSection />
       </Panel>
 
       <div className="section-divider" />
 
-      <Panel bg="bg-[#080518]">
+      <Panel
+        bg="bg-[#080518]"
+        texture={<div className="absolute inset-0 opacity-[0.12]"><EmberNebulaIllustration className="h-full" /></div>}
+      >
         <AnswerSection />
       </Panel>
 
-      <Panel bg="bg-[#02141A]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(93,212,240,0.10),transparent_28%),radial-gradient(circle_at_84%_72%,rgba(255,184,77,0.08),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_22%)]" />
+      <Panel bg="bg-[#071117]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(93,212,240,0.12),transparent_28%),radial-gradient(circle_at_84%_72%,rgba(255,184,77,0.1),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_22%)]" />
         <HowWeBuildSection eqMockup={<EQInterfaceMockup />} />
       </Panel>
 
       <div className="section-divider" />
 
-      <Panel bg="bg-[#04070D]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_22%,rgba(255,106,51,0.08),transparent_20%),radial-gradient(circle_at_80%_36%,rgba(93,212,240,0.06),transparent_24%)]" />
+      <Panel
+        bg="bg-[#05070A]"
+        texture={<div className="absolute inset-0 opacity-[0.12]"><EmberNebulaIllustration className="h-full" /></div>}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_22%,rgba(255,106,51,0.12),transparent_20%),radial-gradient(circle_at_80%_36%,rgba(93,212,240,0.05),transparent_24%)]" />
         <ProductShowcase onNavigate={navigateTo} />
       </Panel>
 
       <div className="section-divider" />
 
-      <Panel bg="bg-[#06040F]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,184,77,0.06),transparent_24%),radial-gradient(circle_at_74%_18%,rgba(93,212,240,0.05),transparent_24%)]" />
+      <Panel
+        bg="bg-[#06040F]"
+        texture={<div className="absolute inset-0 opacity-[0.1]"><OrbFieldIllustration className="h-full" /></div>}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,184,77,0.08),transparent_24%),radial-gradient(circle_at_74%_18%,rgba(93,212,240,0.04),transparent_24%)]" />
         <VisionSection />
       </Panel>
 

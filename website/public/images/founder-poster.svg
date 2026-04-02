@@ -1,66 +1,68 @@
-﻿<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="152" y1="88" x2="1418" y2="812" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#07101A"/>
-      <stop offset="0.52" stop-color="#0A0D18"/>
-      <stop offset="1" stop-color="#170A10"/>
+    <linearGradient id="bg" x1="124" y1="88" x2="1052" y2="1412" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#070C14"/>
+      <stop offset="0.48" stop-color="#0B0F18"/>
+      <stop offset="1" stop-color="#1A0F12"/>
     </linearGradient>
-    <radialGradient id="cyanGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(350 250) rotate(24.3) scale(520 320)">
+    <radialGradient id="amberGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(828 462) rotate(128) scale(364 320)">
+      <stop stop-color="#FFB84D" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#FFB84D" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cyanGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(314 1184) rotate(-48) scale(352 298)">
       <stop stop-color="#5DD4F0" stop-opacity="0.26"/>
       <stop offset="1" stop-color="#5DD4F0" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="amberGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1120 300) rotate(144.8) scale(440 260)">
-      <stop stop-color="#FFB84D" stop-opacity="0.24"/>
-      <stop offset="1" stop-color="#FFB84D" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="lineA" x1="120" y1="680" x2="790" y2="350" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#5DD4F0" stop-opacity="0.00"/>
-      <stop offset="0.32" stop-color="#5DD4F0" stop-opacity="0.56"/>
-      <stop offset="1" stop-color="#5DD4F0" stop-opacity="0.00"/>
-    </linearGradient>
-    <linearGradient id="lineB" x1="820" y1="740" x2="1480" y2="260" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFB84D" stop-opacity="0.00"/>
-      <stop offset="0.42" stop-color="#FFB84D" stop-opacity="0.44"/>
-      <stop offset="1" stop-color="#FFB84D" stop-opacity="0.00"/>
+    <linearGradient id="ringStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F0EBE0" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#5DD4F0" stop-opacity="0.54"/>
     </linearGradient>
   </defs>
 
-  <rect width="1600" height="900" fill="url(#bg)"/>
-  <rect width="1600" height="900" fill="url(#cyanGlow)"/>
-  <rect width="1600" height="900" fill="url(#amberGlow)"/>
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <rect width="1200" height="1500" fill="url(#amberGlow)"/>
+  <rect width="1200" height="1500" fill="url(#cyanGlow)"/>
 
-  <g opacity="0.22">
-    <path d="M83 786C212 668 308 598 428 566C566 529 633 570 742 518C830 476 887 372 1036 377C1185 382 1293 514 1495 398" stroke="url(#lineA)" stroke-width="8" stroke-linecap="round"/>
-    <path d="M154 656C291 526 381 492 501 494C621 496 730 608 851 610C996 613 1099 501 1223 468C1337 437 1430 458 1548 349" stroke="url(#lineB)" stroke-width="6" stroke-linecap="round"/>
+  <rect x="92" y="82" width="1016" height="1336" rx="44" stroke="rgba(255,255,255,0.12)"/>
+
+  <g opacity="0.18">
+    <path d="M126 1092C254 938 388 866 538 874C710 884 812 1026 968 1010C1018 1005 1058 984 1092 954" stroke="#5DD4F0" stroke-width="7" stroke-linecap="round"/>
+    <path d="M102 1186C236 1062 330 1034 470 1040C628 1048 754 1176 900 1168C982 1164 1046 1130 1102 1086" stroke="#FFB84D" stroke-width="5" stroke-linecap="round"/>
   </g>
 
-  <g opacity="0.16" fill="#F0EBE0">
-    <circle cx="134" cy="125" r="2"/>
-    <circle cx="336" cy="168" r="2"/>
-    <circle cx="582" cy="114" r="2"/>
-    <circle cx="826" cy="162" r="2"/>
-    <circle cx="1042" cy="126" r="2"/>
-    <circle cx="1266" cy="178" r="2"/>
-    <circle cx="1450" cy="132" r="2"/>
-    <circle cx="260" cy="302" r="2"/>
-    <circle cx="486" cy="266" r="2"/>
-    <circle cx="710" cy="318" r="2"/>
-    <circle cx="936" cy="278" r="2"/>
-    <circle cx="1196" cy="328" r="2"/>
-    <circle cx="1408" cy="286" r="2"/>
+  <g opacity="0.18" fill="#F0EBE0">
+    <circle cx="168" cy="156" r="3"/>
+    <circle cx="342" cy="214" r="3"/>
+    <circle cx="522" cy="168" r="3"/>
+    <circle cx="726" cy="222" r="3"/>
+    <circle cx="916" cy="176" r="3"/>
+    <circle cx="1034" cy="248" r="3"/>
+    <circle cx="244" cy="1310" r="2.6"/>
+    <circle cx="418" cy="1254" r="2.6"/>
+    <circle cx="656" cy="1326" r="2.6"/>
+    <circle cx="860" cy="1268" r="2.6"/>
   </g>
 
-  <rect x="86" y="74" width="1428" height="752" rx="36" stroke="rgba(255,255,255,0.10)"/>
+  <text x="154" y="194" fill="#5DD4F0" font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="0.42em">FOUNDER NOTE</text>
+  <text x="150" y="344" fill="#F0EBE0" font-family="Arial, Helvetica, sans-serif" font-size="124" font-weight="700">Why Tessera</text>
+  <text x="150" y="456" fill="#FFB84D" font-family="Arial, Helvetica, sans-serif" font-size="124" font-weight="700">exists.</text>
 
-  <text x="140" y="188" fill="#5DD4F0" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="0.42em">FROM THE FOUNDER</text>
-  <text x="140" y="352" fill="#F0EBE0" font-family="Arial, Helvetica, sans-serif" font-size="118" font-weight="700">Why Tessera</text>
-  <text x="140" y="460" fill="#FFB84D" font-family="Arial, Helvetica, sans-serif" font-size="118" font-weight="700">has to exist.</text>
+  <text x="154" y="566" fill="#D8DEEA" font-family="Arial, Helvetica, sans-serif" font-size="34">A short note on authorship, intention, and why the artist</text>
+  <text x="154" y="614" fill="#D8DEEA" font-family="Arial, Helvetica, sans-serif" font-size="34">still has to stay inside the tool.</text>
 
-  <text x="144" y="560" fill="#D8DEEA" font-family="Arial, Helvetica, sans-serif" font-size="34">A short note on protecting the human part of music creation.</text>
-  <text x="144" y="612" fill="#9BA3B9" font-family="Arial, Helvetica, sans-serif" font-size="26">Press play when you want the story, not before.</text>
-
-  <g transform="translate(1216 610)">
-    <circle cx="0" cy="0" r="92" fill="rgba(0,0,0,0.34)" stroke="rgba(255,255,255,0.16)"/>
-    <path d="M-18 -32L42 0L-18 32V-32Z" fill="#F0EBE0"/>
+  <g transform="translate(694 824)">
+    <circle cx="0" cy="0" r="230" fill="rgba(0,0,0,0.18)" stroke="rgba(255,255,255,0.08)"/>
+    <circle cx="0" cy="0" r="176" fill="rgba(0,0,0,0.08)" stroke="rgba(255,184,77,0.26)"/>
+    <circle cx="0" cy="0" r="122" fill="rgba(0,0,0,0.02)" stroke="url(#ringStroke)" stroke-width="2"/>
+    <circle cx="-138" cy="-82" r="20" fill="#FFB84D" fill-opacity="0.72"/>
+    <circle cx="-62" cy="84" r="28" fill="#C97833" fill-opacity="0.56"/>
+    <circle cx="118" cy="-22" r="34" fill="#8F6433" fill-opacity="0.62"/>
+    <circle cx="84" cy="132" r="18" fill="#5DD4F0" fill-opacity="0.56"/>
+    <circle cx="0" cy="0" r="78" fill="rgba(0,0,0,0.34)" stroke="rgba(255,255,255,0.18)"/>
+    <path d="M-18 -30L42 0L-18 30V-30Z" fill="#F0EBE0"/>
   </g>
+
+  <text x="156" y="1308" fill="#9BA3B9" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="0.28em">ONE TAKE / 58 SEC</text>
+  <text x="156" y="1362" fill="#F0EBE0" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">Press play when you want the reason,</text>
+  <text x="156" y="1414" fill="#F0EBE0" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">not just the result.</text>
 </svg>

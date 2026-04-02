@@ -296,8 +296,8 @@ export function EQInterfaceMockup({ className = '' }) {
 function ArcKnob({ label, value, accent = 'orange', large = false }) {
   const color = accent === 'teal' ? '#1189ab' : '#ff6a33';
   const soft = accent === 'teal' ? 'rgba(17, 137, 171, 0.18)' : 'rgba(255, 106, 51, 0.18)';
-  const size = large ? 'h-32 w-32' : 'h-22 w-22';
-  const arc = large ? 122 : 102;
+  const size = large ? 'h-24 w-24' : 'h-16 w-16';
+  const arc = large ? 122 : 98;
 
   return (
     <div className="flex flex-col items-center gap-2 text-center">
@@ -404,7 +404,7 @@ export function ChannelStripMockup({ className = '' }) {
         </div>
       </div>
 
-      <div className="relative z-10 grid gap-4 px-4 py-4 sm:px-6 lg:grid-cols-[1fr_1.1fr_1fr]">
+      <div className="relative z-10 grid gap-3 px-4 py-4 sm:px-6 lg:grid-cols-[1fr_1.1fr_1fr]">
         <ParameterModule
           title="Compressor"
           knobs={[
@@ -460,10 +460,10 @@ export function ChannelStripMockup({ className = '' }) {
         />
       </div>
 
-      <div className="relative z-10 grid gap-4 border-t border-white/8 px-4 py-4 sm:px-6 lg:grid-cols-[0.9fr_1.2fr_0.9fr]">
+      <div className="relative z-10 grid gap-3 border-t border-white/8 px-4 py-4 sm:px-6 lg:grid-cols-[0.9fr_1.2fr_0.9fr]">
         <div className="border border-white/8 bg-black/18 p-4">
           <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#ff8b5f]">Saturator</div>
-          <div className="mt-4 grid grid-cols-2 gap-4">
+          <div className="mt-4 grid grid-cols-2 gap-3">
             <ArcKnob label="Drive" value="6.4" accent="orange" large />
             <ArcKnob label="Mix" value="42%" accent="orange" large />
           </div>
@@ -476,7 +476,7 @@ export function ChannelStripMockup({ className = '' }) {
               <div className="rounded-md border border-white/8 bg-black/22 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.22em] text-[#d0d6e4]">Room</div>
               <div className="rounded-md border border-white/8 bg-black/22 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.22em] text-[#d0d6e4]">Hard</div>
             </div>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-4 gap-2">
               <ArcKnob label="Size" value="34" accent="teal" />
               <ArcKnob label="Damp" value="28" accent="orange" />
               <ArcKnob label="Width" value="74" accent="teal" />
@@ -487,7 +487,7 @@ export function ChannelStripMockup({ className = '' }) {
 
         <div className="border border-white/8 bg-black/18 p-4">
           <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#ff8b5f]">Limiter</div>
-          <div className="mt-4 grid grid-cols-2 gap-4">
+          <div className="mt-4 grid grid-cols-2 gap-3">
             <ArcKnob label="Ceiling" value="-0.1 dB" accent="orange" large />
             <ArcKnob label="Release" value="Auto" accent="teal" large />
           </div>
@@ -516,9 +516,9 @@ export default function ProductShowcase({ onNavigate }) {
         <SectionMarker number="05" title="THE PLATFORM" className="mb-10" />
 
         <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,11,16,0.96))] lg:border">
-          <div className="grid gap-0 lg:grid-cols-[minmax(0,1.28fr)_minmax(20rem,0.72fr)]">
-            <div className="min-h-[34rem] bg-[#040608]">
-              <ChannelStripMockup className="h-full min-h-[34rem]" />
+          <div className="grid gap-0 lg:grid-cols-[minmax(0,1.22fr)_minmax(21rem,0.78fr)]">
+            <div className="min-h-[29rem] overflow-hidden bg-[#040608]">
+              <ChannelStripMockup className="h-full min-h-[29rem]" />
             </div>
 
             <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">

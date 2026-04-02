@@ -45,9 +45,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   vec3 cream = vec3(0.95, 0.92, 0.87);
 
   vec3 color = base;
-  color += cyan * pow(max(veil, 0.0), 1.5) * 0.28;
-  color += amber * pow(max(nebulaB, 0.0), 2.3) * 0.18;
-  color += cream * ring * 0.08;
+  color += cyan * pow(max(veil, 0.0), 1.5) * 0.22;
+  color += amber * pow(max(nebulaB, 0.0), 2.1) * 0.28;
+  color += cream * ring * 0.11;
 
   vec2 stars = floor((uv + 1.8) * vec2(220.0, 130.0));
   float star = pow(hash21(stars), 36.0);

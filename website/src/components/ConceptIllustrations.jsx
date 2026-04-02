@@ -69,6 +69,135 @@ function Frame({ x, y, size, rotate, opacity }) {
   );
 }
 
+const modularTiles = [
+  { x: 36, y: 38, w: 126, h: 92, kind: 'speaker' },
+  { x: 170, y: 38, w: 92, h: 92, kind: 'knobs' },
+  { x: 270, y: 38, w: 84, h: 92, kind: 'meters' },
+  { x: 362, y: 38, w: 102, h: 92, kind: 'switches' },
+  { x: 472, y: 38, w: 112, h: 92, kind: 'speaker' },
+  { x: 54, y: 138, w: 96, h: 96, kind: 'knobs' },
+  { x: 158, y: 138, w: 120, h: 96, kind: 'switches' },
+  { x: 286, y: 138, w: 94, h: 96, kind: 'screen' },
+  { x: 388, y: 138, w: 92, h: 96, kind: 'knobs' },
+  { x: 488, y: 138, w: 96, h: 96, kind: 'buttons' },
+  { x: 72, y: 242, w: 106, h: 92, kind: 'faders' },
+  { x: 186, y: 242, w: 92, h: 92, kind: 'screen' },
+  { x: 286, y: 242, w: 124, h: 92, kind: 'knobs' },
+  { x: 418, y: 242, w: 72, h: 92, kind: 'switches' },
+  { x: 498, y: 242, w: 92, h: 92, kind: 'speaker' },
+];
+
+function TileShell({ x, y, w, h, children }) {
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <rect width={w} height={h} rx="5" fill="#D7D0C7" />
+      <rect x="1.5" y="1.5" width={w - 3} height={h - 3} rx="4" fill="none" stroke="rgba(0,0,0,0.24)" />
+      <rect x="4" y="4" width={w - 8} height={h - 8} rx="3" fill="none" stroke="rgba(255,255,255,0.2)" />
+      {children}
+    </g>
+  );
+}
+
+function Knob({ cx, cy, r, accent = 'orange' }) {
+  const ring = accent === 'teal' ? '#3AB8D4' : '#D86B3A';
+  const glow = accent === 'teal' ? 'rgba(58,184,212,0.16)' : 'rgba(216,107,58,0.16)';
+
+  return (
+    <g transform={`translate(${cx} ${cy})`}>
+      <circle r={r + 5} fill={glow} />
+      <circle r={r} fill="#252D34" stroke="#0E1419" strokeWidth="5" />
+      <circle r={r - 8} fill="none" stroke={ring} strokeWidth="4" strokeLinecap="round" strokeDasharray={`${Math.max(r * 2.4, 18)} ${Math.max(r * 4.8, 34)}`} strokeDashoffset={Math.max(r * 0.4, 6)} />
+      <path d={`M 0 ${-r + 9} L 0 ${-r + 22}`} stroke="#D7D0C7" strokeWidth="2.5" strokeLinecap="round" />
+    </g>
+  );
+}
+
+export function ModularGridIllustration({ className = '' }) {
+  return (
+    <div className={`relative overflow-hidden bg-[#11161C] ${className}`.trim()}>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,184,77,0.18),transparent_20%),radial-gradient(circle_at_82%_22%,rgba(93,212,240,0.12),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_18%)]" />
+      <svg viewBox="0 0 640 400" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
+        <g transform="translate(0 14) skewX(-14)">
+          {modularTiles.map((tile) => (
+            <TileShell key={`${tile.x}-${tile.y}`} x={tile.x} y={tile.y} w={tile.w} h={tile.h}>
+              {tile.kind === 'speaker' && (
+                <>
+                  <Knob cx={tile.w * 0.5} cy={tile.h * 0.52} r={Math.min(tile.w, tile.h) * 0.24} accent="teal" />
+                  <circle cx={tile.w * 0.5} cy={tile.h * 0.52} r={Math.min(tile.w, tile.h) * 0.11} fill="rgba(215,208,199,0.22)" />
+                </>
+              )}
+              {tile.kind === 'knobs' && (
+                <>
+                  <Knob cx={tile.w * 0.34} cy={tile.h * 0.38} r={16} accent="orange" />
+                  <Knob cx={tile.w * 0.7} cy={tile.h * 0.66} r={16} accent="teal" />
+                </>
+              )}
+              {tile.kind === 'meters' && (
+                <>
+                  <rect x="14" y="18" width={tile.w - 28} height="18" rx="2" fill="#303842" stroke="rgba(0,0,0,0.35)" />
+                  <rect x="18" y="22" width={tile.w - 36} height="10" rx="1.5" fill="rgba(107,201,211,0.28)" />
+                  <rect x="18" y="52" width={tile.w - 36} height="10" rx="1.5" fill="rgba(109,216,233,0.14)" />
+                </>
+              )}
+              {tile.kind === 'switches' && (
+                <>
+                  <rect x="18" y="20" width="18" height="32" rx="2" fill="#A7533A" />
+                  <rect x="42" y="20" width="18" height="32" rx="2" fill="#D3A24A" />
+                  <rect x="66" y="20" width="18" height="32" rx="2" fill="#A7533A" />
+                  <circle cx={tile.w - 18} cy={tile.h - 18} r="4" fill="#F0B7A1" />
+                </>
+              )}
+              {tile.kind === 'screen' && (
+                <>
+                  <rect x="14" y="14" width={tile.w - 28} height={tile.h - 28} rx="3" fill="#39454F" stroke="rgba(255,255,255,0.14)" />
+                  {Array.from({ length: 7 }, (_, row) =>
+                    Array.from({ length: 7 }, (_, col) => (
+                      <rect
+                        key={`${row}-${col}`}
+                        x={24 + col * 8}
+                        y={24 + row * 8}
+                        width="5"
+                        height="5"
+                        rx="1"
+                        fill={(row + col) % 3 === 0 ? 'rgba(255,190,220,0.85)' : 'rgba(255,190,220,0.25)'}
+                      />
+                    )),
+                  )}
+                </>
+              )}
+              {tile.kind === 'buttons' && (
+                <>
+                  {Array.from({ length: 6 }, (_, index) => (
+                    <rect
+                      key={index}
+                      x={16 + (index % 2) * 34}
+                      y={16 + Math.floor(index / 2) * 24}
+                      width="22"
+                      height="14"
+                      rx="2"
+                      fill={index === 1 ? '#D86B3A' : '#2A313A'}
+                    />
+                  ))}
+                </>
+              )}
+              {tile.kind === 'faders' && (
+                <>
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <g key={index} transform={`translate(${18 + index * 18} 16)`}>
+                      <line x1="0" x2="0" y1="0" y2={tile.h - 34} stroke="rgba(0,0,0,0.36)" strokeWidth="2" />
+                      <rect x="-5" y={18 + (index % 3) * 14} width="10" height="16" rx="2" fill="#2B333C" stroke="rgba(255,255,255,0.1)" />
+                    </g>
+                  ))}
+                </>
+              )}
+            </TileShell>
+          ))}
+        </g>
+      </svg>
+    </div>
+  );
+}
+
 export function TesseractIllustration({ className = '' }) {
   return (
     <div className={`relative overflow-hidden bg-[#03050a] ${className}`.trim()}>

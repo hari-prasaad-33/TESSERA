@@ -20,7 +20,7 @@ const principles = [
 
 export default function AnswerSection() {
   return (
-    <section className="relative z-10 overflow-hidden px-6 py-24 md:px-10 lg:px-14 lg:py-28">
+    <section className="relative z-10 overflow-hidden px-6 pb-24 pt-36 md:px-10 lg:px-14 lg:pb-28 lg:pt-40">
       <div className="absolute inset-y-0 left-0 w-full lg:w-[52vw]">
         <ShaderBackground
           fragmentShader={shaderPresets.pulse}

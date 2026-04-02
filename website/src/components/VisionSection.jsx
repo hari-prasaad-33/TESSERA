@@ -1,5 +1,6 @@
-﻿import SectionMarker from './SectionMarker';
-import { EmberNebulaIllustration, TesseractIllustration } from './ConceptIllustrations';
+import { ChannelStripMockup } from './ProductShowcase';
+import SectionMarker from './SectionMarker';
+import { EmberNebulaIllustration } from './ConceptIllustrations';
 
 function RoadmapVisual() {
   const stops = [
@@ -11,9 +12,9 @@ function RoadmapVisual() {
   ];
 
   return (
-    <div className="relative flex h-full min-h-[26rem] items-center overflow-hidden bg-[#090714] p-8 sm:p-10 lg:p-12">
+    <div className="relative flex h-full min-h-[24rem] items-center overflow-hidden bg-[#090714] p-8 sm:p-10 lg:p-12">
       <EmberNebulaIllustration className="absolute inset-0" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,6,14,0.16),rgba(5,6,14,0.78)_84%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,6,14,0.16),rgba(5,6,14,0.82)_82%)]" />
       <div className="relative z-10 w-full">
         <div className="flex flex-wrap items-center gap-3 sm:gap-5">
           {stops.map((stop, index) => {
@@ -47,31 +48,35 @@ export default function VisionSection() {
 
         <div className="mb-10 max-w-4xl">
           <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">
-            Why the name matters
+            What comes after the first instrument
           </p>
           <h2 className="display-tight mt-4 text-[#f0ebe0]">
-            FROM TESSERACT,
-            <span className="mt-2 block text-[#ffb84d]">TESSERA.</span>
+            THIS IS JUST
+            <span className="mt-2 block text-[#ffb84d]">THE BEGINNING.</span>
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#c6cfdd]">
-            In Interstellar, the tesseract is a space where distant points can still be touched together. That image stuck with us.
-            The ambition here is similar: sound, interface, engineering, and authorship should stay connected instead of being pulled apart.
+            Tessera EQ is the first proof. The larger ambition is a full environment where intelligent tools remain visible,
+            tactile, and unmistakably in service of the musician.
           </p>
         </div>
 
         <div className="space-y-8">
           <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] lg:border">
-            <div className="grid gap-0 lg:grid-cols-[minmax(0,0.96fr)_minmax(20rem,1.04fr)]">
-              <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
-                <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">The metaphor</div>
-                <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">A tool that keeps far-apart things connected.</h3>
-                <p className="mt-6 max-w-xl text-base leading-relaxed text-[#c6cfdd]">
-                  Prompt and parameter. Emotion and engineering. Speed and authorship. The point is not to collapse everything into one magic outcome.
-                  It is to make the distances shorter without losing the structure that lets the artist stay present.
-                </p>
+            <div className="grid gap-0 lg:grid-cols-[minmax(0,1.08fr)_minmax(21rem,0.92fr)]">
+              <div className="min-h-[22rem] lg:min-h-[26rem]">
+                <ChannelStripMockup className="h-full min-h-[22rem]" />
               </div>
-              <div className="min-h-[24rem] lg:min-h-[30rem]">
-                <TesseractIllustration className="h-full" />
+              <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
+                <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">In build</div>
+                <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">TESSERA ONE</h3>
+                <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.26em] text-[#ffb84d]">The parent shell behind the first release</p>
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-[#c6cfdd]">
+                  Tessera One is where EQ, dynamics, saturation, space, playback, prompting, and taste memory live together.
+                  Not one magic window. A connected system the artist can still read and steer.
+                </p>
+                <button className="mt-8 w-fit rounded-full border border-[#ffb84d]/35 bg-[#ffb84d]/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#ffe1af] transition-all duration-300 hover:border-[#ffb84d]/60 hover:bg-[#ffb84d]/14">
+                  Join the waitlist
+                </button>
               </div>
             </div>
           </div>
@@ -81,7 +86,7 @@ export default function VisionSection() {
               <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">The arc ahead</div>
               <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">A family of tools, not a single trick.</h3>
               <p className="mt-6 text-base leading-relaxed text-[#c6cfdd]">
-                Tessera EQ is the first proof. Tessera One is the parent shell taking shape behind it. After that, the aim is a full environment where each tool remains legible, tactile, and artist-first.
+                Tessera EQ is the first surface. Tessera One is the parent shell taking shape behind it. After that, the aim is a full environment where each tool remains legible, tactile, and artist-first.
               </p>
             </div>
             <div className="mt-8">
