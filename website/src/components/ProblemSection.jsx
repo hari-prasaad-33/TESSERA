@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import SectionMarker from './SectionMarker';
 import ShaderBackground from './ShaderBackground';
+import { OrbFieldIllustration } from './ConceptIllustrations';
 import { shaderPresets } from '../shaders/presets';
 
 const questions = [
