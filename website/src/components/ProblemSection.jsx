@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import SectionMarker from './SectionMarker';
 import ShaderBackground from './ShaderBackground';
-import { OrbFieldIllustration } from './ConceptIllustrations';
 import { shaderPresets } from '../shaders/presets';
 
 const questions = [
@@ -37,31 +36,15 @@ export default function ProblemSection() {
       <div className="panel-shell relative z-10">
         <SectionMarker number="02" title="THE PROBLEM" className="mb-10" />
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(18rem,0.96fr)] lg:min-h-[30rem] lg:items-end">
-          <div className="flex flex-col justify-center py-6 lg:pr-8">
+        <div className="grid gap-8 lg:min-h-[26rem]">
+          <div className="max-w-4xl py-6">
             <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">
-              Faster is not always deeper
+              The quiet part no one is saying.
             </p>
             <h2 className="display-tight text-[#f0ebe0]">THE PROBLEM</h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#c6cfdd]">
-              The danger is not that tools get better. It is that the creative act gets compressed into a result,
-              and the result becomes all that matters.
+              The tools keep getting better. That is not the problem. The problem is what happens to the creative act when every difficult step gets compressed into a shortcut. When the gap between nothing and a finished track becomes trivially small, the question stops being &quot;how do I get there&quot; and starts being &quot;why does getting there even matter anymore.&quot;
             </p>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-[#8d94ab]">
-              Once the process is flattened into convenience, the artist is left with a harder question:
-              what were we really here for in the first place?
-            </p>
-          </div>
-
-          <div className="relative min-h-[14rem] overflow-hidden rounded-[1.8rem] border border-white/8 bg-black/18">
-            <OrbFieldIllustration className="absolute inset-0" />
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(8,10,16,0.86),rgba(8,10,16,0.36)_42%,rgba(24,14,9,0.46)_100%)]" />
-            <div className="relative flex h-full items-end p-6 sm:p-8">
-              <p className="max-w-md text-2xl leading-tight text-[#f0ebe0] sm:text-3xl">
-                The loss is subtle:
-                <span className="block text-[#ffb84d]">the result survives, but the reason starts disappearing.</span>
-              </p>
-            </div>
           </div>
         </div>
 
@@ -97,6 +80,9 @@ export default function ProblemSection() {
                   </div>
                 ))}
               </div>
+              <p className="mt-5 max-w-2xl text-sm leading-relaxed text-[#b8c1d2] sm:text-base">
+                We cannot guess it exactly. It is too personal. But whatever it was -- that is what we are building around.
+              </p>
             </div>
           </div>
         </div>

@@ -3,21 +3,6 @@ import SectionMarker from './SectionMarker';
 import ShaderBackground from './ShaderBackground';
 import { shaderPresets } from '../shaders/presets';
 
-const principles = [
-  {
-    title: 'See the move',
-    description: 'A suggestion should arrive as a visible chain of parameters, not as a mysterious result.',
-  },
-  {
-    title: 'Change the move',
-    description: 'Every recommendation stays draggable, reversible, and interruptible the moment taste disagrees.',
-  },
-  {
-    title: 'Own the result',
-    description: 'The machine may help you get there faster. It should never be confused for the author.',
-  },
-];
-
 export default function AnswerSection() {
   return (
     <section className="relative z-10 overflow-hidden px-6 pb-24 pt-36 md:px-10 lg:px-14 lg:pb-28 lg:pt-40">
@@ -37,49 +22,32 @@ export default function AnswerSection() {
           <div className="relative flex min-h-[28rem] items-end lg:min-h-[44rem] lg:pr-6">
             <div className="w-full rounded-[1.8rem] border border-white/10 bg-black/24 p-6 backdrop-blur-md sm:p-7 lg:max-w-[34rem]">
               <div className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">
-                A different stance on AI
+                Where most tools hide the work, we leave it in your hands.
               </div>
               <h2 className="display-tight mt-4 text-[#f0ebe0]">
                 FLOW STATE,
                 <span className="mt-2 block text-[#ffb84d]">UNLOCKED.</span>
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#d5dbe7] sm:text-lg">
-                Our answer is not to keep intelligence out of the room. It is to make intelligence stay visible.
-                Suggestion is welcome. Hidden authorship is not.
-              </p>
-              <p className="mt-4 border-l border-[#5dd4f0]/35 pl-4 text-sm leading-relaxed text-[#d7edf3]">
-                The glass box means the artist can inspect every step, interrupt every step, and still own the final one.
+                We are not keeping AI out of the room. We are making sure you can see everything it does, change anything it suggests, and walk away knowing the final track is yours -- fully, without asterisks. We call it the glass box: every suggestion is visible, every parameter is editable, and nothing happens behind your back.
               </p>
             </div>
           </div>
 
           <div className="rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] p-8 sm:p-10 lg:p-12">
             <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">
-              One principle
+              The line we will not cross
             </p>
-            <h3 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-4xl">
-              Glass box, not black box.
-            </h3>
-            <div className="mt-8 grid gap-4">
-              {principles.map((principle, index) => (
-                <div key={principle.title} className="rounded-[1.4rem] border border-white/8 bg-black/18 p-5">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">0{index + 1}</div>
-                  <div className="mt-2 text-xl font-semibold tracking-[-0.03em] text-white">{principle.title}</div>
-                  <p className="mt-2 text-sm leading-relaxed text-[#c5cddd]">{principle.description}</p>
-                </div>
-              ))}
-            </div>
+            <p className="mt-6 text-lg leading-relaxed text-[#d5dbe7] sm:text-xl">
+              There is a line we will not cross. Tessera will reduce friction -- it will help you get to the sound faster. But it will never make a creative decision on your behalf. Not a small one, not a big one. Because the moment a tool changes the final track from what you imagined, that track is no longer fully yours. And we do not think that is a trade-off worth making.
+            </p>
           </div>
         </div>
 
-        <div className="relative z-20 -mb-20 mt-10 max-w-3xl rounded-[1.8rem] border border-white/10 bg-[linear-gradient(135deg,rgba(8,10,16,0.92),rgba(18,10,8,0.82))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8">
-          <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">Bridge into the build</div>
-          <p className="mt-4 text-2xl leading-tight text-[#f0ebe0] sm:text-3xl">
-            The idea only matters if the software makes it real.
-          </p>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#c6cfdd] sm:text-base">
-            So from here on, we stop talking in abstractions and show the first product directly: how Tessera EQ listens,
-            translates, and stays under the artist's hand.
+        <div className="relative z-20 -mb-20 mt-10 max-w-4xl rounded-[1.8rem] border border-white/10 bg-[linear-gradient(135deg,rgba(8,10,16,0.92),rgba(18,10,8,0.82))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8">
+          <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">From principle to product</div>
+          <p className="mt-4 max-w-3xl text-2xl leading-tight text-[#f0ebe0] sm:text-3xl">
+            That is the principle. Now here is what it looks like when it is running. We build in the open -- starting with the first product.
           </p>
         </div>
 

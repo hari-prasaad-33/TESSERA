@@ -1,6 +1,5 @@
-import { ChannelStripMockup } from './ProductShowcase';
-import SectionMarker from './SectionMarker';
-import { EmberNebulaIllustration } from './ConceptIllustrations';
+﻿import SectionMarker from './SectionMarker';
+import { EmberNebulaIllustration, TesseractIllustration } from './ConceptIllustrations';
 
 function RoadmapVisual() {
   const stops = [
@@ -48,46 +47,32 @@ export default function VisionSection() {
 
         <div className="mb-10 max-w-4xl">
           <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">
-            What comes after the first instrument
+            The road ahead
           </p>
           <h2 className="display-tight mt-4 text-[#f0ebe0]">
             THIS IS JUST
             <span className="mt-2 block text-[#ffb84d]">THE BEGINNING.</span>
           </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#c6cfdd]">
-            Tessera EQ is the first proof. The larger ambition is a full environment where intelligent tools remain visible,
-            tactile, and unmistakably in service of the musician.
-          </p>
         </div>
 
         <div className="space-y-8">
           <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] lg:border">
-            <div className="grid gap-0 lg:grid-cols-[minmax(0,1.08fr)_minmax(21rem,0.92fr)]">
-              <div className="min-h-[22rem] lg:min-h-[26rem]">
-                <ChannelStripMockup className="h-full min-h-[22rem]" />
+            <div className="grid gap-0 lg:grid-cols-[minmax(0,0.96fr)_minmax(22rem,1.04fr)]">
+              <div className="min-h-[20rem] lg:min-h-[26rem]">
+                <TesseractIllustration className="h-full" />
               </div>
               <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
-                <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">In build</div>
-                <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">TESSERA ONE</h3>
-                <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.26em] text-[#ffb84d]">The parent shell behind the first release</p>
-                <p className="mt-6 max-w-xl text-base leading-relaxed text-[#c6cfdd]">
-                  Tessera One is where EQ, dynamics, saturation, space, playback, prompting, and taste memory live together.
-                  Not one magic window. A connected system the artist can still read and steer.
+                <p className="max-w-2xl text-lg leading-relaxed text-[#c6cfdd] sm:text-xl">
+                  Every product we build will follow the same principle: reduce friction, never replace intention. The goal is not to build the most powerful AI in music. It is to build the most honest one.
                 </p>
-                <button className="mt-8 w-fit rounded-full border border-[#ffb84d]/35 bg-[#ffb84d]/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#ffe1af] transition-all duration-300 hover:border-[#ffb84d]/60 hover:bg-[#ffb84d]/14">
-                  Join the waitlist
-                </button>
               </div>
             </div>
           </div>
 
           <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] lg:border">
             <div className="max-w-3xl px-8 pt-8 sm:px-10 sm:pt-10 lg:px-12 lg:pt-12 xl:px-14 xl:pt-14">
-              <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">The arc ahead</div>
-              <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">A family of tools, not a single trick.</h3>
-              <p className="mt-6 text-base leading-relaxed text-[#c6cfdd]">
-                Tessera EQ is the first surface. Tessera One is the parent shell taking shape behind it. After that, the aim is a full environment where each tool remains legible, tactile, and artist-first.
-              </p>
+              <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">The progression</div>
+              <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">From one honest tool to a full environment.</h3>
             </div>
             <div className="mt-8">
               <RoadmapVisual />

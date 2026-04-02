@@ -1,4 +1,4 @@
-﻿import { useMemo } from 'react';
+import { useMemo } from 'react';
 import SectionMarker from './SectionMarker';
 
 function RotaryKnob({ label, value, accent = 'orange', size = 'md' }) {
@@ -523,8 +523,9 @@ export default function ProductShowcase({ onNavigate }) {
 
             <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
               <div className="mb-5 flex flex-wrap gap-3">
-                <FeatureChip label="In build" accent="orange" />
-                <FeatureChip label="Parent layer" accent="teal" />
+                <FeatureChip label="Shipping now" accent="teal" />
+                <FeatureChip label="The umbrella" accent="orange" />
+                <FeatureChip label="Long game" accent="teal" />
               </div>
 
               <h2 className="display-tight mb-5 text-[#f0ebe0]">
@@ -532,25 +533,22 @@ export default function ProductShowcase({ onNavigate }) {
               </h2>
 
               <p className="mb-6 max-w-xl text-lg leading-relaxed text-[#c7cfdd]">
-                Tessera EQ is the first surface. Tessera One is the parent system behind it: one intent layer shared across EQ,
-                dynamics, saturation, reverb, and the rest of the chain.
+                Tessera EQ is what we are shipping first -- a single tool that proves the idea works. Tessera One is what comes next: EQ, compression, reverb, saturation, all connected under one transparent mixing surface. And behind all of it is Tessera itself -- the long-term vision of a full production environment where intelligent tools stay visible, editable, and unmistakably in service of the artist.
               </p>
 
               <div className="mb-8 grid gap-4">
                 <div className="border border-white/8 bg-black/20 p-4">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Shared intent layer</div>
-                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">One prompt surface, one transport layer, and one evolving taste profile across the whole chain.</div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5dd4f0]">TESSERA EQ</div>
+                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">The first product. Shipping now. An AI-assisted parametric EQ that stays transparent.</div>
                 </div>
                 <div className="border border-white/8 bg-black/20 p-4">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8d94ab]">Modular but connected</div>
-                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">EQ is first. Compression, space, saturation, and utility modules follow without breaking the glass-box principle.</div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#ffb84d]">TESSERA ONE</div>
+                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">The umbrella. A suite of mixing tools -- EQ, Compressor, Reverb, Saturation -- all sharing the same philosophy: visible suggestions, full artist control.</div>
                 </div>
-              </div>
-
-              <div className="mb-9 flex flex-wrap gap-3">
-                {['EQ first', 'Compressor next', 'Reverb layer', 'Shared transport', 'Prompt-driven', 'Editable chain'].map((item, index) => (
-                  <FeatureChip key={item} label={item} accent={index % 2 === 0 ? 'teal' : 'orange'} />
-                ))}
+                <div className="border border-white/8 bg-black/20 p-4">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5dd4f0]">TESSERA</div>
+                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">The long game. A full digital audio workstation where every step of creation follows the glass-box principle.</div>
+                </div>
               </div>
 
               <div className="flex flex-wrap gap-3">
@@ -568,12 +566,11 @@ export default function ProductShowcase({ onNavigate }) {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {[
-            { value: '01', label: 'First surface', note: 'Tessera EQ is already shaping the language.' },
-            { value: '02', label: 'Next modules', note: 'Dynamics and space extend the same interaction model.' },
-            { value: '03', label: 'Shared shell', note: 'Prompting, playback, presets, and taste live together.' },
-            { value: '04', label: 'End state', note: 'A transparent intelligent mixing environment, not a one-off plugin.' },
+            { value: '01', label: 'TESSERA EQ', note: 'The first product. Shipping now. An AI-assisted parametric EQ that stays transparent.' },
+            { value: '02', label: 'TESSERA ONE', note: 'The umbrella. A suite of mixing tools -- EQ, Compressor, Reverb, Saturation -- all sharing the same philosophy: visible suggestions, full artist control.' },
+            { value: '03', label: 'TESSERA', note: 'The long game. A full digital audio workstation where every step of creation follows the glass-box principle.' },
           ].map((stat) => (
             <div key={stat.label} className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.9))] p-6">
               <div className="text-5xl font-semibold tracking-[-0.05em] text-[#f0ebe0]">{stat.value}</div>

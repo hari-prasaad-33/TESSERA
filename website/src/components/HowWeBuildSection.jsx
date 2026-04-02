@@ -1,4 +1,4 @@
-﻿import { EQInterfaceMockup } from './ProductShowcase';
+import { EQInterfaceMockup } from './ProductShowcase';
 import SectionMarker from './SectionMarker';
 import ShaderBackground from './ShaderBackground';
 import { shaderPresets } from '../shaders/presets';
@@ -134,7 +134,7 @@ export default function HowWeBuildSection({ eqMockup }) {
             <span className="mt-2 block text-[#5dd4f0]">TESSERA EQ THINKS.</span>
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#c6cfdd]">
-            The first surface is Tessera EQ. Language goes in. A visible, editable EQ state comes out. Nothing here is meant to feel magical for its own sake.
+            This is Tessera EQ -- the first product, shown exactly as it works. You describe the sound you want. It suggests an EQ curve. You see every parameter, drag any node, undo anything. No mystery. No magic buttons.
           </p>
         </div>
 

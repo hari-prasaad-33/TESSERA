@@ -1,10 +1,10 @@
-﻿import SectionMarker from './SectionMarker';
+import SectionMarker from './SectionMarker';
 import ShaderBackground from './ShaderBackground';
 import { shaderPresets } from '../shaders/presets';
 
 export default function HeroSection({ onExplore }) {
   return (
-    <header id="home" className="relative z-10 min-h-screen overflow-hidden px-6 pb-24 pt-28 md:px-10 lg:px-14 lg:pb-28">
+    <header id="home" className="relative z-10 min-h-screen overflow-visible px-6 pb-28 pt-28 md:px-10 lg:px-14 lg:pb-32">
       <div className="absolute inset-y-0 right-0 w-full lg:w-[56vw]">
         <ShaderBackground
           fragmentShader={shaderPresets.hero}
@@ -27,31 +27,15 @@ export default function HeroSection({ onExplore }) {
               <span className="mt-3 block text-[#ffb84d]">IS NOT FOR SALE.</span>
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#c6cfdd] md:text-xl">
-              AI can collapse distance. It should not collapse meaning. Tessera is built for the part of music creation
-              that still has to feel chosen, earned, and unmistakably human.
+              Every new tool promises to get you there faster. But &quot;there&quot; was never the point. The hours you spend shaping a sound -- that is not friction to be removed. That is the work itself. Tessera exists for the part of music that still has to feel yours.
             </p>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <button
-                onClick={onExplore}
-                className="rounded-full border border-[#5dd4f0]/45 bg-[#5dd4f0]/14 px-7 py-3 font-mono text-xs font-semibold uppercase tracking-[0.28em] text-[#d5f8ff] transition-all duration-300 hover:border-[#5dd4f0] hover:bg-[#5dd4f0]/22"
-              >
-                Start with the question
-              </button>
-              <button
-                onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
-                className="rounded-full border border-white/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#c4ccd9] transition-all duration-300 hover:border-white/25 hover:text-white"
-              >
-                See the first instrument
-              </button>
-            </div>
           </div>
 
           <div className="hidden lg:block" />
         </div>
       </div>
 
-      <div className="pointer-events-none absolute bottom-[-4.5rem] left-6 right-6 z-20 md:left-auto md:right-10 md:w-[40rem] lg:right-14 lg:w-[44rem]">
+      <div className="pointer-events-none absolute bottom-0 left-6 right-6 z-30 translate-y-[34%] md:left-auto md:right-10 md:w-[40rem] md:translate-y-[38%] lg:right-14 lg:w-[44rem] lg:translate-y-[44%]">
         <div className="relative overflow-hidden rounded-[1.8rem] border border-white/10 bg-[linear-gradient(135deg,rgba(7,10,16,0.94),rgba(15,10,14,0.82))] p-6 shadow-[0_34px_90px_rgba(0,0,0,0.52)] backdrop-blur-xl sm:p-7">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_22%,rgba(93,212,240,0.12),transparent_28%),radial-gradient(circle_at_84%_24%,rgba(255,184,77,0.16),transparent_28%)]" />
           <div className="relative grid gap-5 sm:grid-cols-[minmax(0,1.15fr)_minmax(15rem,0.85fr)] sm:items-end">
