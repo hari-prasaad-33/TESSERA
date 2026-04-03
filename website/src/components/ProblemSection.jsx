@@ -24,7 +24,7 @@ export default function ProblemSection() {
   }, []);
 
   return (
-    <section id="philosophy" className="relative z-10 overflow-hidden px-6 pb-24 pt-36 md:px-10 lg:px-14 lg:pb-28 lg:pt-40">
+    <section id="philosophy" className="relative z-10 overflow-hidden px-6 pb-24 pt-48 md:px-10 md:pt-52 lg:px-14 lg:pb-28 lg:pt-56">
       <div className="absolute inset-y-0 right-0 w-full lg:w-[54vw]">
         <ShaderBackground
           fragmentShader={shaderPresets.rain}

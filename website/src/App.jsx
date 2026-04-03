@@ -7,6 +7,7 @@ import HeroSection from './components/HeroSection';
 import ProblemSection from './components/ProblemSection';
 import AnswerSection from './components/AnswerSection';
 import HowWeBuildSection from './components/HowWeBuildSection';
+import ThesisBridgeCard from './components/ThesisBridgeCard';
 import VisionSection from './components/VisionSection';
 import SiteNav from './components/SiteNav';
 import { EmberNebulaIllustration, OrbFieldIllustration } from './components/ConceptIllustrations';
@@ -57,6 +58,12 @@ export default function App() {
       </Panel>
 
       <div className="section-divider" />
+
+      <div className="pointer-events-none relative z-30 mx-auto -mt-20 mb-[-7.5rem] w-full max-w-[1600px] px-6 md:-mt-24 md:mb-[-8.5rem] md:px-10 lg:-mt-28 lg:mb-[-10rem] lg:px-14">
+        <div className="md:ml-auto md:max-w-[40rem] lg:max-w-[44rem]">
+          <ThesisBridgeCard />
+        </div>
+      </div>
 
       <Panel
         bg="bg-[#060611]"

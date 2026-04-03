@@ -45,6 +45,32 @@ const tesseractLinks = [
   [192, 238, 328, 186],
 ];
 
+const tesseractCores = [
+  { x: 334, y: 194, rx: 92, ry: 68, opacity: 0.24 },
+  { x: 342, y: 186, rx: 58, ry: 42, opacity: 0.28 },
+  { x: 322, y: 204, rx: 36, ry: 28, opacity: 0.22 },
+];
+
+const tesseractSmoke = [
+  { cx: 298, cy: 174, rx: 106, ry: 62, rotate: -18, fill: 'rgba(196,196,196,0.11)' },
+  { cx: 384, cy: 178, rx: 116, ry: 68, rotate: 18, fill: 'rgba(118,118,118,0.11)' },
+  { cx: 334, cy: 232, rx: 134, ry: 74, rotate: 10, fill: 'rgba(58,58,58,0.2)' },
+];
+
+const nebulaBlobs = [
+  { cx: 354, cy: 194, rx: 162, ry: 88, rotate: -12, fill: 'rgba(255,126,42,0.34)' },
+  { cx: 328, cy: 206, rx: 118, ry: 64, rotate: 24, fill: 'rgba(255,84,22,0.26)' },
+  { cx: 398, cy: 170, rx: 138, ry: 72, rotate: -32, fill: 'rgba(139,29,6,0.34)' },
+  { cx: 296, cy: 176, rx: 126, ry: 62, rotate: 18, fill: 'rgba(255,193,104,0.16)' },
+];
+
+const nebulaFissures = [
+  'M 312 196 C 330 190 344 178 364 170 C 384 162 404 154 424 146',
+  'M 304 210 C 334 214 356 224 374 240 C 396 258 418 274 448 282',
+  'M 342 150 C 352 166 358 182 362 200 C 366 220 376 238 394 258',
+  'M 286 178 C 262 188 246 204 230 226 C 214 246 196 262 168 274',
+];
+
 const modularTiles = [
   { x: 26, y: 30, w: 128, h: 96, kind: 'speaker' },
   { x: 160, y: 30, w: 84, h: 96, kind: 'knobs' },
@@ -102,6 +128,7 @@ export function ModularGridIllustration({ className = '' }) {
   return (
     <div className={`relative overflow-hidden bg-[#161B20] ${className}`.trim()}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,190,118,0.18),transparent_18%),radial-gradient(circle_at_82%_14%,rgba(93,212,240,0.12),transparent_20%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_18%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(7,10,16,0.08),transparent_32%,rgba(255,255,255,0.03)_58%,transparent_78%),repeating-linear-gradient(90deg,transparent,transparent_74px,rgba(17,21,28,0.24)_74px,rgba(17,21,28,0.24)_75px)]" />
       <svg viewBox="0 0 640 400" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
         <g transform="translate(0 10) skewX(-16)">
           {modularTiles.map((tile) => (
@@ -188,13 +215,16 @@ export function ModularGridIllustration({ className = '' }) {
 export function TesseractIllustration({ className = '' }) {
   return (
     <div className={`relative overflow-hidden bg-black ${className}`.trim()}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.06),transparent_16%),radial-gradient(circle_at_54%_52%,rgba(255,184,77,0.12),transparent_24%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.06),transparent_16%),radial-gradient(circle_at_54%_52%,rgba(255,184,77,0.08),transparent_24%)]" />
       <svg viewBox="0 0 640 400" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
         <defs>
           <linearGradient id="tesseract-stroke" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="rgba(240,235,224,0.72)" />
             <stop offset="100%" stopColor="rgba(160,168,176,0.4)" />
           </linearGradient>
+          <filter id="tesseract-blur">
+            <feGaussianBlur stdDeviation="18" />
+          </filter>
         </defs>
 
         {Array.from({ length: 22 }, (_, index) => (
@@ -207,9 +237,40 @@ export function TesseractIllustration({ className = '' }) {
           />
         ))}
 
-        <g opacity="0.2">
-          <ellipse cx="330" cy="206" rx="112" ry="78" fill="rgba(160,160,160,0.22)" />
-          <ellipse cx="330" cy="206" rx="70" ry="48" fill="rgba(40,40,40,0.34)" />
+        <g filter="url(#tesseract-blur)">
+          {tesseractSmoke.map((cloud, index) => (
+            <ellipse
+              key={`${cloud.cx}-${cloud.cy}-${index}`}
+              cx={cloud.cx}
+              cy={cloud.cy}
+              rx={cloud.rx}
+              ry={cloud.ry}
+              fill={cloud.fill}
+              transform={`rotate(${cloud.rotate} ${cloud.cx} ${cloud.cy})`}
+            />
+          ))}
+        </g>
+
+        <g opacity="0.26">
+          <ellipse cx="330" cy="206" rx="118" ry="80" fill="rgba(160,160,160,0.18)" />
+          <ellipse cx="330" cy="206" rx="78" ry="52" fill="rgba(40,40,40,0.36)" />
+        </g>
+
+        {tesseractCores.map((core, index) => (
+          <ellipse
+            key={`${core.x}-${core.y}-${index}`}
+            cx={core.x}
+            cy={core.y}
+            rx={core.rx}
+            ry={core.ry}
+            fill="rgba(86,86,86,0.18)"
+            opacity={core.opacity}
+          />
+        ))}
+
+        <g opacity="0.22">
+          <rect x="290" y="148" width="112" height="112" rx="20" fill="rgba(55,55,55,0.24)" transform="rotate(-14 346 204)" />
+          <rect x="302" y="162" width="88" height="88" rx="18" fill="rgba(22,22,22,0.46)" transform="rotate(9 346 206)" />
         </g>
 
         {tesseractLinks.map(([x1, y1, x2, y2], index) => (
@@ -230,9 +291,29 @@ export function TesseractIllustration({ className = '' }) {
 export function EmberNebulaIllustration({ className = '' }) {
   return (
     <div className={`relative overflow-hidden bg-black ${className}`.trim()}>
-      <div className="absolute inset-[-18%] bg-[radial-gradient(circle_at_52%_48%,rgba(255,233,185,0.98),rgba(255,187,91,0.88)_8%,rgba(255,114,44,0.78)_16%,rgba(139,29,6,0.38)_30%,transparent_58%)] blur-3xl opacity-95" />
-      <div className="absolute inset-[-8%] bg-[radial-gradient(circle_at_50%_50%,rgba(255,184,77,0.24),transparent_18%),radial-gradient(circle_at_54%_46%,rgba(255,106,51,0.18),transparent_18%)]" />
+      <div className="absolute inset-[-20%] bg-[radial-gradient(circle_at_50%_48%,rgba(255,240,195,0.98),rgba(255,196,93,0.92)_7%,rgba(255,112,38,0.76)_15%,rgba(127,24,5,0.42)_31%,transparent_58%)] blur-3xl opacity-95" />
+      <div className="absolute inset-[-10%] bg-[radial-gradient(circle_at_44%_54%,rgba(255,184,77,0.2),transparent_18%),radial-gradient(circle_at_58%_42%,rgba(255,106,51,0.16),transparent_18%),radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.08),transparent_8%)]" />
       <svg viewBox="0 0 720 420" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <filter id="nebula-blur">
+            <feGaussianBlur stdDeviation="24" />
+          </filter>
+        </defs>
+
+        <g filter="url(#nebula-blur)">
+          {nebulaBlobs.map((blob, index) => (
+            <ellipse
+              key={`${blob.cx}-${blob.cy}-${index}`}
+              cx={blob.cx}
+              cy={blob.cy}
+              rx={blob.rx}
+              ry={blob.ry}
+              fill={blob.fill}
+              transform={`rotate(${blob.rotate} ${blob.cx} ${blob.cy})`}
+            />
+          ))}
+        </g>
+
         {Array.from({ length: 26 }, (_, index) => (
           <circle
             key={index}
@@ -242,6 +323,8 @@ export function EmberNebulaIllustration({ className = '' }) {
             fill={index % 5 === 0 ? 'rgba(255,236,210,0.82)' : 'rgba(255,255,255,0.32)'}
           />
         ))}
+        <ellipse cx="356" cy="200" rx="56" ry="34" fill="rgba(8,8,8,0.54)" />
+        <ellipse cx="344" cy="198" rx="24" ry="12" fill="rgba(8,8,8,0.76)" transform="rotate(-18 344 198)" />
         {emberThreads.map((thread, index) => (
           <path
             key={thread}
@@ -249,6 +332,16 @@ export function EmberNebulaIllustration({ className = '' }) {
             fill="none"
             stroke={index % 2 === 0 ? 'rgba(255,114,44,0.34)' : 'rgba(255,212,172,0.2)'}
             strokeWidth={index === 0 ? '6.2' : index === 2 ? '4.6' : '3.4'}
+            strokeLinecap="round"
+          />
+        ))}
+        {nebulaFissures.map((fissure, index) => (
+          <path
+            key={fissure}
+            d={fissure}
+            fill="none"
+            stroke={index % 2 === 0 ? 'rgba(12,8,8,0.42)' : 'rgba(39,11,5,0.34)'}
+            strokeWidth={index === 1 ? '4.8' : '3.6'}
             strokeLinecap="round"
           />
         ))}
