@@ -56,14 +56,19 @@ export default function VisionSection() {
         </div>
 
         <div className="space-y-8">
-          <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] lg:border">
-            <div className="grid gap-0 lg:grid-cols-[minmax(0,0.96fr)_minmax(22rem,1.04fr)]">
-              <div className="min-h-[20rem] lg:min-h-[26rem]">
-                <TesseractIllustration className="h-full" />
-              </div>
-              <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
-                <p className="max-w-2xl text-lg leading-relaxed text-[#c6cfdd] sm:text-xl">
-                  Every product we build will follow the same principle: reduce friction, never replace intention. The goal is not to build the most powerful AI in music. It is to build the most honest one.
+          <div className="relative overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] lg:border">
+            <div className="absolute inset-0 opacity-[0.72]">
+              <TesseractIllustration className="h-full" />
+            </div>
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,6,12,0.98)_0%,rgba(5,6,12,0.82)_22%,rgba(5,6,12,0.3)_44%,rgba(5,6,12,0.7)_68%,rgba(5,6,12,0.96)_100%),linear-gradient(180deg,rgba(5,6,12,0.06),rgba(5,6,12,0.78)_90%)]" />
+
+            <div className="relative grid min-h-[24rem] items-center px-8 py-10 sm:px-10 sm:py-12 lg:min-h-[28rem] lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:px-12 xl:px-14">
+              <div className="hidden lg:block" />
+              <div className="max-w-3xl lg:justify-self-end">
+                <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#8d94ab]">Design principle</div>
+                <p className="mt-5 text-lg leading-relaxed text-[#c6cfdd] sm:text-xl">
+                  Every product we build will follow the same principle: reduce friction, never replace intention.
+                  The goal is not to build the most powerful AI in music. It is to build the most honest one.
                 </p>
               </div>
             </div>

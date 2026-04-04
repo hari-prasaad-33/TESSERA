@@ -101,9 +101,8 @@ export default function App() {
 
       <Panel
         bg="bg-[#06040F]"
-        texture={<div className="absolute inset-0 opacity-[0.1]"><OrbFieldIllustration className="h-full" /></div>}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,184,77,0.08),transparent_24%),radial-gradient(circle_at_74%_18%,rgba(93,212,240,0.04),transparent_24%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,184,77,0.08),transparent_24%),radial-gradient(circle_at_74%_18%,rgba(93,212,240,0.03),transparent_24%)]" />
         <VisionSection />
       </Panel>
 
