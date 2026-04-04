@@ -18,10 +18,7 @@ function RotaryKnob({ label, value, accent = 'orange', size = 'md' }) {
           className="absolute left-1/2 top-1/2 h-[42%] w-[2px] -translate-x-1/2 -translate-y-[86%] rounded-full"
           style={{ background: ring, boxShadow: `0 0 12px ${ring}` }}
         />
-        <div
-          className="absolute inset-[9%] rounded-full border"
-          style={{ borderColor: `${ring}66` }}
-        />
+        <div className="absolute inset-[9%] rounded-full border" style={{ borderColor: `${ring}66` }} />
       </div>
       <div className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">{label}</div>
       <div className="font-mono text-[9px] text-[#d4d8e5]">{value}</div>
@@ -56,7 +53,9 @@ function GraphNode({ cx, cy, index, icon = 'peak' }) {
       <circle r="13" fill="rgba(255,106,51,0.1)" stroke="rgba(255,106,51,0.85)" strokeWidth="1.4" />
       <circle r="8.8" fill="rgba(18,13,12,0.98)" stroke="rgba(255,196,170,0.28)" strokeWidth="0.8" />
       <path d={iconPath} fill="none" stroke="#ff965f" strokeWidth="1.5" strokeLinecap="round" />
-      <text y="-20" textAnchor="middle" fill="#ff9d71" fontSize="6" fontFamily="'JetBrains Mono', monospace">{index}</text>
+      <text y="-20" textAnchor="middle" fill="#ff9d71" fontSize="6" fontFamily="'JetBrains Mono', monospace">
+        {index}
+      </text>
     </g>
   );
 }
@@ -124,13 +123,7 @@ function EQGraph() {
       ))}
 
       {strands.map((d, index) => (
-        <path
-          key={index}
-          d={d}
-          fill="none"
-          stroke="rgba(93, 212, 240, 0.18)"
-          strokeWidth="1.1"
-        />
+        <path key={index} d={d} fill="none" stroke="rgba(93, 212, 240, 0.18)" strokeWidth="1.1" />
       ))}
 
       <path
@@ -173,8 +166,8 @@ const spectrumThreads = [
 
 export function EQInterfaceMockup({ className = '' }) {
   return (
-    <div className={`relative flex h-full min-h-[27rem] flex-col overflow-hidden border-0 bg-[#090d14] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(93,212,240,0.08),transparent_42%),radial-gradient(circle_at_82%_18%,rgba(255,106,51,0.12),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_12%,transparent_88%,rgba(255,255,255,0.03))]" />
+    <div className={`relative flex h-full min-h-[24rem] flex-col overflow-hidden border-0 bg-[#090d14] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(93,212,240,0.08),transparent_42%),radial-gradient(circle_at_82%_18%,rgba(255,106,51,0.1),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_14%,transparent_88%,rgba(255,255,255,0.03))]" />
 
       <div className="relative z-10 flex items-center justify-between gap-4 border-b border-white/8 px-4 py-3 sm:px-6">
         <div className="flex items-center gap-2">
@@ -194,128 +187,103 @@ export function EQInterfaceMockup({ className = '' }) {
         </div>
       </div>
 
-      <div className="relative z-10 grid flex-1 grid-cols-[84px_minmax(0,1fr)_84px] gap-3 px-3 pb-3 pt-3 sm:grid-cols-[90px_minmax(0,1fr)_90px] sm:px-4">
-        <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,10,16,0.92))] p-3">
-          <div className="mb-4 font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Input Gain</div>
-          <RotaryKnob label="Gain" value="+1.5 dB" accent="orange" size="lg" />
-          <div className="mt-6 border-t border-white/6 pt-4">
-            <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Global Controls</div>
-            <div className="space-y-2">
-              <div className="border border-white/8 bg-white/[0.02] px-3 py-2 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">Solo Selected Band</div>
-              <div className="border border-white/8 bg-white/[0.02] px-3 py-2 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">Reset All Bands</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid min-h-[20rem] grid-rows-[minmax(0,1fr)_116px] gap-3">
-          <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(13,20,30,0.92),rgba(6,10,14,0.96))] p-4">
-            <div className="relative h-full overflow-hidden border border-white/6 bg-[#070b11]">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_44%,rgba(93,212,240,0.08),transparent_45%)]" />
-              <EQGraph />
-              <svg viewBox="0 0 780 320" className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
-                {spectrumThreads.map((thread) => (
-                  <path key={thread} d={thread} fill="none" stroke="rgba(93,212,240,0.16)" strokeWidth="1.3" />
-                ))}
-              </svg>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-[1fr_0.88fr_0.9fr_0.9fr_1.16fr] gap-3 border border-white/8 bg-[linear-gradient(180deg,rgba(10,14,21,0.98),rgba(7,9,14,0.94))] p-4">
-            <div className="flex flex-col justify-between border border-white/8 bg-white/[0.02] p-3">
-              <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Selected Band Editor</div>
-              <div>
-                <div className="text-[1.05rem] font-semibold tracking-[0.08em] text-[#ff7f49]">Band 3</div>
-                <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Selected</div>
+      <div className="relative z-10 flex flex-1 flex-col gap-4 px-3 pb-3 pt-3 sm:px-4">
+        <div className="grid min-h-0 flex-1 gap-4 xl:grid-cols-[minmax(0,1fr)_280px]">
+          <div className="grid min-h-0 gap-4 xl:grid-rows-[minmax(0,1fr)_132px]">
+            <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(13,20,30,0.92),rgba(6,10,14,0.96))] p-4">
+              <div className="relative h-full min-h-[17rem] overflow-hidden border border-white/6 bg-[#070b11]">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_44%,rgba(93,212,240,0.08),transparent_45%)]" />
+                <EQGraph />
+                <svg viewBox="0 0 780 320" className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
+                  {spectrumThreads.map((thread) => (
+                    <path key={thread} d={thread} fill="none" stroke="rgba(93,212,240,0.16)" strokeWidth="1.3" />
+                  ))}
+                </svg>
               </div>
             </div>
 
-            <div className="flex flex-col items-center justify-between border border-white/8 bg-white/[0.02] p-3">
-              <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Type</div>
-              <div className="rounded-full border border-white/8 px-3 py-1 font-mono text-[8px] uppercase tracking-[0.24em] text-[#d0d6e4]">Peak</div>
-              <div className="text-[10px] text-[#8d94ab]">Filter</div>
-            </div>
-
-            <div className="border border-white/8 bg-white/[0.02] p-3">
-              <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Freq</div>
-              <RotaryKnob label="Band 3" value="244 Hz" accent="orange" />
-            </div>
-
-            <div className="border border-white/8 bg-white/[0.02] p-3">
-              <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Gain</div>
-              <RotaryKnob label="Band 3" value="3.8 dB" accent="orange" />
-            </div>
-
-            <div className="grid grid-cols-[1fr_1fr] gap-3 border border-white/8 bg-white/[0.02] p-3">
-              <div>
-                <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Q</div>
-                <RotaryKnob label="Band 3" value="1.00" accent="orange" />
+            <div className="grid gap-3 border border-white/8 bg-[linear-gradient(180deg,rgba(10,14,21,0.98),rgba(7,9,14,0.94))] p-4 sm:grid-cols-2 xl:grid-cols-[0.92fr_0.82fr_0.9fr_0.9fr_1.1fr]">
+              <div className="flex flex-col justify-between border border-white/8 bg-white/[0.02] p-3">
+                <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Selected band</div>
+                <div>
+                  <div className="text-[1rem] font-semibold tracking-[0.08em] text-[#ff7f49]">Band 3</div>
+                  <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Peak filter</div>
+                </div>
               </div>
-              <div className="flex flex-col justify-between border border-white/8 bg-[#0a0e15] p-3">
-                <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Global Filter Type</div>
+
+              <div className="flex flex-col justify-between border border-white/8 bg-white/[0.02] p-3">
+                <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Filter type</div>
                 <div className="flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">
-                  <span className="rounded-full border border-[#ff8b5f]/40 px-2 py-1 text-[#ff8b5f]">HPF</span>
-                  <span className="rounded-full border border-white/8 px-2 py-1">LPF</span>
+                  <span className="rounded-full border border-[#ff8b5f]/40 px-2 py-1 text-[#ff8b5f]">Peak</span>
+                  <span className="rounded-full border border-white/8 px-2 py-1">Shelf</span>
+                </div>
+                <div className="text-[10px] text-[#8d94ab]">Drag any point live</div>
+              </div>
+
+              <div className="border border-white/8 bg-white/[0.02] p-3">
+                <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Freq</div>
+                <RotaryKnob label="Band 3" value="244 Hz" accent="orange" />
+              </div>
+
+              <div className="border border-white/8 bg-white/[0.02] p-3">
+                <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Gain</div>
+                <RotaryKnob label="Band 3" value="+3.8 dB" accent="orange" />
+              </div>
+
+              <div className="grid gap-3 border border-white/8 bg-white/[0.02] p-3 sm:grid-cols-2 xl:grid-cols-[0.9fr_1.1fr]">
+                <div>
+                  <div className="mb-3 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Q</div>
+                  <RotaryKnob label="Band 3" value="1.00" accent="orange" />
+                </div>
+                <div className="flex flex-col justify-between border border-white/8 bg-[#0a0e15] p-3">
+                  <div className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Global filter</div>
+                  <div className="flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">
+                    <span className="rounded-full border border-[#ff8b5f]/40 px-2 py-1 text-[#ff8b5f]">HPF</span>
+                    <span className="rounded-full border border-white/8 px-2 py-1">LPF</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
+            <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,10,16,0.92))] p-4">
+              <div className="mb-4 flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">
+                <span>Session gain</span>
+                <span className="text-[#d0d6e4]">A/B visible</span>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <RotaryKnob label="Input" value="+1.5 dB" accent="orange" size="lg" />
+                <RotaryKnob label="Output" value="+0.0 dB" accent="orange" size="lg" />
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-between border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,10,16,0.92))] p-4">
+              <div>
+                <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Analyzer</div>
+                <p className="mt-3 text-sm leading-relaxed text-[#c6cfdd]">
+                  The suggestion is a starting point. Every move remains visible, editable, and reversible.
+                </p>
+              </div>
+              <div className="mt-5 grid gap-2 font-mono text-[8px] uppercase tracking-[0.22em] text-[#d0d6e4]">
+                <div className="rounded-full border border-[#5dd4f0]/25 bg-[#5dd4f0]/8 px-3 py-2 text-center text-[#d5f8ff]">Analyzer on</div>
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="border border-white/8 bg-white/[0.02] px-2 py-2 text-center">Solo</div>
+                  <div className="border border-white/8 bg-white/[0.02] px-2 py-2 text-center">Reset</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,10,16,0.92))] p-3">
-          <div className="mb-4 text-right font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Output Gain</div>
-          <div className="flex flex-col items-end">
-            <RotaryKnob label="Gain" value="+0.0 dB" accent="orange" size="lg" />
-          </div>
-          <div className="mt-6 border-t border-white/6 pt-4">
-            <div className="mb-3 font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Analyzer</div>
-            <div className="border border-white/8 bg-white/[0.02] p-3">
-              <div className="mb-3 flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">
-                <span>Bypass</span>
-                <span className="h-3 w-3 rounded border border-white/12 bg-[#0a0e15]" />
-              </div>
-              <div className="flex items-center gap-3 rounded-full border border-[#5dd4f0]/25 bg-[#5dd4f0]/8 px-3 py-2 font-mono text-[8px] uppercase tracking-[0.24em] text-[#d5f8ff]">
-                <span className="h-3 w-3 rounded-sm border border-[#5dd4f0]/50 bg-[#5dd4f0]/20" />
-                <span>On / Off</span>
-              </div>
-            </div>
+        <div className="border border-white/8 bg-black/35 px-4 py-3">
+          <div className="flex items-center gap-3 rounded-full border border-white/8 bg-black/35 px-4 py-3">
+            <div className="h-2 w-2 rounded-full bg-[#5dd4f0] shadow-[0_0_18px_rgba(93,212,240,0.8)]" />
+            <span className="flex-1 font-mono text-[9px] uppercase tracking-[0.22em] text-[#9ba3b9]">Describe the tone you want...</span>
+            <span className="rounded-full border border-[#ff8b5f]/40 bg-[#ff6a33]/14 px-4 py-2 font-mono text-[8px] uppercase tracking-[0.24em] text-[#ffd6c4]">Suggest</span>
           </div>
         </div>
       </div>
-
-      <div className="relative z-10 border-t border-white/8 px-4 py-3 sm:px-6">
-        <div className="flex items-center gap-3 rounded-full border border-white/8 bg-black/35 px-4 py-3">
-          <div className="h-2 w-2 rounded-full bg-[#5dd4f0] shadow-[0_0_18px_rgba(93,212,240,0.8)]" />
-          <span className="flex-1 font-mono text-[9px] uppercase tracking-[0.22em] text-[#9ba3b9]">Describe the tone you want...</span>
-          <span className="rounded-full border border-[#ff8b5f]/40 bg-[#ff6a33]/14 px-4 py-2 font-mono text-[8px] uppercase tracking-[0.24em] text-[#ffd6c4]">Suggest</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ArcKnob({ label, value, accent = 'orange', large = false }) {
-  const color = accent === 'teal' ? '#1189ab' : '#ff6a33';
-  const soft = accent === 'teal' ? 'rgba(17, 137, 171, 0.18)' : 'rgba(255, 106, 51, 0.18)';
-  const size = large ? 'h-20 w-20' : 'h-14 w-14';
-  const arc = large ? 126 : 104;
-
-  return (
-    <div className="flex flex-col items-center gap-2 text-center">
-      <div className={`relative ${size} rounded-full`}>
-        <div className="absolute inset-0 rounded-full border border-white/5 bg-black/20" />
-        <div
-          className="absolute inset-[14%] rounded-full"
-          style={{
-            background: `conic-gradient(from 210deg, ${color} 0deg ${arc}deg, rgba(255,255,255,0.04) ${arc}deg 320deg, transparent 320deg 360deg)`,
-            boxShadow: `0 0 28px ${soft}`,
-            WebkitMask: 'radial-gradient(circle, transparent 60%, black 61%)',
-            mask: 'radial-gradient(circle, transparent 60%, black 61%)',
-          }}
-        />
-        <div className="absolute inset-[22%] rounded-full border border-white/8 bg-[#090d14]" />
-      </div>
-      <div className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">{label}</div>
-      <div className="font-mono text-[9px] text-[#d4d8e5]">{value}</div>
     </div>
   );
 }
@@ -343,16 +311,19 @@ function ParameterModule({ title, accent = 'orange', knobs = [] }) {
   );
 }
 
+function StripModule({ title, accent = 'orange', children, className = '' }) {
+  const color = accent === 'teal' ? 'text-[#5dd4f0]' : accent === 'amber' ? 'text-[#ffb84d]' : 'text-[#ff8b5f]';
+
+  return (
+    <div className={`border border-white/8 bg-black/18 p-4 ${className}`.trim()}>
+      <div className={`font-mono text-[9px] uppercase tracking-[0.24em] ${color}`}>{title}</div>
+      <div className="mt-4">{children}</div>
+    </div>
+  );
+}
+
 function AudioCurvePanel() {
-  const controlPoints = [
-    { x: 52, y: 112, accent: 'orange' },
-    { x: 96, y: 104, accent: 'teal' },
-    { x: 146, y: 106, accent: 'teal' },
-    { x: 206, y: 92, accent: 'orange' },
-    { x: 262, y: 78, accent: 'teal' },
-    { x: 320, y: 86, accent: 'orange' },
-    { x: 372, y: 110, accent: 'teal' },
-  ];
+  const freqLines = [40, 92, 160, 236, 316, 390];
 
   return (
     <div className="border border-white/8 bg-[#090b0d] p-3">
@@ -369,37 +340,70 @@ function AudioCurvePanel() {
           </linearGradient>
         </defs>
 
-        {Array.from({ length: 8 }, (_, index) => (
-          <line key={`v-${index}`} x1={40 + index * 46} x2={40 + index * 46} y1="18" y2="142" stroke="rgba(255,255,255,0.08)" />
+        {freqLines.map((x) => (
+          <line key={`v-${x}`} x1={x} x2={x} y1="18" y2="142" stroke="rgba(255,255,255,0.08)" />
         ))}
         {Array.from({ length: 5 }, (_, index) => (
-          <line key={`h-${index}`} x1="40" x2="390" y1={24 + index * 28} y2={24 + index * 28} stroke={index === 2 ? 'rgba(255,255,255,0.11)' : 'rgba(255,255,255,0.05)'} />
+          <line
+            key={`h-${index}`}
+            x1="40"
+            x2="390"
+            y1={24 + index * 28}
+            y2={24 + index * 28}
+            stroke={index === 2 ? 'rgba(255,255,255,0.11)' : 'rgba(255,255,255,0.05)'}
+          />
         ))}
 
         <path
-          d="M 40 114 C 62 114 72 110 92 104 C 116 96 128 110 150 106 C 178 100 186 92 208 92 C 226 92 238 76 260 78 C 284 80 294 88 316 86 C 338 84 350 104 390 110"
+          d="M 40 112 C 62 108 74 98 92 92 C 116 84 136 96 158 100 C 184 106 206 78 236 76 C 260 74 286 94 316 102 C 340 108 360 94 390 88"
           fill="none"
           stroke="rgba(93,212,240,0.14)"
           strokeWidth="1.3"
         />
         <path
-          d="M 40 114 C 62 114 72 110 92 104 C 116 96 128 110 150 106 C 178 100 186 92 208 92 C 226 92 238 76 260 78 C 284 80 294 88 316 86 C 338 84 350 104 390 110 L 390 142 L 40 142 Z"
+          d="M 40 110 C 58 108 74 104 92 94 C 116 82 138 96 160 102 C 184 108 210 86 236 74 C 264 62 292 84 316 94 C 342 106 362 92 390 88 L 390 142 L 40 142 Z"
           fill="url(#tesseraOneFill)"
         />
         <path
-          d="M 40 114 C 62 114 72 110 92 104 C 116 96 128 110 150 106 C 178 100 186 92 208 92 C 226 92 238 76 260 78 C 284 80 294 88 316 86 C 338 84 350 104 390 110"
+          d="M 40 110 C 58 108 74 104 92 94 C 116 82 138 96 160 102 C 184 108 210 86 236 74 C 264 62 292 84 316 94 C 342 106 362 92 390 88"
           fill="none"
           stroke="url(#tesseraOneCurve)"
           strokeWidth="3"
           strokeLinecap="round"
         />
 
-        {controlPoints.map((point, index) => (
+        {[
+          { x: 92, y: 94, accent: '#ff6a33' },
+          { x: 236, y: 74, accent: '#5dd4f0' },
+          { x: 316, y: 94, accent: '#ff6a33' },
+          { x: 390, y: 88, accent: '#5dd4f0' },
+        ].map((point) => (
           <g key={`${point.x}-${point.y}`} transform={`translate(${point.x} ${point.y})`}>
-            <circle r="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" />
-            <circle r="7" fill={point.accent === 'orange' ? '#ff6a33' : '#9db0bb'} />
-            {index === 0 && <circle r="11" fill="none" stroke="rgba(255,106,51,0.34)" />}
+            <circle r="13" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" />
+            <circle r="5.5" fill={point.accent} />
+            <circle r="9" fill="none" stroke={`${point.accent}66`} />
           </g>
+        ))}
+
+        {[
+          ['30', 40, 'start'],
+          ['90', 92, 'middle'],
+          ['250', 160, 'middle'],
+          ['1k', 236, 'middle'],
+          ['4k', 316, 'middle'],
+          ['12k', 390, 'end'],
+        ].map(([label, x, anchor]) => (
+          <text
+            key={label}
+            x={x}
+            y="158"
+            fill="rgba(173,180,197,0.72)"
+            fontSize="8"
+            fontFamily="'JetBrains Mono', monospace"
+            textAnchor={anchor}
+          >
+            {label}
+          </text>
         ))}
       </svg>
     </div>
@@ -409,7 +413,6 @@ function AudioCurvePanel() {
 export function ChannelStripMockup({ className = '' }) {
   return (
     <div className={`relative overflow-hidden bg-[#050607] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}>
-      <div className="absolute inset-y-0 right-0 w-[5px] bg-[#ff6a33] shadow-[0_0_32px_rgba(255,106,51,0.55)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,106,51,0.08),transparent_20%),radial-gradient(circle_at_78%_12%,rgba(93,212,240,0.08),transparent_18%)]" />
 
       <div className="relative z-10 border-b border-white/8 px-4 py-3 sm:px-6">
@@ -443,7 +446,9 @@ export function ChannelStripMockup({ className = '' }) {
       <div className="relative z-10 border-b border-white/8 px-4 py-3 sm:px-6">
         <div className="flex flex-wrap items-center gap-2">
           {['Open', 'Play', 'Pause', 'Stop'].map((item, index) => (
-            <MiniToggle key={item} active={index === 1}>{item}</MiniToggle>
+            <MiniToggle key={item} active={index === 1}>
+              {item}
+            </MiniToggle>
           ))}
           <div className="ml-2 flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.22em] text-[#a0a8ba]">
             <span className="h-3 w-3 rounded border border-white/18" />
@@ -467,7 +472,7 @@ export function ChannelStripMockup({ className = '' }) {
         </div>
       </div>
 
-      <div className="relative z-10 grid gap-3 px-4 py-4 sm:px-6 lg:grid-cols-[0.96fr_1.08fr_0.96fr]">
+      <div className="relative z-10 grid gap-3 px-4 py-4 sm:px-6 lg:grid-cols-[0.92fr_1.16fr_0.92fr]">
         <ParameterModule
           title="Compressor"
           knobs={[
@@ -478,9 +483,9 @@ export function ChannelStripMockup({ className = '' }) {
           ]}
         />
 
-        <div className="border border-white/8 bg-black/18 p-4">
+        <StripModule title="EQ Surface" accent="teal">
           <div className="mb-4 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.22em] text-[#a0a8ba]">
-            <span>EQ</span>
+            <span>Audio profile</span>
             <div className="flex items-center gap-2">
               <span className="h-3 w-3 rounded border border-white/18" />
               <span>Bypass</span>
@@ -488,11 +493,11 @@ export function ChannelStripMockup({ className = '' }) {
           </div>
           <AudioCurvePanel />
           <div className="mt-4 grid grid-cols-3 gap-4">
-            <RotaryKnob label="Band 1" value="30 Hz" accent="teal" />
+            <RotaryKnob label="Freq" value="1.2 kHz" accent="teal" />
             <RotaryKnob label="Gain" value="+2.4 dB" accent="orange" />
             <RotaryKnob label="Q" value="1.20" accent="teal" />
           </div>
-        </div>
+        </StripModule>
 
         <ParameterModule
           title="Limiter"
@@ -501,44 +506,39 @@ export function ChannelStripMockup({ className = '' }) {
             { label: 'Ratio', value: '4.0:1', accent: 'teal' },
             { label: 'Attack', value: '10.0 ms', accent: 'teal' },
             { label: 'Release', value: '100 ms', accent: 'orange' },
-            { label: 'Makeup', value: '0.0 dB', accent: 'orange' },
-            { label: 'Knee', value: '6.0 dB', accent: 'teal' },
           ]}
         />
       </div>
 
       <div className="relative z-10 grid gap-3 border-t border-white/8 px-4 py-4 sm:px-6 lg:grid-cols-[0.92fr_1.16fr_0.92fr]">
-        <div className="border border-white/8 bg-black/18 p-4">
-          <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#ff8b5f]">Saturator</div>
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <ArcKnob label="Drive" value="6.4" accent="orange" large />
-            <ArcKnob label="Mix" value="42%" accent="orange" large />
+        <StripModule title="Saturator" accent="orange">
+          <div className="grid grid-cols-2 gap-4">
+            <RotaryKnob label="Drive" value="6.4" accent="orange" size="lg" />
+            <RotaryKnob label="Mix" value="42%" accent="orange" size="lg" />
           </div>
-        </div>
+        </StripModule>
 
-        <div className="border border-white/8 bg-black/18 p-4">
-          <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#ff8b5f]">Reverb</div>
-          <div className="mt-4 grid gap-4 lg:grid-cols-[142px_minmax(0,1fr)]">
+        <StripModule title="Space" accent="amber">
+          <div className="grid gap-4 lg:grid-cols-[148px_minmax(0,1fr)]">
             <div className="space-y-3">
               <div className="rounded-md border border-white/8 bg-black/22 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.22em] text-[#d0d6e4]">Room</div>
               <div className="rounded-md border border-white/8 bg-black/22 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.22em] text-[#d0d6e4]">Hard</div>
             </div>
-            <div className="grid grid-cols-4 gap-2">
-              <ArcKnob label="Size" value="34" accent="teal" />
-              <ArcKnob label="Damp" value="28" accent="orange" />
-              <ArcKnob label="Width" value="74" accent="teal" />
-              <ArcKnob label="Wet" value="16" accent="orange" />
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+              <RotaryKnob label="Size" value="34" accent="teal" />
+              <RotaryKnob label="Damp" value="28" accent="orange" />
+              <RotaryKnob label="Width" value="74" accent="teal" />
+              <RotaryKnob label="Wet" value="16" accent="orange" />
             </div>
           </div>
-        </div>
+        </StripModule>
 
-        <div className="border border-white/8 bg-black/18 p-4">
-          <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#ff8b5f]">Limiter</div>
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <ArcKnob label="Ceiling" value="-0.1 dB" accent="orange" large />
-            <ArcKnob label="Release" value="Auto" accent="teal" large />
+        <StripModule title="Output Bus" accent="teal">
+          <div className="grid grid-cols-2 gap-4">
+            <RotaryKnob label="Ceiling" value="-0.1 dB" accent="orange" size="lg" />
+            <RotaryKnob label="Release" value="Auto" accent="teal" size="lg" />
           </div>
-        </div>
+        </StripModule>
       </div>
     </div>
   );
@@ -590,7 +590,7 @@ export default function ProductShowcase({ onNavigate }) {
                 </div>
                 <div className="border border-white/8 bg-black/20 p-4">
                   <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#ffb84d]">TESSERA ONE</div>
-                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">The umbrella. A suite of mixing tools -- EQ, Compressor, Reverb, Saturation -- all sharing the same philosophy: visible suggestions, full artist control.</div>
+                  <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">The umbrella. A suite of mixing tools -- EQ, compressor, reverb, saturation -- all sharing the same philosophy: visible suggestions, full artist control.</div>
                 </div>
                 <div className="border border-white/8 bg-black/20 p-4">
                   <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5dd4f0]">TESSERA</div>
@@ -616,7 +616,7 @@ export default function ProductShowcase({ onNavigate }) {
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {[
             { value: '01', label: 'TESSERA EQ', note: 'The first product. Shipping now. An AI-assisted parametric EQ that stays transparent.' },
-            { value: '02', label: 'TESSERA ONE', note: 'The umbrella. A suite of mixing tools -- EQ, Compressor, Reverb, Saturation -- all sharing the same philosophy: visible suggestions, full artist control.' },
+            { value: '02', label: 'TESSERA ONE', note: 'The umbrella. A suite of mixing tools -- EQ, compressor, reverb, saturation -- all sharing the same philosophy: visible suggestions, full artist control.' },
             { value: '03', label: 'TESSERA', note: 'The long game. A full digital audio workstation where every step of creation follows the glass-box principle.' },
           ].map((stat) => (
             <div key={stat.label} className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.9))] p-6">
