@@ -7,8 +7,8 @@ function SemanticEngineVisual() {
   const stages = ['Prompt', 'Tokenizer', 'Embedding', 'Similarity', '8-band curve'];
 
   return (
-    <div className="relative flex h-full min-h-[26rem] flex-col justify-center overflow-hidden bg-[#08111a] p-6 sm:p-8 lg:p-10">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(93,212,240,0.16),transparent_26%),radial-gradient(circle_at_80%_78%,rgba(255,184,77,0.14),transparent_30%)]" />
+    <div className="relative flex h-full min-h-[26rem] flex-col justify-center overflow-hidden bg-[#0b0c0d] p-6 sm:p-8 lg:p-10">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.06),transparent_26%),radial-gradient(circle_at_80%_78%,rgba(255,184,77,0.12),transparent_30%)]" />
       <div className="relative z-10 grid gap-4">
         {stages.map((stage, index) => (
           <div key={stage} className="flex items-center gap-3">
@@ -45,7 +45,7 @@ function TierVisual() {
   ];
 
   return (
-    <div className="flex h-full min-h-[26rem] items-center justify-center bg-[#0a1118] p-6 sm:p-8 lg:p-10">
+    <div className="flex h-full min-h-[26rem] items-center justify-center bg-[#0c0d0f] p-6 sm:p-8 lg:p-10">
       <div className="w-full max-w-xl space-y-4">
         {tiers.map((tier, index) => {
           const theme = tier.accent === 'teal'
@@ -74,7 +74,7 @@ function TierVisual() {
 
 function DSPVisual() {
   return (
-    <div className="flex h-full min-h-[26rem] items-center justify-center bg-[#090f16] p-6 sm:p-8 lg:p-10">
+    <div className="flex h-full min-h-[26rem] items-center justify-center bg-[#0b0c0e] p-6 sm:p-8 lg:p-10">
       <svg viewBox="0 0 620 280" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="waveA" x1="0" x2="1">
@@ -145,9 +145,9 @@ export default function HowWeBuildSection({ eqMockup }) {
             subtitle="A prompt becomes a curve you can inspect immediately."
             description="Type a phrase like 'add warmth and air' and the system suggests a full EQ state. Nothing is hidden behind a magic button. Every band is draggable, editable, and reversible."
             visual={
-              <div className="relative h-full overflow-hidden bg-[#081018]">
-                <ShaderBackground fragmentShader={shaderPresets.lanterns} opacity={0.62} mixBlendMode="screen" />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,14,0.08),rgba(5,8,14,0.56)_84%)]" />
+              <div className="relative h-full overflow-hidden bg-[#0a0b0d]">
+                <ShaderBackground fragmentShader={shaderPresets.lanterns} opacity={0.34} mixBlendMode="screen" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,7,7,0.06),rgba(7,7,7,0.54)_84%)]" />
                 <div className="relative z-10 h-full">{liveVisual}</div>
               </div>
             }

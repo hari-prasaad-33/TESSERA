@@ -1,5 +1,5 @@
 ﻿import SectionMarker from './SectionMarker';
-import { EmberNebulaIllustration, TesseractIllustration } from './ConceptIllustrations';
+import { TesseractIllustration } from './ConceptIllustrations';
 
 function RoadmapVisual() {
   const stops = [
@@ -12,8 +12,11 @@ function RoadmapVisual() {
 
   return (
     <div className="relative flex h-full min-h-[24rem] items-center overflow-hidden bg-[#090714] p-8 sm:p-10 lg:p-12">
-      <EmberNebulaIllustration className="absolute inset-0" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,6,14,0.16),rgba(5,6,14,0.82)_82%)]" />
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-[0.72]"
+        style={{ backgroundImage: "url('/images/textures/rogland-night.jpg')" }}
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,7,7,0.24),rgba(7,7,7,0.82)_82%),linear-gradient(90deg,rgba(8,8,8,0.42),rgba(8,8,8,0.18)_32%,rgba(8,8,8,0.56)_100%)]" />
       <div className="relative z-10 w-full">
         <div className="flex flex-wrap items-center gap-3 sm:gap-5">
           {stops.map((stop, index) => {

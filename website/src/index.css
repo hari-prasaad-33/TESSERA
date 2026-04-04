@@ -181,7 +181,7 @@ html {
 
 body {
   background:
-    radial-gradient(circle at top, rgba(93, 212, 240, 0.04), transparent 24%),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.03), transparent 24%),
     radial-gradient(circle at bottom right, rgba(255, 184, 77, 0.05), transparent 22%),
     var(--color-tessera-ink);
   color: var(--color-tessera-text);

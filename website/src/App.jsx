@@ -22,12 +22,12 @@ function Panel({ bg, id, children, texture = null }) {
 
 function TextureVeil({
   src,
-  opacity = 0.18,
+  opacity = 0.42,
   size = 'cover',
   position = 'center',
   repeat = false,
-  filter = 'grayscale(1) contrast(1.4) brightness(0.82)',
-  blend = 'overlay',
+  filter = 'grayscale(0.22) saturate(0.74) contrast(1.06) brightness(0.42)',
+  blend = 'normal',
 }) {
   return (
     <div
@@ -76,11 +76,8 @@ export default function App() {
     <div className="text-tessera-text selection:bg-tessera-orange selection:text-black">
       <SiteNav currentPage="home" onNavigate={navigateTo} />
 
-      <Panel
-        bg="bg-[#05051A]"
-        texture={<TextureVeil src="/images/textures/cliff-side-normal.jpg" opacity={0.16} position="right center" />}
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(93,212,240,0.08),transparent_24%),radial-gradient(circle_at_84%_16%,rgba(255,184,77,0.12),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_28%)]" />
+      <Panel bg="bg-[#070605]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,210,152,0.08),transparent_24%),radial-gradient(circle_at_84%_16%,rgba(255,184,77,0.1),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_28%)]" />
         <HeroSection onExplore={() => document.getElementById('philosophy')?.scrollIntoView({ behavior: 'smooth' })} />
       </Panel>
 
@@ -90,47 +87,36 @@ export default function App() {
         </div>
       </div>
 
-      <Panel
-        bg="bg-[#060611]"
-        texture={<TextureVeil src="/images/textures/coast-rocks-normal.jpg" opacity={0.2} position="center top" />}
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_84%_20%,rgba(255,184,77,0.1),transparent_20%),linear-gradient(180deg,rgba(255,255,255,0.01),transparent_26%)]" />
+      <Panel bg="bg-[#090807]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_84%_20%,rgba(255,184,77,0.08),transparent_20%),linear-gradient(180deg,rgba(255,255,255,0.01),transparent_26%)]" />
         <ProblemSection />
       </Panel>
 
-      <Panel
-        bg="bg-[#080518]"
-        texture={<TextureVeil src="/images/textures/lichen-rock-normal.jpg" opacity={0.2} position="center" />}
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,184,77,0.06),transparent_24%),radial-gradient(circle_at_76%_28%,rgba(93,212,240,0.05),transparent_24%)]" />
+      <Panel bg="bg-[#0a0907]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,184,77,0.06),transparent_24%),radial-gradient(circle_at_76%_28%,rgba(255,214,160,0.04),transparent_24%)]" />
         <AnswerSection />
       </Panel>
 
-      <Panel
-        bg="bg-[#071117]"
-        texture={<TextureVeil src="/images/textures/moon-normal.jpg" opacity={0.16} position="center" />}
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(93,212,240,0.12),transparent_28%),radial-gradient(circle_at_84%_72%,rgba(255,184,77,0.1),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_22%)]" />
+      <Panel bg="bg-[#0b0b0a]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_84%_72%,rgba(255,184,77,0.08),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_22%)]" />
         <HowWeBuildSection eqMockup={<EQInterfaceMockup />} />
       </Panel>
 
       <Panel
-        bg="bg-[#05070A]"
-        texture={<TextureVeil src="/images/textures/rogland-night.jpg" opacity={0.32} blend="normal" filter="grayscale(0.2) saturate(0.8) brightness(0.46)" />}
+        bg="bg-[#070707]"
+        texture={<TextureVeil src="/images/textures/rogland-night.jpg" opacity={0.5} position="center top" />}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_22%,rgba(255,106,51,0.12),transparent_20%),radial-gradient(circle_at_80%_36%,rgba(93,212,240,0.05),transparent_24%),linear-gradient(180deg,rgba(5,7,10,0.38),rgba(5,7,10,0.82)_88%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_22%,rgba(255,106,51,0.1),transparent_20%),linear-gradient(180deg,rgba(7,7,7,0.24),rgba(7,7,7,0.82)_88%)]" />
         <ProductShowcase onNavigate={navigateTo} />
       </Panel>
 
-      <Panel
-        bg="bg-[#06040F]"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,184,77,0.08),transparent_24%),radial-gradient(circle_at_74%_18%,rgba(93,212,240,0.03),transparent_24%)]" />
+      <Panel bg="bg-[#090807]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,184,77,0.08),transparent_24%),radial-gradient(circle_at_74%_18%,rgba(255,255,255,0.03),transparent_24%)]" />
         <VisionSection />
       </Panel>
 
       <footer className="relative overflow-hidden border-t border-white/6 bg-[#04050A] px-6 py-20 text-center md:px-10 lg:px-14">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(93,212,240,0.05),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(255,184,77,0.06),transparent_24%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.04),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(255,184,77,0.06),transparent_24%)]" />
         <div className="relative z-10 panel-shell">
           <div className="mb-8 flex justify-center opacity-70 transition-opacity hover:opacity-100">
             <EternalRing />
