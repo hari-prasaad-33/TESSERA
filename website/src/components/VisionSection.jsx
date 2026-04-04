@@ -11,12 +11,12 @@ function RoadmapVisual() {
   ];
 
   return (
-    <div className="relative flex h-full min-h-[24rem] items-center overflow-hidden bg-[#090714] p-8 sm:p-10 lg:p-12">
+    <div className="relative flex h-full min-h-[24rem] items-center overflow-hidden bg-[#06060c] p-8 sm:p-10 lg:p-12">
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-[0.72]"
-        style={{ backgroundImage: "url('/images/textures/rogland-night.jpg')" }}
+        className="absolute inset-0 bg-cover bg-center opacity-[0.88]"
+        style={{ backgroundImage: "url('/images/textures/moon-01.jpg')" }}
       />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,7,7,0.24),rgba(7,7,7,0.82)_82%),linear-gradient(90deg,rgba(8,8,8,0.42),rgba(8,8,8,0.18)_32%,rgba(8,8,8,0.56)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,4,10,0.35),rgba(4,4,12,0.72)_78%),linear-gradient(90deg,rgba(6,6,14,0.55),rgba(6,6,14,0.2)_40%,rgba(6,6,14,0.45)_100%)]" />
       <div className="relative z-10 w-full">
         <div className="flex flex-wrap items-center gap-3 sm:gap-5">
           {stops.map((stop, index) => {
@@ -59,14 +59,13 @@ export default function VisionSection() {
         </div>
 
         <div className="space-y-8">
-          <div className="relative overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] lg:border">
-            <div className="absolute inset-0 opacity-[0.72]">
-              <TesseractIllustration className="h-full" />
-            </div>
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,6,12,0.98)_0%,rgba(5,6,12,0.82)_22%,rgba(5,6,12,0.3)_44%,rgba(5,6,12,0.7)_68%,rgba(5,6,12,0.96)_100%),linear-gradient(180deg,rgba(5,6,12,0.06),rgba(5,6,12,0.78)_90%)]" />
-
-            <div className="relative grid min-h-[24rem] items-center px-8 py-10 sm:px-10 sm:py-12 lg:min-h-[28rem] lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:px-12 xl:px-14">
-              <div className="hidden lg:block" />
+          <div className="relative overflow-hidden border-y border-white/10 bg-[#080a10]/94 lg:border">
+            <div className="relative grid min-h-[24rem] items-center px-8 py-10 sm:px-10 sm:py-12 lg:min-h-[28rem] lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-10 lg:px-12 xl:px-14">
+              <div className="relative hidden min-h-[12rem] overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#060810]/90 lg:block">
+                <div className="absolute inset-0 flex items-center justify-center opacity-[0.48]">
+                  <TesseractIllustration className="h-full min-h-[14rem] w-full scale-110" />
+                </div>
+              </div>
               <div className="max-w-3xl lg:justify-self-end">
                 <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#8d94ab]">Design principle</div>
                 <p className="mt-5 text-lg leading-relaxed text-[#c6cfdd] sm:text-xl">

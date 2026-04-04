@@ -1,4 +1,4 @@
-import FounderVideoSection from './FounderVideoSection';
+import FoundersNoteSection from './FoundersNoteSection';
 import SectionMarker from './SectionMarker';
 
 export default function AnswerSection() {
@@ -7,10 +7,10 @@ export default function AnswerSection() {
       <div className="panel-shell relative z-10">
         <SectionMarker number="03" title="OUR ANSWER" className="mb-10" />
 
-        <div className="relative overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(7,10,16,0.94))]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_72%,rgba(93,212,240,0.1),transparent_28%),radial-gradient(circle_at_76%_22%,rgba(255,184,77,0.14),transparent_24%),linear-gradient(90deg,rgba(7,9,16,0.18),rgba(7,9,16,0.56)_100%)]" />
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-[#0a0c12]/92">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_72%,rgba(93,212,240,0.08),transparent_30%),radial-gradient(circle_at_76%_22%,rgba(255,184,77,0.1),transparent_26%)]" />
 
-          <div className="relative grid gap-8 px-6 py-8 sm:px-8 sm:py-10 lg:min-h-[36rem] lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:px-10 lg:py-12 xl:px-12">
+          <div className="relative grid gap-8 px-6 py-10 sm:px-8 sm:py-12 lg:min-h-[36rem] lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:px-10 lg:py-14 xl:px-12">
             <div className="flex items-end">
               <div className="max-w-[34rem]">
                 <div className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">
@@ -27,7 +27,7 @@ export default function AnswerSection() {
             </div>
 
             <div className="flex items-center lg:justify-end">
-              <div className="w-full max-w-3xl rounded-[1.7rem] border border-white/10 bg-[linear-gradient(180deg,rgba(8,11,16,0.82),rgba(8,11,16,0.58))] p-8 backdrop-blur-sm sm:p-10">
+              <div className="w-full max-w-3xl rounded-[1.7rem] border border-white/12 bg-[#080a10]/94 p-8 sm:p-10">
                 <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">
                   The line we will not cross
                 </p>
@@ -39,7 +39,7 @@ export default function AnswerSection() {
           </div>
         </div>
 
-        <div className="relative z-20 -mb-20 mt-10 max-w-4xl rounded-[1.8rem] border border-white/10 bg-[linear-gradient(135deg,rgba(8,10,16,0.92),rgba(18,10,8,0.82))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8">
+        <div className="relative z-20 -mb-20 mt-10 max-w-4xl rounded-[1.8rem] border border-white/12 bg-[#090b10]/94 p-8 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:p-10">
           <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">From principle to product</div>
           <p className="mt-4 max-w-3xl text-2xl leading-tight text-[#f0ebe0] sm:text-3xl">
             That is the principle. Now here is what it looks like when it is running. We build in the open -- starting with the first product.
@@ -47,7 +47,7 @@ export default function AnswerSection() {
         </div>
 
         <div className="mt-28">
-          <FounderVideoSection />
+          <FoundersNoteSection />
         </div>
       </div>
     </section>

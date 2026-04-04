@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import SectionMarker from './SectionMarker';
+import { EmberNebulaIllustration } from './ConceptIllustrations';
 
 const questions = [
   'Was it to hear your own taste taking shape in real time?',
@@ -25,8 +26,8 @@ export default function ProblemSection() {
       <div className="panel-shell relative z-10">
         <SectionMarker number="02" title="THE PROBLEM" className="mb-10" />
 
-        <div className="grid gap-8 lg:min-h-[26rem]">
-          <div className="max-w-4xl py-6">
+        <div className="grid gap-10 lg:min-h-[26rem]">
+          <div className="max-w-4xl py-8">
             <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">
               The quiet part no one is saying.
             </p>
@@ -37,11 +38,14 @@ export default function ProblemSection() {
           </div>
         </div>
 
-        <div className="relative z-20 -mb-20 mt-12 lg:mt-14">
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(10,12,18,0.94),rgba(17,11,9,0.82))] p-6 shadow-[0_32px_90px_rgba(0,0,0,0.48)] backdrop-blur-xl sm:p-8 lg:p-10">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(255,184,77,0.08),transparent_24%),radial-gradient(circle_at_18%_84%,rgba(93,212,240,0.06),transparent_26%)]" />
+        <div className="relative z-20 -mb-20 mt-12 lg:mt-16">
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-[#0c0b0a]/90 p-8 shadow-[0_32px_90px_rgba(0,0,0,0.5)] sm:p-10 lg:p-12">
+            <div className="pointer-events-none absolute -right-4 -top-6 h-56 w-[22rem] opacity-[0.42] sm:h-64 sm:w-[26rem] sm:opacity-50">
+              <EmberNebulaIllustration className="h-full w-full" />
+            </div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(255,184,77,0.1),transparent_26%),radial-gradient(circle_at_18%_84%,rgba(93,212,240,0.08),transparent_28%)]" />
 
-            <div className="relative grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
+            <div className="relative grid gap-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">What are we protecting?</div>
                 <p className="mt-4 max-w-md text-2xl leading-tight text-[#f0ebe0] sm:text-3xl">
@@ -58,18 +62,18 @@ export default function ProblemSection() {
                     key={question}
                     className={`rounded-[1.1rem] border px-4 py-3 text-sm leading-relaxed transition-all duration-500 sm:px-5 sm:py-4 sm:text-base ${
                       index === activeIndex
-                        ? 'border-[#ffb84d]/30 bg-[#ffb84d]/12 text-[#f6ecdb]'
-                        : 'border-white/8 bg-white/[0.03] text-[#c0c8d7]'
+                        ? 'border-[#ffb84d]/35 bg-[#1a1410]/95 text-[#f6ecdb]'
+                        : 'border-white/10 bg-[#0f0e0c]/90 text-[#c0c8d7]'
                     }`}
                   >
                     {question}
                   </div>
                 ))}
               </div>
-              <p className="mt-5 max-w-2xl text-sm leading-relaxed text-[#b8c1d2] sm:text-base">
-                We cannot guess it exactly. It is too personal. But whatever it was -- that is what we are building around.
-              </p>
             </div>
+            <p className="relative z-10 mt-8 max-w-2xl text-sm leading-relaxed text-[#b8c1d2] sm:text-base">
+              We cannot guess it exactly. It is too personal. But whatever it was -- that is what we are building around.
+            </p>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import FounderVideoSection from './FounderVideoSection';
+import FoundersNoteSection from './FoundersNoteSection';
 import IllustrationPlaceholder from './IllustrationPlaceholder';
 
 const PhilosophySection = () => {
@@ -217,7 +217,7 @@ const PhilosophySection = () => {
       {/* ═══════════════════════════════════════════════════════════
           FOUNDER VIDEO
       ═══════════════════════════════════════════════════════════ */}
-      <FounderVideoSection />
+      <FoundersNoteSection />
 
     </section>
   );

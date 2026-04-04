@@ -633,11 +633,11 @@ export default function ProductShowcase({ onNavigate }) {
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {[
-            { value: '01', label: 'TESSERA EQ', note: 'The first product. Shipping now. An AI-assisted parametric EQ that stays transparent.' },
-            { value: '02', label: 'TESSERA ONE', note: 'The umbrella. A suite of mixing tools -- EQ, gate, compressor, reverb, saturation -- all sharing the same philosophy: visible suggestions, full artist control.' },
-            { value: '03', label: 'TESSERA', note: 'The long game. A full digital audio workstation where every step of creation follows the glass-box principle.' },
+            { value: '8', label: 'Parametric bands', note: 'Full curve transparency on every suggestion.' },
+            { value: '6', label: 'Modules in One', note: 'EQ, dynamics, space, and color in one shell.' },
+            { value: '1', label: 'Glass-box DAW', note: 'One environment where intent stays visible end to end.' },
           ].map((stat) => (
-            <div key={stat.label} className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.9))] p-6">
+            <div key={stat.label} className="border border-white/10 bg-[#0a0a0a]/88 p-6">
               <div className="text-5xl font-semibold tracking-[-0.05em] text-[#f0ebe0]">{stat.value}</div>
               <div className="mt-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">{stat.label}</div>
               <div className="mt-2 text-sm text-[#c7cfdd]">{stat.note}</div>

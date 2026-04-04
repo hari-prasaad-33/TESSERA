@@ -162,17 +162,6 @@
     background-position: 0 0, 70px 60px, 140px 110px;
   }
 
-  .section-divider {
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(93, 212, 240, 0.1) 20%,
-      rgba(255, 255, 255, 0.06) 50%,
-      rgba(255, 184, 77, 0.1) 80%,
-      transparent
-    );
-  }
 }
 
 html {
