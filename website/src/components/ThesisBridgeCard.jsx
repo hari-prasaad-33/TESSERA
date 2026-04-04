@@ -2,6 +2,15 @@ export default function ThesisBridgeCard() {
   return (
     <div className="relative overflow-hidden rounded-[1.9rem] border border-white/10 bg-[linear-gradient(135deg,rgba(7,10,16,0.96),rgba(15,10,14,0.82))] p-6 shadow-[0_34px_90px_rgba(0,0,0,0.56)] backdrop-blur-xl sm:p-7 lg:p-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_24%,rgba(93,212,240,0.14),transparent_30%),radial-gradient(circle_at_86%_26%,rgba(255,184,77,0.16),transparent_28%),linear-gradient(135deg,rgba(255,255,255,0.02),transparent_44%)]" />
+      <div
+        className="absolute inset-0 opacity-[0.05] mix-blend-screen"
+        style={{
+          backgroundImage: "url('/images/textures/cliff-side-normal.jpg')",
+          backgroundPosition: 'center',
+          backgroundSize: '520px',
+          filter: 'grayscale(1) sepia(0.24) saturate(0.54) brightness(0.78)',
+        }}
+      />
       <div className="absolute inset-y-0 right-0 hidden w-[36%] lg:block">
         <div className="absolute inset-[14%] rounded-[1.5rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(7,10,16,0.18))]" />
         <div className="absolute inset-y-[22%] left-[24%] right-[18%] rounded-[1.35rem] bg-[radial-gradient(circle_at_30%_35%,rgba(93,212,240,0.12),transparent_30%),linear-gradient(180deg,rgba(5,8,14,0.1),rgba(5,8,14,0.76))]" />

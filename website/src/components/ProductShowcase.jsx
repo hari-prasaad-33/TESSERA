@@ -5,7 +5,7 @@ function RotaryKnob({ label, value, accent = 'orange', size = 'md' }) {
   const isTeal = accent === 'teal';
   const ring = isTeal ? '#5DD4F0' : '#FF6A33';
   const glow = isTeal ? 'rgba(93, 212, 240, 0.22)' : 'rgba(255, 106, 51, 0.24)';
-  const shell = size === 'lg' ? 'h-18 w-18' : 'h-14 w-14';
+  const shell = size === 'lg' ? 'h-16 w-16' : 'h-12 w-12';
 
   return (
     <div className="flex flex-col items-center gap-2 text-center">
@@ -173,7 +173,7 @@ const spectrumThreads = [
 
 export function EQInterfaceMockup({ className = '' }) {
   return (
-    <div className={`relative flex h-full min-h-[30rem] flex-col overflow-hidden border-0 bg-[#090d14] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}>
+    <div className={`relative flex h-full min-h-[27rem] flex-col overflow-hidden border-0 bg-[#090d14] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(93,212,240,0.08),transparent_42%),radial-gradient(circle_at_82%_18%,rgba(255,106,51,0.12),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_12%,transparent_88%,rgba(255,255,255,0.03))]" />
 
       <div className="relative z-10 flex items-center justify-between gap-4 border-b border-white/8 px-4 py-3 sm:px-6">
@@ -194,7 +194,7 @@ export function EQInterfaceMockup({ className = '' }) {
         </div>
       </div>
 
-      <div className="relative z-10 grid flex-1 grid-cols-[96px_minmax(0,1fr)_96px] gap-3 px-3 pb-3 pt-3 sm:px-4">
+      <div className="relative z-10 grid flex-1 grid-cols-[84px_minmax(0,1fr)_84px] gap-3 px-3 pb-3 pt-3 sm:grid-cols-[90px_minmax(0,1fr)_90px] sm:px-4">
         <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,10,16,0.92))] p-3">
           <div className="mb-4 font-mono text-[8px] uppercase tracking-[0.28em] text-[#8d94ab]">Input Gain</div>
           <RotaryKnob label="Gain" value="+1.5 dB" accent="orange" size="lg" />
@@ -207,7 +207,7 @@ export function EQInterfaceMockup({ className = '' }) {
           </div>
         </div>
 
-        <div className="grid min-h-[22rem] grid-rows-[minmax(0,1fr)_128px] gap-3">
+        <div className="grid min-h-[20rem] grid-rows-[minmax(0,1fr)_116px] gap-3">
           <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(13,20,30,0.92),rgba(6,10,14,0.96))] p-4">
             <div className="relative h-full overflow-hidden border border-white/6 bg-[#070b11]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_44%,rgba(93,212,240,0.08),transparent_45%)]" />
@@ -220,7 +220,7 @@ export function EQInterfaceMockup({ className = '' }) {
             </div>
           </div>
 
-          <div className="grid grid-cols-[1.1fr_1fr_1fr_1fr_1.4fr] gap-3 border border-white/8 bg-[linear-gradient(180deg,rgba(10,14,21,0.98),rgba(7,9,14,0.94))] p-4">
+          <div className="grid grid-cols-[1fr_0.88fr_0.9fr_0.9fr_1.16fr] gap-3 border border-white/8 bg-[linear-gradient(180deg,rgba(10,14,21,0.98),rgba(7,9,14,0.94))] p-4">
             <div className="flex flex-col justify-between border border-white/8 bg-white/[0.02] p-3">
               <div className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#8d94ab]">Selected Band Editor</div>
               <div>
@@ -296,8 +296,8 @@ export function EQInterfaceMockup({ className = '' }) {
 function ArcKnob({ label, value, accent = 'orange', large = false }) {
   const color = accent === 'teal' ? '#1189ab' : '#ff6a33';
   const soft = accent === 'teal' ? 'rgba(17, 137, 171, 0.18)' : 'rgba(255, 106, 51, 0.18)';
-  const size = large ? 'h-24 w-24' : 'h-16 w-16';
-  const arc = large ? 122 : 98;
+  const size = large ? 'h-20 w-20' : 'h-14 w-14';
+  const arc = large ? 126 : 104;
 
   return (
     <div className="flex flex-col items-center gap-2 text-center">
@@ -336,9 +336,72 @@ function ParameterModule({ title, accent = 'orange', knobs = [] }) {
       </div>
       <div className="mt-4 grid grid-cols-2 gap-4">
         {knobs.map((knob) => (
-          <ArcKnob key={knob.label} label={knob.label} value={knob.value} accent={knob.accent ?? accent} />
+          <RotaryKnob key={knob.label} label={knob.label} value={knob.value} accent={knob.accent ?? accent} />
         ))}
       </div>
+    </div>
+  );
+}
+
+function AudioCurvePanel() {
+  const controlPoints = [
+    { x: 52, y: 112, accent: 'orange' },
+    { x: 96, y: 104, accent: 'teal' },
+    { x: 146, y: 106, accent: 'teal' },
+    { x: 206, y: 92, accent: 'orange' },
+    { x: 262, y: 78, accent: 'teal' },
+    { x: 320, y: 86, accent: 'orange' },
+    { x: 372, y: 110, accent: 'teal' },
+  ];
+
+  return (
+    <div className="border border-white/8 bg-[#090b0d] p-3">
+      <svg viewBox="0 0 420 170" className="h-36 w-full" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="tesseraOneCurve" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0%" stopColor="#ff7f49" />
+            <stop offset="48%" stopColor="#6fd2ef" />
+            <stop offset="100%" stopColor="#ff7f49" />
+          </linearGradient>
+          <linearGradient id="tesseraOneFill" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stopColor="rgba(111,210,239,0.24)" />
+            <stop offset="100%" stopColor="rgba(9,11,13,0)" />
+          </linearGradient>
+        </defs>
+
+        {Array.from({ length: 8 }, (_, index) => (
+          <line key={`v-${index}`} x1={40 + index * 46} x2={40 + index * 46} y1="18" y2="142" stroke="rgba(255,255,255,0.08)" />
+        ))}
+        {Array.from({ length: 5 }, (_, index) => (
+          <line key={`h-${index}`} x1="40" x2="390" y1={24 + index * 28} y2={24 + index * 28} stroke={index === 2 ? 'rgba(255,255,255,0.11)' : 'rgba(255,255,255,0.05)'} />
+        ))}
+
+        <path
+          d="M 40 114 C 62 114 72 110 92 104 C 116 96 128 110 150 106 C 178 100 186 92 208 92 C 226 92 238 76 260 78 C 284 80 294 88 316 86 C 338 84 350 104 390 110"
+          fill="none"
+          stroke="rgba(93,212,240,0.14)"
+          strokeWidth="1.3"
+        />
+        <path
+          d="M 40 114 C 62 114 72 110 92 104 C 116 96 128 110 150 106 C 178 100 186 92 208 92 C 226 92 238 76 260 78 C 284 80 294 88 316 86 C 338 84 350 104 390 110 L 390 142 L 40 142 Z"
+          fill="url(#tesseraOneFill)"
+        />
+        <path
+          d="M 40 114 C 62 114 72 110 92 104 C 116 96 128 110 150 106 C 178 100 186 92 208 92 C 226 92 238 76 260 78 C 284 80 294 88 316 86 C 338 84 350 104 390 110"
+          fill="none"
+          stroke="url(#tesseraOneCurve)"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+
+        {controlPoints.map((point, index) => (
+          <g key={`${point.x}-${point.y}`} transform={`translate(${point.x} ${point.y})`}>
+            <circle r="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" />
+            <circle r="7" fill={point.accent === 'orange' ? '#ff6a33' : '#9db0bb'} />
+            {index === 0 && <circle r="11" fill="none" stroke="rgba(255,106,51,0.34)" />}
+          </g>
+        ))}
+      </svg>
     </div>
   );
 }
@@ -404,7 +467,7 @@ export function ChannelStripMockup({ className = '' }) {
         </div>
       </div>
 
-      <div className="relative z-10 grid gap-3 px-4 py-4 sm:px-6 lg:grid-cols-[1fr_1.1fr_1fr]">
+      <div className="relative z-10 grid gap-3 px-4 py-4 sm:px-6 lg:grid-cols-[0.96fr_1.08fr_0.96fr]">
         <ParameterModule
           title="Compressor"
           knobs={[
@@ -423,27 +486,11 @@ export function ChannelStripMockup({ className = '' }) {
               <span>Bypass</span>
             </div>
           </div>
-          <div className="border border-white/8 bg-[#090b0d] p-3">
-            <svg viewBox="0 0 420 170" className="h-40 w-full" preserveAspectRatio="none">
-              {Array.from({ length: 7 }, (_, index) => (
-                <line key={`v-${index}`} x1={36 + index * 54} x2={36 + index * 54} y1="18" y2="142" stroke="rgba(255,255,255,0.08)" />
-              ))}
-              {Array.from({ length: 5 }, (_, index) => (
-                <line key={`h-${index}`} x1="36" x2="392" y1={28 + index * 28} y2={28 + index * 28} stroke="rgba(255,255,255,0.06)" />
-              ))}
-              <path d="M 36 82 L 392 82" fill="none" stroke="rgba(255,106,51,0.65)" strokeWidth="2" />
-              {[56, 110, 166, 226, 286, 342, 378].map((x, index) => (
-                <g key={x} transform={`translate(${x} 82)`}>
-                  <circle r="8" fill={index === 0 ? '#ff6a33' : '#93a2ae'} />
-                  <circle r="16" fill="none" stroke="rgba(255,255,255,0.08)" />
-                </g>
-              ))}
-            </svg>
-          </div>
+          <AudioCurvePanel />
           <div className="mt-4 grid grid-cols-3 gap-4">
-            <ArcKnob label="Band 1" value="30 Hz" accent="teal" />
-            <ArcKnob label="Gain" value="0.0 dB" accent="orange" />
-            <ArcKnob label="Q" value="1.00" accent="teal" />
+            <RotaryKnob label="Band 1" value="30 Hz" accent="teal" />
+            <RotaryKnob label="Gain" value="+2.4 dB" accent="orange" />
+            <RotaryKnob label="Q" value="1.20" accent="teal" />
           </div>
         </div>
 
@@ -460,7 +507,7 @@ export function ChannelStripMockup({ className = '' }) {
         />
       </div>
 
-      <div className="relative z-10 grid gap-3 border-t border-white/8 px-4 py-4 sm:px-6 lg:grid-cols-[0.9fr_1.2fr_0.9fr]">
+      <div className="relative z-10 grid gap-3 border-t border-white/8 px-4 py-4 sm:px-6 lg:grid-cols-[0.92fr_1.16fr_0.92fr]">
         <div className="border border-white/8 bg-black/18 p-4">
           <div className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#ff8b5f]">Saturator</div>
           <div className="mt-4 grid grid-cols-2 gap-3">
@@ -518,7 +565,7 @@ export default function ProductShowcase({ onNavigate }) {
         <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,11,16,0.96))] lg:border">
           <div className="grid gap-0 lg:grid-cols-[minmax(0,1.22fr)_minmax(21rem,0.78fr)]">
             <div className="min-h-[29rem] overflow-hidden bg-[#040608]">
-              <ChannelStripMockup className="h-full min-h-[29rem]" />
+              <ChannelStripMockup className="h-full min-h-[26rem]" />
             </div>
 
             <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">

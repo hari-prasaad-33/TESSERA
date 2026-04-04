@@ -34,13 +34,25 @@ export default function AnswerSection() {
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] p-8 sm:p-10 lg:p-12">
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] p-8 sm:p-10 lg:p-12">
+            <div
+              className="absolute inset-0 opacity-[0.08] mix-blend-screen"
+              style={{
+                backgroundImage: "url('/images/textures/lichen-rock-normal.jpg')",
+                backgroundPosition: 'center',
+                backgroundSize: '520px',
+                filter: 'grayscale(1) sepia(0.2) saturate(0.52) brightness(0.8)',
+              }}
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(7,10,16,0.14)_34%,rgba(7,10,16,0.1)_100%)]" />
+            <div className="relative">
             <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">
               The line we will not cross
             </p>
             <p className="mt-6 text-lg leading-relaxed text-[#d5dbe7] sm:text-xl">
               There is a line we will not cross. Tessera will reduce friction -- it will help you get to the sound faster. But it will never make a creative decision on your behalf. Not a small one, not a big one. Because the moment a tool changes the final track from what you imagined, that track is no longer fully yours. And we do not think that is a trade-off worth making.
             </p>
+            </div>
           </div>
         </div>
 

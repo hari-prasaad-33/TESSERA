@@ -51,6 +51,15 @@ export default function ProblemSection() {
 
         <div className="relative z-20 -mb-20 mt-12 lg:mt-14">
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(10,12,18,0.94),rgba(17,11,9,0.82))] p-6 shadow-[0_32px_90px_rgba(0,0,0,0.48)] backdrop-blur-xl sm:p-8 lg:p-10">
+            <div
+              className="absolute inset-0 opacity-[0.07] mix-blend-screen"
+              style={{
+                backgroundImage: "url('/images/textures/coast-rocks-normal.jpg')",
+                backgroundPosition: 'center',
+                backgroundSize: '440px',
+                filter: 'grayscale(1) sepia(0.24) saturate(0.55) brightness(0.8)',
+              }}
+            />
             <div className="absolute inset-y-0 right-0 hidden w-[38%] opacity-55 lg:block">
               <OrbFieldIllustration className="h-full" />
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,12,18,0.86),rgba(10,12,18,0.14))]" />
