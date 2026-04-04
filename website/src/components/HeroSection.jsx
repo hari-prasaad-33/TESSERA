@@ -1,6 +1,4 @@
 import SectionMarker from './SectionMarker';
-import ShaderBackground from './ShaderBackground';
-import { shaderPresets } from '../shaders/presets';
 
 export default function HeroSection() {
   return (
@@ -10,17 +8,11 @@ export default function HeroSection() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url('/images/textures/rogland-clear-night.jpg')",
-            opacity: 0.68,
+            opacity: 0.78,
             filter: 'saturate(1.06) contrast(1.04)',
           }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,4,3,0.97)_0%,rgba(5,4,3,0.82)_18%,rgba(5,4,3,0.42)_38%,rgba(5,4,3,0.18)_55%,rgba(5,4,3,0.35)_100%)]" />
-        <ShaderBackground
-          fragmentShader={shaderPresets.hero}
-          mixBlendMode="screen"
-          opacity={0.2}
-          className="scale-[1.02]"
-        />
       </div>
 
       <div className="panel-shell relative z-10 flex min-h-[calc(100vh-7rem)] items-end">

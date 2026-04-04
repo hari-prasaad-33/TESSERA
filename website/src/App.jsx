@@ -11,14 +11,34 @@ import ThesisBridgeCard from './components/ThesisBridgeCard';
 import VisionSection from './components/VisionSection';
 import SiteNav from './components/SiteNav';
 import TextureVeil from './components/TextureVeil';
+import { sectionBackgrounds } from './sectionBackgrounds';
 
-function Panel({ bg, id, children, texture = null, overlay = null }) {
+function Panel({ bg, id, children, texture = null, overlay = null, vignette = null }) {
   return (
     <section id={id} className={`relative min-h-screen overflow-hidden ${bg}`}>
       {texture}
       {overlay}
+      {vignette}
       {children}
     </section>
+  );
+}
+
+function SectionBackdrop({ config }) {
+  if (!config) return null;
+  return (
+    <>
+      <TextureVeil
+        src={config.src}
+        opacity={config.opacity}
+        position={config.position}
+        filter={config.filter}
+      />
+      <div className={`pointer-events-none absolute inset-0 ${config.overlayClass}`} />
+      {config.vignetteClass ? (
+        <div className={`pointer-events-none absolute inset-0 ${config.vignetteClass}`} />
+      ) : null}
+    </>
   );
 }
 
@@ -94,28 +114,15 @@ export default function App() {
         <AnswerSection />
       </Panel>
 
-      <Panel bg="bg-[#0a0c10]">
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),transparent_30%)]" />
+      <Panel bg={sectionBackgrounds.howWeBuild.baseTint} texture={<SectionBackdrop config={sectionBackgrounds.howWeBuild} />}>
         <HowWeBuildSection eqMockup={<EQInterfaceMockup />} />
       </Panel>
 
-      <Panel
-        bg="bg-[#0c0a08]"
-        texture={
-          <TextureVeil
-            src="/images/textures/cliff-side.jpg"
-            opacity={0.5}
-            position="center"
-            filter="saturate(0.88) contrast(1.08) brightness(0.42)"
-          />
-        }
-        overlay={<div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,6,4,0.75),rgba(6,5,4,0.88))]" />}
-      >
+      <Panel bg={sectionBackgrounds.products.baseTint} texture={<SectionBackdrop config={sectionBackgrounds.products} />}>
         <ProductShowcase onNavigate={navigateTo} />
       </Panel>
 
-      <Panel bg="bg-[#08080c]">
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(4,4,10,0.5)_100%)]" />
+      <Panel bg={sectionBackgrounds.vision.baseTint} texture={<SectionBackdrop config={sectionBackgrounds.vision} />}>
         <VisionSection />
       </Panel>
 

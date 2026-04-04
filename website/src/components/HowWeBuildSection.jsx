@@ -101,9 +101,17 @@ function DSPVisual() {
   );
 }
 
-function BuildSlab({ id, title, subtitle, description, visual, reverse = false }) {
+const slabSurfaces = {
+  a: 'border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(6,12,18,0.94))]',
+  b: 'border-white/8 bg-[linear-gradient(185deg,rgba(255,255,255,0.035),rgba(8,10,20,0.92))]',
+  c: 'border-white/8 bg-[linear-gradient(175deg,rgba(255,184,77,0.04),rgba(10,8,14,0.93))]',
+  d: 'border-white/10 bg-[linear-gradient(180deg,rgba(93,212,240,0.05),rgba(6,10,18,0.94))]',
+};
+
+function BuildSlab({ id, title, subtitle, description, visual, reverse = false, surface = 'a' }) {
+  const surfaceClass = slabSurfaces[surface] || slabSurfaces.a;
   return (
-    <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(7,10,16,0.92))] lg:border">
+    <div className={`overflow-hidden border-y lg:border ${surfaceClass}`}>
       <div className={`grid gap-0 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] ${reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''}`}>
         <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
           <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">{id}</div>
@@ -140,6 +148,7 @@ export default function HowWeBuildSection({ eqMockup }) {
 
         <div className="space-y-8">
           <BuildSlab
+            surface="a"
             id="04.1"
             title="Glass Box in Action"
             subtitle="A prompt becomes a curve you can inspect immediately."
@@ -154,6 +163,7 @@ export default function HowWeBuildSection({ eqMockup }) {
           />
 
           <BuildSlab
+            surface="b"
             id="04.2"
             title="From Phrase to Curve"
             subtitle="Human language gets grounded before it touches the audio."
@@ -163,6 +173,7 @@ export default function HowWeBuildSection({ eqMockup }) {
           />
 
           <BuildSlab
+            surface="c"
             id="04.3"
             title="Confidence Routing"
             subtitle="Local-first when the answer is obvious. AI-assisted when the intent is ambiguous."
@@ -171,6 +182,7 @@ export default function HowWeBuildSection({ eqMockup }) {
           />
 
           <BuildSlab
+            surface="d"
             id="04.4"
             title="Musical DSP Underneath"
             subtitle="Stable filters. Smooth ramps. No audible compromise."
