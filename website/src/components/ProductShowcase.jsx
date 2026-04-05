@@ -582,35 +582,35 @@ export default function ProductShowcase({ onNavigate }) {
       <div className="panel-shell">
         <SectionMarker number="05" title="THE PLATFORM" className="mb-10" />
 
-        <div className="overflow-hidden border-y border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(18,20,28,0.78))] lg:border">
+        <div className="border-t border-white/10">
           <div className="grid gap-0 lg:grid-cols-[minmax(0,1.22fr)_minmax(21rem,0.78fr)]">
-            <div className="min-h-[29rem] overflow-hidden bg-[#0a0e14]">
+            <div className="min-h-[29rem] overflow-hidden rounded-xl bg-[#0a0e14] lg:rounded-l-xl lg:rounded-r-none">
               <ChannelStripMockup className="h-full min-h-[26rem]" />
             </div>
 
-            <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12 xl:p-14">
+            <div className="flex flex-col justify-center px-0 py-10 sm:py-12 lg:px-10 lg:py-14 xl:pl-12">
               <div className="mb-5 flex flex-wrap gap-3">
                 <FeatureChip label="Shipping now" accent="teal" />
                 <FeatureChip label="The umbrella" accent="orange" />
                 <FeatureChip label="Long game" accent="teal" />
               </div>
 
-              <h2 className="display-tight mb-5 text-[#f0ebe0]">TESSERA ONE</h2>
+              <h2 className="texture-type-shadow display-tight mb-5 text-[#f0ebe0]">TESSERA ONE</h2>
 
-              <p className="mb-6 max-w-xl text-lg leading-relaxed text-[#c7cfdd]">
+              <p className="texture-type-shadow-soft mb-8 max-w-xl text-lg leading-relaxed text-[#c7cfdd]">
                 Tessera EQ is what we are shipping first -- a single tool that proves the idea works. Tessera One is what comes next: EQ, gate, compression, reverb, saturation, all connected under one transparent mixing surface. And behind all of it is Tessera itself -- the long-term vision of a full production environment where intelligent tools stay visible, editable, and unmistakably in service of the artist.
               </p>
 
-              <div className="mb-8 grid gap-4">
-                <div className="border border-white/12 bg-[#141820]/75 p-4">
+              <div className="mb-8 space-y-7">
+                <div className="border-l-2 border-[#5dd4f0]/45 pl-5">
                   <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5dd4f0]">TESSERA EQ</div>
                   <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">The first product. Shipping now. An AI-assisted parametric EQ that stays transparent.</div>
                 </div>
-                <div className="border border-white/12 bg-[#141820]/75 p-4">
+                <div className="border-l-2 border-[#ffb84d]/45 pl-5">
                   <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#ffb84d]">TESSERA ONE</div>
                   <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">The umbrella. A suite of mixing tools -- EQ, gate, compressor, reverb, saturation -- all sharing the same philosophy: visible suggestions, full artist control.</div>
                 </div>
-                <div className="border border-white/12 bg-[#141820]/75 p-4">
+                <div className="border-l-2 border-[#5dd4f0]/35 pl-5">
                   <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5dd4f0]">TESSERA</div>
                   <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">The long game. A full digital audio workstation where every step of creation follows the glass-box principle.</div>
                 </div>
@@ -631,16 +631,16 @@ export default function ProductShowcase({ onNavigate }) {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <div className="mt-12 grid gap-10 border-t border-white/10 pt-12 sm:grid-cols-3 sm:gap-8">
           {[
             { value: '8', label: 'Parametric bands', note: 'Full curve transparency on every suggestion.' },
             { value: '6', label: 'Modules in One', note: 'EQ, dynamics, space, and color in one shell.' },
             { value: '1', label: 'Glass-box DAW', note: 'One environment where intent stays visible end to end.' },
           ].map((stat) => (
-            <div key={stat.label} className="border border-white/12 bg-[#161c26]/78 p-6">
-              <div className="text-5xl font-semibold tracking-[-0.05em] text-[#f0ebe0]">{stat.value}</div>
+            <div key={stat.label}>
+              <div className="texture-type-shadow text-5xl font-semibold tracking-[-0.05em] text-[#f0ebe0]">{stat.value}</div>
               <div className="mt-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">{stat.label}</div>
-              <div className="mt-2 text-sm text-[#c7cfdd]">{stat.note}</div>
+              <div className="texture-type-shadow-soft mt-2 text-sm text-[#c7cfdd]">{stat.note}</div>
             </div>
           ))}
         </div>

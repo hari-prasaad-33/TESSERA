@@ -1,6 +1,6 @@
 /**
- * Full-bleed panel textures (sections 04+). Add new Poly Haven *_diff_4k.jpg files to
- * textures-source, run `npm run convert:textures`, then point `src` at the generated slug.
+ * Full-bleed panel textures. Add new Poly Haven *_diff_4k.jpg to textures-source,
+ * run `npm run convert:textures`, then reference the generated slug here.
  */
 export const sectionBackgrounds = {
   howWeBuild: {
@@ -12,6 +12,17 @@ export const sectionBackgrounds = {
     overlayClass:
       'bg-[linear-gradient(165deg,rgba(12,20,30,0.45)_0%,rgba(14,18,28,0.38)_45%,rgba(10,16,24,0.52)_100%)]',
     vignetteClass: 'bg-[radial-gradient(ellipse_90%_70%_at_50%_0%,rgba(93,212,240,0.12),transparent_58%)]',
+  },
+  /** Second half of section 04 — different texture so one HDRI is not stretched forever */
+  howWeBuildCont: {
+    src: '/images/textures/lichen-rock.jpg',
+    opacity: 0.62,
+    position: 'center 30%',
+    filter: 'saturate(0.98) contrast(1.05) brightness(0.52)',
+    baseTint: 'bg-[#121a18]',
+    overlayClass:
+      'bg-[linear-gradient(200deg,rgba(10,18,14,0.5)_0%,rgba(8,14,12,0.42)_50%,rgba(6,12,10,0.55)_100%)]',
+    vignetteClass: 'bg-[radial-gradient(ellipse_85%_60%_at_30%_0%,rgba(255,184,77,0.08),transparent_55%)]',
   },
   products: {
     src: '/images/textures/cliff-side.jpg',

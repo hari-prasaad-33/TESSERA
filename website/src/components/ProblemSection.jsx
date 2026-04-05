@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import SectionMarker from './SectionMarker';
-import { EmberNebulaIllustration } from './ConceptIllustrations';
 
 const questions = [
   'Was it to hear your own taste taking shape in real time?',
@@ -31,50 +30,65 @@ export default function ProblemSection() {
             <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">
               The quiet part no one is saying.
             </p>
-            <h2 className="display-tight text-[#f0ebe0]">THE PROBLEM</h2>
+            <h2 className="texture-type-shadow display-tight text-[#f0ebe0]">THE PROBLEM</h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#c6cfdd]">
               The tools keep getting better. That is not the problem. The problem is what happens to the creative act when every difficult step gets compressed into a shortcut. When the gap between nothing and a finished track becomes trivially small, the question stops being &quot;how do I get there&quot; and starts being &quot;why does getting there even matter anymore.&quot;
             </p>
           </div>
         </div>
 
-        <div className="relative z-20 -mb-20 mt-12 lg:mt-16">
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/14 bg-[#1c1612]/78 p-8 shadow-[0_32px_90px_rgba(0,0,0,0.35)] sm:p-10 lg:p-12">
-            <div className="pointer-events-none absolute -right-4 -top-6 h-56 w-[22rem] opacity-[0.42] sm:h-64 sm:w-[26rem] sm:opacity-50">
-              <EmberNebulaIllustration className="h-full w-full" />
+        <div className="relative z-10 -mb-20 mt-12 lg:mt-20">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-end lg:gap-16">
+            <div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">What are we protecting?</div>
+              <p className="mt-4 max-w-md text-2xl leading-tight text-[#f0ebe0] sm:text-3xl">
+                Not a checklist. A private reason for starting in the first place.
+              </p>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-[#c7cfdd] sm:text-base">
+                Maybe it sounds less like a mission statement and more like the voice that brought you into the room.
+              </p>
             </div>
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(255,184,77,0.1),transparent_26%),radial-gradient(circle_at_18%_84%,rgba(93,212,240,0.08),transparent_28%)]" />
 
-            <div className="relative grid gap-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
-              <div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">What are we protecting?</div>
-                <p className="mt-4 max-w-md text-2xl leading-tight text-[#f0ebe0] sm:text-3xl">
-                  Not a checklist. A private reason for starting in the first place.
-                </p>
-                <p className="mt-4 max-w-md text-sm leading-relaxed text-[#c7cfdd] sm:text-base">
-                  Maybe it sounds less like a mission statement and more like the voice that brought you into the room.
-                </p>
-              </div>
-
-              <div className="space-y-3">
+            <div className="lg:pt-4">
+              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">Ask yourself</p>
+              <div
+                className="relative mt-5 min-h-[7.5rem] sm:min-h-[8.5rem] lg:min-h-[9rem]"
+                aria-live="polite"
+                aria-atomic="true"
+              >
                 {questions.map((question, index) => (
-                  <div
+                  <p
                     key={question}
-                    className={`rounded-[1.1rem] border px-4 py-3 text-sm leading-relaxed transition-all duration-500 sm:px-5 sm:py-4 sm:text-base ${
+                    className={`absolute left-0 top-0 max-w-xl text-lg leading-snug text-[#e8e4dc] transition-all duration-700 ease-out sm:text-xl lg:text-[1.35rem] lg:leading-snug ${
                       index === activeIndex
-                        ? 'border-[#ffb84d]/40 bg-[#2a2018]/85 text-[#f6ecdb]'
-                        : 'border-white/12 bg-[#181410]/80 text-[#c0c8d7]'
+                        ? 'translate-y-0 opacity-100'
+                        : 'pointer-events-none translate-y-1 opacity-0'
                     }`}
+                    aria-hidden={index !== activeIndex}
                   >
+                    {index === activeIndex ? (
+                      <span className="text-[#ffb84d]">&mdash; </span>
+                    ) : null}
                     {question}
-                  </div>
+                  </p>
+                ))}
+              </div>
+              <div className="mt-8 flex gap-2" role="presentation" aria-hidden>
+                {questions.map((_, index) => (
+                  <span
+                    key={index}
+                    className={`h-1 rounded-full transition-all duration-500 ${
+                      index === activeIndex ? 'w-6 bg-[#ffb84d]/90' : 'w-1 bg-white/20'
+                    }`}
+                  />
                 ))}
               </div>
             </div>
-            <p className="relative z-10 mt-8 max-w-2xl text-sm leading-relaxed text-[#b8c1d2] sm:text-base">
-              We cannot guess it exactly. It is too personal. But whatever it was -- that is what we are building around.
-            </p>
           </div>
+
+          <p className="mt-14 max-w-2xl text-sm leading-relaxed text-[#b8c1d2] sm:mt-16 sm:text-base">
+            We cannot guess it exactly. It is too personal. But whatever it was -- that is what we are building around.
+          </p>
         </div>
       </div>
     </section>

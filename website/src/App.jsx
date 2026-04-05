@@ -115,7 +115,11 @@ export default function App() {
       </Panel>
 
       <Panel bg={sectionBackgrounds.howWeBuild.baseTint} texture={<SectionBackdrop config={sectionBackgrounds.howWeBuild} />}>
-        <HowWeBuildSection eqMockup={<EQInterfaceMockup />} />
+        <HowWeBuildSection eqMockup={<EQInterfaceMockup />} includeIntro slabStart={0} slabEnd={2} />
+      </Panel>
+
+      <Panel bg={sectionBackgrounds.howWeBuildCont.baseTint} texture={<SectionBackdrop config={sectionBackgrounds.howWeBuildCont} />}>
+        <HowWeBuildSection includeIntro={false} slabStart={2} slabEnd={4} />
       </Panel>
 
       <Panel bg={sectionBackgrounds.products.baseTint} texture={<SectionBackdrop config={sectionBackgrounds.products} />}>
@@ -128,12 +132,12 @@ export default function App() {
 
       <footer className="relative overflow-hidden border-t border-white/10 bg-[#0a0c14] px-6 py-20 text-center md:px-10 lg:px-14">
         <TextureVeil
-          src="/images/textures/lichen-rock.jpg"
-          opacity={0.4}
-          position="center"
-          filter="saturate(0.92) contrast(1.06) brightness(0.58)"
+          src="/images/textures/rogland-clear-night.jpg"
+          opacity={0.32}
+          position="center bottom"
+          filter="saturate(1.02) contrast(1.05) brightness(0.5)"
         />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,18,0.72),rgba(6,8,14,0.82))]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,18,0.78),rgba(5,6,12,0.88))]" />
         <div className="relative z-10 panel-shell">
           <div className="mb-8 flex justify-center opacity-70 transition-opacity hover:opacity-100">
             <EternalRing />

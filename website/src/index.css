@@ -20,6 +20,17 @@
 }
 
 @layer utilities {
+  /* Legibility for type placed directly on photographic panels (Colossal-style) */
+  .texture-type-shadow {
+    text-shadow:
+      0 2px 28px rgba(0, 0, 0, 0.82),
+      0 1px 3px rgba(0, 0, 0, 0.95);
+  }
+
+  .texture-type-shadow-soft {
+    text-shadow: 0 1px 18px rgba(0, 0, 0, 0.72);
+  }
+
   .mist-overlay {
     background: radial-gradient(circle at 50% 50%, rgba(20, 30, 40, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
     pointer-events: none;
