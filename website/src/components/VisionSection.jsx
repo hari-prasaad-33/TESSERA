@@ -1,47 +1,6 @@
 ﻿import SectionMarker from './SectionMarker';
 import { TesseractIllustration } from './ConceptIllustrations';
 
-function RoadmapVisual() {
-  const stops = [
-    { title: 'EQ', note: 'Available now', accent: 'teal' },
-    { title: 'Dynamics', note: 'In build', accent: 'amber' },
-    { title: 'Space', note: 'Next layer', accent: 'orange' },
-    { title: 'ONE', note: 'Parent shell', accent: 'amber' },
-    { title: 'Environment', note: 'Long arc', accent: 'teal' },
-  ];
-
-  return (
-    <div className="relative flex h-full min-h-[24rem] items-center overflow-hidden bg-[#06060c] p-8 sm:p-10 lg:p-12">
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-[0.88]"
-        style={{ backgroundImage: "url('/images/textures/moon-01.jpg')" }}
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,4,10,0.35),rgba(4,4,12,0.72)_78%),linear-gradient(90deg,rgba(6,6,14,0.55),rgba(6,6,14,0.2)_40%,rgba(6,6,14,0.45)_100%)]" />
-      <div className="relative z-10 w-full">
-        <div className="flex flex-wrap items-center gap-3 sm:gap-5">
-          {stops.map((stop, index) => {
-            const theme = stop.accent === 'teal'
-              ? 'border-[#5dd4f0]/28 bg-[#5dd4f0]/10 text-[#d5f8ff]'
-              : stop.accent === 'amber'
-                ? 'border-[#ffb84d]/28 bg-[#ffb84d]/10 text-[#ffe1af]'
-                : 'border-[#ff6a33]/28 bg-[#ff6a33]/10 text-[#ffd6c4]';
-
-            return (
-              <div key={stop.title} className="flex items-center gap-3 sm:gap-5">
-                <div className={`min-w-[8rem] border px-5 py-4 ${theme}`}>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.28em]">{stop.note}</div>
-                  <div className="mt-2 text-2xl font-semibold tracking-[-0.04em]">{stop.title}</div>
-                </div>
-                {index < stops.length - 1 && <div className="hidden h-px w-14 bg-gradient-to-r from-white/10 via-white/30 to-white/10 sm:block" />}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function VisionSection() {
   return (
     <section id="vision" className="relative z-10 px-6 pb-28 pt-24 md:px-10 lg:px-14 lg:pb-32">
@@ -58,10 +17,21 @@ export default function VisionSection() {
           </h2>
         </div>
 
+        <div className="mb-10 max-w-3xl rounded-[1.5rem] border border-white/14 bg-[#141c2a]/78 px-8 py-10 sm:px-10 sm:py-12">
+          <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#5dd4f0]">Moonshot</p>
+          <h3 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-4xl">TESSERA DAW</h3>
+          <p className="mt-5 text-base leading-relaxed text-[#c6cfdd] sm:text-lg">
+            Our long-term goal is a full digital audio workstation -- Tessera DAW -- where every capability, end to end,
+            follows the same philosophy we are proving now: intelligence that removes friction, never authorship.
+            Suggestions stay visible, parameters stay yours, and the final track stays unmistakably your decision.
+            There is no ship date on the horizon for that; there is only the standard -- if we build it, it earns the name.
+          </p>
+        </div>
+
         <div className="space-y-8">
-          <div className="relative overflow-hidden border-y border-white/10 bg-[#080a10]/94 lg:border">
+          <div className="relative overflow-hidden border-y border-white/12 bg-[#121a26]/72 lg:border">
             <div className="relative grid min-h-[24rem] items-center px-8 py-10 sm:px-10 sm:py-12 lg:min-h-[28rem] lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-10 lg:px-12 xl:px-14">
-              <div className="relative hidden min-h-[12rem] overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#060810]/90 lg:block">
+              <div className="relative hidden min-h-[12rem] overflow-hidden rounded-[1.5rem] border border-white/12 bg-[#0e1420]/78 lg:block">
                 <div className="absolute inset-0 flex items-center justify-center opacity-[0.48]">
                   <TesseractIllustration className="h-full min-h-[14rem] w-full scale-110" />
                 </div>
@@ -73,16 +43,6 @@ export default function VisionSection() {
                   The goal is not to build the most powerful AI in music. It is to build the most honest one.
                 </p>
               </div>
-            </div>
-          </div>
-
-          <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(7,10,16,0.92))] lg:border">
-            <div className="max-w-3xl px-8 pt-8 sm:px-10 sm:pt-10 lg:px-12 lg:pt-12 xl:px-14 xl:pt-14">
-              <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">The progression</div>
-              <h3 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-5xl">From one honest tool to a full environment.</h3>
-            </div>
-            <div className="mt-8">
-              <RoadmapVisual />
             </div>
           </div>
         </div>

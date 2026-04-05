@@ -39,7 +39,7 @@ export default function ProblemSection() {
         </div>
 
         <div className="relative z-20 -mb-20 mt-12 lg:mt-16">
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-[#0c0b0a]/90 p-8 shadow-[0_32px_90px_rgba(0,0,0,0.5)] sm:p-10 lg:p-12">
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/14 bg-[#1c1612]/78 p-8 shadow-[0_32px_90px_rgba(0,0,0,0.35)] sm:p-10 lg:p-12">
             <div className="pointer-events-none absolute -right-4 -top-6 h-56 w-[22rem] opacity-[0.42] sm:h-64 sm:w-[26rem] sm:opacity-50">
               <EmberNebulaIllustration className="h-full w-full" />
             </div>
@@ -62,8 +62,8 @@ export default function ProblemSection() {
                     key={question}
                     className={`rounded-[1.1rem] border px-4 py-3 text-sm leading-relaxed transition-all duration-500 sm:px-5 sm:py-4 sm:text-base ${
                       index === activeIndex
-                        ? 'border-[#ffb84d]/35 bg-[#1a1410]/95 text-[#f6ecdb]'
-                        : 'border-white/10 bg-[#0f0e0c]/90 text-[#c0c8d7]'
+                        ? 'border-[#ffb84d]/40 bg-[#2a2018]/85 text-[#f6ecdb]'
+                        : 'border-white/12 bg-[#181410]/80 text-[#c0c8d7]'
                     }`}
                   >
                     {question}

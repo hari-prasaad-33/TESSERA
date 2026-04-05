@@ -3,11 +3,11 @@ import { ModularGridIllustration } from './ConceptIllustrations';
 export default function FoundersNoteSection() {
   return (
     <section className="relative z-10 overflow-hidden" aria-labelledby="founders-note-heading">
-      <div className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-[#0a0b0f]/92 px-6 py-10 shadow-[0_28px_80px_rgba(0,0,0,0.5)] sm:px-10 sm:py-12 lg:px-14 lg:py-14">
-        <div className="pointer-events-none absolute inset-0 opacity-[0.38] lg:opacity-[0.5]">
+      <div className="relative overflow-hidden rounded-[2rem] border border-white/14 bg-[#141a24]/82 px-6 py-10 shadow-[0_28px_80px_rgba(0,0,0,0.35)] sm:px-10 sm:py-12 lg:px-14 lg:py-14">
+        <div className="pointer-events-none absolute inset-0 opacity-[0.32] lg:opacity-[0.42]">
           <ModularGridIllustration className="h-full" />
         </div>
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(125deg,rgba(8,10,16,0.97)_0%,rgba(8,10,16,0.88)_38%,rgba(10,12,18,0.72)_62%,rgba(8,10,16,0.9)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(125deg,rgba(14,18,26,0.88)_0%,rgba(14,18,26,0.72)_38%,rgba(16,20,28,0.58)_62%,rgba(14,18,26,0.82)_100%)]" />
 
         <div className="relative grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-stretch lg:gap-16">
           <div className="max-w-3xl border-l-2 border-[#5dd4f0]/35 pl-6 sm:pl-8">

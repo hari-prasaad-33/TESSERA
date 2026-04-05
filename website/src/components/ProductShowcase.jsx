@@ -582,9 +582,9 @@ export default function ProductShowcase({ onNavigate }) {
       <div className="panel-shell">
         <SectionMarker number="05" title="THE PLATFORM" className="mb-10" />
 
-        <div className="overflow-hidden border-y border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(8,11,16,0.96))] lg:border">
+        <div className="overflow-hidden border-y border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(18,20,28,0.78))] lg:border">
           <div className="grid gap-0 lg:grid-cols-[minmax(0,1.22fr)_minmax(21rem,0.78fr)]">
-            <div className="min-h-[29rem] overflow-hidden bg-[#040608]">
+            <div className="min-h-[29rem] overflow-hidden bg-[#0a0e14]">
               <ChannelStripMockup className="h-full min-h-[26rem]" />
             </div>
 
@@ -602,15 +602,15 @@ export default function ProductShowcase({ onNavigate }) {
               </p>
 
               <div className="mb-8 grid gap-4">
-                <div className="border border-white/8 bg-black/20 p-4">
+                <div className="border border-white/12 bg-[#141820]/75 p-4">
                   <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5dd4f0]">TESSERA EQ</div>
                   <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">The first product. Shipping now. An AI-assisted parametric EQ that stays transparent.</div>
                 </div>
-                <div className="border border-white/8 bg-black/20 p-4">
+                <div className="border border-white/12 bg-[#141820]/75 p-4">
                   <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#ffb84d]">TESSERA ONE</div>
                   <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">The umbrella. A suite of mixing tools -- EQ, gate, compressor, reverb, saturation -- all sharing the same philosophy: visible suggestions, full artist control.</div>
                 </div>
-                <div className="border border-white/8 bg-black/20 p-4">
+                <div className="border border-white/12 bg-[#141820]/75 p-4">
                   <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5dd4f0]">TESSERA</div>
                   <div className="mt-2 text-sm leading-relaxed text-[#d8deea]">The long game. A full digital audio workstation where every step of creation follows the glass-box principle.</div>
                 </div>
@@ -637,7 +637,7 @@ export default function ProductShowcase({ onNavigate }) {
             { value: '6', label: 'Modules in One', note: 'EQ, dynamics, space, and color in one shell.' },
             { value: '1', label: 'Glass-box DAW', note: 'One environment where intent stays visible end to end.' },
           ].map((stat) => (
-            <div key={stat.label} className="border border-white/10 bg-[#0a0a0a]/88 p-6">
+            <div key={stat.label} className="border border-white/12 bg-[#161c26]/78 p-6">
               <div className="text-5xl font-semibold tracking-[-0.05em] text-[#f0ebe0]">{stat.value}</div>
               <div className="mt-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">{stat.label}</div>
               <div className="mt-2 text-sm text-[#c7cfdd]">{stat.note}</div>

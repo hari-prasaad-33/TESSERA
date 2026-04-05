@@ -84,32 +84,32 @@ export default function App() {
       </div>
 
       <Panel
-        bg="bg-[#1a0f08]"
+        bg="bg-[#2a1810]"
         texture={
           <TextureVeil
             src="/images/textures/qwantani-moon-noon.jpg"
-            opacity={0.58}
+            opacity={0.78}
             position="center"
-            filter="saturate(1.12) contrast(1.05) brightness(0.55)"
+            filter="saturate(1.15) contrast(1.04) brightness(0.72)"
           />
         }
-        overlay={<div className="pointer-events-none absolute inset-0 bg-[rgba(40,20,8,0.62)]" />}
+        overlay={<div className="pointer-events-none absolute inset-0 bg-[rgba(48,28,14,0.38)]" />}
       >
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12),transparent_35%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.06),transparent_40%)]" />
         <ProblemSection />
       </Panel>
 
       <Panel
-        bg="bg-[#080a10]"
+        bg="bg-[#101820]"
         texture={
           <TextureVeil
             src="/images/textures/quarry-04-puresky.jpg"
-            opacity={0.52}
+            opacity={0.74}
             position="center top"
-            filter="saturate(0.95) contrast(1.04) brightness(0.48)"
+            filter="saturate(1.02) contrast(1.03) brightness(0.68)"
           />
         }
-        overlay={<div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(6,10,22,0.78),rgba(6,12,24,0.55)_45%,rgba(4,8,18,0.82))]" />}
+        overlay={<div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,14,26,0.42),rgba(10,18,32,0.28)_50%,rgba(6,12,22,0.48))]" />}
       >
         <AnswerSection />
       </Panel>
@@ -126,14 +126,14 @@ export default function App() {
         <VisionSection />
       </Panel>
 
-      <footer className="relative overflow-hidden border-t border-white/8 bg-[#05060c] px-6 py-20 text-center md:px-10 lg:px-14">
+      <footer className="relative overflow-hidden border-t border-white/10 bg-[#0a0c14] px-6 py-20 text-center md:px-10 lg:px-14">
         <TextureVeil
           src="/images/textures/lichen-rock.jpg"
-          opacity={0.22}
+          opacity={0.4}
           position="center"
-          filter="saturate(0.85) contrast(1.1) brightness(0.35)"
+          filter="saturate(0.92) contrast(1.06) brightness(0.58)"
         />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(5,6,12,0.92),rgba(4,5,10,0.96))]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,18,0.72),rgba(6,8,14,0.82))]" />
         <div className="relative z-10 panel-shell">
           <div className="mb-8 flex justify-center opacity-70 transition-opacity hover:opacity-100">
             <EternalRing />

@@ -84,7 +84,7 @@ export default function SiteNav({ currentPage = 'home', onNavigate }) {
           </div>
 
           <button className="transition-colors hover:text-white" onClick={() => onNavigate('eq-features')}>
-            Explore EQ
+            Explore TESSERA EQ
           </button>
         </div>
 
