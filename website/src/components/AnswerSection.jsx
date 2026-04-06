@@ -16,7 +16,7 @@ export default function AnswerSection() {
               FLOW STATE,
               <span className="mt-2 block text-[#ffb84d]">UNLOCKED.</span>
             </h2>
-            <p className="texture-type-shadow-soft mt-5 max-w-[34rem] text-lg leading-relaxed text-[#dae0ec] sm:text-xl">
+            <p className="texture-type-shadow-soft mt-5 max-w-[34rem] text-lg leading-relaxed text-[#d5dbe7] sm:text-xl">
               We are not keeping AI out of the room. We are making sure you can see everything it does, change anything it suggests, and walk away knowing the final track is yours -- fully, without asterisks. We call it the glass box: every suggestion is visible, every parameter is editable, and nothing happens behind your back.
             </p>
           </div>

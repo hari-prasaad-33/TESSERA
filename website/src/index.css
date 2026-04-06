@@ -10,7 +10,7 @@
   --color-tessera-orange: #FF6A33;
   --color-tessera-amber: #FFB84D;
   --color-tessera-cream: #F0EBE0;
-  --color-tessera-text: #e4eaf4;
+  --color-tessera-text: #dce3ef;
   --color-tessera-dim: #7b8599;
 
   --font-display: 'Space Grotesk', sans-serif;
@@ -23,12 +23,40 @@
   /* Legibility for type placed directly on photographic panels (Colossal-style) */
   .texture-type-shadow {
     text-shadow:
-      0 2px 32px rgba(0, 0, 0, 0.88),
-      0 1px 4px rgba(0, 0, 0, 1);
+      0 2px 28px rgba(0, 0, 0, 0.82),
+      0 1px 3px rgba(0, 0, 0, 0.95);
   }
 
   .texture-type-shadow-soft {
-    text-shadow: 0 1px 22px rgba(0, 0, 0, 0.78);
+    text-shadow: 0 1px 18px rgba(0, 0, 0, 0.72);
+  }
+
+  /**
+   * Section 04.4 DSP chart -- visible "liquid glass" (blur + tint + edge light).
+   * Not a bitmap texture: it refracts whatever photo panel sits behind this card.
+   */
+  .dsp-liquid-glass {
+    position: relative;
+    isolation: isolate;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(12, 18, 28, 0.22) 100%);
+    box-shadow:
+      0 12px 56px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+    -webkit-backdrop-filter: blur(28px) saturate(1.18);
+    backdrop-filter: blur(28px) saturate(1.18);
+  }
+
+  .dsp-liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(125deg, rgba(255, 255, 255, 0.22) 0%, transparent 38%, transparent 62%, rgba(93, 212, 240, 0.06) 100%);
+    opacity: 0.55;
   }
 
   .mist-overlay {
@@ -134,7 +162,6 @@
     line-height: 0.88;
     letter-spacing: -0.07em;
     text-transform: uppercase;
-    font-weight: 700;
   }
 
   .display-tight {
@@ -143,7 +170,6 @@
     line-height: 0.92;
     letter-spacing: -0.06em;
     text-transform: uppercase;
-    font-weight: 700;
   }
 
   .panel-shell {

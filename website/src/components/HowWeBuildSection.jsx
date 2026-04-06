@@ -64,7 +64,7 @@ function TierVisual() {
                 {tier.subtitle}
               </div>
             </div>
-          <div className="shrink-0 font-mono text-sm uppercase tracking-[0.24em] text-[#d2daea] sm:pt-6 sm:text-right lg:pt-7">
+          <div className="shrink-0 font-mono text-sm uppercase tracking-[0.24em] text-[#c6cfdd] sm:pt-6 sm:text-right lg:pt-7">
               {tier.threshold}
             </div>
           </div>
@@ -76,8 +76,8 @@ function TierVisual() {
 
 function DSPVisual() {
   return (
-    <div className="h-full min-h-[26rem] rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.04] backdrop-blur-xl shadow-[0_8px_48px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.06)]">
-      <div className="flex h-full min-h-[26rem] items-center justify-center p-6 sm:p-8 lg:p-10">
+    <div className="dsp-liquid-glass h-full min-h-[26rem] overflow-hidden">
+      <div className="relative z-10 flex h-full min-h-[26rem] items-center justify-center p-6 sm:p-8 lg:p-10">
         <svg viewBox="0 0 620 280" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="waveA" x1="0" x2="1">
@@ -122,7 +122,7 @@ function BuildSlab({ id, title, subtitle, description, visual, reverse = false, 
           <div className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#8d94ab]">{id}</div>
           <h3 className="texture-type-shadow mt-4 text-3xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-4xl">{title}</h3>
           <p className="texture-type-shadow-soft mt-3 font-mono text-[11px] uppercase tracking-[0.26em] text-[#5dd4f0]">{subtitle}</p>
-          <p className="texture-type-shadow-soft mt-6 max-w-xl text-lg leading-relaxed text-[#d2daea]">{description}</p>
+          <p className="texture-type-shadow-soft mt-6 max-w-xl text-lg leading-relaxed text-[#c6cfdd]">{description}</p>
         </div>
         <div className="min-h-[24rem] lg:min-h-[30rem]">{visual}</div>
       </div>
@@ -195,7 +195,7 @@ export default function HowWeBuildSection({ eqMockup, slabStart = 0, slabEnd = 4
                 THIS IS HOW
                 <span className="mt-2 block text-[#5dd4f0]">TESSERA EQ THINKS.</span>
               </h2>
-              <p className="texture-type-shadow-soft mt-6 max-w-2xl text-xl leading-relaxed text-[#d2daea]">
+              <p className="texture-type-shadow-soft mt-6 max-w-2xl text-xl leading-relaxed text-[#c6cfdd]">
                 This is Tessera EQ -- the first product, shown exactly as it works. You describe the sound you want. It suggests an EQ curve. You see every parameter, drag any node, undo anything. No mystery. No magic buttons.
               </p>
             </div>
@@ -203,7 +203,7 @@ export default function HowWeBuildSection({ eqMockup, slabStart = 0, slabEnd = 4
         ) : (
           <div className="mb-10 max-w-2xl border-l-2 border-white/20 pl-6 sm:pl-8">
             <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-[#8d94ab]">Section 04 continued</p>
-            <p className="texture-type-shadow-soft mt-2 text-base leading-relaxed text-[#d2daea]">Routing, confidence, and the DSP underneath.</p>
+            <p className="texture-type-shadow-soft mt-2 text-base leading-relaxed text-[#c6cfdd]">Routing, confidence, and the DSP underneath.</p>
           </div>
         )}
 
