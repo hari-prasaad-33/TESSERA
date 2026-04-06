@@ -8,12 +8,12 @@ export default function HeroSection() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url('/images/textures/rogland-clear-night.jpg')",
-            opacity: 0.78,
-            filter: 'saturate(1.06) contrast(1.04)',
+            opacity: 0.82,
+            filter: 'saturate(1.06) contrast(1.04) brightness(1.04)',
           }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,3,2,0.98)_0%,rgba(5,4,3,0.88)_16%,rgba(5,4,3,0.52)_36%,rgba(5,4,3,0.22)_58%,rgba(5,4,3,0.38)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0.14)_48%,transparent_78%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,3,2,0.94)_0%,rgba(5,4,3,0.84)_16%,rgba(5,4,3,0.48)_36%,rgba(5,4,3,0.2)_58%,rgba(5,4,3,0.34)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.26)_0%,rgba(0,0,0,0.1)_48%,transparent_78%)]" />
       </div>
 
       <div className="panel-shell relative z-10 flex min-h-[calc(100vh-7rem)] items-end">

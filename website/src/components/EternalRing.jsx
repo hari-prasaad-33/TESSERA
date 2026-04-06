@@ -1,7 +1,5 @@
-import React from 'react';
-
 const EternalRing = () => {
-  const text = " EVERYTHING HAS ALREADY HAPPENED WE ARE JUST LISTENING TO IT NOW ";
+  const text = ' TESSERA · TESSERA EQ · TESSERA ONE · EST 2026 ';
   const chars = text.split('');
   
   return (

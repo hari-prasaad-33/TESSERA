@@ -31,7 +31,7 @@ export default function SiteNav({ currentPage = 'home', onNavigate }) {
     <nav
       className={`fixed inset-x-0 top-0 z-50 px-6 py-4 transition-all duration-300 md:px-10 lg:px-14 ${
         scrolled || isSubPage
-          ? 'border-b border-white/6 bg-[#040711]/78 backdrop-blur-xl'
+          ? 'border-b border-white/6 bg-[#080d16]/82 backdrop-blur-xl'
           : 'bg-transparent'
       }`}
     >
@@ -54,13 +54,8 @@ export default function SiteNav({ currentPage = 'home', onNavigate }) {
             {showDropdown && (
               <div className="absolute left-1/2 top-full mt-3 w-72 -translate-x-1/2 rounded-[1.2rem] border border-white/10 bg-[#060A13]/94 p-2 shadow-[0_22px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl">
                 <button
-                  onClick={() => {
-                    setShowDropdown(false);
-                    onNavigate('eq-features');
-                  }}
-                  className={`flex w-full items-start gap-3 rounded-[1rem] px-4 py-3 text-left transition-colors ${
-                    currentPage === 'eq-features' ? 'bg-[#5dd4f0]/10' : 'hover:bg-white/[0.04]'
-                  }`}
+                  onClick={() => handleSection('how-eq-works')}
+                  className="flex w-full items-start gap-3 rounded-[1rem] px-4 py-3 text-left transition-colors hover:bg-white/[0.04]"
                 >
                   <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#5dd4f0]" />
                   <span>
@@ -70,7 +65,7 @@ export default function SiteNav({ currentPage = 'home', onNavigate }) {
                 </button>
 
                 <button
-                  onClick={() => handleSection('vision')}
+                  onClick={() => handleSection('products')}
                   className="mt-1 flex w-full items-start gap-3 rounded-[1rem] px-4 py-3 text-left transition-colors hover:bg-white/[0.04]"
                 >
                   <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#ffb84d]" />
@@ -83,7 +78,7 @@ export default function SiteNav({ currentPage = 'home', onNavigate }) {
             )}
           </div>
 
-          <button className="transition-colors hover:text-white" onClick={() => onNavigate('eq-features')}>
+          <button className="transition-colors hover:text-white" onClick={() => handleSection('how-eq-works')}>
             Explore TESSERA EQ
           </button>
         </div>
@@ -100,11 +95,7 @@ export default function SiteNav({ currentPage = 'home', onNavigate }) {
           <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
             <span
               className={`h-2 w-2 rounded-full ${
-                currentPage === 'eq-features'
-                  ? 'bg-[#5dd4f0]'
-                  : currentPage === 'discover'
-                    ? 'bg-[#ffb84d]'
-                    : 'bg-[#ff6a33]'
+                currentPage === 'discover' ? 'bg-[#ffb84d]' : 'bg-[#ff6a33]'
               }`}
             />
           </div>

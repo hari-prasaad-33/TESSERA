@@ -111,7 +111,7 @@ const EQProductSection = ({ onNavigate }) => {
           <div className="flex gap-4">
             <button
               className="px-10 py-5 bg-tessera-teal/15 border border-tessera-teal/40 text-tessera-teal font-mono font-bold tracking-wider rounded-full transition-all hover:scale-105 hover:bg-tessera-teal/25 hover:shadow-lg hover:shadow-tessera-teal/10"
-              onClick={() => onNavigate('eq-features')}
+              onClick={() => document.getElementById('how-eq-works')?.scrollIntoView({ behavior: 'smooth' })}
             >
               EXPLORE FEATURES
             </button>

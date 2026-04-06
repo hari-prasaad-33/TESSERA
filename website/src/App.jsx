@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ProductShowcase, { EQInterfaceMockup } from './components/ProductShowcase';
 import EternalRing from './components/EternalRing';
 import DiscoverPage from './components/DiscoverPage';
-import EQFeaturesPage from './components/EQFeaturesPage';
+import EarlyBelievers from './components/EarlyBelievers';
 import HeroSection from './components/HeroSection';
 import ProblemSection from './components/ProblemSection';
 import AnswerSection from './components/AnswerSection';
@@ -56,18 +56,9 @@ export default function App() {
 
   if (currentPage === 'discover') {
     return (
-      <div className="min-h-screen bg-[#040711]">
+      <div className="min-h-screen bg-[#080d16]">
         <SiteNav currentPage="discover" onNavigate={navigateTo} />
         <DiscoverPage onBack={() => navigateTo('home')} />
-      </div>
-    );
-  }
-
-  if (currentPage === 'eq-features') {
-    return (
-      <div className="min-h-screen bg-[#050914]">
-        <SiteNav currentPage="eq-features" onNavigate={navigateTo} />
-        <EQFeaturesPage onBack={() => navigateTo('home')} />
       </div>
     );
   }
@@ -76,7 +67,7 @@ export default function App() {
     <div className="text-tessera-text selection:bg-tessera-orange selection:text-black">
       <SiteNav currentPage="home" onNavigate={navigateTo} />
 
-      <Panel bg="bg-[#0a0806]">
+      <Panel bg="bg-[#0e0c09]">
         <HeroSection />
       </Panel>
 
@@ -91,12 +82,12 @@ export default function App() {
         texture={
           <TextureVeil
             src="/images/textures/qwantani-moon-noon.jpg"
-            opacity={0.78}
+            opacity={0.82}
             position="center"
-            filter="saturate(1.15) contrast(1.04) brightness(0.72)"
+            filter="saturate(1.15) contrast(1.04) brightness(0.78)"
           />
         }
-        overlay={<div className="pointer-events-none absolute inset-0 bg-[rgba(48,28,14,0.38)]" />}
+        overlay={<div className="pointer-events-none absolute inset-0 bg-[rgba(48,28,14,0.32)]" />}
       >
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.06),transparent_40%)]" />
         <div className={`pointer-events-none absolute inset-0 ${contentLaneScrim}`} />
@@ -108,18 +99,22 @@ export default function App() {
         texture={
           <TextureVeil
             src="/images/textures/quarry-04-puresky.jpg"
-            opacity={0.74}
+            opacity={0.78}
             position="center top"
-            filter="saturate(1.02) contrast(1.03) brightness(0.68)"
+            filter="saturate(1.02) contrast(1.03) brightness(0.74)"
           />
         }
-        overlay={<div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,14,26,0.42),rgba(10,18,32,0.28)_50%,rgba(6,12,22,0.48))]" />}
+        overlay={<div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,14,26,0.34),rgba(10,18,32,0.22)_50%,rgba(6,12,22,0.38))]" />}
       >
         <div className={`pointer-events-none absolute inset-0 ${contentLaneScrim}`} />
         <AnswerSection />
       </Panel>
 
-      <Panel bg={sectionBackgrounds.howWeBuild.baseTint} texture={<SectionBackdrop config={sectionBackgrounds.howWeBuild} />}>
+      <Panel
+        id="how-eq-works"
+        bg={sectionBackgrounds.howWeBuild.baseTint}
+        texture={<SectionBackdrop config={sectionBackgrounds.howWeBuild} />}
+      >
         <HowWeBuildSection eqMockup={<EQInterfaceMockup />} includeIntro slabStart={0} slabEnd={2} />
       </Panel>
 
@@ -135,14 +130,16 @@ export default function App() {
         <VisionSection />
       </Panel>
 
-      <footer className="relative overflow-hidden border-t border-white/10 bg-[#0a0c14] px-6 py-20 text-center md:px-10 lg:px-14">
+      <EarlyBelievers />
+
+      <footer className="relative overflow-hidden border-t border-white/10 bg-[#0e1118] px-6 py-20 text-center md:px-10 lg:px-14">
         <TextureVeil
           src="/images/textures/rogland-clear-night.jpg"
-          opacity={0.32}
+          opacity={0.36}
           position="center bottom"
-          filter="saturate(1.02) contrast(1.05) brightness(0.5)"
+          filter="saturate(1.02) contrast(1.05) brightness(0.56)"
         />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,18,0.78),rgba(5,6,12,0.88))]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,18,0.68),rgba(5,6,12,0.78))]" />
         <div className="relative z-10 panel-shell">
           <div className="mb-8 flex justify-center opacity-70 transition-opacity hover:opacity-100">
             <EternalRing />

@@ -618,13 +618,18 @@ export default function ProductShowcase({ onNavigate }) {
 
               <div className="flex flex-wrap gap-3">
                 <button
-                  onClick={() => onNavigate('eq-features')}
+                  type="button"
+                  onClick={() => document.getElementById('how-eq-works')?.scrollIntoView({ behavior: 'smooth' })}
                   className="rounded-full border border-[#5dd4f0]/45 bg-[#5dd4f0]/14 px-7 py-3 font-mono text-xs font-semibold uppercase tracking-[0.28em] text-[#d5f8ff] transition-all duration-300 hover:border-[#5dd4f0] hover:bg-[#5dd4f0]/22"
                 >
                   See Tessera EQ
                 </button>
-                <button className="rounded-full border border-white/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#bfc7d8] transition-all duration-300 hover:border-white/25 hover:text-white">
-                  Join the waitlist
+                <button
+                  type="button"
+                  onClick={() => document.getElementById('believers')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="rounded-full border border-white/10 px-7 py-3 font-mono text-xs uppercase tracking-[0.28em] text-[#bfc7d8] transition-all duration-300 hover:border-white/25 hover:text-white"
+                >
+                  Early believers
                 </button>
               </div>
             </div>
