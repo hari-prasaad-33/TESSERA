@@ -90,14 +90,6 @@ function DSPVisual() {
           </linearGradient>
         </defs>
 
-        <rect
-          x="0"
-          y="0"
-          width="620"
-          height="280"
-          fill="rgba(7,10,16,0.18)"
-          stroke="rgba(255,255,255,0.1)"
-        />
         <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveA)" strokeWidth="4" />
         <path d="M 36 148 C 88 148 144 148 198 148 C 248 148 302 148 360 148 C 418 148 472 148 524 148" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeDasharray="5 7" />
         <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveB)" strokeWidth="2.2" strokeDasharray="1 10" />

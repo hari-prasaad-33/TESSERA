@@ -525,7 +525,7 @@ export function ChannelStripMockup({ className = '' }) {
         </ModuleShell>
       </div>
 
-      <div className="relative z-10 grid gap-3 border-t border-white/8 px-4 py-4 sm:px-6 lg:grid-cols-3">
+      <div className="relative z-10 grid gap-3 border-t border-white/8 px-4 pb-3 pt-4 sm:px-6 lg:grid-cols-3">
         <ModuleShell title="Saturator" accent="orange">
           <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.7fr)]">
             <RotaryKnob label="Drive" value="6.4" accent="orange" size="lg" />
@@ -584,8 +584,8 @@ export default function ProductShowcase({ onNavigate }) {
 
         <div className="border-t border-white/10">
           <div className="grid gap-0 lg:grid-cols-[minmax(0,1.22fr)_minmax(21rem,0.78fr)]">
-            <div className="min-h-[29rem] overflow-hidden rounded-xl bg-[#0a0e14] lg:rounded-l-xl lg:rounded-r-none">
-              <ChannelStripMockup className="h-full min-h-[26rem]" />
+            <div className="overflow-hidden rounded-xl bg-[#0a0e14] lg:rounded-l-xl lg:rounded-r-none">
+              <ChannelStripMockup />
             </div>
 
             <div className="flex flex-col justify-center px-0 py-10 sm:py-12 lg:px-10 lg:py-14 xl:pl-12">

@@ -32,12 +32,14 @@ export default function VisionSection() {
           </div>
           <div className="relative grid min-h-[20rem] items-center lg:grid-cols-[minmax(0,0.4fr)_minmax(0,1fr)] lg:gap-12 lg:pl-4">
             <div className="hidden lg:block" aria-hidden />
-            <div className="max-w-3xl border-l-2 border-white/20 pl-6 lg:justify-self-end lg:pl-8">
-              <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#8d94ab]">Design principle</div>
-              <p className="texture-type-shadow-soft mt-5 text-xl leading-relaxed text-[#c6cfdd] sm:text-2xl">
-                Every product we build will follow the same principle: reduce friction, never replace intention.
-                The goal is not to build the most powerful AI in music. It is to build the most honest one.
-              </p>
+            <div className="glass-pane max-w-3xl px-6 py-6 sm:px-8 sm:py-8 lg:justify-self-end">
+              <div className="border-l-2 border-white/20 pl-6 lg:pl-8">
+                <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#8d94ab]">Design principle</div>
+                <p className="texture-type-shadow-soft mt-5 text-xl leading-relaxed text-[#c6cfdd] sm:text-2xl">
+                  Every product we build will follow the same principle: reduce friction, never replace intention.
+                  The goal is not to build the most powerful AI in music. It is to build the most honest one.
+                </p>
+              </div>
             </div>
           </div>
         </div>

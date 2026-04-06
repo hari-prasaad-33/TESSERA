@@ -14,7 +14,7 @@ export default function FoundersNoteSection() {
           </p>
         </div>
 
-        <div className="flex flex-col justify-end gap-8 lg:border-l lg:border-white/10 lg:pl-10">
+        <div className="glass-pane flex flex-col justify-end gap-8 px-6 py-6 sm:px-8 sm:py-8 lg:border-l lg:border-white/10 lg:pl-10">
           <div className="border-l-2 border-[#ffb84d]/30 pl-5">
             <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#8d94ab]">In one line</div>
             <p className="texture-type-shadow-soft mt-3 max-w-sm text-xl font-semibold leading-snug text-[#f0ebe0] sm:text-2xl">
