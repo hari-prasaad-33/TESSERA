@@ -22,7 +22,7 @@ export default function VisionSection() {
             Our long-term goal is a full digital audio workstation -- Tessera DAW -- where every capability, end to end,
             follows the same philosophy we are proving now: intelligence that removes friction, never authorship.
             Suggestions stay visible, parameters stay yours, and the final track stays unmistakably your decision.
-            There is no ship date on the horizon for that; there is only the standard -- if we build it, it earns the name.
+            Every product we ship between now and then is a step closer -- and proof that the philosophy holds.
           </p>
         </div>
 
