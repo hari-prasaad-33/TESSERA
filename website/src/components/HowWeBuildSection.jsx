@@ -64,7 +64,7 @@ function TierVisual() {
                 {tier.subtitle}
               </div>
             </div>
-            <div className="shrink-0 font-mono text-sm uppercase tracking-[0.24em] text-[#c6cfdd] sm:pt-6 sm:text-right lg:pt-7">
+          <div className="shrink-0 font-mono text-sm uppercase tracking-[0.24em] text-[#d2daea] sm:pt-6 sm:text-right lg:pt-7">
               {tier.threshold}
             </div>
           </div>
@@ -76,7 +76,7 @@ function TierVisual() {
 
 function DSPVisual() {
   return (
-    <div className="h-full min-h-[26rem] overflow-hidden rounded-xl bg-[#0c1018]/90">
+    <div className="h-full min-h-[26rem] rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.04] backdrop-blur-xl shadow-[0_8px_48px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.06)]">
       <div className="flex h-full min-h-[26rem] items-center justify-center p-6 sm:p-8 lg:p-10">
         <svg viewBox="0 0 620 280" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -90,7 +90,14 @@ function DSPVisual() {
           </linearGradient>
         </defs>
 
-        <rect x="0" y="0" width="620" height="280" fill="rgba(7,10,16,0.45)" stroke="rgba(255,255,255,0.06)" />
+        <rect
+          x="0"
+          y="0"
+          width="620"
+          height="280"
+          fill="rgba(7,10,16,0.18)"
+          stroke="rgba(255,255,255,0.1)"
+        />
         <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveA)" strokeWidth="4" />
         <path d="M 36 148 C 88 148 144 148 198 148 C 248 148 302 148 360 148 C 418 148 472 148 524 148" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeDasharray="5 7" />
         <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveB)" strokeWidth="2.2" strokeDasharray="1 10" />
@@ -115,7 +122,7 @@ function BuildSlab({ id, title, subtitle, description, visual, reverse = false, 
           <div className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#8d94ab]">{id}</div>
           <h3 className="texture-type-shadow mt-4 text-3xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-4xl">{title}</h3>
           <p className="texture-type-shadow-soft mt-3 font-mono text-[11px] uppercase tracking-[0.26em] text-[#5dd4f0]">{subtitle}</p>
-          <p className="texture-type-shadow-soft mt-6 max-w-xl text-lg leading-relaxed text-[#c6cfdd]">{description}</p>
+          <p className="texture-type-shadow-soft mt-6 max-w-xl text-lg leading-relaxed text-[#d2daea]">{description}</p>
         </div>
         <div className="min-h-[24rem] lg:min-h-[30rem]">{visual}</div>
       </div>
@@ -188,7 +195,7 @@ export default function HowWeBuildSection({ eqMockup, slabStart = 0, slabEnd = 4
                 THIS IS HOW
                 <span className="mt-2 block text-[#5dd4f0]">TESSERA EQ THINKS.</span>
               </h2>
-              <p className="texture-type-shadow-soft mt-6 max-w-2xl text-xl leading-relaxed text-[#c6cfdd]">
+              <p className="texture-type-shadow-soft mt-6 max-w-2xl text-xl leading-relaxed text-[#d2daea]">
                 This is Tessera EQ -- the first product, shown exactly as it works. You describe the sound you want. It suggests an EQ curve. You see every parameter, drag any node, undo anything. No mystery. No magic buttons.
               </p>
             </div>
@@ -196,7 +203,7 @@ export default function HowWeBuildSection({ eqMockup, slabStart = 0, slabEnd = 4
         ) : (
           <div className="mb-10 max-w-2xl border-l-2 border-white/20 pl-6 sm:pl-8">
             <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-[#8d94ab]">Section 04 continued</p>
-            <p className="texture-type-shadow-soft mt-2 text-base leading-relaxed text-[#c6cfdd]">Routing, confidence, and the DSP underneath.</p>
+            <p className="texture-type-shadow-soft mt-2 text-base leading-relaxed text-[#d2daea]">Routing, confidence, and the DSP underneath.</p>
           </div>
         )}
 

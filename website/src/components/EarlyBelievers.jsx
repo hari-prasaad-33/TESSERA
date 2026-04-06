@@ -48,7 +48,7 @@ export default function EarlyBelievers() {
         <SectionMarker number="07" title="EARLY BELIEVERS" className="mb-10" />
         <div className="max-w-2xl border-l-2 border-[#ffb84d]/35 pl-6 sm:pl-8">
           <h2 className="texture-type-shadow display-tight text-[#f0ebe0]">BELIEVE IN HUMAN-FIRST MUSIC?</h2>
-          <p className="texture-type-shadow-soft mt-6 text-lg leading-relaxed text-[#c6cfdd] sm:text-xl">
+          <p className="texture-type-shadow-soft mt-6 text-lg leading-relaxed text-[#d2daea] sm:text-xl">
             This is bigger than a product launch. We are gathering the people who think the creative act is worth protecting. If that is
             you, leave your email. When we move, you hear first.
           </p>

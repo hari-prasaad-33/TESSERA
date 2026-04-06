@@ -5,7 +5,7 @@ export default function ThesisBridgeCard() {
       <p className="texture-type-shadow mt-3 text-[1.85rem] leading-[0.98] text-[#f0ebe0] sm:text-[2.35rem]">
         Process over shortcuts.
       </p>
-      <p className="texture-type-shadow-soft mt-3 max-w-xl text-base leading-relaxed text-[#d0d7e4] sm:text-lg">
+      <p className="texture-type-shadow-soft mt-3 max-w-xl text-base leading-relaxed text-[#dae0ec] sm:text-lg">
         We use intelligence to remove friction, not authorship. The machine can suggest. The artist still decides.
       </p>
       <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.26em] text-[#99a3b7]">

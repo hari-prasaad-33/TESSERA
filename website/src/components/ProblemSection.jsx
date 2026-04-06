@@ -31,7 +31,7 @@ export default function ProblemSection() {
               The quiet part no one is saying.
             </p>
             <h2 className="texture-type-shadow display-tight text-[#f0ebe0]">THE PROBLEM</h2>
-            <p className="texture-type-shadow-soft mt-6 max-w-xl text-xl leading-relaxed text-[#c6cfdd] sm:text-2xl">
+            <p className="texture-type-shadow-soft mt-6 max-w-xl text-xl leading-relaxed text-[#d2daea] sm:text-2xl">
               The tools keep getting better. That is not the problem. The problem is what happens to the creative act when every difficult step gets compressed into a shortcut. When the gap between nothing and a finished track becomes trivially small, the question stops being &quot;how do I get there&quot; and starts being &quot;why does getting there even matter anymore.&quot;
             </p>
           </div>

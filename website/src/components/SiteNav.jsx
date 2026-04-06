@@ -87,7 +87,7 @@ export default function SiteNav({ currentPage = 'home', onNavigate }) {
           {isSubPage && (
             <button
               onClick={() => onNavigate('home')}
-              className="rounded-full border border-white/10 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.24em] text-[#c6cfdd] transition-all duration-300 hover:border-white/20 hover:text-white md:hidden"
+              className="rounded-full border border-white/10 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.24em] text-[#d2daea] transition-all duration-300 hover:border-white/20 hover:text-white md:hidden"
             >
               Home
             </button>

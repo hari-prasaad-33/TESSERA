@@ -145,7 +145,7 @@ export default function App() {
             <EternalRing />
           </div>
           <p className="font-mono text-[10px] uppercase tracking-[0.34em] text-[#8d94ab]">Tessera Audio</p>
-          <div className="mt-5 space-y-2 text-sm text-[#c6cfdd]">
+          <div className="mt-5 space-y-2 text-sm text-[#d2daea]">
             <p>Founder: Hari Prasaad S</p>
             <p>
               <a href="mailto:hello@tessera.audio" className="text-[#5dd4f0] underline-offset-4 hover:underline">
