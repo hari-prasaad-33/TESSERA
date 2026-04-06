@@ -76,9 +76,8 @@ function TierVisual() {
 
 function DSPVisual() {
   return (
-    <div className="dsp-liquid-glass h-full min-h-[26rem] overflow-hidden">
-      <div className="relative z-10 flex h-full min-h-[26rem] items-center justify-center p-6 sm:p-8 lg:p-10">
-        <svg viewBox="0 0 620 280" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
+    <div className="flex items-center justify-center p-4 sm:p-6 lg:p-8">
+      <svg viewBox="0 0 620 280" className="w-full max-w-[42rem]" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="waveA" x1="0" x2="1">
             <stop offset="0%" stopColor="#5dd4f0" stopOpacity="0.25" />
@@ -98,13 +97,16 @@ function DSPVisual() {
             {label}
           </text>
         ))}
-        </svg>
-      </div>
+      </svg>
     </div>
   );
 }
 
-function BuildSlab({ id, title, subtitle, description, visual, reverse = false, slabIndex = 0 }) {
+/**
+ * @param {{ id: string, title: string, subtitle: string, description: string, visual: import('react').ReactNode, reverse?: boolean, slabIndex?: number, compactVisual?: boolean }} props
+ */
+function BuildSlab({ id, title, subtitle, description, visual, reverse = false, slabIndex = 0, compactVisual = false }) {
+  const visualShell = compactVisual ? 'min-h-0' : 'min-h-[24rem] lg:min-h-[30rem]';
   return (
     <div className={slabIndex === 0 ? 'pb-2 pt-0' : 'border-t border-white/10 pb-2 pt-14'}>
       <div
@@ -116,7 +118,7 @@ function BuildSlab({ id, title, subtitle, description, visual, reverse = false, 
           <p className="texture-type-shadow-soft mt-3 font-mono text-[11px] uppercase tracking-[0.26em] text-[#5dd4f0]">{subtitle}</p>
           <p className="texture-type-shadow-soft mt-6 max-w-xl text-lg leading-relaxed text-[#c6cfdd]">{description}</p>
         </div>
-        <div className="min-h-[24rem] lg:min-h-[30rem]">{visual}</div>
+        <div className={visualShell}>{visual}</div>
       </div>
     </div>
   );
@@ -169,6 +171,7 @@ export default function HowWeBuildSection({ eqMockup, slabStart = 0, slabEnd = 4
       description:
         'Cytomic state-variable filters and safe parameter interpolation let the interface move continuously, whether the driver is a human hand or an AI suggestion. The math exists to serve the sound, not show off.',
       reverse: true,
+      compactVisual: true,
       visual: <DSPVisual />,
     },
   ];

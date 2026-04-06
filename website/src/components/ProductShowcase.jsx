@@ -583,9 +583,9 @@ export default function ProductShowcase({ onNavigate }) {
         <SectionMarker number="05" title="THE PLATFORM" className="mb-10" />
 
         <div className="border-t border-white/10">
-          <div className="grid gap-0 lg:grid-cols-[minmax(0,1.22fr)_minmax(21rem,0.78fr)]">
-            <div className="overflow-hidden rounded-xl bg-[#0a0e14] lg:rounded-l-xl lg:rounded-r-none">
-              <ChannelStripMockup />
+          <div className="grid gap-0 lg:grid-cols-[minmax(0,1.22fr)_minmax(21rem,0.78fr)] lg:items-start">
+            <div className="overflow-hidden rounded-xl bg-[#0a0e14] lg:rounded-l-xl lg:rounded-r-none lg:self-start">
+              <ChannelStripMockup className="w-full" />
             </div>
 
             <div className="flex flex-col justify-center px-0 py-10 sm:py-12 lg:px-10 lg:py-14 xl:pl-12">
