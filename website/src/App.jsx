@@ -72,7 +72,7 @@ export default function App() {
       </Panel>
 
       <div className="pointer-events-none relative z-30 mx-auto -mt-20 mb-[-7.5rem] w-full max-w-[1600px] px-6 md:-mt-24 md:mb-[-8.5rem] md:px-10 lg:-mt-28 lg:mb-[-10rem] lg:px-14">
-        <div className="md:ml-auto md:max-w-[40rem] lg:max-w-[44rem]">
+        <div className="rounded-b-3xl bg-gradient-to-b from-transparent via-black/25 to-[rgba(10,8,6,0.55)] px-2 pb-4 pt-2 backdrop-blur-sm md:ml-auto md:max-w-[40rem] lg:max-w-[44rem]">
           <ThesisBridgeCard />
         </div>
       </div>
@@ -101,10 +101,10 @@ export default function App() {
             src="/images/textures/quarry-04-puresky.jpg"
             opacity={0.78}
             position="center top"
-            filter="saturate(1.02) contrast(1.03) brightness(0.74)"
+            filter="saturate(1.02) contrast(1.03) brightness(0.66)"
           />
         }
-        overlay={<div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,14,26,0.34),rgba(10,18,32,0.22)_50%,rgba(6,12,22,0.38))]" />}
+        overlay={<div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,14,26,0.36),rgba(10,18,32,0.32)_50%,rgba(6,12,22,0.42))]" />}
       >
         <div className={`pointer-events-none absolute inset-0 ${contentLaneScrim}`} />
         <AnswerSection />

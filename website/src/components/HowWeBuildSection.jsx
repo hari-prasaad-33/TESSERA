@@ -7,7 +7,7 @@ function SemanticEngineVisual() {
   const stages = ['Prompt', 'Tokenizer', 'Embedding', 'Similarity', '8-band curve'];
 
   return (
-    <div className="relative flex h-full min-h-[26rem] flex-col justify-center overflow-hidden bg-[#0c1018]/90 p-6 sm:p-8 lg:p-10">
+    <div className="relative flex h-full min-h-[26rem] flex-col justify-center overflow-hidden bg-transparent p-6 sm:p-8 lg:p-10">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.05),transparent_26%)]" />
       <div className="relative z-10 grid gap-0">
         {stages.map((stage) => (
@@ -69,7 +69,7 @@ function TierVisual() {
 
 function DSPVisual() {
   return (
-    <div className="flex h-full min-h-[26rem] items-center justify-center bg-[#0c1018]/90 p-6 sm:p-8 lg:p-10">
+    <div className="flex h-full min-h-[26rem] items-center justify-center bg-transparent p-6 sm:p-8 lg:p-10">
       <svg viewBox="0 0 620 280" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="waveA" x1="0" x2="1">
@@ -82,7 +82,7 @@ function DSPVisual() {
           </linearGradient>
         </defs>
 
-        <rect x="0" y="0" width="620" height="280" fill="rgba(7,10,16,0.45)" stroke="rgba(255,255,255,0.06)" />
+        <rect x="0" y="0" width="620" height="280" fill="rgba(7,10,16,0.18)" stroke="rgba(255,255,255,0.08)" />
         <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveA)" strokeWidth="4" />
         <path d="M 36 148 C 88 148 144 148 198 148 C 248 148 302 148 360 148 C 418 148 472 148 524 148" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeDasharray="5 7" />
         <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveB)" strokeWidth="2.2" strokeDasharray="1 10" />
@@ -108,7 +108,7 @@ function BuildSlab({ id, title, subtitle, description, visual, reverse = false, 
           <p className="texture-type-shadow-soft mt-3 font-mono text-[11px] uppercase tracking-[0.26em] text-[#5dd4f0]">{subtitle}</p>
           <p className="texture-type-shadow-soft mt-6 max-w-xl text-lg leading-relaxed text-[#c6cfdd]">{description}</p>
         </div>
-        <div className="min-h-[24rem] overflow-hidden rounded-xl lg:min-h-[30rem]">{visual}</div>
+        <div className="min-h-[24rem] lg:min-h-[30rem]">{visual}</div>
       </div>
     </div>
   );
@@ -129,9 +129,9 @@ export default function HowWeBuildSection({ eqMockup, slabStart = 0, slabEnd = 4
         "Type a phrase like 'add warmth and air' and the system suggests a full EQ state. Nothing is hidden behind a magic button. Every band is draggable, editable, and reversible.",
       reverse: false,
       visual: (
-        <div className="relative h-full overflow-hidden bg-[#0a0e14]">
-          <ShaderBackground fragmentShader={shaderPresets.lanterns} opacity={0.22} mixBlendMode="screen" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,12,16,0.2),rgba(8,10,14,0.5)_84%)]" />
+        <div className="relative h-full min-h-[26rem] overflow-hidden bg-transparent">
+          <ShaderBackground fragmentShader={shaderPresets.lanterns} opacity={0.28} mixBlendMode="screen" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,14,0.12),rgba(6,8,12,0.28)_84%)]" />
           <div className="relative z-10 h-full">{liveVisual}</div>
         </div>
       ),

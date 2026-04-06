@@ -42,11 +42,11 @@ export const sectionBackgrounds = {
     contentLaneClass: contentLaneScrim,
   },
   vision: {
-    src: '/images/textures/moon-01.jpg',
-    opacity: 0.76,
-    position: 'center 35%',
-    filter: 'saturate(0.95) contrast(1.12) brightness(0.72)',
-    baseTint: 'bg-[#121422]',
+    src: '/images/textures/rogland-clear-night.jpg',
+    opacity: 0.72,
+    position: 'center 80%',
+    filter: 'saturate(0.88) contrast(1.1) brightness(0.55)',
+    baseTint: 'bg-[#0e1018]',
     overlayClass:
       'bg-[linear-gradient(180deg,rgba(10,12,22,0.34)_0%,rgba(8,10,18,0.26)_45%,rgba(6,8,16,0.38)_100%)]',
     vignetteClass: 'bg-[radial-gradient(ellipse_100%_80%_at_50%_120%,rgba(93,212,240,0.1),transparent_50%)]',
