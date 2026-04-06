@@ -60,7 +60,7 @@ function magickAvailable() {
 function convertExrWithMagick(inputPath, baseName) {
   const jpg = path.join(OUT, `${baseName}.jpg`);
   const webp = path.join(OUT, `${baseName}.webp`);
-  const args = [inputPath, '-resize', `${MAX_W}x>`, '-quality', '85', jpg];
+  const args = [inputPath, '-resize', `${MAX_W}x>`, '-quality', '92', jpg];
   const r = spawnSync('magick', args, { encoding: 'utf8' });
   if (r.status !== 0) {
     console.warn(`magick failed for ${baseName}:`, r.stderr?.slice(0, 400) || r.error);
@@ -80,7 +80,7 @@ async function emitRaster(inputPath, baseName) {
   const jpgPath = path.join(OUT, `${baseName}.jpg`);
   const webpPath = path.join(OUT, `${baseName}.webp`);
 
-  await pipeline.clone().jpeg({ quality: 85, mozjpeg: true }).toFile(jpgPath);
+  await pipeline.clone().jpeg({ quality: 92, mozjpeg: true }).toFile(jpgPath);
   await pipeline.clone().webp({ quality: 80, effort: 6 }).toFile(webpPath);
   console.log(`Raster → ${baseName}.jpg / .webp`);
 }
