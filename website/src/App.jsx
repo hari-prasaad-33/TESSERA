@@ -72,7 +72,7 @@ export default function App() {
       </Panel>
 
       <div className="pointer-events-none relative z-30 mx-auto -mt-20 mb-[-7.5rem] w-full max-w-[1600px] px-6 md:-mt-24 md:mb-[-8.5rem] md:px-10 lg:-mt-28 lg:mb-[-10rem] lg:px-14">
-        <div className="rounded-b-3xl bg-gradient-to-b from-transparent via-black/25 to-[rgba(10,8,6,0.55)] px-2 pb-4 pt-2 backdrop-blur-sm md:ml-auto md:max-w-[40rem] lg:max-w-[44rem]">
+        <div className="md:ml-auto md:max-w-[40rem] lg:max-w-[44rem]">
           <ThesisBridgeCard />
         </div>
       </div>
@@ -82,9 +82,9 @@ export default function App() {
         texture={
           <TextureVeil
             src="/images/textures/qwantani-moon-noon.jpg"
-            opacity={0.82}
+            opacity={0.86}
             position="center"
-            filter="saturate(1.15) contrast(1.04) brightness(0.78)"
+            filter="saturate(1.15) contrast(1.04) brightness(0.86)"
           />
         }
         overlay={<div className="pointer-events-none absolute inset-0 bg-[rgba(48,28,14,0.32)]" />}

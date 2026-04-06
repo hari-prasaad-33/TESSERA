@@ -51,14 +51,21 @@ function TierVisual() {
   };
 
   return (
-    <div className="flex h-full min-h-[26rem] items-center bg-[#0e1218]/90 p-6 sm:p-8 lg:p-10">
-      <div className="w-full max-w-xl space-y-6">
+    <div className="flex h-full min-h-[26rem] items-center bg-transparent p-6 sm:p-8 lg:p-10">
+      <div className="w-full space-y-8">
         {tiers.map((tier) => (
-          <div key={tier.title} className={`border-l-2 ${border[tier.accent]} pl-5`}>
-            <div className="font-mono text-[11px] uppercase tracking-[0.26em] text-[#8d94ab]">{tier.title}</div>
-            <div className="mt-2 flex flex-wrap items-baseline justify-between gap-2">
-              <div className="text-2xl font-semibold tracking-[-0.04em] text-[#f0ebe0] sm:text-[1.65rem]">{tier.subtitle}</div>
-              <div className="font-mono text-sm uppercase tracking-[0.24em] text-[#c6cfdd]">{tier.threshold}</div>
+          <div
+            key={tier.title}
+            className="flex w-full flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-8"
+          >
+            <div className={`min-w-0 max-w-xl border-l-2 ${border[tier.accent]} pl-5`}>
+              <div className="font-mono text-[11px] uppercase tracking-[0.26em] text-[#8d94ab]">{tier.title}</div>
+              <div className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-[#f0ebe0] sm:text-[1.65rem]">
+                {tier.subtitle}
+              </div>
+            </div>
+            <div className="shrink-0 font-mono text-sm uppercase tracking-[0.24em] text-[#c6cfdd] sm:pt-6 sm:text-right lg:pt-7">
+              {tier.threshold}
             </div>
           </div>
         ))}
@@ -69,8 +76,9 @@ function TierVisual() {
 
 function DSPVisual() {
   return (
-    <div className="flex h-full min-h-[26rem] items-center justify-center bg-transparent p-6 sm:p-8 lg:p-10">
-      <svg viewBox="0 0 620 280" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
+    <div className="h-full min-h-[26rem] overflow-hidden rounded-xl bg-[#0c1018]/90">
+      <div className="flex h-full min-h-[26rem] items-center justify-center p-6 sm:p-8 lg:p-10">
+        <svg viewBox="0 0 620 280" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="waveA" x1="0" x2="1">
             <stop offset="0%" stopColor="#5dd4f0" stopOpacity="0.25" />
@@ -82,7 +90,7 @@ function DSPVisual() {
           </linearGradient>
         </defs>
 
-        <rect x="0" y="0" width="620" height="280" fill="rgba(7,10,16,0.18)" stroke="rgba(255,255,255,0.08)" />
+        <rect x="0" y="0" width="620" height="280" fill="rgba(7,10,16,0.45)" stroke="rgba(255,255,255,0.06)" />
         <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveA)" strokeWidth="4" />
         <path d="M 36 148 C 88 148 144 148 198 148 C 248 148 302 148 360 148 C 418 148 472 148 524 148" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeDasharray="5 7" />
         <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveB)" strokeWidth="2.2" strokeDasharray="1 10" />
@@ -91,7 +99,8 @@ function DSPVisual() {
             {label}
           </text>
         ))}
-      </svg>
+        </svg>
+      </div>
     </div>
   );
 }
