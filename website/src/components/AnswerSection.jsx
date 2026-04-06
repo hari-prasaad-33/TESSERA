@@ -3,12 +3,12 @@ import SectionMarker from './SectionMarker';
 
 export default function AnswerSection() {
   return (
-    <section className="relative z-10 overflow-hidden px-6 pb-24 pt-36 md:px-10 lg:px-14 lg:pb-28 lg:pt-40">
-      <div className="panel-shell relative z-10">
+    <section className="relative z-10 min-w-0 overflow-x-clip px-6 pb-24 pt-36 md:px-10 lg:px-14 lg:pb-28 lg:pt-40">
+      <div className="panel-shell relative z-10 min-w-0 max-w-full">
         <SectionMarker number="03" title="OUR ANSWER" className="mb-10" />
 
-        <div className="grid gap-14 lg:min-h-[32rem] lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end lg:gap-16">
-          <div className="border-l-2 border-[#5dd4f0]/35 pl-6 sm:pl-8">
+        <div className="grid min-w-0 gap-14 lg:min-h-[32rem] lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end lg:gap-16">
+          <div className="min-w-0 border-l-2 border-[#5dd4f0]/35 pl-6 sm:pl-8">
             <div className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">
               Where most tools hide the work, we leave it in your hands.
             </div>
@@ -21,8 +21,8 @@ export default function AnswerSection() {
             </p>
           </div>
 
-          <div className="lg:pl-2">
-            <div className="border-l-2 border-[#ffb84d]/45 pl-6 sm:pl-8">
+          <div className="min-w-0 lg:pl-2">
+            <div className="min-w-0 border-l-2 border-[#ffb84d]/45 pl-6 sm:pl-8">
               <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#ffb84d]">The line we will not cross</p>
               <p className="texture-type-shadow-soft mt-5 text-xl leading-relaxed text-[#e8ecf4] sm:text-2xl">
                 There is a line we will not cross. Tessera will reduce friction -- it will help you get to the sound faster. But it will never make a creative decision on your behalf. Not a small one, not a big one. Because the moment a tool changes the final track from what you imagined, that track is no longer fully yours. And we do not think that is a trade-off worth making.

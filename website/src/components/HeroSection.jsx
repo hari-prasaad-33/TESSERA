@@ -2,7 +2,7 @@ import SectionMarker from './SectionMarker';
 
 export default function HeroSection() {
   return (
-    <header id="home" className="relative z-10 min-h-screen overflow-visible px-6 pb-16 pt-28 md:px-10 lg:px-14 lg:pb-20">
+    <header id="home" className="relative z-10 min-h-screen overflow-x-clip px-6 pb-16 pt-28 md:px-10 lg:px-14 lg:pb-20">
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -16,14 +16,14 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.26)_0%,rgba(0,0,0,0.1)_48%,transparent_78%)]" />
       </div>
 
-      <div className="panel-shell relative z-10 flex min-h-[calc(100vh-7rem)] items-end">
-        <div className="grid w-full gap-8">
-          <div className="relative z-10 max-w-5xl pb-4">
+      <div className="panel-shell relative z-10 flex min-h-[calc(100vh-7rem)] min-w-0 items-end">
+        <div className="grid w-full min-w-0 gap-8">
+          <div className="relative z-10 max-w-full min-w-0 pb-4 md:max-w-5xl">
             <SectionMarker number="01" title="THE MISSION" className="mb-8" />
             <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">
               Human-first audio intelligence
             </p>
-            <h1 className="display-bleed max-w-[12ch] text-[#f0ebe0]">
+            <h1 className="display-bleed max-w-full text-[#f0ebe0] sm:max-w-[12ch]">
               THE SOUL OF MUSIC CREATION
               <span className="mt-3 block text-[#ffb84d]">IS NOT FOR SALE.</span>
             </h1>

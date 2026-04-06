@@ -1,6 +1,6 @@
 export default function ThesisBridgeCard() {
   return (
-    <div className="glass-pane px-6 py-6 sm:px-8 sm:py-8">
+    <div className="glass-pane min-w-0 px-6 py-6 sm:px-8 sm:py-8">
       <div className="relative border-l-2 border-[#ffb84d]/40 pl-6 sm:pl-8">
         <div className="font-mono text-[11px] uppercase tracking-[0.32em] text-[#8d94ab]">Tessera thesis</div>
         <p className="texture-type-shadow mt-3 text-[1.85rem] leading-[0.98] text-[#f0ebe0] sm:text-[2.35rem]">

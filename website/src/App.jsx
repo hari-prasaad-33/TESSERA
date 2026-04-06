@@ -64,15 +64,15 @@ export default function App() {
   }
 
   return (
-    <div className="text-tessera-text selection:bg-tessera-orange selection:text-black">
+    <div className="w-full min-w-0 overflow-x-clip text-tessera-text selection:bg-tessera-orange selection:text-black">
       <SiteNav currentPage="home" onNavigate={navigateTo} />
 
       <Panel bg="bg-[#0e0c09]">
         <HeroSection />
       </Panel>
 
-      <div className="pointer-events-none relative z-30 mx-auto -mt-20 mb-[-7.5rem] w-full max-w-[1600px] px-6 md:-mt-24 md:mb-[-8.5rem] md:px-10 lg:-mt-28 lg:mb-[-10rem] lg:px-14">
-        <div className="md:ml-auto md:max-w-[40rem] lg:max-w-[44rem]">
+      <div className="pointer-events-none relative z-30 mx-auto -mt-20 mb-[-7.5rem] w-full max-w-[1600px] min-w-0 overflow-x-clip px-6 md:-mt-24 md:mb-[-8.5rem] md:px-10 lg:-mt-28 lg:mb-[-10rem] lg:px-14">
+        <div className="min-w-0 md:ml-auto md:max-w-[40rem] lg:max-w-[44rem]">
           <ThesisBridgeCard />
         </div>
       </div>
@@ -141,7 +141,7 @@ export default function App() {
         />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,18,0.68),rgba(5,6,12,0.78))]" />
         <div className="relative z-10 panel-shell">
-          <div className="mb-8 flex justify-center opacity-70 transition-opacity hover:opacity-100">
+          <div className="mb-8 flex justify-center overflow-x-hidden px-2 opacity-70 transition-opacity hover:opacity-100">
             <EternalRing />
           </div>
           <p className="font-mono text-[10px] uppercase tracking-[0.34em] text-[#8d94ab]">Tessera Audio</p>

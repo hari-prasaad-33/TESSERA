@@ -21,8 +21,8 @@ export default function ProblemSection() {
   }, []);
 
   return (
-    <section id="philosophy" className="relative z-10 overflow-hidden px-6 pb-24 pt-48 md:px-10 md:pt-52 lg:px-14 lg:pb-28 lg:pt-56">
-      <div className="panel-shell relative z-10">
+    <section id="philosophy" className="relative z-10 min-w-0 overflow-x-clip px-6 pb-24 pt-48 md:px-10 md:pt-52 lg:px-14 lg:pb-28 lg:pt-56">
+      <div className="panel-shell relative z-10 min-w-0 max-w-full">
         <SectionMarker number="02" title="THE PROBLEM" className="mb-10" />
 
         <div className="grid gap-10 lg:min-h-[26rem]">

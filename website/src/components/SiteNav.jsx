@@ -29,16 +29,18 @@ export default function SiteNav({ currentPage = 'home', onNavigate }) {
 
   return (
     <nav
-      className={`fixed inset-x-0 top-0 z-50 px-6 py-4 transition-all duration-300 md:px-10 lg:px-14 ${
+      className={`fixed inset-x-0 top-0 z-50 max-w-[100vw] overflow-x-clip px-6 py-4 transition-all duration-300 md:px-10 lg:px-14 ${
         scrolled || isSubPage
           ? 'border-b border-white/6 bg-[#080d16]/82 backdrop-blur-xl'
           : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-4">
-        <button onClick={() => onNavigate('home')} className="flex items-center gap-3">
-          <Logogram size={30} progress={72} color="text-tessera-orange" />
-          <span className="text-lg font-semibold tracking-[0.18em] text-[#f0ebe0]">TESSERA</span>
+      <div className="mx-auto flex min-w-0 max-w-[1600px] items-center justify-between gap-3 sm:gap-4">
+        <button type="button" onClick={() => onNavigate('home')} className="flex min-w-0 shrink items-center gap-2 sm:gap-3">
+          <Logogram size={30} progress={72} color="text-tessera-orange" className="shrink-0" />
+          <span className="whitespace-nowrap text-base font-semibold tracking-[0.14em] text-[#f0ebe0] sm:text-lg sm:tracking-[0.18em]">
+            TESSERA
+          </span>
         </button>
 
         <div className="hidden items-center gap-8 font-mono text-[11px] uppercase tracking-[0.26em] text-[#b8c0d1] md:flex">
@@ -83,7 +85,7 @@ export default function SiteNav({ currentPage = 'home', onNavigate }) {
           </button>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-3">
           {isSubPage && (
             <button
               onClick={() => onNavigate('home')}

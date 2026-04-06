@@ -261,29 +261,31 @@ function EQDeckCard({ title, children, className = '' }) {
 
 export function EQInterfaceMockup({ className = '' }) {
   return (
-    <div className={`relative flex h-full min-h-[25rem] flex-col overflow-hidden border-0 bg-[#090d14] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}>
+    <div
+      className={`relative flex h-full min-h-[25rem] min-w-0 max-w-full flex-col overflow-hidden border-0 bg-[#090d14] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}
+    >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_30%,rgba(255,106,51,0.08),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_14%,transparent_88%,rgba(255,255,255,0.03))]" />
 
-      <div className="relative z-10 flex items-center justify-between gap-4 border-b border-white/8 px-4 py-3 sm:px-6">
-        <div className="flex items-center gap-2">
+      <div className="relative z-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-b border-white/8 px-3 py-3 sm:justify-between sm:px-6">
+        <div className="flex min-w-0 shrink items-center gap-2">
           <SmallButton>Load</SmallButton>
           <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/8 bg-white/[0.03] text-[11px] text-[#b6bfd4]">play</span>
           <span className="hidden font-mono text-[8px] uppercase tracking-[0.26em] text-[#7d859a] sm:inline">No file loaded</span>
         </div>
 
-        <div className="text-center">
+        <div className="min-w-0 basis-full text-center sm:basis-auto">
           <div className="font-display text-xl font-semibold tracking-[0.14em] text-[#ff7f49] sm:text-2xl">TESSERA-EQ</div>
           <div className="font-mono text-[8px] uppercase tracking-[0.32em] text-[#c8cedd]">Parametric EQ</div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center justify-center gap-2 sm:justify-end">
           <SmallButton active>Static</SmallButton>
           <SmallButton>Dynamic</SmallButton>
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col gap-4 px-3 pb-3 pt-3 sm:px-4">
-        <div className="grid gap-4 xl:grid-cols-[88px_minmax(0,1fr)_88px]">
+      <div className="relative z-10 flex min-w-0 flex-1 flex-col gap-4 px-3 pb-3 pt-3 sm:px-4">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[88px_minmax(0,1fr)_88px]">
           <EQSidebar side="left" />
 
           <div className="border border-white/8 bg-[linear-gradient(180deg,rgba(13,20,30,0.92),rgba(6,10,14,0.96))] p-4">
@@ -296,7 +298,7 @@ export function EQInterfaceMockup({ className = '' }) {
           <EQSidebar side="right" />
         </div>
 
-        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-[0.92fr_0.96fr_0.9fr_0.9fr_1.16fr]">
+        <div className="grid min-w-0 gap-3 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-[0.92fr_0.96fr_0.9fr_0.9fr_1.16fr]">
           <EQDeckCard title="Selected band">
             <div className="text-[1rem] font-semibold tracking-[0.08em] text-[#ff7f49]">Band 3</div>
             <div className="mt-1 font-mono text-[8px] uppercase tracking-[0.22em] text-[#8d94ab]">Peak filter</div>
@@ -332,10 +334,12 @@ export function EQInterfaceMockup({ className = '' }) {
           </EQDeckCard>
         </div>
 
-        <div className="border border-white/8 bg-black/35 px-4 py-3">
-          <div className="flex items-center gap-3 rounded-full border border-white/8 bg-black/35 px-4 py-3">
-            <div className="h-2 w-2 rounded-full bg-[#5dd4f0] shadow-[0_0_18px_rgba(93,212,240,0.8)]" />
-            <span className="flex-1 font-mono text-[9px] uppercase tracking-[0.22em] text-[#9ba3b9]">Describe the tone you want...</span>
+        <div className="min-w-0 border border-white/8 bg-black/35 px-4 py-3">
+          <div className="flex min-w-0 items-center gap-3 rounded-full border border-white/8 bg-black/35 px-3 py-3 sm:px-4">
+            <div className="h-2 w-2 shrink-0 rounded-full bg-[#5dd4f0] shadow-[0_0_18px_rgba(93,212,240,0.8)]" />
+            <span className="min-w-0 flex-1 font-mono text-[9px] uppercase tracking-[0.22em] text-[#9ba3b9]">
+              Describe the tone you want...
+            </span>
             <span className="rounded-full border border-[#ff8b5f]/40 bg-[#ff6a33]/14 px-4 py-2 font-mono text-[8px] uppercase tracking-[0.24em] text-[#ffd6c4]">Suggest</span>
           </div>
         </div>
@@ -443,7 +447,9 @@ function ParameterGrid({ knobs }) {
 
 export function ChannelStripMockup({ className = '' }) {
   return (
-    <div className={`relative overflow-hidden bg-[#050607] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}>
+    <div
+      className={`relative min-w-0 max-w-full overflow-hidden bg-[#050607] text-white shadow-[0_28px_80px_rgba(0,0,0,0.45)] ${className}`.trim()}
+    >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,106,51,0.08),transparent_20%),radial-gradient(circle_at_78%_12%,rgba(93,212,240,0.08),transparent_18%)]" />
 
       <div className="relative z-10 border-b border-white/8 px-4 py-3 sm:px-6">
@@ -474,7 +480,9 @@ export function ChannelStripMockup({ className = '' }) {
             <span className="h-3 w-3 rounded border border-white/18" />
             <span>Loop</span>
           </div>
-          <div className="ml-3 flex-1 font-mono text-[9px] text-[#c9cfdb]">lancey-foux-style-synth-dreamy-lead-guitar_136bpm_B.wav</div>
+          <div className="ml-3 min-w-0 flex-1 truncate font-mono text-[9px] text-[#c9cfdb]">
+            lancey-foux-style-synth-dreamy-lead-guitar_136bpm_B.wav
+          </div>
           <div className="font-mono text-[9px] text-[#a0a8ba]">0:10 / 0:42</div>
         </div>
       </div>
@@ -492,7 +500,7 @@ export function ChannelStripMockup({ className = '' }) {
         </div>
       </div>
 
-      <div className="relative z-10 grid gap-3 px-4 py-4 sm:px-6 lg:grid-cols-3">
+      <div className="relative z-10 grid min-w-0 gap-3 px-4 py-4 sm:px-6 lg:grid-cols-3">
         <ModuleShell title="Gate" accent="orange">
           <ParameterGrid
             knobs={[
@@ -525,7 +533,7 @@ export function ChannelStripMockup({ className = '' }) {
         </ModuleShell>
       </div>
 
-      <div className="relative z-10 grid gap-3 border-t border-white/8 px-4 pb-3 pt-4 sm:px-6 lg:grid-cols-3">
+      <div className="relative z-10 grid min-w-0 gap-3 border-t border-white/8 px-4 pb-3 pt-4 sm:px-6 lg:grid-cols-3">
         <ModuleShell title="Saturator" accent="orange">
           <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.7fr)]">
             <RotaryKnob label="Drive" value="6.4" accent="orange" size="lg" />
@@ -578,17 +586,17 @@ function FeatureChip({ label, accent = 'teal' }) {
 
 export default function ProductShowcase({ onNavigate }) {
   return (
-    <section id="products" className="relative z-10 px-6 pb-28 pt-12 md:px-10 lg:px-14">
-      <div className="panel-shell">
+    <section id="products" className="relative z-10 min-w-0 overflow-x-clip px-6 pb-28 pt-12 md:px-10 lg:px-14">
+      <div className="panel-shell min-w-0 max-w-full">
         <SectionMarker number="05" title="THE PLATFORM" className="mb-10" />
 
         <div className="border-t border-white/10">
-          <div className="grid gap-0 lg:grid-cols-[minmax(0,1.22fr)_minmax(21rem,0.78fr)] lg:items-start">
-            <div className="overflow-hidden rounded-xl bg-[#0a0e14] lg:rounded-l-xl lg:rounded-r-none lg:self-start">
+          <div className="grid min-w-0 gap-0 lg:grid-cols-[minmax(0,1.22fr)_minmax(0,1fr)] lg:items-start xl:grid-cols-[minmax(0,1.22fr)_minmax(21rem,0.78fr)]">
+            <div className="min-w-0 overflow-hidden rounded-xl bg-[#0a0e14] lg:rounded-l-xl lg:rounded-r-none lg:self-start">
               <ChannelStripMockup className="w-full" />
             </div>
 
-            <div className="flex flex-col justify-center px-0 py-10 sm:py-12 lg:px-10 lg:py-14 xl:pl-12">
+            <div className="flex min-w-0 flex-col justify-center px-0 py-10 sm:py-12 lg:px-10 lg:py-14 xl:pl-12">
               <div className="mb-5 flex flex-wrap gap-3">
                 <FeatureChip label="Shipping now" accent="teal" />
                 <FeatureChip label="The umbrella" accent="orange" />

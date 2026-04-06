@@ -24,7 +24,7 @@ const DiscoverPage = ({ onBack }) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-tessera-ink text-gray-300 font-sans pt-32 pb-20 px-6 animate-fade-in relative overflow-hidden">
+    <div className="relative min-h-screen min-w-0 overflow-x-clip bg-tessera-ink px-6 pb-20 pt-32 font-sans text-gray-300 animate-fade-in">
       {/* Background Ambience */}
       <div className="fixed inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-tessera-teal/5 rounded-full blur-[150px]"></div>

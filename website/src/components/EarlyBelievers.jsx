@@ -35,7 +35,7 @@ export default function EarlyBelievers() {
   return (
     <section
       id="believers"
-      className="relative z-10 overflow-hidden border-t border-white/10 bg-[#11131c] px-6 py-24 md:px-10 lg:px-14 lg:py-28"
+      className="relative z-10 min-w-0 overflow-x-clip border-t border-white/10 bg-[#11131c] px-6 py-24 md:px-10 lg:px-14 lg:py-28"
     >
       <TextureVeil
         src="/images/textures/rogland-clear-night.jpg"
@@ -44,7 +44,7 @@ export default function EarlyBelievers() {
         filter="saturate(0.85) contrast(1.08) brightness(0.38)"
       />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(17,19,28,0.72),rgba(14,16,24,0.88))]" />
-      <div className="panel-shell relative z-10">
+      <div className="panel-shell relative z-10 min-w-0 max-w-full">
         <SectionMarker number="07" title="EARLY BELIEVERS" className="mb-10" />
         <div className="glass-pane max-w-2xl px-6 py-6 sm:px-8 sm:py-8">
           <div className="border-l-2 border-[#ffb84d]/35 pl-6 sm:pl-8">

@@ -110,15 +110,15 @@ function BuildSlab({ id, title, subtitle, description, visual, reverse = false, 
   return (
     <div className={slabIndex === 0 ? 'pb-2 pt-0' : 'border-t border-white/10 pb-2 pt-14'}>
       <div
-        className={`grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 ${reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''}`}
+        className={`grid min-w-0 gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 ${reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''}`}
       >
-        <div className="flex flex-col justify-center border-l-2 border-[#5dd4f0]/25 px-0 py-2 pl-6 sm:py-4 lg:px-2 lg:py-6 lg:pl-8 xl:pr-8">
+        <div className="flex min-w-0 flex-col justify-center border-l-2 border-[#5dd4f0]/25 px-0 py-2 pl-6 sm:py-4 lg:px-2 lg:py-6 lg:pl-8 xl:pr-8">
           <div className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#8d94ab]">{id}</div>
           <h3 className="texture-type-shadow mt-4 text-3xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-4xl">{title}</h3>
           <p className="texture-type-shadow-soft mt-3 font-mono text-[11px] uppercase tracking-[0.26em] text-[#5dd4f0]">{subtitle}</p>
           <p className="texture-type-shadow-soft mt-6 max-w-xl text-lg leading-relaxed text-[#c6cfdd]">{description}</p>
         </div>
-        <div className={visualShell}>{visual}</div>
+        <div className={`min-w-0 ${visualShell}`}>{visual}</div>
       </div>
     </div>
   );
@@ -179,8 +179,8 @@ export default function HowWeBuildSection({ eqMockup, slabStart = 0, slabEnd = 4
   const visible = slabs.slice(slabStart, slabEnd);
 
   return (
-    <section className="relative z-10 px-6 pb-28 pt-24 md:px-10 lg:px-14 lg:pb-32">
-      <div className="panel-shell">
+    <section className="relative z-10 min-w-0 overflow-x-clip px-6 pb-28 pt-24 md:px-10 lg:px-14 lg:pb-32">
+      <div className="panel-shell min-w-0 max-w-full">
         {includeIntro ? (
           <div className="mb-12 max-w-4xl lg:mb-16">
             <SectionMarker number="04" title="HOW TESSERA EQ WORKS" className="mb-10" />

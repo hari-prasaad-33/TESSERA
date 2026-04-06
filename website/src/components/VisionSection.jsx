@@ -3,8 +3,8 @@ import { TesseractIllustration } from './ConceptIllustrations';
 
 export default function VisionSection() {
   return (
-    <section id="vision" className="relative z-10 px-6 pb-28 pt-24 md:px-10 lg:px-14 lg:pb-32">
-      <div className="panel-shell">
+    <section id="vision" className="relative z-10 min-w-0 overflow-x-clip px-6 pb-28 pt-24 md:px-10 lg:px-14 lg:pb-32">
+      <div className="panel-shell min-w-0 max-w-full">
         <SectionMarker number="06" title="THE HORIZON" className="mb-10" />
 
         <div className="mb-12 max-w-4xl lg:mb-14">

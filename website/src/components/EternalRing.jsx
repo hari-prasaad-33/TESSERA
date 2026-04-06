@@ -3,7 +3,7 @@ const EternalRing = () => {
   const chars = text.split('');
   
   return (
-    <div className="relative w-64 h-64 mx-auto flex items-center justify-center opacity-30 hover:opacity-100 transition-opacity duration-700">
+    <div className="relative mx-auto flex h-64 w-64 max-w-full items-center justify-center opacity-30 transition-opacity duration-700 hover:opacity-100">
       <div className="absolute inset-0 animate-spin-slow" style={{ animationDuration: '40s' }}>
         {chars.map((char, i) => (
           <span

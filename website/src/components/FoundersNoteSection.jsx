@@ -1,8 +1,8 @@
 export default function FoundersNoteSection() {
   return (
-    <section className="relative z-10 overflow-hidden" aria-labelledby="founders-note-heading">
-      <div className="grid gap-12 border-t border-white/10 pt-14 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-stretch lg:gap-16 lg:pt-16">
-        <div className="max-w-3xl border-l-2 border-[#5dd4f0]/40 pl-6 sm:pl-8">
+    <section className="relative z-10 min-w-0 overflow-x-clip" aria-labelledby="founders-note-heading">
+      <div className="grid min-w-0 gap-12 border-t border-white/10 pt-14 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-stretch lg:gap-16 lg:pt-16">
+        <div className="max-w-full min-w-0 border-l-2 border-[#5dd4f0]/40 pl-6 sm:max-w-3xl sm:pl-8">
           <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">Founder&apos;s note</p>
           <h2 id="founders-note-heading" className="texture-type-shadow mt-4 text-4xl font-semibold tracking-[-0.06em] text-[#f0ebe0] sm:text-5xl lg:text-6xl">
             Why Tessera
@@ -14,7 +14,7 @@ export default function FoundersNoteSection() {
           </p>
         </div>
 
-        <div className="glass-pane flex flex-col justify-end gap-8 px-6 py-6 sm:px-8 sm:py-8 lg:border-l lg:border-white/10 lg:pl-10">
+        <div className="glass-pane flex min-w-0 flex-col justify-end gap-8 px-6 py-6 sm:px-8 sm:py-8 lg:border-l lg:border-white/10 lg:pl-10">
           <div className="border-l-2 border-[#ffb84d]/30 pl-5">
             <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#8d94ab]">In one line</div>
             <p className="texture-type-shadow-soft mt-3 max-w-sm text-xl font-semibold leading-snug text-[#f0ebe0] sm:text-2xl">

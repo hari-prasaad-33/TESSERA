@@ -34,6 +34,8 @@
   /** Frosted text panels -- lighter than dsp card so long copy stays readable */
   .glass-pane {
     position: relative;
+    max-width: 100%;
+    min-width: 0;
     border-radius: 1.25rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: linear-gradient(
@@ -121,13 +123,23 @@
   .section-marker__rail {
     display: flex;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     align-items: center;
-    gap: 1rem;
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+    column-gap: 1rem;
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.34em;
     text-transform: uppercase;
     color: rgba(216, 222, 234, 0.72);
+  }
+
+  @media (min-width: 640px) {
+    .section-marker__rail {
+      flex-wrap: nowrap;
+    }
   }
 
   .section-marker__index {
@@ -138,12 +150,23 @@
   .section-marker__line {
     height: 1px;
     flex: 1;
+    min-width: 1.5rem;
     background: linear-gradient(90deg, rgba(93, 212, 240, 0.16), rgba(255, 255, 255, 0.09), rgba(255, 184, 77, 0.18));
   }
 
   .section-marker__title {
-    white-space: nowrap;
+    max-width: 100%;
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
     color: rgba(240, 235, 224, 0.88);
+  }
+
+  @media (min-width: 640px) {
+    .section-marker__title {
+      white-space: nowrap;
+      overflow-wrap: normal;
+    }
   }
 
   .display-bleed {
@@ -152,6 +175,8 @@
     line-height: 0.88;
     letter-spacing: -0.07em;
     text-transform: uppercase;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .display-tight {
@@ -160,10 +185,13 @@
     line-height: 0.92;
     letter-spacing: -0.06em;
     text-transform: uppercase;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .panel-shell {
     width: min(100%, 1600px);
+    max-width: 100%;
     margin-inline: auto;
   }
 
@@ -195,6 +223,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -209,6 +238,8 @@ body {
 
 #root {
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 @keyframes float {
