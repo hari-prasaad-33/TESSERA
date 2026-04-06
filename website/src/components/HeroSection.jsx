@@ -12,7 +12,8 @@ export default function HeroSection() {
             filter: 'saturate(1.06) contrast(1.04)',
           }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,4,3,0.97)_0%,rgba(5,4,3,0.82)_18%,rgba(5,4,3,0.42)_38%,rgba(5,4,3,0.18)_55%,rgba(5,4,3,0.35)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,3,2,0.98)_0%,rgba(5,4,3,0.88)_16%,rgba(5,4,3,0.52)_36%,rgba(5,4,3,0.22)_58%,rgba(5,4,3,0.38)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0.14)_48%,transparent_78%)]" />
       </div>
 
       <div className="panel-shell relative z-10 flex min-h-[calc(100vh-7rem)] items-end">
@@ -26,7 +27,7 @@ export default function HeroSection() {
               THE SOUL OF MUSIC CREATION
               <span className="mt-3 block text-[#ffb84d]">IS NOT FOR SALE.</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#c6cfdd] md:text-xl">
+            <p className="texture-type-shadow-soft mt-8 max-w-2xl text-xl leading-relaxed text-[#c6cfdd] md:text-2xl">
               Every new tool promises to get you there faster. But &quot;there&quot; was never the point. The hours you spend shaping a sound -- that is not friction to be removed. That is the work itself. Tessera exists for the part of music that still has to feel yours.
             </p>
           </div>

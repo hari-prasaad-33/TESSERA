@@ -11,7 +11,7 @@ import ThesisBridgeCard from './components/ThesisBridgeCard';
 import VisionSection from './components/VisionSection';
 import SiteNav from './components/SiteNav';
 import TextureVeil from './components/TextureVeil';
-import { sectionBackgrounds } from './sectionBackgrounds';
+import { contentLaneScrim, sectionBackgrounds } from './sectionBackgrounds';
 
 function Panel({ bg, id, children, texture = null, overlay = null, vignette = null }) {
   return (
@@ -37,6 +37,9 @@ function SectionBackdrop({ config }) {
       <div className={`pointer-events-none absolute inset-0 ${config.overlayClass}`} />
       {config.vignetteClass ? (
         <div className={`pointer-events-none absolute inset-0 ${config.vignetteClass}`} />
+      ) : null}
+      {config.contentLaneClass ? (
+        <div className={`pointer-events-none absolute inset-0 ${config.contentLaneClass}`} />
       ) : null}
     </>
   );
@@ -96,6 +99,7 @@ export default function App() {
         overlay={<div className="pointer-events-none absolute inset-0 bg-[rgba(48,28,14,0.38)]" />}
       >
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.06),transparent_40%)]" />
+        <div className={`pointer-events-none absolute inset-0 ${contentLaneScrim}`} />
         <ProblemSection />
       </Panel>
 
@@ -111,6 +115,7 @@ export default function App() {
         }
         overlay={<div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,14,26,0.42),rgba(10,18,32,0.28)_50%,rgba(6,12,22,0.48))]" />}
       >
+        <div className={`pointer-events-none absolute inset-0 ${contentLaneScrim}`} />
         <AnswerSection />
       </Panel>
 

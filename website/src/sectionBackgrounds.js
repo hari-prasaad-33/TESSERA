@@ -2,6 +2,11 @@
  * Full-bleed panel textures. Add new Poly Haven *_diff_4k.jpg to textures-source,
  * run `npm run convert:textures`, then reference the generated slug here.
  */
+
+/** Left-weighted darkening so type reads on texture without card boxes (Colossal-style). */
+export const contentLaneScrim =
+  'bg-[linear-gradient(90deg,rgba(0,0,0,0.48)_0%,rgba(0,0,0,0.28)_45%,rgba(0,0,0,0.06)_72%,transparent_100%)]';
+
 export const sectionBackgrounds = {
   howWeBuild: {
     src: '/images/textures/coast-sand-rocks.jpg',
@@ -12,8 +17,8 @@ export const sectionBackgrounds = {
     overlayClass:
       'bg-[linear-gradient(165deg,rgba(12,20,30,0.45)_0%,rgba(14,18,28,0.38)_45%,rgba(10,16,24,0.52)_100%)]',
     vignetteClass: 'bg-[radial-gradient(ellipse_90%_70%_at_50%_0%,rgba(93,212,240,0.12),transparent_58%)]',
+    contentLaneClass: contentLaneScrim,
   },
-  /** Second half of section 04 — different texture so one HDRI is not stretched forever */
   howWeBuildCont: {
     src: '/images/textures/lichen-rock.jpg',
     opacity: 0.62,
@@ -23,6 +28,7 @@ export const sectionBackgrounds = {
     overlayClass:
       'bg-[linear-gradient(200deg,rgba(10,18,14,0.5)_0%,rgba(8,14,12,0.42)_50%,rgba(6,12,10,0.55)_100%)]',
     vignetteClass: 'bg-[radial-gradient(ellipse_85%_60%_at_30%_0%,rgba(255,184,77,0.08),transparent_55%)]',
+    contentLaneClass: contentLaneScrim,
   },
   products: {
     src: '/images/textures/cliff-side.jpg',
@@ -33,6 +39,7 @@ export const sectionBackgrounds = {
     overlayClass:
       'bg-[linear-gradient(195deg,rgba(18,14,10,0.48)_0%,rgba(14,12,8,0.42)_50%,rgba(12,10,6,0.55)_100%)]',
     vignetteClass: 'bg-[radial-gradient(ellipse_85%_65%_at_70%_100%,rgba(255,184,77,0.1),transparent_55%)]',
+    contentLaneClass: contentLaneScrim,
   },
   vision: {
     src: '/images/textures/moon-01.jpg',
@@ -43,5 +50,6 @@ export const sectionBackgrounds = {
     overlayClass:
       'bg-[linear-gradient(180deg,rgba(10,12,22,0.42)_0%,rgba(8,10,18,0.32)_45%,rgba(6,8,16,0.48)_100%)]',
     vignetteClass: 'bg-[radial-gradient(ellipse_100%_80%_at_50%_120%,rgba(93,212,240,0.1),transparent_50%)]',
+    contentLaneClass: contentLaneScrim,
   },
 };

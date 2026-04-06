@@ -31,7 +31,7 @@ export default function ProblemSection() {
               The quiet part no one is saying.
             </p>
             <h2 className="texture-type-shadow display-tight text-[#f0ebe0]">THE PROBLEM</h2>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#c6cfdd]">
+            <p className="texture-type-shadow-soft mt-6 max-w-xl text-xl leading-relaxed text-[#c6cfdd] sm:text-2xl">
               The tools keep getting better. That is not the problem. The problem is what happens to the creative act when every difficult step gets compressed into a shortcut. When the gap between nothing and a finished track becomes trivially small, the question stops being &quot;how do I get there&quot; and starts being &quot;why does getting there even matter anymore.&quot;
             </p>
           </div>
@@ -39,27 +39,27 @@ export default function ProblemSection() {
 
         <div className="relative z-10 -mb-20 mt-12 lg:mt-20">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-end lg:gap-16">
-            <div>
-              <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#8d94ab]">What are we protecting?</div>
-              <p className="mt-4 max-w-md text-2xl leading-tight text-[#f0ebe0] sm:text-3xl">
+            <div className="border-l-2 border-[#ffb84d]/35 pl-6 sm:pl-8">
+              <div className="font-mono text-[11px] uppercase tracking-[0.32em] text-[#8d94ab]">What are we protecting?</div>
+              <p className="texture-type-shadow mt-4 max-w-md text-2xl leading-tight text-[#f0ebe0] sm:text-3xl">
                 Not a checklist. A private reason for starting in the first place.
               </p>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-[#c7cfdd] sm:text-base">
+              <p className="texture-type-shadow-soft mt-4 max-w-md text-base leading-relaxed text-[#c7cfdd] sm:text-lg">
                 Maybe it sounds less like a mission statement and more like the voice that brought you into the room.
               </p>
             </div>
 
-            <div className="lg:pt-4">
-              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">Ask yourself</p>
+            <div className="border-l-2 border-white/20 pl-6 sm:pl-8 lg:pt-4">
+              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#8d94ab]">Ask yourself</p>
               <div
-                className="relative mt-5 min-h-[7.5rem] sm:min-h-[8.5rem] lg:min-h-[9rem]"
+                className="relative mt-5 min-h-[8rem] sm:min-h-[9rem] lg:min-h-[9.5rem]"
                 aria-live="polite"
                 aria-atomic="true"
               >
                 {questions.map((question, index) => (
                   <p
                     key={question}
-                    className={`absolute left-0 top-0 max-w-xl text-lg leading-snug text-[#e8e4dc] transition-all duration-700 ease-out sm:text-xl lg:text-[1.35rem] lg:leading-snug ${
+                    className={`absolute left-0 top-0 max-w-xl text-xl leading-snug text-[#e8e4dc] transition-all duration-700 ease-out sm:text-2xl lg:text-[1.45rem] lg:leading-snug ${
                       index === activeIndex
                         ? 'translate-y-0 opacity-100'
                         : 'pointer-events-none translate-y-1 opacity-0'
@@ -86,7 +86,7 @@ export default function ProblemSection() {
             </div>
           </div>
 
-          <p className="mt-14 max-w-2xl text-sm leading-relaxed text-[#b8c1d2] sm:mt-16 sm:text-base">
+          <p className="texture-type-shadow-soft mt-14 max-w-2xl border-l-2 border-white/15 pl-6 text-base leading-relaxed text-[#b8c1d2] sm:mt-16 sm:pl-8 sm:text-lg">
             We cannot guess it exactly. It is too personal. But whatever it was -- that is what we are building around.
           </p>
         </div>

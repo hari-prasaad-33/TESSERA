@@ -15,10 +15,10 @@ export default function VisionSection() {
           </h2>
         </div>
 
-        <div className="mb-14 max-w-3xl lg:mb-16">
-          <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#5dd4f0]">Moonshot</p>
+        <div className="mb-14 max-w-3xl border-l-2 border-[#5dd4f0]/35 pl-6 sm:mb-16 sm:pl-8">
+          <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-[#5dd4f0]">Moonshot</p>
           <h3 className="texture-type-shadow mt-4 text-3xl font-semibold tracking-[-0.05em] text-[#f0ebe0] sm:text-4xl">TESSERA DAW</h3>
-          <p className="texture-type-shadow-soft mt-5 text-base leading-relaxed text-[#c6cfdd] sm:text-lg">
+          <p className="texture-type-shadow-soft mt-5 text-lg leading-relaxed text-[#c6cfdd] sm:text-xl">
             Our long-term goal is a full digital audio workstation -- Tessera DAW -- where every capability, end to end,
             follows the same philosophy we are proving now: intelligence that removes friction, never authorship.
             Suggestions stay visible, parameters stay yours, and the final track stays unmistakably your decision.
@@ -32,9 +32,9 @@ export default function VisionSection() {
           </div>
           <div className="relative grid min-h-[20rem] items-center lg:grid-cols-[minmax(0,0.4fr)_minmax(0,1fr)] lg:gap-12 lg:pl-4">
             <div className="hidden lg:block" aria-hidden />
-            <div className="max-w-3xl lg:justify-self-end">
-              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#8d94ab]">Design principle</div>
-              <p className="texture-type-shadow-soft mt-5 text-lg leading-relaxed text-[#c6cfdd] sm:text-xl">
+            <div className="max-w-3xl border-l-2 border-white/20 pl-6 lg:justify-self-end lg:pl-8">
+              <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#8d94ab]">Design principle</div>
+              <p className="texture-type-shadow-soft mt-5 text-xl leading-relaxed text-[#c6cfdd] sm:text-2xl">
                 Every product we build will follow the same principle: reduce friction, never replace intention.
                 The goal is not to build the most powerful AI in music. It is to build the most honest one.
               </p>
