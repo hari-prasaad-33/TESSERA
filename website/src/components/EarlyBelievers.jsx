@@ -5,10 +5,30 @@ import TextureVeil from './TextureVeil';
 /** Override with VITE_FORMSPREE_ID in website/.env if you swap forms */
 const FORMSPREE_FORM_ID = import.meta.env.VITE_FORMSPREE_ID || 'mbdpqojl';
 
+/** Persist “already signed up” on this browser so refresh / return visits show success, not the form again. */
+const EARLY_BELIEVER_STORAGE_KEY = 'tessera_early_believer_v1';
+
+function readEarlyBelieverSuccess() {
+  if (typeof window === 'undefined') return false;
+  try {
+    return window.localStorage.getItem(EARLY_BELIEVER_STORAGE_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+function persistEarlyBelieverSuccess() {
+  try {
+    window.localStorage.setItem(EARLY_BELIEVER_STORAGE_KEY, '1');
+  } catch {
+    /* private mode / blocked storage */
+  }
+}
+
 export default function EarlyBelievers() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState(() => (readEarlyBelieverSuccess() ? 'success' : 'idle'));
   const submitting = status === 'submitting';
 
   async function handleSubmit(e) {
@@ -25,6 +45,7 @@ export default function EarlyBelievers() {
         headers: { Accept: 'application/json' },
       });
       if (res.ok) {
+        persistEarlyBelieverSuccess();
         fetch('/api/thank-you', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
