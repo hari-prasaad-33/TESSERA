@@ -40,9 +40,9 @@ function SmallButton({ children, active = false }) {
   );
 }
 
-function PluginMockupDisclaimer() {
+export function PluginMockupDisclaimer() {
   return (
-    <p className="relative z-10 border-t border-white/8 bg-[#05070c]/95 px-3 py-2.5 text-center font-mono text-[8px] leading-relaxed text-[#6f768a] sm:px-4 sm:text-[9px]">
+    <p className="mt-2 max-w-2xl text-left font-mono text-[8px] leading-relaxed text-[#6f768a] sm:mt-3 sm:text-[9px]">
       <span className="text-[#8d94ab]">*</span> This image is not an exact representation of the actual plugin.
     </p>
   );
@@ -352,8 +352,6 @@ export function EQInterfaceMockup({ className = '' }) {
           </div>
         </div>
       </div>
-
-      <PluginMockupDisclaimer />
     </div>
   );
 }
@@ -577,8 +575,6 @@ export function ChannelStripMockup({ className = '' }) {
           </div>
         </ModuleShell>
       </div>
-
-      <PluginMockupDisclaimer />
     </div>
   );
 }
@@ -604,8 +600,11 @@ export default function ProductShowcase({ onNavigate }) {
 
         <div className="border-t border-white/10">
           <div className="grid min-w-0 gap-0 lg:grid-cols-[minmax(0,1.22fr)_minmax(0,1fr)] lg:items-start xl:grid-cols-[minmax(0,1.22fr)_minmax(21rem,0.78fr)]">
-            <div className="min-w-0 overflow-hidden rounded-xl bg-[#0a0e14] lg:rounded-l-xl lg:rounded-r-none lg:self-start">
-              <ChannelStripMockup className="w-full" />
+            <div className="flex min-w-0 flex-col lg:self-start">
+              <div className="min-w-0 overflow-hidden rounded-xl bg-[#0a0e14] lg:rounded-l-xl lg:rounded-r-none">
+                <ChannelStripMockup className="w-full" />
+              </div>
+              <PluginMockupDisclaimer />
             </div>
 
             <div className="flex min-w-0 flex-col justify-center px-0 py-10 sm:py-12 lg:px-10 lg:py-14 xl:pl-12">

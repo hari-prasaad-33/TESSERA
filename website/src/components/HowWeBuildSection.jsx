@@ -1,4 +1,4 @@
-import { EQInterfaceMockup } from './ProductShowcase';
+import { EQInterfaceMockup, PluginMockupDisclaimer } from './ProductShowcase';
 import SectionMarker from './SectionMarker';
 import ShaderBackground from './ShaderBackground';
 import { shaderPresets } from '../shaders/presets';
@@ -145,10 +145,13 @@ export default function HowWeBuildSection({ eqMockup, slabStart = 0, slabEnd = 4
         "Type a phrase like 'add warmth and air' and the system suggests a full EQ state. Nothing is hidden behind a magic button. Every band is draggable, editable, and reversible.",
       reverse: false,
       visual: (
-        <div className="relative h-full min-h-[26rem] overflow-hidden bg-transparent">
-          <ShaderBackground fragmentShader={shaderPresets.lanterns} opacity={0.28} mixBlendMode="screen" />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,14,0.12),rgba(6,8,12,0.28)_84%)]" />
-          <div className="relative z-10 h-full">{liveVisual}</div>
+        <div className="flex min-w-0 flex-col">
+          <div className="relative h-full min-h-[26rem] overflow-hidden bg-transparent">
+            <ShaderBackground fragmentShader={shaderPresets.lanterns} opacity={0.28} mixBlendMode="screen" />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,14,0.12),rgba(6,8,12,0.28)_84%)]" />
+            <div className="relative z-10 h-full">{liveVisual}</div>
+          </div>
+          <PluginMockupDisclaimer />
         </div>
       ),
     },
