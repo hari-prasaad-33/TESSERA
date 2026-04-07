@@ -20,8 +20,8 @@ function escapeHtml(value) {
 }
 
 function renderEmailHtml() {
-  /* Section 03 (OUR ANSWER) panel: quarry-04-puresky + tint — see App.jsx */
-  const fallbackBg = '#101820';
+  /* Section 03: quarry-04-puresky + darker tint (see App.jsx + index.css glass-pane) */
+  const fallbackBg = '#080b12';
   const text = '#f0ebe0';
   const muted = '#c6cfdd';
   const teal = '#5dd4f0';
@@ -30,19 +30,33 @@ function renderEmailHtml() {
   const site = 'https://tesseraaudio.com';
   const believe = 'https://tesseraaudio.com/believe';
   const textureUrl = `${site}/images/textures/quarry-04-puresky.jpg`;
-  /* Mirrors site overlay; gradient first so texture shows through when supported */
-  const bgLayers = `linear-gradient(180deg,rgba(8,14,26,0.36),rgba(10,18,32,0.32) 50%,rgba(6,12,22,0.42)),url(${textureUrl})`;
+  /* Darker than before: vertical scrim + left-weighted midnight (matches “dark left” on site) */
+  const bgLayers = `linear-gradient(90deg,rgba(3,6,12,0.72) 0%,rgba(5,9,16,0.38) 42%,rgba(6,10,18,0.2) 100%),linear-gradient(180deg,rgba(4,8,16,0.62),rgba(5,10,18,0.52) 45%,rgba(3,6,12,0.68)),url(${textureUrl})`;
+  const bgSizes = 'cover,cover,cover';
+  const bgPositions = 'left center, center top, center top';
+
+  /* approx .glass-pane: light top edge, inset highlight, blur where supported (often stripped in webmail) */
+  const glassCard = [
+    'border-radius:20px',
+    'border:1px solid rgba(255,255,255,0.12)',
+    'background-color:rgba(5,7,12,0.72)',
+    'background-image:linear-gradient(165deg,rgba(255,255,255,0.1) 0%,rgba(255,255,255,0.03) 38%,rgba(6,9,16,0.55) 100%)',
+    'box-shadow:0 12px 48px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.14),inset 0 -1px 0 rgba(0,0,0,0.35)',
+    '-webkit-backdrop-filter:blur(22px) saturate(1.12)',
+    'backdrop-filter:blur(22px) saturate(1.12)',
+    'padding:22px 18px',
+  ].join(';');
 
   return `<!doctype html>
 <html>
   <body style="margin:0;padding:0;background-color:${fallbackBg};color:${text};font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
-    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color:${fallbackBg};background-image:${bgLayers};background-size:cover,cover;background-position:center top,center top;background-repeat:no-repeat;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color:${fallbackBg};background-image:${bgLayers};background-size:${bgSizes};background-position:${bgPositions};background-repeat:no-repeat,no-repeat,no-repeat;">
       <tr>
         <td align="center" style="padding:28px 18px 34px;">
           <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;margin:0 auto;">
             <tr>
               <td>
-      <div style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;background:rgba(10,14,22,0.78);padding:22px 18px;">
+      <div style="${glassCard}">
         <p style="margin:0 0 14px;font-size:18px;line-height:1.45;">
           <strong style="color:${amber};">Thank you for believing in us.</strong>
         </p>
