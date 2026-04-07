@@ -2,6 +2,12 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Environment variables
+
+- `VITE_FORMSPREE_ID` (optional): overrides the Formspree form id used by the Early Believers section.
+- `RESEND_API_KEY` (required for automated thank-you email): used by the Vercel serverless function at `/api/thank-you`.
+- `RESEND_FROM` (optional): override the from address (e.g. `Tessera Audio <hello@tessera.audio>`). Requires a verified domain in Resend.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh

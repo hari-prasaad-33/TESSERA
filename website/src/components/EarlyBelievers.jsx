@@ -15,6 +15,7 @@ export default function EarlyBelievers() {
     e.preventDefault();
     setStatus('submitting');
     try {
+      const submittedEmail = email;
       const body = new FormData();
       body.append('email', email);
       if (message.trim()) body.append('message', message.trim());
@@ -24,6 +25,11 @@ export default function EarlyBelievers() {
         headers: { Accept: 'application/json' },
       });
       if (res.ok) {
+        fetch('/api/thank-you', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: submittedEmail }),
+        }).catch(() => {});
         setStatus('success');
         setEmail('');
         setMessage('');
