@@ -28,8 +28,8 @@ function renderEmailHtml() {
   const teal = '#5dd4f0';
   const amber = '#ffb84d';
 
-  const site = 'https://tessera.audio';
-  const believe = 'https://tessera.audio/believe';
+  const site = 'https://tesseraaudio.com';
+  const believe = 'https://tesseraaudio.com/believe';
 
   return `<!doctype html>
 <html>
@@ -71,14 +71,18 @@ function renderEmailHtml() {
           We&apos;ll be in touch.
         </p>
 
-        <p style="margin:16px 0 0;font-size:15px;line-height:1.65;color:${muted};">
-          — Hari<br/>
-          <span style="opacity:0.85;">Founder, Tessera Audio</span>
-        </p>
+        <div style="margin:16px 0 0;font-size:14px;line-height:1.55;color:${muted};">
+          <div style="font-weight:700;color:${text};">Hari</div>
+          <div>Founder &amp; CEO, TESSERA</div>
+          <div>7305205794</div>
+          <div>
+            <a href="${site}" style="color:${teal};text-decoration:underline;">tesseraaudio.com</a>
+          </div>
+        </div>
       </div>
 
       <p style="margin:12px 4px 0;font-size:12px;line-height:1.5;color:rgba(198,207,221,0.72);">
-        You&apos;re receiving this because you signed up at <a href="${site}" style="color:${teal};text-decoration:none;">tessera.audio</a>.
+        You&apos;re receiving this because you signed up at <a href="${site}" style="color:${teal};text-decoration:none;">tesseraaudio.com</a>.
       </p>
     </div>
   </body>
