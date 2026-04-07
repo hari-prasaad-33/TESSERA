@@ -74,23 +74,17 @@ export default function EarlyBelievers() {
                     placeholder="you@example.com"
                   />
                 </label>
-                <div className="rounded-xl border border-white/12 bg-[#080a10]/65 p-4 sm:p-5">
-                  <h3 className="texture-type-shadow-soft mb-3 text-sm font-semibold uppercase tracking-[0.12em] text-[#f0ebe0] sm:text-base">
-                    A note for Tessera
-                  </h3>
-                  <label htmlFor="believers-message" className="sr-only">
-                    Optional message for Tessera
-                  </label>
+                <label className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">
+                  <span className="mb-2 block">A note for Tessera</span>
                   <textarea
-                    id="believers-message"
                     name="message"
                     rows={4}
                     value={message}
                     onChange={(ev) => setMessage(ev.target.value)}
-                    className="w-full resize-y rounded-lg border border-white/12 bg-[#0a0c12]/80 px-4 py-3 font-sans text-base normal-case tracking-normal text-[#f0ebe0] placeholder:text-[#6f768a] outline-none transition-colors focus:border-[#5dd4f0]/50"
+                    className="w-full resize-y rounded-xl border border-white/15 bg-[#0a0c12]/80 px-4 py-3 font-sans text-base normal-case tracking-normal text-[#f0ebe0] placeholder:text-[#6f768a] outline-none transition-colors focus:border-[#5dd4f0]/50"
                     placeholder="Thoughts, hopes, or why you are here…"
                   />
-                </div>
+                </label>
                 <button
                   type="submit"
                   disabled={submitting}

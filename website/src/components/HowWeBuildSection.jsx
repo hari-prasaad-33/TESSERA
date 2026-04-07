@@ -76,28 +76,34 @@ function TierVisual() {
 
 function DSPVisual() {
   return (
-    <div className="flex items-center justify-center p-4 sm:p-6 lg:p-8">
-      <svg viewBox="0 0 620 280" className="w-full max-w-[42rem]" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <linearGradient id="waveA" x1="0" x2="1">
-            <stop offset="0%" stopColor="#5dd4f0" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#5dd4f0" stopOpacity="0.85" />
-          </linearGradient>
-          <linearGradient id="waveB" x1="0" x2="1">
-            <stop offset="0%" stopColor="#ffb84d" stopOpacity="0.18" />
-            <stop offset="100%" stopColor="#ff6a33" stopOpacity="0.85" />
-          </linearGradient>
-        </defs>
+    <div className="flex min-h-[22rem] items-center justify-center p-4 sm:p-6 lg:p-8">
+      <div className="glass-pane relative w-full max-w-[42rem] overflow-hidden px-5 py-8 shadow-[0_12px_48px_rgba(0,0,0,0.35)] sm:px-8 sm:py-10">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(155deg,rgba(255,255,255,0.07)_0%,transparent_42%,rgba(93,212,240,0.04)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]" />
+        <div className="relative z-[1]">
+          <svg viewBox="0 0 620 280" className="w-full" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="waveA" x1="0" x2="1">
+                <stop offset="0%" stopColor="#5dd4f0" stopOpacity="0.25" />
+                <stop offset="100%" stopColor="#5dd4f0" stopOpacity="0.85" />
+              </linearGradient>
+              <linearGradient id="waveB" x1="0" x2="1">
+                <stop offset="0%" stopColor="#ffb84d" stopOpacity="0.18" />
+                <stop offset="100%" stopColor="#ff6a33" stopOpacity="0.85" />
+              </linearGradient>
+            </defs>
 
-        <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveA)" strokeWidth="4" />
-        <path d="M 36 148 C 88 148 144 148 198 148 C 248 148 302 148 360 148 C 418 148 472 148 524 148" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeDasharray="5 7" />
-        <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveB)" strokeWidth="2.2" strokeDasharray="1 10" />
-        {['Before', 'After', 'Artifact free sweep'].map((label, index) => (
-          <text key={label} x={58 + index * 180} y="242" fill="rgba(208,214,228,0.86)" fontSize="13" fontFamily="'JetBrains Mono', monospace">
-            {label}
-          </text>
-        ))}
-      </svg>
+            <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveA)" strokeWidth="4" />
+            <path d="M 36 148 C 88 148 144 148 198 148 C 248 148 302 148 360 148 C 418 148 472 148 524 148" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeDasharray="5 7" />
+            <path d="M 36 148 C 88 62 144 234 198 148 C 248 66 302 230 360 148 C 418 62 472 228 524 148" fill="none" stroke="url(#waveB)" strokeWidth="2.2" strokeDasharray="1 10" />
+            {['Before', 'After', 'Artifact free sweep'].map((label, index) => (
+              <text key={label} x={58 + index * 180} y="242" fill="rgba(208,214,228,0.86)" fontSize="13" fontFamily="'JetBrains Mono', monospace">
+                {label}
+              </text>
+            ))}
+          </svg>
+        </div>
+      </div>
     </div>
   );
 }

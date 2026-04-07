@@ -40,6 +40,14 @@ function SmallButton({ children, active = false }) {
   );
 }
 
+function PluginMockupDisclaimer() {
+  return (
+    <p className="relative z-10 border-t border-white/8 bg-[#05070c]/95 px-3 py-2.5 text-center font-mono text-[8px] leading-relaxed text-[#6f768a] sm:px-4 sm:text-[9px]">
+      <span className="text-[#8d94ab]">*</span> This image is not an exact representation of the actual plugin.
+    </p>
+  );
+}
+
 function MiniToggle({ children, active = false }) {
   return (
     <span
@@ -344,6 +352,8 @@ export function EQInterfaceMockup({ className = '' }) {
           </div>
         </div>
       </div>
+
+      <PluginMockupDisclaimer />
     </div>
   );
 }
@@ -567,6 +577,8 @@ export function ChannelStripMockup({ className = '' }) {
           </div>
         </ModuleShell>
       </div>
+
+      <PluginMockupDisclaimer />
     </div>
   );
 }
