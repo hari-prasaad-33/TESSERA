@@ -1,41 +1,48 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import SectionMarker from './SectionMarker';
-
-/** How far the mission block sits below its final position before the first scroll intent. */
-const SLIDE_OFFSET_PX = 56;
-/** Document scroll that also triggers settle (backup if wheel events are swallowed). */
-const SCROLL_SETTLE_PX = 16;
 
 function getScrollY() {
   return window.scrollY || document.documentElement?.scrollTop || document.body?.scrollTop || 0;
 }
 
+/** Minimum downward scroll (px) before treating it as intentional (touch / scrollbar). */
+const SCROLL_DOWN_THRESHOLD = 8;
+
 export default function HeroSection() {
-  const [slideSettled, setSlideSettled] = useState(false);
+  const orangeLineRef = useRef(null);
+  const hasSnappedRef = useRef(false);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
+    lastScrollYRef.current = getScrollY();
+
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      setSlideSettled(true);
-      return;
-    }
 
-    const settle = () => setSlideSettled(true);
-
-    const onScroll = () => {
-      if (getScrollY() >= SCROLL_SETTLE_PX) settle();
+    const snapOrangeIntoView = () => {
+      if (hasSnappedRef.current || !orangeLineRef.current) return;
+      hasSnappedRef.current = true;
+      orangeLineRef.current.scrollIntoView({
+        behavior: reduced ? 'auto' : 'smooth',
+        block: 'start',
+      });
     };
 
     const onWheel = (e) => {
-      if (e.deltaY > 0) settle();
+      if (e.deltaY > 0) snapOrangeIntoView();
     };
 
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    const onScroll = () => {
+      const y = getScrollY();
+      if (y > lastScrollYRef.current + SCROLL_DOWN_THRESHOLD) snapOrangeIntoView();
+      lastScrollYRef.current = y;
+    };
+
     window.addEventListener('wheel', onWheel, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true, capture: true });
+
     return () => {
-      window.removeEventListener('scroll', onScroll, true);
       window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('scroll', onScroll, true);
     };
   }, []);
 
@@ -56,20 +63,19 @@ export default function HeroSection() {
 
       <div className="panel-shell relative z-10 flex min-h-[calc(100vh-7rem)] min-w-0 items-end">
         <div className="grid w-full min-w-0 gap-8">
-          <div
-            className="relative z-10 max-w-full min-w-0 pb-4 will-change-transform md:max-w-5xl"
-            style={{
-              transform: slideSettled ? 'translateY(0)' : `translateY(${SLIDE_OFFSET_PX}px)`,
-              transition: 'transform 0.75s cubic-bezier(0.22, 1, 0.36, 1)',
-            }}
-          >
+          <div className="relative z-10 max-w-full min-w-0 pb-4 md:max-w-5xl">
             <SectionMarker number="01" title="THE MISSION" className="mb-8" />
             <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">
               Human-first audio intelligence
             </p>
             <h1 className="display-bleed max-w-full text-[#f0ebe0] sm:max-w-[12ch]">
               THE SOUL OF MUSIC CREATION
-              <span className="mt-3 block text-[#ffb84d]">IS NOT FOR SALE.</span>
+              <span
+                ref={orangeLineRef}
+                className="mt-3 block scroll-mt-24 text-[#ffb84d] md:scroll-mt-28"
+              >
+                IS NOT FOR SALE.
+              </span>
             </h1>
             <p className="texture-type-shadow-soft mt-8 max-w-2xl text-xl leading-relaxed text-[#c6cfdd] md:text-2xl">
               Every new tool promises to get you there faster. But &quot;there&quot; was never the point. The hours you spend shaping a sound -- that is not friction to be removed. That is the work itself. Tessera exists for the part of music that still has to feel yours.
