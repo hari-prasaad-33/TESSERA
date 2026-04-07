@@ -1,14 +1,9 @@
+const { sendBelieverThankYou, isValidEmail } = require('./lib/sendBelieverThankYou');
+
 function json(res, status, payload) {
   res.statusCode = status;
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.end(JSON.stringify(payload));
-}
-
-function isValidEmail(value) {
-  if (typeof value !== 'string') return false;
-  const e = value.trim();
-  if (e.length < 6 || e.length > 254) return false;
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 }
 
 /** Optional: set UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN to dedupe by email across devices. */
@@ -94,14 +89,8 @@ module.exports = async function handler(req, res) {
       /* list update failed — Formspree still has the row */
     }
 
-    const vercelHost = process.env.VERCEL_URL;
-    if (vercelHost) {
-      await fetch(`https://${vercelHost}/api/thank-you`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      }).catch(() => {});
-    }
+    /* Call Resend in-process (do not rely on a second /api/thank-you HTTP request). */
+    await sendBelieverThankYou(email);
 
     return json(res, 200, { ok: true });
   } catch (e) {

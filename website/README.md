@@ -13,6 +13,13 @@ Set these in **Vercel** (Production / Preview) for the live site.
 
 Local dev-only: `VITE_FORMSPREE_ID` is unused by Early Believers now (signups go through `/api/early-believer`).
 
+### Thank-you email not arriving
+
+1. **Vercel → Settings → Environment Variables:** confirm `RESEND_API_KEY` is set for **Production** (and redeploy after adding it).
+2. **`RESEND_FROM`:** If you set `Tessera Audio <hari@tesseraaudio.com>`, the domain must be **verified in Resend**. Until then, omit `RESEND_FROM` so the app uses Resend’s test sender (`onboarding@resend.dev`). On the free tier you can often only send **to your own verified address** until the domain is verified—check [Resend dashboard](https://resend.com) → Logs for bounces or errors.
+3. **Spam / Promotions:** Check those folders for the recipient address.
+4. **Vercel Root Directory:** The project root should be the **`website`** folder (or equivalent) so `api/early-believer.js` and `api/thank-you.js` deploy as serverless functions. If the root is the repo root with no `api/` there, `/api/*` may 404 and the live site may fall back to browser-only Formspree (no thank-you).
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
