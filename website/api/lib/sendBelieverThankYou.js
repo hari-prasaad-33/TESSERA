@@ -20,7 +20,8 @@ function escapeHtml(value) {
 }
 
 function renderEmailHtml() {
-  const bg = '#0e0c09';
+  /* Section 03 (OUR ANSWER) panel: quarry-04-puresky + tint — see App.jsx */
+  const fallbackBg = '#101820';
   const text = '#f0ebe0';
   const muted = '#c6cfdd';
   const teal = '#5dd4f0';
@@ -28,12 +29,20 @@ function renderEmailHtml() {
 
   const site = 'https://tesseraaudio.com';
   const believe = 'https://tesseraaudio.com/believe';
+  const textureUrl = `${site}/images/textures/quarry-04-puresky.jpg`;
+  /* Mirrors site overlay; gradient first so texture shows through when supported */
+  const bgLayers = `linear-gradient(180deg,rgba(8,14,26,0.36),rgba(10,18,32,0.32) 50%,rgba(6,12,22,0.42)),url(${textureUrl})`;
 
   return `<!doctype html>
 <html>
-  <body style="margin:0;padding:0;background:${bg};color:${text};font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
-    <div style="max-width:640px;margin:0 auto;padding:28px 18px 34px;">
-      <div style="border:1px solid rgba(255,255,255,0.08);border-radius:18px;background:rgba(8,10,16,0.55);padding:22px 18px;">
+  <body style="margin:0;padding:0;background-color:${fallbackBg};color:${text};font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color:${fallbackBg};background-image:${bgLayers};background-size:cover,cover;background-position:center top,center top;background-repeat:no-repeat;">
+      <tr>
+        <td align="center" style="padding:28px 18px 34px;">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;margin:0 auto;">
+            <tr>
+              <td>
+      <div style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;background:rgba(10,14,22,0.78);padding:22px 18px;">
         <p style="margin:0 0 14px;font-size:18px;line-height:1.45;">
           <strong style="color:${amber};">Thank you for believing in us.</strong>
         </p>
@@ -82,7 +91,12 @@ function renderEmailHtml() {
       <p style="margin:12px 4px 0;font-size:12px;line-height:1.5;color:rgba(198,207,221,0.72);">
         You&apos;re receiving this because you signed up at <a href="${site}" style="color:${teal};text-decoration:none;">tesseraaudio.com</a>.
       </p>
-    </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>`;
 }
