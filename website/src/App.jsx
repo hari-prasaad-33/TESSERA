@@ -45,11 +45,52 @@ function SectionBackdrop({ config }) {
   );
 }
 
+function scrollBelieversIntoView() {
+  const el = document.getElementById('believers');
+  if (!el) return false;
+  el.scrollIntoView({ behavior: 'smooth' });
+  return true;
+}
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
   useEffect(() => {
+    if (currentPage !== 'home') {
+      window.scrollTo(0, 0);
+      return;
+    }
+    const path = window.location.pathname;
+    const hash = window.location.hash;
+    if (path === '/believe' || hash === '#believers') {
+      return;
+    }
     window.scrollTo(0, 0);
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (currentPage !== 'home') return;
+
+    const path = window.location.pathname;
+    const hash = window.location.hash;
+    if (path !== '/believe' && hash !== '#believers') return;
+
+    if (path === '/believe') {
+      window.history.replaceState(null, '', '/#believers');
+    }
+
+    const tryScroll = () => {
+      if (scrollBelieversIntoView()) return;
+      const observer = new MutationObserver(() => {
+        if (scrollBelieversIntoView()) observer.disconnect();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+      window.setTimeout(() => observer.disconnect(), 10000);
+    };
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(tryScroll);
+    });
   }, [currentPage]);
 
   const navigateTo = (page) => setCurrentPage(page);
