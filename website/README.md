@@ -4,9 +4,14 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 ## Environment variables
 
-- `VITE_FORMSPREE_ID` (optional): overrides the Formspree form id used by the Early Believers section.
-- `RESEND_API_KEY` (required for automated thank-you email): used by the Vercel serverless function at `/api/thank-you`.
-- `RESEND_FROM` (optional): override the from address (e.g. `Tessera Audio <hello@tessera.audio>`). Requires a verified domain in Resend.
+Set these in **Vercel** (Production / Preview) for the live site.
+
+- `FORMSPREE_FORM_ID` (optional): Formspree form id for Early Believers (defaults to the id baked into the repo if unset). Used by `/api/early-believer`.
+- `RESEND_API_KEY` (required for automated thank-you email): used by `/api/thank-you`.
+- `RESEND_FROM` (optional): e.g. `Tessera Audio <hari@tesseraaudio.com>`. Requires a verified sending domain in Resend.
+- `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` (optional): [Upstash Redis](https://upstash.com/) REST credentials. When set, `/api/early-believer` remembers signed-up emails server-side and responds with **already signed up** instead of creating duplicate Formspree rows. Without these, the form still works but cannot detect repeat emails across visits.
+
+Local dev-only: `VITE_FORMSPREE_ID` is unused by Early Believers now (signups go through `/api/early-believer`).
 
 Currently, two official plugins are available:
 
