@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 import SectionMarker from './SectionMarker';
 
-const SCROLL_SLIDE_PX = 40;
+/** How far the mission block sits below its final position before the first scroll intent. */
+const SLIDE_OFFSET_PX = 56;
+/** Document scroll that also triggers settle (backup if wheel events are swallowed). */
+const SCROLL_SETTLE_PX = 16;
+
+function getScrollY() {
+  return window.scrollY || document.documentElement?.scrollTop || document.body?.scrollTop || 0;
+}
 
 export default function HeroSection() {
   const [slideSettled, setSlideSettled] = useState(false);
@@ -13,13 +20,23 @@ export default function HeroSection() {
       return;
     }
 
-    const maybeSettle = () => {
-      if (window.scrollY >= SCROLL_SLIDE_PX) setSlideSettled(true);
+    const settle = () => setSlideSettled(true);
+
+    const onScroll = () => {
+      if (getScrollY() >= SCROLL_SETTLE_PX) settle();
     };
 
-    maybeSettle();
-    window.addEventListener('scroll', maybeSettle, { passive: true });
-    return () => window.removeEventListener('scroll', maybeSettle);
+    const onWheel = (e) => {
+      if (e.deltaY > 0) settle();
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    window.addEventListener('wheel', onWheel, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll, true);
+      window.removeEventListener('wheel', onWheel);
+    };
   }, []);
 
   return (
@@ -40,7 +57,11 @@ export default function HeroSection() {
       <div className="panel-shell relative z-10 flex min-h-[calc(100vh-7rem)] min-w-0 items-end">
         <div className="grid w-full min-w-0 gap-8">
           <div
-            className={`relative z-10 max-w-full min-w-0 pb-4 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform md:max-w-5xl ${slideSettled ? 'translate-y-0' : 'translate-y-6'}`}
+            className="relative z-10 max-w-full min-w-0 pb-4 will-change-transform md:max-w-5xl"
+            style={{
+              transform: slideSettled ? 'translateY(0)' : `translateY(${SLIDE_OFFSET_PX}px)`,
+              transition: 'transform 0.75s cubic-bezier(0.22, 1, 0.36, 1)',
+            }}
           >
             <SectionMarker number="01" title="THE MISSION" className="mb-8" />
             <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.34em] text-[#5dd4f0]">
