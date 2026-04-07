@@ -7,6 +7,7 @@ const FORMSPREE_FORM_ID = import.meta.env.VITE_FORMSPREE_ID || 'mbdpqojl';
 
 export default function EarlyBelievers() {
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   const [status, setStatus] = useState('idle');
   const submitting = status === 'submitting';
 
@@ -16,6 +17,7 @@ export default function EarlyBelievers() {
     try {
       const body = new FormData();
       body.append('email', email);
+      if (message.trim()) body.append('message', message.trim());
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
         method: 'POST',
         body,
@@ -24,6 +26,7 @@ export default function EarlyBelievers() {
       if (res.ok) {
         setStatus('success');
         setEmail('');
+        setMessage('');
       } else {
         setStatus('error');
       }
@@ -57,8 +60,8 @@ export default function EarlyBelievers() {
             {status === 'success' ? (
               <p className="mt-8 font-mono text-sm uppercase tracking-[0.2em] text-[#5dd4f0]">You&apos;re in. We&apos;ll be in touch.</p>
             ) : (
-              <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-end">
-                <label className="flex-1 font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">
+              <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-5">
+                <label className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8d94ab]">
                   <span className="mb-2 block">Email</span>
                   <input
                     type="email"
@@ -71,10 +74,27 @@ export default function EarlyBelievers() {
                     placeholder="you@example.com"
                   />
                 </label>
+                <div className="rounded-xl border border-white/12 bg-[#080a10]/65 p-4 sm:p-5">
+                  <h3 className="texture-type-shadow-soft mb-3 text-sm font-semibold uppercase tracking-[0.12em] text-[#f0ebe0] sm:text-base">
+                    A note for Tessera
+                  </h3>
+                  <label htmlFor="believers-message" className="sr-only">
+                    Optional message for Tessera
+                  </label>
+                  <textarea
+                    id="believers-message"
+                    name="message"
+                    rows={4}
+                    value={message}
+                    onChange={(ev) => setMessage(ev.target.value)}
+                    className="w-full resize-y rounded-lg border border-white/12 bg-[#0a0c12]/80 px-4 py-3 font-sans text-base normal-case tracking-normal text-[#f0ebe0] placeholder:text-[#6f768a] outline-none transition-colors focus:border-[#5dd4f0]/50"
+                    placeholder="Thoughts, hopes, or why you are here…"
+                  />
+                </div>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="shrink-0 rounded-full border border-[#ffb84d]/45 bg-[#ffb84d]/14 px-8 py-3 font-mono text-xs font-semibold uppercase tracking-[0.26em] text-[#ffe1af] transition-all duration-300 hover:border-[#ffb84d] hover:bg-[#ffb84d]/22 disabled:opacity-50"
+                  className="self-start rounded-full border border-[#ffb84d]/45 bg-[#ffb84d]/14 px-8 py-3 font-mono text-xs font-semibold uppercase tracking-[0.26em] text-[#ffe1af] transition-all duration-300 hover:border-[#ffb84d] hover:bg-[#ffb84d]/22 disabled:opacity-50 sm:self-end"
                 >
                   {submitting ? 'Sending…' : 'Stand with us'}
                 </button>
