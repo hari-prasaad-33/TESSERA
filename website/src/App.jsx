@@ -189,8 +189,8 @@ export default function App() {
           <div className="mt-5 space-y-2 text-sm text-[#c6cfdd]">
             <p>Founder: Hari Prasaad S</p>
             <p>
-              <a href="mailto:hello@tessera.audio" className="text-[#5dd4f0] underline-offset-4 hover:underline">
-                hello@tessera.audio
+              <a href="mailto:hari@tesseraaudio.com" className="text-[#5dd4f0] underline-offset-4 hover:underline">
+                hari@tesseraaudio.com
               </a>
             </p>
           </div>

@@ -136,7 +136,7 @@ Tessera Audio — [Date]
 ## Slide 13: Contact
 
 **Tessera Audio**  
-hello@tessera.audio  
-tessera.audio
+hari@tesseraaudio.com  
+tesseraaudio.com
 
 *Thank you.*

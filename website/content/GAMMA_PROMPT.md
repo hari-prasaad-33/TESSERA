@@ -99,7 +99,7 @@ Create a professional VC pitch deck for Tessera One, an AI-powered audio plugin 
 - Headline: Vision
 - Short term: The go-to AI channel strip for producers and engineers
 - Long term: AI-powered mixing ecosystem—stems, mastering, collaboration—with Tessera One at the center
-- Footer: Tessera Audio | hello@tessera.audio | tessera.audio | Thank you
+- Footer: Tessera Audio | hari@tesseraaudio.com | tesseraaudio.com | Thank you
 
 ---
 

@@ -46,7 +46,7 @@ AI suggestions are optional. Every parameter can be tweaked manually. Save and l
 
 ### CTA
 
-Ready to mix faster? Try Tessera One today—or contact us at hello@tessera.audio for a demo or download.
+Ready to mix faster? Try Tessera One today—or contact us at hari@tesseraaudio.com for a demo or download.
 
 ---
 
